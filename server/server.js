@@ -9,7 +9,7 @@ app.use(bodyParser.json());
     res.send("TRY...")
 })*/
 
-var distDir = __dirname + "/dist/";
+var distDir = __dirname + "../dist/";
 app.use(express.static(distDir));
 
 app.listen(process.env.PORT || 8080)
