@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Please insert your enterprise information or <a href="/login" class="text-center new-account">SIGN IN</a> </h3> 
+        </div>
+        <div class="panel-body">
+          <form class="form-signin" name="registrationForm" id="registrationForm" [formGroup]="registrationForm"
+            (submit)='onSubmit()'>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" id="first_name" formControlName="first_name" class="form-control input-lg" placeholder="First Name" autofocus>
+                  <div [hidden]="first_name.pristine || (first_name.dirty && first_name.valid)" class="alert alert-danger"> First Name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" id="last_name" formControlName="last_name" class="form-control input-lg" placeholder="Last Name">
+                  <div [hidden]="last_name.pristine || (last_name.dirty && last_name.valid)" class="alert alert-danger"> Last Name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" id="email" formControlName="email" class="form-control input-lg" placeholder="Email Address">
+                  <div [hidden]="!email.hasError('required') || email.untouched" class="alert alert-danger"> Email is required
+                  </div>
+                  <div [hidden]="email.hasError('required')  || !email.hasError('email')" class="alert alert-danger"> Email must be in the form xx@yy.zz
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" id="mobilePhone" formControlName="mobilePhone" class="form-control input-lg" placeholder="Mobile Phone">
+                  <div [hidden]="!mobilePhone.hasError('required') || mobilePhone.untouched" class="alert alert-danger"> Mobile Phone is required
+                  </div>
+                  <div [hidden]="mobilePhone.hasError('required') || mobilePhone.valid" class="alert alert-danger"> Mobile Phone lenght must be 10
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="text" id="company" formControlName="company" class="form-control input-lg" placeholder="Company">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="password" id="password" formControlName="password" class="form-control input-lg" placeholder="Password" (keyup)="passwordVerify()">
+                  <div [hidden]="!password.hasError('required') || password.untouched" class="alert alert-danger"> Password is required
+                  </div>
+                  <div [hidden]="password.hasError('required')  || password.hasError('maxlength') || password.hasError('minlength') || !password.hasError('pattern')"
+                    class="alert alert-danger"> Password must has at last one Alphabetic letter and one Number
+                  </div>
+                  <div [hidden]="password.hasError('required') || !password.hasError('minlength')" class="alert alert-danger"> Password minimum length must be 6
+                  </div>
+                  <div [hidden]="password.hasError('required') || !password.hasError('maxlength')" class="alert alert-danger"> Password max length must be 20
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control input-lg" placeholder="Confirm Password" (keyup)="passwordVerify()" [(ngModel)]="password_confirmation"
+                    [ngModelOptions]="{standalone: true}">
+                  <div [hidden]="password.hasError('required')  || password.hasError('minlength')  || password.hasError('maxlength') || password.hasError('pattern') || passwordMatch"
+                    class="alert alert-danger"> Two passwords must match
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-10 col-sm-8 col-md-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-3">
+              <button type="submit" class="btn btn-info btn-block" [(disabled)]="!passwordMatch || !registrationForm.valid">
+                Send Account Creation Request </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
