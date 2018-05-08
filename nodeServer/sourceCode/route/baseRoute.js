@@ -20,13 +20,19 @@ class baseRoute {
 
     angularRoute() {
 		
-		/*var distDir = __dirname + "./../../../dist/";
-		app.use(express.static(distDir));*/
+		var distDir = __dirname + "./../../../dist/";
+		app.use(express.static(distDir));
 		
         app.all('*', (req, res) => {
             res.sendFile(path.join(__dirname, './../../../dist/index.html'));
         })
-		
+        
+        /*var distDir = __dirname + "./../dist/";
+        app.use(express.static(distDir));
+        
+        app.all('*', (req, res) => {
+            res.sendFile(path.join(__dirname, './../dist/index.html'));
+        })*/
 		
     }
 }
