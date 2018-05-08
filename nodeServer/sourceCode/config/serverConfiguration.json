@@ -1,0 +1,5 @@
+{
+    "hostname" : "localhost",
+    "port": "7777",
+    "route" : "standardRoute"
+}
