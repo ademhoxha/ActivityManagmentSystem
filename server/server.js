@@ -10,8 +10,9 @@ app.all("/api", (req,res) => {
     res.status(200).json({ok:"JSON INVIATO"});
 })
 
-/*var distDir = __dirname + "./../dist/";
-app.use(express.static(distDir));*/
+var distDir = __dirname + "./../dist/";
+app.use(express.static(distDir));
+
 app.all('*', (req, res) => {
     res.sendFile(path.join(__dirname, './../dist/index.html'));
 })
