@@ -1,0 +1,5 @@
+The batch folder contains all the functionality needed for the integrity of the application:
+such some operation in the db that can't be executed from the interface
+
+All functionality are listed below:
+1) addUser => add a new user to DB

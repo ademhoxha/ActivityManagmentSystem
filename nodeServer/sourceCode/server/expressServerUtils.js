@@ -17,8 +17,10 @@ function startServer(data) {
     routeUtils.getRuoteClass(data.route).applyRoute();
     // start server
     var port = data.port;
+    if (data.port == "HEROKU")
+        port = process.env.PORT
     app.set('port', port);
-    app.listen(process.env.PORT || 8080); // fix heroku
+    app.listen(port || 8080); // fix heroku
     console.log("listening on port " + port);
 }
 

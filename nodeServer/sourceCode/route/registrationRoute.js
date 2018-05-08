@@ -22,17 +22,18 @@ class registrationRoute extends baseRoute {
                 registrationFlow(data, (err, ret) => {
                     if (err) {
                         console.log("REGISTRATION FAILED => " + err);
-                        res.send("REGISTRATION FAILED");
+                        res.status(201).json({msg:"REGISTRATION FAILED"});
                     }
                     else {
                         console.log("*** REGISTRATION SUCCESS ***");
-                        res.send("OTP SUCCESS");
+                        res.status(200).json({msg:"REGISTRATION SUCCESS"});
                     }
                 });
 
             }
             else {
-                res.send("REGISTRATION FAILED => MISSED ESSENTIAL INFORMATION");
+                console.log("REGISTRATION FAILED => MISSED ESSENTIAL INFORMATION");
+                res.status(201).json({msg:"REGISTRATION FAILED => MISSED ESSENTIAL INFORMATION"});
             }
         });
 
@@ -40,7 +41,7 @@ class registrationRoute extends baseRoute {
 
 }
 
-var user = dbAPI.getUserEntity();
+var user = dbAPI.getSecretUserEntity();
 
 function registrationFlow(data, callback) {
     var findData = {

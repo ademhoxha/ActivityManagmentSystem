@@ -1,5 +1,5 @@
 {
     "hostname" : "localhost",
-    "port": "7777",
+    "port": "HEROKU",
     "route" : "standardRoute"
 }

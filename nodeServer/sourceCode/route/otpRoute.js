@@ -7,23 +7,27 @@ class otpRoute extends baseRoute {
     applyRoute() {
 
         app.all("/api/otp", function (req, res, next) {
-
+            console.log("OTP CALLED ");
             if (req.body.email) {
-                var data = { email: req.body.email };
+                var data = { 
+                    email: req.body.email,
+                    password :  req.body.password,
+                };
                 otpFlow(data, (err, ret) => {
                     if (err){
                         console.log("OTP NOT SUCCESS "+err);
-                        res.send("OTP NOT SUCCESS");
+                        res.status(201).json({msg:"OTP NOT SUCCESS"});
                     }
                     else{
                         console.log("OTP SUCCESS ");
-                        res.send("OTP SUCCESS");
+                        res.status(200).json({msg:"OTP SUCCESS"});
                     }
                 });
 
             }
             else {
-                res.send("NOT EMAIL");
+                console.log("OTP NOT EMAIL ");
+                res.status(201).json({msg:"NOT EMAIL"});
             }
         });
 
@@ -31,11 +35,14 @@ class otpRoute extends baseRoute {
 
 }
 
-var user = dbAPI.getUserEntity();
+var user = dbAPI.getSecretUserEntity();
 
 function otpFlow(userData, callback) {
     var data = {};
-    data.query = { email: userData.email };
+    data.query = { 
+        email: userData.email,
+        password : userData.password
+     };
     findUser(data, callback);
 }
 

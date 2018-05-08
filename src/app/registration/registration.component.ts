@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+import { AuthApiService } from '../auth-api/auth-api.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +14,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: Http, private authApiService: AuthApiService) {
     this.initForm();
   }
 
@@ -26,6 +29,10 @@ export class RegistrationComponent implements OnInit {
   password: AbstractControl;
   mobilePhone: AbstractControl;
   // required fields
+
+  // response from api
+  response: any;
+  // response from api
 
   initForm() {
     this.registrationForm = this.formBuilder.group({
@@ -101,29 +108,29 @@ export class RegistrationComponent implements OnInit {
     return "";
   }
 
-  test = "";
   onSubmit() {
-    this.test = "premuto";
     this.passwordVerify();
-    if (this.passwordMatch)
-      this.registrationRequest();
+    if (this.passwordMatch) {
+      var body = this.setRequestParameters();
+      this.authApiService.registrationRequest(body).then((res: any) => { this.response = res.msg });
+    }
   }
 
-  registrationRequest()/*: Observable<any> */ {
-    this.test = "TRY TO SEND OTP";
+  /*registrationRequest(): Promise<void | any> {
     let url = "/api/registration";
     const body = this.setRequestParameters();
-    this.httpClient.post(url, body).subscribe((res) => { this.test = "BACK FROM REGISTRATION"; });
-  }
+    return this.http.post(url, body).toPromise().then(response => response.json() as any);
+  }*/
 
-  setRequestParameters(): any{
-    const body = new HttpParams()
-    .set('email', this.email.value)
-    .set('password', this.password.value)
-    .set('mobilephone', this.mobilePhone.value)
-    .set('company', this.company.value)
-    .set('name', this.first_name.value)
-    .set('surname', this.last_name.value);
+  setRequestParameters(): any {
+    var body = {
+      email: this.email.value,
+      password: this.password.value,
+      mobilephone: this.mobilePhone.value,
+      company: this.company.value,
+      name: this.first_name.value,
+      surname: this.last_name.value,
+    }
     return body;
   }
 
