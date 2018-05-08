@@ -11,8 +11,12 @@ var app = express();
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
-app.use(express.static(path.join(__dirname, '../../../mean-angular5/dist')));
+// Local host
+//app.use(express.static(path.join(__dirname, '../../../mean-angular5/dist'))); 
+// Heroku server
+var distDir = __dirname + "./../../../dist/";
+app.use(express.static(distDir));
 
 module.exports = {
-    app : app,
+    app : app
 }
