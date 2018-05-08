@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 
 app.all("/api", (req,res) => {
-    res.send("TRY...")
+    res.status(200).json({ok:"JSON INVIATO"});
 })
 
 var distDir = __dirname + "./../dist/";
