@@ -28,19 +28,20 @@
                     <button [(disabled)]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit"> Sign in </button>
                 </form>
                 <button [(disabled)]="!email.valid || !validationEnded" class="btn btn-lg btn-primary btn-block" (click)="onOtpSubmit()">
-                SendOtp </button>
+                    SendOtp </button>
                 <a routerLink="/registration" routerLinkActive="active" class="text-center new-account"> Request an account</a>
             </div>
         </div>
-    </div>
-
-    <div class="well" [hidden]="validationEnded">
-        <div class="col-md-4 col-md-offset-4">
-            <div class=" display text-center">
-                <span id="hor">Your OTPCode will expire in: </span>
-                <span id="seg">{{time}}</span>
+        <div [hidden]="validationEnded">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <br>
+                <label for="exampleInputEmail1">Your OTPCode will expire in: {{time}} </label>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div id="bar001" class="progress-bar" style="width: 100%;"></div>
+                </div>
             </div>
         </div>
+
     </div>
 
 

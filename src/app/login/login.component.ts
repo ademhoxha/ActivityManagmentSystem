@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import * as $ from 'jquery';
+
 import { AuthApiService } from '../auth-api/auth-api.service';
 import { clearInterval } from 'timers';
 
@@ -20,6 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*$(document).ready(function () {
+      $("#bar001").css("width", "70%");
+    });*/
+    /*$( "#bar001" ).animate({
+      width: 70,
+    }, 5000, function() {
+      // Animation complete.
+    });*/
   }
 
   password: FormControl;
@@ -60,23 +70,28 @@ export class LoginComponent implements OnInit {
   }*/
 
   onOtpSubmit() {
-    this.authApiService.otpRequest(this.email.value, this.password.value).then((res: any) => { 
-      if(res.status == 200)
+    this.authApiService.otpRequest(this.email.value, this.password.value).then((res: any) => {
+      if (res.status == 201)
         this.startChronometer();
-     });
+    });
   }
 
 
   // otp chronometer
-  time : number = 20;
-  validationEnded : boolean = true;
+  time: number = 30;
+  validationEnded: boolean = true;
 
-  startChronometer(){
+  startChronometer() {
     this.validationEnded = false;
-    this.time = 20;
-    var interval = setInterval( () => {
-      this.time --;
-      if(this.time == 0){
+    this.time = 30;
+    // nav bar
+    $("#bar001").animate({
+      width: "0%",
+    }, 30000, function () { });
+    // timer
+    var interval = setInterval(() => {
+      this.time--;
+      if (this.time == 0) {
         this.validationEnded = true;
         clearInterval(interval)
       }
