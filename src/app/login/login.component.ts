@@ -7,7 +7,6 @@ import 'rxjs/add/operator/toPromise';
 import * as $ from 'jquery';
 
 import { AuthApiService } from '../auth-api/auth-api.service';
-import { clearInterval } from 'timers';
 
 @Component({
   selector: 'app-login',
@@ -22,14 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*$(document).ready(function () {
-      $("#bar001").css("width", "70%");
-    });*/
-    /*$( "#bar001" ).animate({
-      width: 70,
-    }, 5000, function() {
-      // Animation complete.
-    });*/
   }
 
   password: FormControl;
@@ -84,20 +75,25 @@ export class LoginComponent implements OnInit {
   startChronometer() {
     this.validationEnded = false;
     this.time = 30;
+    //$("#otpButton").attr("disabled", "true");
     // nav bar
     $("#bar001").animate({
       width: "0%",
-    }, 30000, function () { });
+    }, 31000, function () {
+      $("#otpBar").css("display", "none");
+      $("#bar001").css("width", "100%");
+    });
     // timer
     var interval = setInterval(() => {
       this.time--;
       if (this.time == 0) {
         this.validationEnded = true;
-        clearInterval(interval)
+        //$("#otpButton").attr("disabled", "!email.valid || !validationEnded");
       }
     }, 1000);
 
+    // fade bar an timer
+    $("#otpBar").fadeIn(4000);
   }
-
 
 }
