@@ -11,13 +11,22 @@ export class AuthApiService {
   otpRequest(email: string, password: string): Promise<void | any> {
     let url = "/api/otp";
     const body = { email: email, password: password }
-    return this.http.post(url, body).toPromise().then(response => response.json() as any);
+    return this.http.post(url, body).toPromise().then(response =>{
+      var ret = response.json();
+      ret.status = response.status;
+      return ret;
+    });
   }
 
   login(username: string, password: string): Promise<void | any> {
     let url = "/login";
     const body = { email: username, password: password }
-    return this.http.post(url, body).toPromise().then(response => response.json() as any);
+    return this.http.post(url, body).toPromise().then(response => {
+      var ret = response.json();
+      ret.status = response.status;
+      return ret;
+    }
+  );
   }
 
   registrationRequest(body): Promise<void | any> {

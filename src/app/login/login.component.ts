@@ -5,6 +5,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { AuthApiService } from '../auth-api/auth-api.service';
+import { clearInterval } from 'timers';
 
 @Component({
   selector: 'app-login',
@@ -20,10 +21,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // response from api
-  response: any;
-  // response from api
 
   password: FormControl;
   email: FormControl;
@@ -46,7 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authApiService.login(this.email.value, this.password.value).then((res: any) => { this.response = res.msg });
+    this.authApiService.login(this.email.value, this.password.value).then((res: any) => { });
   }
 
 
@@ -63,7 +60,29 @@ export class LoginComponent implements OnInit {
   }*/
 
   onOtpSubmit() {
-    this.authApiService.otpRequest(this.email.value, this.password.value).then((res: any) => { this.response = res.msg });
+    this.authApiService.otpRequest(this.email.value, this.password.value).then((res: any) => { 
+      if(res.status == 200)
+        this.startChronometer();
+     });
   }
+
+
+  // otp chronometer
+  time : number = 20;
+  validationEnded : boolean = true;
+
+  startChronometer(){
+    this.validationEnded = false;
+    this.time = 20;
+    var interval = setInterval( () => {
+      this.time --;
+      if(this.time == 0){
+        this.validationEnded = true;
+        clearInterval(interval)
+      }
+    }, 1000);
+
+  }
+
 
 }
