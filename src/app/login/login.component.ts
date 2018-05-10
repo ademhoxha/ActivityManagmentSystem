@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import * as $ from 'jquery';
 
 import { AuthApiService } from '../auth-api/auth-api.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-login',
@@ -61,10 +62,17 @@ export class LoginComponent implements OnInit {
   }*/
 
   onOtpSubmit() {
+    this.resetForm();
     this.authApiService.otpRequest(this.email.value, this.password.value).then((res: any) => {
       if (res.status == 201)
         this.startChronometer();
     });
+  }
+
+  resetForm() {
+    this.loginForm.reset()
+    //this.email.setValue(null);
+    //this.password.setValue(null);
   }
 
 
