@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
   validationEnded: boolean = true;
 
   startChronometer() {
+    console.log("SET CHRONOMETER")
     this.validationEnded = false;
     this.time = 30;
     //$("#otpButton").attr("disabled", "true");
@@ -80,14 +81,17 @@ export class LoginComponent implements OnInit {
     $("#bar001").animate({
       width: "0%",
     }, 31000, function () {
+      console.log("END CHRONOMETER")
       $("#otpBar").css("display", "none");
       $("#bar001").css("width", "100%");
+
     });
     // timer
     var interval = setInterval(() => {
       this.time--;
       if (this.time == 0) {
         this.validationEnded = true;
+        clearInterval(interval);
         //$("#otpButton").attr("disabled", "!email.valid || !validationEnded");
       }
     }, 1000);
