@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   otpEnded(data) {
-    this.test = "LOGIN ENDED =>"+data.status;
+    this.test = "OTP ENDED =>"+data.status;
     if (data && data.status == 200) {
       this.router.navigate(['/success'])
     }
