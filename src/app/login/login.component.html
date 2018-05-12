@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="loginDiv">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="account-wall">
@@ -27,29 +27,8 @@
 
                     <button [(disabled)]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit"> Sign in </button>
                 </form>
-                <button [(disabled)]="!email.valid || !validationEnded" class="btn btn-lg btn-primary btn-block" id="otpButton" (click)="onOtpSubmit()">
-                    SendOtp </button>
                 <a routerLink="/registration" routerLinkActive="active" class="text-center new-account"> Request an account</a>
             </div>
         </div>
-        <!--<div [hidden]="validationEnded">-->
-        <div style="display:none" id="otpBar">
-            <div class="col-sm-6 col-md-4 col-md-offset-4">
-                    <br>
-                <label for="exampleInputEmail1">Your OTPCode will expire in: {{time}} </label>
-                <div class="progress progress-striped active page-progress-bar">
-                    <div id="bar001" class="progress-bar" style="width:100%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-                <svg class="svg" width=200 height=200>
-          <circle cx=100 cy=100 r=15 />
-        </svg>
-        </div>
-
     </div>
-
-
 </div>

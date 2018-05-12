@@ -116,12 +116,6 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  /*registrationRequest(): Promise<void | any> {
-    let url = "/api/registration";
-    const body = this.setRequestParameters();
-    return this.http.post(url, body).toPromise().then(response => response.json() as any);
-  }*/
-
   setRequestParameters(): any {
     var body = {
       email: this.email.value,

@@ -1,0 +1,24 @@
+<div style="display:none" id="otpBar">
+  <div class="col-sm-6 col-md-4 col-md-offset-4">
+    <br>
+    <label for="exampleInputEmail1">Your OTPCode will expire in: {{time}} </label>
+    <div class="progress progress-striped active page-progress-bar">
+      <div id="bar001" class="progress-bar" style="width:100%;"></div>
+    </div>
+
+    <form class="form-signin" (ngSubmit)="onOTPSubmit()" [formGroup]='otpForm'>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" id="otpCode" formControlName="otpCode" class="form-control input-lg" placeholder="OTP Code">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <button [(disabled)]="!otpForm.valid || codeSended" class="btn btn-lg btn-primary btn-block" type="submit"> Confirm OTP Code </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

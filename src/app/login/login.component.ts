@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
@@ -15,6 +15,9 @@ import { forEach } from '@angular/router/src/utils/collection';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  @Input() inputData: any; // input json
+  @Output() returnFunction = new EventEmitter<any>(); // output event function
 
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private http: Http, private authApiService: AuthApiService) {
@@ -38,74 +41,29 @@ export class LoginComponent implements OnInit {
     this.email = <FormControl>this.loginForm.get('email');
   }
 
-  public auth: Boolean = false;
-  public printValidUser(): void {
-    var data: Map<String, String> = new Map<String, String>();
-    this.auth = true;
+  resetForm() {
+    this.loginForm.reset();
   }
 
   onSubmit() {
-    this.authApiService.login(this.email.value, this.password.value).then((res: any) => { });
-  }
-
-
-  /*login(username: string, password: string): Promise<void | any> {
-    let url = "/login";
-    const body = { email: username, password: password }
-    return this.http.post(url, body).toPromise().then(response => response.json() as any);
-  }*/
-
-  /*otpRequest(email: string, password: string): Promise<void | any> {
-    let url = "/api/otp";
-    const body = { email: email, password: password }
-    return this.http.post(url, body).toPromise().then(response => response.json() as any);
-  }*/
-
-  onOtpSubmit() {
+    var data = {
+      email: this.email.value,
+      password: this.password.value
+    };
     this.resetForm();
-    this.authApiService.otpRequest(this.email.value, this.password.value).then((res: any) => {
-      if (res.status == 201)
-        this.startChronometer();
-    });
-  }
-
-  resetForm() {
-    this.loginForm.reset()
-    //this.email.setValue(null);
-    //this.password.setValue(null);
-  }
-
-
-  // otp chronometer
-  time: number = 30;
-  validationEnded: boolean = true;
-
-  startChronometer() {
-    console.log("SET CHRONOMETER")
-    this.validationEnded = false;
-    this.time = 30;
-    //$("#otpButton").attr("disabled", "true");
-    // nav bar
-    $("#bar001").animate({
-      width: "0%",
-    }, 31000, function () {
-      console.log("END CHRONOMETER")
-      $("#otpBar").css("display", "none");
-      $("#bar001").css("width", "100%");
-
-    });
-    // timer
-    var interval = setInterval(() => {
-      this.time--;
-      if (this.time == 0) {
-        this.validationEnded = true;
-        clearInterval(interval);
-        //$("#otpButton").attr("disabled", "!email.valid || !validationEnded");
+    this.authApiService.otpRequest(data).then((res: any) => {
+      if (res.status == 201) {
+        $("#loginDiv").fadeTo(1500, 0, () => {
+          var retData = {
+            status: 200
+          }
+          this.returnFunction.emit(retData);
+        });
       }
-    }, 1000);
-
-    // fade bar an timer
-    $("#otpBar").fadeIn(4000);
+      else {
+        return null; // Manage ERRORS
+      }
+    });
   }
 
 }

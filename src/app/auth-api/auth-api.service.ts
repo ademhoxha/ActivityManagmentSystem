@@ -8,9 +8,9 @@ export class AuthApiService {
 
   constructor(private http: Http) { }
 
-  otpRequest(email: string, password: string): Promise<void | any> {
+  otpRequest(data): Promise<void | any> {
     let url = "/api/otp";
-    const body = { email: email, password: password }
+    const body = { email: data.email, password: data.password }
     return this.http.post(url, body).toPromise().then(response =>{
       var ret = response.json();
       ret.status = response.status;
