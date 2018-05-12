@@ -16,12 +16,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.test = "LOGIN START =>";
   }
 
-  test : string = "INIT";
   loginEnded(data) {
-    this.test = "LOGIN ENDED =>"+data.status;
     if (data && data.status == 200) {
       this.loginFlag = false;
       setTimeout(() => { this.otpFlag = true; }, 200)
@@ -29,7 +26,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   otpEnded(data) {
-    this.test = "OTP ENDED =>"+data.status;
     if (data && data.status == 200) {
       this.router.navigate(['/success'])
     }
