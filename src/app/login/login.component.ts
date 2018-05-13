@@ -52,16 +52,17 @@ export class LoginComponent implements OnInit {
     };
     this.resetForm();
     this.authApiService.otpRequest(data).then((res: any) => {
-      if (res.status == 201) {
+      if (res.status == 200) {
         $("#loginDiv").fadeTo(1500, 0, () => {
-          var retData = {
-            status: 200
-          }
+          var retData : any = data;
+          retData.status = 200;
           this.returnFunction.emit(retData);
         });
       }
       else {
-        return null; // Manage ERRORS
+        var retData : any = data;
+        retData.status = 201;
+        this.returnFunction.emit(retData);
       }
     });
   }

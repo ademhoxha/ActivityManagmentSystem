@@ -12,7 +12,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AuthApiService } from './auth-api/auth-api.service';
 import { OtpComponent } from './opt/otp/otp.component';
-import { LoginPageComponent } from './login-page/login-page/login-page.component'
+import { LoginPageComponent } from './login-page/login-page.component';
+import { ErrorComponent } from './error/error.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginPageComponent } from './login-page/login-page/login-page.component
     SuccessAuthComponent,
     RegistrationComponent,
     OtpComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

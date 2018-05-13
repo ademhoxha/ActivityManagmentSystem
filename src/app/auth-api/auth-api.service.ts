@@ -9,24 +9,44 @@ export class AuthApiService {
   constructor(private http: Http) { }
 
   otpRequest(data): Promise<void | any> {
-    let url = "/api/otp";
-    const body = { email: data.email, password: data.password }
-    return this.http.post(url, body).toPromise().then(response =>{
+    let url = "/api/otp/request";
+    const body = {
+      email: data.email,
+      password: data.password
+    }
+    return this.http.post(url, body).toPromise().then(response => {
       var ret = response.json();
       ret.status = response.status;
       return ret;
     });
   }
 
-  login(username: string, password: string): Promise<void | any> {
-    let url = "/login";
-    const body = { email: username, password: password }
+  otpValidation(data): Promise<void | any> {
+    let url = "/api/otp/validation";
+    const body = {
+      email: data.email,
+      password: data.password,
+      otpCode : data.otpCode
+    }
     return this.http.post(url, body).toPromise().then(response => {
       var ret = response.json();
       ret.status = response.status;
       return ret;
+    });
+  }
+
+  login(data): Promise<void | any> {
+    let url = "/login";
+    const body = {
+      email: data.email,
+      password: data.password,
+      otpCode : data.otpCode
     }
-  );
+    return this.http.post(url, body).toPromise().then(response => {
+      var ret = response.json();
+      ret.status = response.status;
+      return ret;
+    });
   }
 
   registrationRequest(body): Promise<void | any> {

@@ -1,0 +1,5 @@
+<app-error *ngIf="errorFlag" [inputData]="errorData"></app-error>
+
+<app-login *ngIf="loginFlag" (returnFunction)="loginEnded($event)"></app-login>
+
+<app-otp *ngIf="otpFlag" (returnFunction)="otpEnded($event)" [inputData]="otpData"></app-otp>

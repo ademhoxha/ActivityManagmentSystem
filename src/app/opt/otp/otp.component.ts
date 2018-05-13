@@ -19,11 +19,11 @@ export class OtpComponent implements OnInit {
   duration: number;
   fadeTime: number;
   constructor(private formBuilder: FormBuilder) {
-    this.checkInput();
     this.initForm();
   }
 
   ngOnInit() {
+    this.checkInput();
     this.startChronometer();
   }
 
@@ -40,8 +40,14 @@ export class OtpComponent implements OnInit {
   checkInput() {
     if (!this.inputData || !this.inputData.fadeTime || this.inputData.fadeTime <= 0)
       this.fadeTime = 4000;
+    else
+      this.fadeTime = this.inputData.fadeTime;
+
     if (!this.inputData || !this.inputData.duration || this.inputData.duration <= 0)
       this.duration = 15000;
+    else
+      this.duration = this.inputData.duration;
+
     this.time = this.duration / 1000;
   }
 

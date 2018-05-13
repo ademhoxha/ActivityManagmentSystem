@@ -1,7 +1,7 @@
 class outlookMail {
     constructor() {
-        this.user = 'watchmefly001@outlook.com';
-        this.pass = 'w@tchm3fl1';
+        this.user = 'watchmefly002@outlook.com';
+        this.pass = 'w@tchm3fl2';
         this.port = 587;
         this.host = "smtp-mail.outlook.com";
         this.chipers = 'SSLv3';

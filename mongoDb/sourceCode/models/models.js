@@ -15,7 +15,8 @@ class Models {
                 otp: {
                     code: String,
                     date: Date
-                }
+                },
+                authToken: String
             };
 
         // emailOTP

@@ -6,18 +6,17 @@ const routeUtils = require('../route/routeUtils');
 var app = require('../server/serverApp').app;
 
 function startServer(data) {
-    // set route
     //routeUtils.getLoggerRoute().applyRoute();
-    routeUtils.getSessionMidd().applyRoute();
+    routeUtils.getSessionMidd().applyRoute(); // apply client session
     // START API
-    routeUtils.getOtpRoute().applyRoute();  // OTP
-    routeUtils.getRegistrationRoute().applyRoute(); // NEW USER
+    routeUtils.getOtpRoute().applyRoute();  // otp api
+    routeUtils.getRegistrationRoute().applyRoute(); // registration api
     // END API
-    routeUtils.getAuthRoute().applyRoute();
-    routeUtils.getRuoteClass(data.route).applyRoute();
+    routeUtils.getAuthRoute().applyRoute(); // authentication ruote
+    routeUtils.getRuoteClass(data.route).applyRoute(); // authentication required route
     // start server
     var port = data.port;
-    if (process.env.PORT) // fix heroku
+    if (process.env.PORT) // heroku fix
         port = process.env.PORT
     app.set('port', port);
     app.listen(port || 8080); 

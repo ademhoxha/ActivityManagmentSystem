@@ -7,7 +7,7 @@ class SecretUserEntity extends SecretEntityPrototype {
         var data = {}
         data.dbName = dbConfig.userDbName
         data.schemaName = 'User';
-        data.parameters = ["password"]; // list of parameters to crypt
+        data.parameters = ["password", "authToken"]; // list of parameters to crypt
         //data.password = "" // use standard key of crypto api
         super(data);
     }

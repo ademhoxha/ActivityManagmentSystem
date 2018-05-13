@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SuccessAuthComponent } from './success-auth/success-auth.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { LoginPageComponent } from './login-page/login-page/login-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 const routes: Routes = [
