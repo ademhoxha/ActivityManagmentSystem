@@ -1,5 +1,6 @@
 var BaseController = require('./baseController').BaseController;
 var standardClientSession = require("../clientSession/standardClientSession").standardClientSession;
+var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 
 class LoginController extends BaseController {
     applyController(req, res, next) {
@@ -46,10 +47,11 @@ class LoginStep extends BaseControllerChain {
                 standardClientSession.login(req, (err, ret) => {
                     if (ret){
                         console.log("LOGIN SUCCESS");
-                        return res.status(200).json({ msg: "LOGIN SUCCESS" });
+                        var succ = returnCodeFactory.successRet("Login Success");
+                        return res.status(succ.code).json({ message: succ.message });
                     }
                     console.log("LOGIN FAIL");
-                    return res.status(201).json({ msg: "LOGIN FAIL" });
+                    return res.status(err.code).json({ message: err.message });
                 })
             }
             else{
@@ -72,13 +74,16 @@ class LogoutStep extends BaseControllerChain {
             standardClientSession.isLogged(req, (err, ret) => {
                 if (ret) {
                     standardClientSession.logout(req, (err, ret) => {
-                        if (ret)
-                            return res.status(200).json({ msg: "LOGOUT SUCCESS" });
-                        return res.status(201).json({ msg: "LOGOUT FAIL" });
+                        if (ret){
+                            var succ = returnCodeFactory.successRet("Logout Success");
+                            return res.status(succ.code).json({ message: succ.message });
+                        }
+                        return res.status(err.code).json({ message: err.message });;
 
                     })
                 }
-                return res.status(201).json({ msg: "LOGOUT FAIL" });
+                //return res.status(err.code).json({ message: err.message});
+                res.redirect('/login');
             })
         }
     }

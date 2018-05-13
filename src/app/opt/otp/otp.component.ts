@@ -57,7 +57,7 @@ export class OtpComponent implements OnInit {
       width: "0%",
     }, this.duration, "linear", () => {
       $("#otpBar").fadeTo(this.fadeTime, 0, () => {
-        this.returnFunction.emit({ status: 201 });
+        this.returnFunction.emit({ status: 400, message : "Invalid OTP Number" });
       });
 
     });

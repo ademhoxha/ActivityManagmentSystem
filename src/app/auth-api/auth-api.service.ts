@@ -18,6 +18,11 @@ export class AuthApiService {
       var ret = response.json();
       ret.status = response.status;
       return ret;
+    }).catch( response => {
+      var ret = response.json();
+      ret.status = response.status;
+      //console.error('Response Error',  JSON.stringify(ret));
+      return ret;
     });
   }
 
@@ -31,6 +36,11 @@ export class AuthApiService {
     return this.http.post(url, body).toPromise().then(response => {
       var ret = response.json();
       ret.status = response.status;
+      return ret;
+    }).catch( response => {
+      var ret = response.json();
+      ret.status = response.status;
+      //console.error('Response Error',  JSON.stringify(ret));
       return ret;
     });
   }
@@ -46,12 +56,26 @@ export class AuthApiService {
       var ret = response.json();
       ret.status = response.status;
       return ret;
+    }).catch( response => {
+      var ret = response.json();
+      ret.status = response.status;
+      //console.error('Response Error',  response.status);
+      return ret;
     });
   }
 
   registrationRequest(body): Promise<void | any> {
     let url = "/api/registration";
-    return this.http.post(url, body).toPromise().then(response => response.json() as any);
+    return this.http.post(url, body).toPromise().then(response => {
+      var ret = response.json();
+      ret.status = response.status;
+      return ret;
+    }).catch( response => {
+      var ret = response.json();
+      ret.status = response.status;
+      //console.error('Response Error',  response.status);
+      return ret;
+    });
   }
 
 }

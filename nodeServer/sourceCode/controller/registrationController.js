@@ -1,5 +1,6 @@
 var BaseController = require('./baseController').BaseController;
 var dbAPI = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 
 class RegistrationController extends BaseController {
     applyController(req, res, next) {
@@ -52,16 +53,18 @@ class RegistrationStep extends BaseControllerChain {
                 };
                 registrationFlow(data, (err, ret) => {
                     if (err) {
-                        res.status(201).json({ msg: "REGISTRATION FAILED" });
+                        res.status(err.code).json({ message: err.message });
                     }
                     else {
-                        res.status(200).json({ msg: "REGISTRATION SUCCESS" });
+                        var succ = returnCodeFactory.successRet("Registration Success");
+                        return res.status(succ.code).json({ message: succ.message });
                     }
                 });
 
             }
             else {
-                res.status(201).json({ msg: "REGISTRATION FAILED => MISSED ESSENTIAL INFORMATION" });
+                var err = returnCodeFactory.dataError('User Not Valid');
+                res.status(err.code).json({ message: err.message });
             }
         }
     }
@@ -88,9 +91,9 @@ function registrationFlow(data, callback) {
     }
     user.find(findData, (err, ret) => {
         if (err)
-            return callback(err);
+            return callback(returnCodeFactory.dbError());
         if (ret && ret[0])
-            return callback("Exisisting user with the same email");
+            return callback(returnCodeFactory.dataError("Exisisting user with the same email"));
         return registerUser(data, callback);
     })
 }
@@ -98,7 +101,7 @@ function registrationFlow(data, callback) {
 function registerUser(data, callback) {
     user.insert(data, (err, ret) => {
         if (err)
-            return callback(err);
+            return callback(returnCodeFactory.dbError());
         return callback(undefined, ret);
     })
 }

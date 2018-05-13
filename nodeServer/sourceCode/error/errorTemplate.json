@@ -1,0 +1,19 @@
+{
+    "errors": {
+        "BadRequest": 400,
+        "Unauthorized": 401,
+        "Forbidden" : 403,
+        "NotFound": 404,
+        "MethodNotAllowed": 405,
+        "MethodFailure" : 420
+    },
+    "success": {
+        "OK" : 200,
+        "Accepted" : 202 
+    },
+    "serverErrors" : {
+        "InternalServerError" : 500,
+        "NotImplemented" : 501,
+        "ServiceUnavailable" : 503
+    }
+}

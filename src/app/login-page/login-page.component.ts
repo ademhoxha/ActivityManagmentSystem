@@ -25,9 +25,8 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  test: any;
   loginEnded(retData) {
-    if (retData && retData.status == 200) {
+    if (retData && retData.status == 200) { // test purpose only
       this.data = {
         email: retData.email,
         password: retData.password
@@ -36,7 +35,7 @@ export class LoginPageComponent implements OnInit {
       setTimeout(() => { this.otpFlag = true; }, 200)
     }
     else{
-      this.errorData.message = "OTP Request Error";
+      this.errorData.message = retData.message;
       setTimeout(() => { 
         this.errorFlag = true; 
       }, 200)
@@ -56,7 +55,7 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(['/success'])
         }
         else{
-          this.errorData.message = "OTP Login Error";
+          this.errorData.message = res.message;
           this.otpFlag = false;
           setTimeout(() => { 
             this.errorFlag = true; 
@@ -70,7 +69,7 @@ export class LoginPageComponent implements OnInit {
     }
     else {
       this.otpFlag = false;
-      this.errorData.message = "Invalid OTP Code";
+      this.errorData.message = retData.message;
       setTimeout(() => { 
         this.errorFlag = true; 
         this.loginFlag = true;

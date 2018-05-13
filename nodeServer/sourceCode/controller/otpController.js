@@ -1,5 +1,6 @@
 var BaseController = require('./baseController').BaseController;
 var dbAPI = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 
 class OTPController extends BaseController {
     applyController(req, res, next) {
@@ -48,18 +49,20 @@ class OTPRequest extends BaseControllerChain {
                 otpRequestFlow(data, (err, ret) => {
                     if (err) {
                         console.log("OTP NOT SUCCESS")
-                        return res.status(201).json({ msg: "OTP NOT SUCCESS" });
+                        return res.status(err.code).json({ message: err.message });
                     }
                     else {
                         console.log("OTP SUCCESS")
-                        return res.status(200).json({ msg: "OTP SUCCESS" });
+                        var succ = returnCodeFactory.successRet("OTP SUCCESS");
+                        return res.status(succ.code).json({ message: succ.message });
                     }
                 });
 
             }
             else {
                 console.log("NOT EMAIL")
-                return res.status(201).json({ msg: "NOT EMAIL" });
+                var err = returnCodeFactory.dataError("Email Address is missed");
+                return res.status(err.code).json({ message: err.message });
             }
         }
     }
@@ -68,7 +71,7 @@ class OTPRequest extends BaseControllerChain {
 class OTPValidation extends BaseControllerChain {
     // TODO
     constructor(nextStep) {
-       super(nextStep);
+        super(nextStep);
     }
     apply(req, res, next) {
         if (req.path.toLowerCase() != "/api/otp/validation") {
@@ -104,13 +107,13 @@ function otpRequestFlow(userData, callback) {
 
 function findUser(userData, callback) {
     user.find(userData, (err, ret) => {
-        if (err){
-            console.log("OTP CONTROLLER => ERROR IN FIND"+err)
-            return callback(err);
+        if (err) {
+            console.log("OTP CONTROLLER => ERROR IN FIND" + err)
+            return callback(returnCodeFactory.dbError());
         }
-        if (!ret || !ret[0]){
+        if (!ret || !ret[0]) {
             console.log("OTP CONTROLLER => USER NOT FOUND")
-            return callback("User Not Found");
+            return callback(returnCodeFactory.dataError('User Not Valid'));
         }
         return sendEmail(ret[0], callback);
     })
@@ -121,9 +124,9 @@ function sendEmail(userData, callback) {
     data.query = { email: userData.email } // must do this because the user can be founded by mobile phone number
     var sendOTPEmail = require('../../../otpProvider/otpPublicApi/otpPublicApi').sendOTPEmail;
     sendOTPEmail(data, (err, ret) => {
-        if (err){
-            console.log("OTP CONTROLLER => ERROR IN SEND EMAIL "+err)
-            return callback(err);
+        if (err) {
+            console.log("OTP CONTROLLER => ERROR IN SEND EMAIL " + err)
+            return callback(returnCodeFactory.emailError());
         }
         data.codeNumber = ret.codeNumber;
         return updateUser(data, callback);
@@ -142,9 +145,9 @@ function updateUser(userData, callback) {
         email: userData.query.email
     }
     user.update(data, (err, ret) => {
-        if (err){
-            console.log("OTP CONTROLLER => ERROR IN UPDATE USER "+err)
-            return callback(err);
+        if (err) {
+            console.log("OTP CONTROLLER => ERROR IN UPDATE USER " + err)
+            return callback(returnCodeFactory.dbError());
         }
         return callback(undefined, ret);
 

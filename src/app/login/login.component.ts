@@ -61,9 +61,11 @@ export class LoginComponent implements OnInit {
       }
       else {
         var retData : any = data;
-        retData.status = 201;
+        retData.status = res.status;
+        retData.message = res.message;
         this.returnFunction.emit(retData);
       }
+
     });
   }
 

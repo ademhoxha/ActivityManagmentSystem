@@ -55,16 +55,16 @@ function secretDataEncrypt(startData, parameters, crypto) {
     var data = startData;
     parameters.forEach(element => {
         if (data.query && data.query[element]){
-            console.log("**** GO QUERY Element ****  "+element)
-            console.log("pre : "+data.query[element])
+            //console.log("**** GO QUERY Element ****  "+element)
+           //console.log("pre : "+data.query[element])
             data.query[element] = crypto.encrypt(data.query[element])
-            console.log("post : "+data.query[element])
+            //console.log("post : "+data.query[element])
         }
         if (data.update && data.update[element]){
-            console.log("**** GO UPDATE Element **** "+element)
-            console.log("pre : "+data.update[element])
+            //console.log("**** GO UPDATE Element **** "+element)
+            //console.log("pre : "+data.update[element])
             data.update[element] = crypto.encrypt(data.update[element])
-            console.log("post : "+data.update[element])
+            //console.log("post : "+data.update[element])
         }
     });
     return data;
@@ -76,22 +76,22 @@ function secretDataDecrypt(startData, parameters, crypto) {
         returnData.forEach(data => {
             parameters.forEach(element => {
                 if (data[element]){
-                    console.log("**** RET NORMAL Element **** "+element)
-                    console.log("pre : "+data[element])
+                    //console.log("**** RET NORMAL Element **** "+element)
+                    //console.log("pre : "+data[element])
                     data[element] = crypto.decrypt(data[element])
-                    console.log("post : "+data[element])
+                    //console.log("post : "+data[element])
                 }
                 if (data.query && data.query[element]){
-                    console.log("**** RET QUERY Element **** "+element)
-                    console.log("pre : "+data.query[element])
+                    //console.log("**** RET QUERY Element **** "+element)
+                    //console.log("pre : "+data.query[element])
                     data.query[element] = crypto.decrypt(data.query[element])
-                    console.log("post : "+data.query[element])
+                    //console.log("post : "+data.query[element])
                 }
                 if (data.update && data.update[element]){
-                    console.log("****RET UPDATE Element **** "+element)
-                    console.log("pre : "+data.update[element])
+                    //console.log("****RET UPDATE Element **** "+element)
+                    //console.log("pre : "+data.update[element])
                     data.update[element] = crypto.decrypt(data.update[element])
-                    console.log("post : "+data.update[element])
+                    //console.log("post : "+data.update[element])
                 }
             });
         });
@@ -99,22 +99,22 @@ function secretDataDecrypt(startData, parameters, crypto) {
     else if (returnData) {
         parameters.forEach(element => {
             if (returnData[element]){
-                console.log("****RET NORMAL Element**** "+element)
-                console.log("pre : "+returnData[element])
+                //console.log("****RET NORMAL Element**** "+element)
+                //console.log("pre : "+returnData[element])
                 returnData[element] = crypto.decrypt(returnData[element])
-                console.log("post : "+returnData[element])
+                //console.log("post : "+returnData[element])
             }
             if (returnData.query && returnData.query[element]){
-                console.log("****RET QUERY Element**** "+element)
-                console.log("pre : "+returnData.query[element])
+                //console.log("****RET QUERY Element**** "+element)
+                //console.log("pre : "+returnData.query[element])
                 returnData.query[element] = crypto.decrypt(returnData.query[element])
-                console.log("post : "+returnData.query[element])
+                //console.log("post : "+returnData.query[element])
             }
             if (returnData.update && returnData.update[element]){
-                console.log("****RET UPDATE Element**** "+element)
-                console.log("pre : "+returnData.update[element])
+                //console.log("****RET UPDATE Element**** "+element)
+                //console.log("pre : "+returnData.update[element])
                 returnData.update[element] = crypto.decrypt(returnData.update[element])
-                console.log("post : "+returnData.update[element])
+                //console.log("post : "+returnData.update[element])
             }
         });
     }
