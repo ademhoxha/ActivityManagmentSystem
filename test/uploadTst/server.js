@@ -21,9 +21,16 @@ app.post('/upload', function(req, res) {
   });
 });
 
+
+app.get('/download', function(req, res){
+    //var file = __dirname + '/upload-folder/dramaticpenguin.MOV';
+    res.download('./test/uploadTst/filename.jpg'); // Set disposition and send it.
+  });
+
 app.all("*", (req,res) => {
     res.sendfile("./test/uploadTst/page.html")
 })
+
 
 app.listen(8000, (err, ret) =>
 {
