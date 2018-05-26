@@ -14,16 +14,17 @@ export class AuthApiService {
       email: data.email,
       password: data.password
     }
-    return this.http.post(url, body).toPromise().then(response => {
-      var ret = response.json();
-      ret.status = response.status;
+    return this.http.post(url, body).toPromise().then((response) => {
+      var ret = {}
+
+      if (response.status == 200) // body parser
+        ret = response.json();
+
+      ret['status'] = response.status;
       return ret;
-    }).catch(response => {
-      //var ret = response.json();
+    }).catch(() => {
       var ret = {};
-      //ret.status = response.status;
       ret["status"] = 500;
-      //console.error('Response Error',  JSON.stringify(ret));
       return ret;
     });
   }
@@ -36,15 +37,16 @@ export class AuthApiService {
       otpCode: data.otpCode
     }
     return this.http.post(url, body).toPromise().then(response => {
-      var ret = response.json();
-      ret.status = response.status;
+      var ret = {}
+      
+      if (response.status == 200) // body parser
+        ret = response.json();
+
+      ret['status'] = response.status;
       return ret;
-    }).catch(response => {
-      //var ret = response.json();
+    }).catch(() => {
       var ret = {};
-      //ret.status = response.status;
       ret["status"] = 500;
-      //console.error('Response Error',  JSON.stringify(ret));
       return ret;
     });
   }
@@ -54,18 +56,22 @@ export class AuthApiService {
     const body = {
       email: data.email,
       password: data.password,
-      otpCode: data.otpCode
     }
+
+    if (data.otpCode)
+      body['otpCode'] = data.otpCode;
+
     return this.http.post(url, body).toPromise().then(response => {
-      var ret = response.json();
-      ret.status = response.status;
+      var ret = {}
+      
+      if (response.status == 200) // body parser
+        ret = response.json();
+
+      ret['status'] = response.status;
       return ret;
-    }).catch(response => {
-      //var ret = response.json();
+    }).catch(() => {
       var ret = {};
-      //ret.status = response.status;
       ret["status"] = 500;
-      //console.error('Response Error',  response.status);
       return ret;
     });
   }
@@ -73,17 +79,19 @@ export class AuthApiService {
   registrationRequest(body): Promise<void | any> {
     let url = "/api/registration";
     return this.http.post(url, body).toPromise().then(response => {
-      var ret = response.json();
-      ret.status = response.status;
+      var ret = {}
+      
+      if (response.status == 200) // body parser
+        ret = response.json();
+
+      ret['status'] = response.status;
       return ret;
-    }).catch(response => {
-      //var ret = response.json();
+    }).catch(() => {
       var ret = {};
-      //ret.status = response.status;
       ret["status"] = 500;
-      //console.error('Response Error',  response.status);
       return ret;
     });
   }
+
 
 }

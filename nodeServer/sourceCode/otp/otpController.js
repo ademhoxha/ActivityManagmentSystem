@@ -1,6 +1,7 @@
 var BaseController = require('../controllerUtils/baseController').BaseController;
 var dbAPI = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
+var configuration = require('../config/serverConfigUtils');
 
 class OTPController extends BaseController {
     applyController(req, res, next) {
@@ -41,6 +42,19 @@ class OTPRequest extends BaseControllerChain {
             return super.next(req, res, next);
         }
         else {
+
+            // see if otp is enabled
+            var confData = configuration.getConfiguration();
+            if(!confData || !confData.otp || confData.otp != "Y"){
+                console.log("OTP DISABLED")
+                var succ = returnCodeFactory.notRequiredRet("OTP DISABLED");
+                return res.status(succ.code).json({ message: succ.message });
+            }
+
+            console.log("OTP ACTIVE")
+            var succ = returnCodeFactory.successRet("OTP SUCCESS");
+            return res.status(succ.code).json({ message: succ.message });
+
             if (req.body.email) {
                 var data = {
                     email: req.body.email,
@@ -57,7 +71,6 @@ class OTPRequest extends BaseControllerChain {
                         return res.status(succ.code).json({ message: succ.message });
                     }
                 });
-
             }
             else {
                 console.log("NOT EMAIL")
@@ -115,7 +128,8 @@ function findUser(userData, callback) {
             console.log("OTP CONTROLLER => USER NOT FOUND")
             return callback(returnCodeFactory.dataError('User Not Valid'));
         }
-        return sendEmail(ret[0], callback);
+
+         return sendEmail(ret[0], callback);;
     })
 }
 

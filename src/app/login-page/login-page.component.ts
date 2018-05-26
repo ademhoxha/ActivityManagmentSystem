@@ -26,7 +26,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   loginEnded(retData) {
-    if (retData && retData.status == 200) { // test purpose only
+    if (retData && retData.status == 200) { // otp enabled ad otp sended
       this.data = {
         email: retData.email,
         password: retData.password
@@ -34,7 +34,14 @@ export class LoginPageComponent implements OnInit {
       this.loginFlag = false;
       setTimeout(() => { this.otpFlag = true; }, 200)
     }
-    else{
+    else if(retData && retData.status == 204){  // otp is not enbaled
+      this.data = {
+        email: retData.email,
+        password: retData.password
+      }
+      return this.loginWithoutOTP();
+    }
+    else{ // otp enabled but not sended or some server errors
       this.errorData.message = retData.message;
       setTimeout(() => { 
         this.errorFlag = true; 
@@ -50,9 +57,9 @@ export class LoginPageComponent implements OnInit {
     if (retData && retData.status == 200) {
       this.data.otpCode = retData.code;
       this.authApiService.login(this.data).then((res: any) => {
-        if (res.status = 200) {
+        if (res.status == 200) {
           this.otpFlag = false;
-          this.router.navigate(['/success'])
+          this.router.navigate(['/dashboard'])
         }
         else{
           this.errorData.message = res.message;
@@ -80,5 +87,21 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
+  loginWithoutOTP() {
+    this.authApiService.login(this.data).then((res: any) => {
+      if (res.status == 200) {
+        this.router.navigate(['/dashboard'])
+      }
+      else{
+        this.errorData.message = res.message;
+        setTimeout(() => { 
+          this.errorFlag = true; 
+        }, 200)
+        setTimeout(() => { 
+          this.errorFlag = false; 
+        }, 10000)
+      }
+    });
+  }
 
 }

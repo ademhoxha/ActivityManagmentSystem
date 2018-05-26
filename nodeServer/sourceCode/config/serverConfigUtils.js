@@ -5,6 +5,7 @@
 const path = require('path');
 const fs = require('fs');
 const configPath = path.join(__dirname, './serverConfiguration.json');
+var configuration;
 
 function loadConfiguration(callback) {
     fs.readFile(configPath, 'utf8', (err, data) => {
@@ -16,7 +17,7 @@ function loadConfiguration(callback) {
 
 function parseJSON(data, callback) {
     try {
-        var configuration = JSON.parse(data);
+        configuration  = JSON.parse(data);
     }
     catch (err) {
         return startServer(err)
@@ -32,9 +33,6 @@ function validateServerConfiguration(data, callback) {
     }
     else if(!data.port){
         err = new Error('Port Not Found');
-    }
-    else if(!data.route){
-        err = new Error('Route Impl Not Found');
     }
     else {
         return startServer(null, data, callback);
@@ -54,6 +52,11 @@ function loadServerConfiguration(callback){
     return loadConfiguration(callback); 
 }
 
+function getConfiguration(){
+    return configuration;
+}
+
 module.exports = {
-    loadServerConfiguration : loadServerConfiguration
+    loadServerConfiguration : loadServerConfiguration,
+    getConfiguration : getConfiguration
 }

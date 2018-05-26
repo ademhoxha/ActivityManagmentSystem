@@ -3,7 +3,7 @@ var standardClientSession = require("../clientSession/standardClientSession").st
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 var publicDBApi = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
 
-class AuthController extends BaseController {
+class OtpAuthController extends BaseController {
     applyController(req, res, next) {
         console.log("LOGIN CONTROLLER")
         var none = new NextStep();
@@ -13,10 +13,10 @@ class AuthController extends BaseController {
     }
 }
 
-var istance = new AuthController();
+var istance = new OtpAuthController();
 
 module.exports = {
-    AuthController: istance
+    OtpAuthController: istance
 }
 
 /****************** Responsability Chain ******************/
@@ -127,7 +127,7 @@ function loginFlow(req, callback) {
             console.log("LOGIN FIND USER ERROR");
             return callback(returnCodeFactory.dbError());
         }
-        if (!ret || !ret[0]){
+        if (!ret || !ret[0] || !ret[0].otp || ret[0].otp.code != req.body.otpCode){
             console.log("LOGIN USER NOT FOUND ");
             return callback(returnCodeFactory.dataError('User Not Valid'));
         }

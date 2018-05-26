@@ -2,7 +2,7 @@ var DBError = require('./dbError').DBError;
 var DataError = require('./dataError').DataError;
 var EmailError = require('./emailError').EmailError;
 var SuccessRet = require('./successRet').SuccessRet;
-
+var NotRequiredRet = require('./notRequiredRet').NotRequiredRet;
 
 
 
@@ -18,6 +18,9 @@ class ReturnCodeFactory {
     }
     successRet(text){
         return SuccessRet.generate(text);
+    }
+    notRequiredRet(text){
+        return NotRequiredRet.generate(text);
     }
 }
 

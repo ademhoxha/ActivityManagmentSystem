@@ -1,5 +1,8 @@
 {
     "hostname" : "localhost",
     "port": "7777",
-    "route" : "standardRoute"
+    "route" : "standardRoute",
+    "opt" : "N",
+    "sessionDuration" : 3,
+    "sessionDurationExtention": 1
 }

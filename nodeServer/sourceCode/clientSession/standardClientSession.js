@@ -1,6 +1,7 @@
 var IClientSession = require("./IClientSession").IClientSession;
 var publicDBApi = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
+var configuration = require('../config/serverConfigUtils');
 
 class standardClientSession extends IClientSession {
 
@@ -26,11 +27,11 @@ class standardClientSession extends IClientSession {
             }
         }
         user.find(data, (err, ret) => {
-            if (err){
+            if (err) {
                 console.log("LOGIN FIND USER ERROR");
                 return callback(returnCodeFactory.dbError());
             }
-            if (!ret || !ret[0] || !ret[0].otp || ret[0].otp.code != req.body.otpCode){
+            if (!ret || !ret[0] || !ret[0].otp || ret[0].otp.code != req.body.otpCode) {
                 console.log("LOGIN USER NOT FOUND ");
                 return callback(returnCodeFactory.dataError('User Not Valid'));
             }
@@ -39,8 +40,8 @@ class standardClientSession extends IClientSession {
             data.update = { authToken: token }
 
             var updateData = {
-                query : {
-                    email : req.body.email
+                query: {
+                    email: req.body.email
                 }
             }
             updateData.update = {
@@ -48,7 +49,7 @@ class standardClientSession extends IClientSession {
             }
 
             return user.update(updateData, (err, ret) => {
-                if (err){
+                if (err) {
                     console.log("LOGIN UPDATE ERROR ");
                     return callback(returnCodeFactory.dbError());
                 }
@@ -97,11 +98,11 @@ class standardClientSession extends IClientSession {
             }
             user.find(data, (err, ret) => {
 
-                if (err){
+                if (err) {
                     console.log("IS LOGGED? ERROR IN FIND ");
                     return callback(returnCodeFactory.dbError());
                 }
-                if (ret && ret[0]){
+                if (ret && ret[0]) {
                     console.log("LOGIN LOGGED USER FOUND ");
                     return callback(undefined, true)
                 }
@@ -110,7 +111,7 @@ class standardClientSession extends IClientSession {
 
             })
         }
-        else{
+        else {
             console.log("LOGIN LOGGED CAN'T FIND SESSION ");
             return callback(returnCodeFactory.dataError('User Not Logged'))
         }
@@ -118,9 +119,18 @@ class standardClientSession extends IClientSession {
 
     canLogin(req) {
         console.log("LOGIN SEE IF CAN LOGIN");
-        if(req.body.email && req.body.password && req.body.otpCode)
+        // see if otp enabled
+        var confData = configuration.getConfiguration();
+        if (confData && confData.otp && confData.otp == "Y" && !req.body.otpCode)
+            return false;
+        // check for email and password
+        if (req.body.email && req.body.password)
             return true;
         return false;
+    }
+
+    generateToken() {
+        return require('crypto').randomBytes(8).toString('hex');
     }
 
 }
@@ -129,8 +139,4 @@ var istance = new standardClientSession();
 
 module.exports = {
     standardClientSession: istance
-}
-
-function generateToken() {
-    return require('crypto').randomBytes(8).toString('hex');
 }

@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
   }
 
+
   onSubmit() {
     var data = {
       email: this.email.value,
@@ -60,6 +61,11 @@ export class LoginComponent implements OnInit {
           retData.status = 200;
           this.returnFunction.emit(retData);
         });
+      }
+      else if (res.status == 204) {
+        var retData: any = data;
+        retData.status = 204;
+        this.returnFunction.emit(retData);
       }
       else {
         var retData: any = data;
