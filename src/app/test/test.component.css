@@ -1,0 +1,127 @@
+div.myBox {
+    width: 100px;
+    border: 25px solid green;
+    padding: 5px;
+    margin: 25px;
+    border-radius: 25px;
+    animation-name: comingAnimation;
+    animation-duration: 4s;
+}
+
+@keyframes  comingAnimation {
+    from {  width: 100px;}
+    to { width: 400px;}
+}
+
+.menuClass {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 60px;
+    border-radius: 15px;
+    background-color:#e0e0e0;
+}
+
+.menuElementClass {
+    border-style: solid;
+    border-width: 0px 4px 0px 0px;
+    padding: 15px;
+    /*color: blue;*/
+}
+
+.lastMenuElementClass {
+    padding: 15px;
+}
+
+.activeElement {
+    position: relative;
+    border-style: solid;
+    border-width: 7px 4px 7px 0px;
+    border-bottom-color: blueviolet;
+    border-top-color: blueviolet;
+    padding: 10px;
+}
+
+
+.activeElement:before {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid blueviolet;
+    border-left: 2px solid transparent;
+    border-right: 2px solid blueviolet;
+    background:  blueviolet;
+    content:'';
+    top: -25%;
+    left: 43%;
+    transform: rotate(45deg);
+}
+
+.activeElement:after {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background:  white;
+    content:'';
+    top: -59%;
+    left: 43%;
+}
+
+.menuElementClass:hover,  .lastMenuElementClass:hover, .activeElement:hover {
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+
+.card-header {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    white-space: nowrap;
+    font-size: 25px;
+    height: 40px;
+    padding-top: 2px;
+    border-bottom-width: 4px;
+    border-bottom-color: red;
+}
+
+.card {
+    overflow: hidden;
+    animation: cardShow 2s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes cardShow {
+    from {height: 0px;}
+    to  {height: 120px;}
+}
+
+
+/* START - mouse finger pointer */
+.menuElementClass,  .lastMenuElementClass, .activeElement  { cursor: pointer; }
+/* END - mouse finger pointer */
+
+
+.widgetClass {
+    background-color: lightskyblue;
+    position: relative;
+    height: 250px;
+    width: 150px;
+    margin: 10px;
+    border-width: 7px 4px 7px 0px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.faTwitter {
+    position: absolute;
+    top: 0%;
+    left:80%;
+    border-width: 7px 4px 7px 0px;
+}
+
+.faElement2 {
+    position: absolute;
+    top: 40%;
+    left:50%;
+}

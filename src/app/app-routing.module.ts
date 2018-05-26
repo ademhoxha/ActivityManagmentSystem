@@ -6,12 +6,17 @@ import { SuccessAuthComponent } from './success-auth/success-auth.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
+// Test component
+import { TestComponent } from './test/test.component';
+import {DashboardExampleComponent} from './dashboard-example/dashboard-example.component';
+
 
 const routes: Routes = [
   /* { path: '', redirectTo: '/dashboard', pathMatch: 'full' },*/
   { path: 'login', component: LoginPageComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'success', component: SuccessAuthComponent },
+  { path: 'test', component: DashboardExampleComponent },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ]
 

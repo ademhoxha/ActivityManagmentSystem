@@ -1,5 +1,11 @@
-<app-error *ngIf="errorFlag" [inputData]="errorData"></app-error>
-
-<app-login *ngIf="loginFlag" (returnFunction)="loginEnded($event)"></app-login>
-
-<app-otp *ngIf="otpFlag" (returnFunction)="otpEnded($event)" [inputData]="otpData"></app-otp>
+<div class="container-fluid col-12">
+    <div class="col-12">
+        <app-error *ngIf="errorFlag" [inputData]="errorData"></app-error>
+    </div>
+    <div class="col-12">
+        <app-login *ngIf="loginFlag" (returnFunction)="loginEnded($event)"></app-login>
+    </div>
+    <div class="col-12">
+        <app-otp *ngIf="otpFlag" (returnFunction)="otpEnded($event)" [inputData]="otpData"></app-otp>
+    </div>
+</div>

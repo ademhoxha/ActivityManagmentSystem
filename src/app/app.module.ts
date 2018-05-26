@@ -13,7 +13,10 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AuthApiService } from './auth-api/auth-api.service';
 import { OtpComponent } from './opt/otp/otp.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { ErrorComponent } from './error/error.component'
+import { ErrorComponent } from './error/error.component';
+import { TestComponent } from './test/test.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { ErrorComponent } from './error/error.component'
     RegistrationComponent,
     OtpComponent,
     LoginPageComponent,
-    ErrorComponent
+    ErrorComponent,
+    TestComponent,
+    DashboardExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,8 @@ import { ErrorComponent } from './error/error.component'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
   providers: [AuthApiService],
   bootstrap: [AppComponent]

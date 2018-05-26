@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
   <div class="row centered-form">
     <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
       <div class="panel panel-default">
@@ -87,4 +87,148 @@
       </div>
     </div>
   </div>
+</div>-->
+<!--<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Activity Managment System - Registration Form</title>
+  <meta name="description" content="Activity Managment System - Registration Form">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="../../assets/css/normalize.css">
+  <link rel="stylesheet" href="../../assets/css/themify-icons.css">
+  <link rel="stylesheet" href="../../assets/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../../assets/css/cs-skin-elastic.css">
+  <link rel="stylesheet" href="../../assets/scss/style.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body class="bg-dark">-->
+<div class="sufee-login d-flex align-content-center flex-wrap">
+  <div class="container">
+    <div class="login-content">
+      <div class="login-logo">
+        <a routerLink="/login" routerLinkActive="active">
+          <img class="align-content" src="../../images/logo.png" alt="">
+        </a>
+      </div>
+      <div class="login-form">
+        <form name="registrationForm" id="registrationForm" [formGroup]="registrationForm" (submit)='onSubmit()'>
+          <div class="form-group">
+            <label>Mobile Phone</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-phone" style="width: 15px;"></i>
+              </div>
+              <input type="text" id="mobilePhone" formControlName="mobilePhone" class="form-control" placeholder="3331112220"  data-inputmask="'mask': '9999999999'">
+            </div>
+            <div [hidden]="!mobilePhone.hasError('required') || mobilePhone.untouched" class="alert alert-danger" role="alert"> Mobile Phone is required
+            </div>
+            <div [hidden]="mobilePhone.hasError('required') || mobilePhone.valid" class="alert alert-danger" role="alert"> Mobile Phone lenght must be 10
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-envelope" style="width: 15px;"></i>
+              </div>
+              <input type="email" class="form-control" placeholder="Email" id="email" formControlName="email">
+            </div>
+            <div [hidden]="!email.hasError('required') || email.untouched" class="alert alert-danger" role="alert"> Email is required
+            </div>
+            <div [hidden]="email.hasError('required')  || !email.hasError('email')" class="alert alert-danger" role="alert"> Email must be in the form xx@yy.zz
+            </div>
+          </div>
+          <div class="form-group">
+            <label>First Name</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-info" style="width: 15px;"></i>
+              </div>
+              <input type="text" id="first_name" formControlName="first_name" class="form-control" placeholder="First Name" autofocus>
+            </div>
+            <div [hidden]="first_name.pristine || (first_name.dirty && first_name.valid)" class="alert alert-danger" role="alert">
+              First Name is required </div>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-info" style="width: 15px;"></i>
+              </div>
+              <input type="text" id="last_name" formControlName="last_name" class="form-control" placeholder="Last Name">
+            </div>
+            <div [hidden]="last_name.pristine || (last_name.dirty && last_name.valid)" class="alert alert-danger" role="alert"> Last Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-info" style="width: 15px;"></i>
+              </div>
+              <input type="text" id="company" formControlName="company" class="form-control" placeholder="Company">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-asterisk" style="width: 15px;"></i>
+              </div>
+              <input type="password" class="form-control" placeholder="Password" id="password" formControlName="password" (keyup)="passwordVerify()">
+            </div>
+            <div [hidden]="!password.hasError('required') || password.untouched" class="alert alert-danger" role="alert"> Password is required
+            </div>
+            <div [hidden]="password.hasError('required')  || password.hasError('maxlength') || password.hasError('minlength') || !password.hasError('pattern')"
+              class="alert alert-danger" role="alert"> Password must has at last one Alphabetic letter and one Number
+            </div>
+            <div [hidden]="password.hasError('required') || !password.hasError('minlength')" class="alert alert-danger" role="alert">
+              Password minimum length must be 6
+            </div>
+            <div [hidden]="password.hasError('required') || !password.hasError('maxlength')" class="alert alert-danger" role="alert">
+              Password max length must be 20
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password Confirmation</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-asterisk" style="width: 15px;"></i>
+              </div>
+              <input type="password" class="form-control" placeholder="Confirm Password" (keyup)="passwordVerify()" [(ngModel)]="password_confirmation"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div [hidden]="password.hasError('required')  || password.hasError('minlength')  || password.hasError('maxlength') || password.hasError('pattern') || passwordMatch"
+              class="alert alert-danger" role="alert"> Two passwords must match
+            </div>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Agree the terms and policy
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" [(disabled)]="!passwordMatch || !registrationForm.valid">
+            <i class="fa fa-user-plus fa-2x" style="color:white"> Register</i>
+          </button>
+          <div class="register-link m-t-15 text-center">
+            <p>Already have account ?
+              <a routerLink="/login" routerLinkActive="active"> Sign in</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!--</body>
+
+</html>-->

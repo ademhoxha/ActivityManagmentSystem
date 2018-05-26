@@ -18,9 +18,11 @@ export class AuthApiService {
       var ret = response.json();
       ret.status = response.status;
       return ret;
-    }).catch( response => {
-      var ret = response.json();
-      ret.status = response.status;
+    }).catch(response => {
+      //var ret = response.json();
+      var ret = {};
+      //ret.status = response.status;
+      ret["status"] = 500;
       //console.error('Response Error',  JSON.stringify(ret));
       return ret;
     });
@@ -31,15 +33,17 @@ export class AuthApiService {
     const body = {
       email: data.email,
       password: data.password,
-      otpCode : data.otpCode
+      otpCode: data.otpCode
     }
     return this.http.post(url, body).toPromise().then(response => {
       var ret = response.json();
       ret.status = response.status;
       return ret;
-    }).catch( response => {
-      var ret = response.json();
-      ret.status = response.status;
+    }).catch(response => {
+      //var ret = response.json();
+      var ret = {};
+      //ret.status = response.status;
+      ret["status"] = 500;
       //console.error('Response Error',  JSON.stringify(ret));
       return ret;
     });
@@ -50,15 +54,17 @@ export class AuthApiService {
     const body = {
       email: data.email,
       password: data.password,
-      otpCode : data.otpCode
+      otpCode: data.otpCode
     }
     return this.http.post(url, body).toPromise().then(response => {
       var ret = response.json();
       ret.status = response.status;
       return ret;
-    }).catch( response => {
-      var ret = response.json();
-      ret.status = response.status;
+    }).catch(response => {
+      //var ret = response.json();
+      var ret = {};
+      //ret.status = response.status;
+      ret["status"] = 500;
       //console.error('Response Error',  response.status);
       return ret;
     });
@@ -70,9 +76,11 @@ export class AuthApiService {
       var ret = response.json();
       ret.status = response.status;
       return ret;
-    }).catch( response => {
-      var ret = response.json();
-      ret.status = response.status;
+    }).catch(response => {
+      //var ret = response.json();
+      var ret = {};
+      //ret.status = response.status;
+      ret["status"] = 500;
       //console.error('Response Error',  response.status);
       return ret;
     });

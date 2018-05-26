@@ -1,0 +1,189 @@
+<!--<fa name="spinner" size="3x" animation="spin"></fa>
+
+<i class="fa fa-spinner fa-pulse fa-3x" style="color:darkblue"></i>
+
+<div class="myBox">
+    <i class="fa fa-spinner fa-pulse fa-3x" style="color:darkblue"></i>
+</div>
+
+
+<div class="hidden-xs hidden-sm"> SMALL</div>
+<div class="hidden-md hidden-lg"> MEDIUM</div>
+
+
+<div>
+    <div clas="container-fluid">
+        <div class="col-md-4"> 1 </div>
+        <div class="col-md-4"> 2 </div>
+        <div class="col-md-4"> 3 </div>
+    </div>
+</div>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>-->
+<div class="container-fluid">
+    <div class="row menuClass">
+
+        <div class="hidden-xs col-3 activeElement" (click)="userClicked()">
+            <!--<a class="fa fa-user-circle fa-2x" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            User </a>-->
+            <a class="fa fa-user-circle fa-2x">
+                User </a>
+        </div>
+        <div class="hidden-sm hidden-md hidden-lg col-3 menuElementClass" (click)="userClicked()">
+            <a class="fa fa-user-circle  fa-2x"></a>
+        </div>
+
+        <div class="hidden-xs col-3 menuElementClass" (click)="projectsClicked()">
+            <a class="fa fa-tasks  fa-2x"> Projects </a>
+        </div>
+        <div class="hidden-sm hidden-md hidden-lg col-3 menuElementClass" (click)="projectsClicked()">
+            <a class="fa fa-tasks  fa-2x"></a>
+        </div>
+
+        <div class="hidden-xs col-3 menuElementClass" (click)="tasksClicked()">
+            <a class="fa fa-wpforms fa-2x"> Tasks </a>
+        </div>
+        <div class="hidden-sm hidden-md hidden-lg col-3 menuElementClass" (click)="tasksClicked()">
+            <a class="fa fa-wpforms fa-2x"></a>
+        </div>
+
+        <div class="hidden-xs col-3 lastMenuElementClass" (click)="analysisClicked()">
+            <a class="fa fa-bar-chart fa-2x"> Analysis </a>
+        </div>
+        <div class="hidden-sm hidden-md hidden-lg col-3 lastMenuElementClass" (click)="analysisClicked()">
+            <a class="fa fa-bar-chart fa-2x"></a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="collapse" id="collapseExample">
+    <div class="card">
+        <div class="card-header">
+            Quote
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote-footer">Someone famous in
+                    <cite title="Source Title">Source Title</cite>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+
+<div class="card" [hidden]="!menu['user']">
+    <div class="card-header">
+        User Management Menu
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in
+                <cite title="Source Title">Source Title</cite>
+            </footer>
+        </blockquote>
+    </div>
+</div>
+
+
+<div class="card" [hidden]="!menu['projects']">
+    <div class="card-header">
+        Projects Management Menu
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in
+                <cite title="Source Title">Source Title</cite>
+            </footer>
+        </blockquote>
+    </div>
+</div>
+
+
+<div class="card" [hidden]="!menu['tasks']">
+    <div class="card-header">
+        Tasks Management Menu
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in
+                <cite title="Source Title">Source Title</cite>
+            </footer>
+        </blockquote>
+    </div>
+</div>
+
+
+<div class="card" [hidden]="!menu['analysis']">
+    <div class="card-header">
+        Analysis Menu
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in
+                <cite title="Source Title">Source Title</cite>
+            </footer>
+        </blockquote>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="widgetClass">
+        <div class="widgetClass-header">
+            <div class="faTwitter">
+                <i class="fa fa-twitter fa-2x" ></i>
+            </div>
+            <div class="faElement2">
+                <i class="fa fa-home fa-fw" ></i>
+            </div>
+        </div>
+
+        <div class="widgetClass-body">
+            <i class="fa fa-cog fa-fw"></i>
+        </div>
+
+    </div>
+
+</div>

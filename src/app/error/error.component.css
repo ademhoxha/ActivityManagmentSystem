@@ -1,2 +1,10 @@
+.errorContainer {
+    margin-left: 31%;
+    margin-right: 31%;
+    margin-top: 2.5%;
+    margin-bottom: 1%;
+}
 
-     
+.errorSpinner {
+    margin : auto;
+}

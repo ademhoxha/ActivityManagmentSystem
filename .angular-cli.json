@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "images",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -19,9 +20,23 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "assets/css/bootstrap.min.css",
+        "assets/css/normalize.css",
+        "assets/css/themify-icons.css",
+        "assets/css/flag-icon.min.css",
+        "assets/css/cs-skin-elastic.css",
+        "assets/scss/style.css"
       ],
-      "scripts": ["../node_modules/jquery/dist/jquery.min.js"],
+      "scripts": [
+        "assets/js/vendor/jquery-2.1.4.min.js",
+        "assets/js/popper.min.js",
+        "assets/js/plugins.js",
+        "assets/js/main.js",
+        "../node_modules/inputmask/dist/jquery.inputmask.bundle.js",
+        "../node_modules/inputmask/dist/inputmask/bindings/inputmask.binding.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

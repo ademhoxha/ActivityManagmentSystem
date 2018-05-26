@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.password = <FormControl>this.loginForm.get('password');
     this.email = <FormControl>this.loginForm.get('email');
+    //$("#spinner").hide();
   }
 
   resetForm() {
@@ -51,19 +52,21 @@ export class LoginComponent implements OnInit {
       password: this.password.value
     };
     this.resetForm();
+    //$("#spinner").show();
     this.authApiService.otpRequest(data).then((res: any) => {
       if (res.status == 200) {
         $("#loginDiv").fadeTo(1500, 0, () => {
-          var retData : any = data;
+          var retData: any = data;
           retData.status = 200;
           this.returnFunction.emit(retData);
         });
       }
       else {
-        var retData : any = data;
+        var retData: any = data;
         retData.status = res.status;
         retData.message = res.message;
         this.returnFunction.emit(retData);
+        //$("#spinner").hide();
       }
 
     });
