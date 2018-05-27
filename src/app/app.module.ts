@@ -17,6 +17,21 @@ import { ErrorComponent } from './error/error.component';
 import { TestComponent } from './test/test.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
+import { LateralActivityMenuComponent } from './activity/lateral-activity-menu/lateral-activity-menu.component';
+import { ProjectLateralMenuComponent } from './project/project-lateral-menu/project-lateral-menu.component';
+import { DropdownNotificationComponent } from './notification/dropdown-notification/dropdown-notification.component';
+import { DropdownMessageComponent } from './message/dropdown-message/dropdown-message.component';
+import { SearchComponent } from './search/search.component';
+import { MessageItemComponent } from './message/message-item/message-item.component';
+import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
+import { NewProjectComponent } from './project/new-project/new-project.component';
+
+// external components primeNG
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CalendarModule} from 'primeng/calendar';
+// external components angular material
+//import {MatDatepickerModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +43,15 @@ import { DashboardExampleComponent } from './dashboard-example/dashboard-example
     LoginPageComponent,
     ErrorComponent,
     TestComponent,
-    DashboardExampleComponent
+    DashboardExampleComponent,
+    LateralActivityMenuComponent,
+    ProjectLateralMenuComponent,
+    DropdownNotificationComponent,
+    DropdownMessageComponent,
+    SearchComponent,
+    MessageItemComponent,
+    NotificationItemComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +61,12 @@ import { DashboardExampleComponent } from './dashboard-example/dashboard-example
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule,
+    CalendarModule
   ],
   providers: [AuthApiService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

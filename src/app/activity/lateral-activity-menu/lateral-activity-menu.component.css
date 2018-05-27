@@ -1,0 +1,3 @@
+.navbar .navbar-nav li.menu-item-has-children a:before{
+    margin-right: -15px;
+}
