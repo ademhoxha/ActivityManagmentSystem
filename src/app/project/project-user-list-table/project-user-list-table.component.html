@@ -1,0 +1,6 @@
+<div *ngIf="!loader">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="loader">
+  <app-table [inputData]="data"></app-table>
+</div>

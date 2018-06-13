@@ -7,6 +7,7 @@ const loggerRoute = require('../logger/loggerRoute').loggerRoute;
 const authRoute = require('../auth/authRoute').authRoute;
 const otpRoute = require('../otp/otpRoute').otpRoute;
 const registrationRoute = require('../registration/registrationRoute').registrationRoute;
+const ProjectRoute = require('../project/projectRoute').ProjectRoute;
 
 
 class routeFactory {
@@ -24,6 +25,9 @@ class routeFactory {
     }
     getRegistrationRoute(){
         return new registrationRoute();
+    }
+    getProjectRoute(){
+        return new ProjectRoute();
     }
 }
 
@@ -53,10 +57,15 @@ function getRegistrationRoute(){
     return factory.getRegistrationRoute();
 }
 
+function getProjectRoute(){
+    return factory.getProjectRoute();
+}
+
 module.exports = {
     getRuoteClass : getRuoteClass,
     getLoggerRoute : getLoggerRoute,
     getAuthRoute : getAuthRoute,
     getOtpRoute : getOtpRoute,
-    getRegistrationRoute : getRegistrationRoute
+    getRegistrationRoute : getRegistrationRoute,
+    getProjectRoute : getProjectRoute
 }

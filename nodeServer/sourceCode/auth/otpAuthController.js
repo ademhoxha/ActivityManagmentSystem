@@ -1,7 +1,7 @@
 var BaseController = require('../controllerUtils/baseController').BaseController;
 var standardClientSession = require("../clientSession/standardClientSession").standardClientSession;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
-var publicDBApi = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var EntitiesFactory = require('../entitiesUtils/entitiesFactory').EntitiesFactory;
 
 class OtpAuthController extends BaseController {
     applyController(req, res, next) {
@@ -111,7 +111,7 @@ class NextStep extends BaseControllerChain {
 /****************** Flow ******************/
 
 function loginFlow(req, callback) {
-    var user = publicDBApi.getSecretUserEntity();
+    var user = EntitiesFactory.getUserEntity();
     var data = {
         query: {
             email: req.body.email,
@@ -158,7 +158,7 @@ function loginFlow(req, callback) {
 }
 
 function logoutFlow(req, callback) {
-    var user = publicDBApi.getSecretUserEntity();
+    var user = EntitiesFactory.getProjectEntity();
     var data = {
         query: {
             email: req.body.email,

@@ -1,4 +1,4 @@
-var SecretEntityPrototype = require('./secretEntityPrototype').SecretEntityPrototype;
+var SecretEntityPrototype = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi.getSecretEntityPrototype();
 const dbConfig = require('../config/dbConfig');
 
 class SecretUserEntity extends SecretEntityPrototype {
@@ -32,23 +32,28 @@ class SecretUserEntity extends SecretEntityPrototype {
         super.update(newData, callback);
     }
 
-    findByPKey(data, callback){
+    findByPKey(data, callback) {
         var findData = generatePKey(data);
-        super.find({ query : { pKey : findData.query.pKey}} , callback);
+        super.find({ query: { pKey: findData.query.pKey } }, callback);
     }
 }
 
 function generatePKey(data) {
     var newData = data;
+    newData.query.email = newData.query.email.toLowerCase();
     newData.query.pKey = "start-email:" + newData.query.email + ";mobilephone:" + newData.query.mobilephone + "-end";
     return newData;
 }
 
 function emailOrPhone(data) {
     var newData = data;
-    if (data.query.email && !String(data.query.email).match(/.*@.*/)) {
-        newData.query.mobilephone = data.query.email;
-        delete newData.query.email;
+    if (data.query.email) {
+        if (!String(data.query.email).match(/.*@.*/)) {
+            newData.query.mobilephone = data.query.email;
+            delete newData.query.email;
+        } else {
+            newData.query.email = data.query.email.toLowerCase();
+        }
     }
     return newData;
 }

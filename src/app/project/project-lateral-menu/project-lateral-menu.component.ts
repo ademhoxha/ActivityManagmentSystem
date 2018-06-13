@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-lateral-menu',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectLateralMenuComponent implements OnInit {
 
+  @Output() returnFunction = new EventEmitter<any>(); // output event function
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submitFunc(func){
+    console.log("Function called: "+func)
+    var data = {}
+    data["function"] = func;
+    this.returnFunction.emit(data);
   }
 
 }

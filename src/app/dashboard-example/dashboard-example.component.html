@@ -31,20 +31,20 @@
             <ul class="nav navbar-nav">
 
                 <li>
-                    <a href="index.html">
+                    <a href="/dashboard">
                         <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
 
-                <app-project-lateral-menu> </app-project-lateral-menu>
+                <app-project-lateral-menu (returnFunction)="activateFunction($event)"> </app-project-lateral-menu>
 
-                <app-lateral-activity-menu></app-lateral-activity-menu>
+                <app-lateral-activity-menu (returnFunction)="activateFunction($event)"></app-lateral-activity-menu>
 
                 <br>
                 <br>
                 <br>
                 <h3 class="menu-title"></h3>
                 <li>
-                    <a href="index.html">
+                    <a href="/logout">
                         <i class="menu-icon fa fa-sign-out"></i>Logout </a>
                 </li>
 
@@ -58,9 +58,10 @@
 <!-- Left Panel -->
 
 <!-- Right Panel -->
+<div id="right-panel" class="right-panel" style="width: 1620px;">
+    <!-- fix right pannel size   style="width: 1600px"  -->
 
-<div id="right-panel" class="right-panel">
-
+    <p-confirmDialog header="Confirmation" icon="fa fa-question-circle"></p-confirmDialog>
     <!-- Header-->
     <header id="header" class="header">
 
@@ -128,10 +129,10 @@
         </div>
 
     </header>
-    <!-- /header -->
     <!-- Header-->
 
-    <div class="breadcrumbs">
+
+    <div class="breadcrumbs col-12">
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
@@ -159,186 +160,38 @@
 
 
 
-    <div class="content mt-3">
+    <div class="content mt-3" style="padding : 0px">
+        <!-- fix content padding - no space between left pannel and content   style="padding : 0px"  -->
         <div class="animated fadeIn">
+            <div class="row">
 
+                <div class="col-12">
 
-            <div class="alerts">
-                <div class="row">
-                    <div>
-                        
-                        <app-new-project></app-new-project>
+                    <app-view-project *ngIf="functionList['viewproject']"></app-view-project>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Contents</strong>
-                            </div>
-                            <div class="card-body">
-                                <div class="alert alert-success" role="alert">
-                                    <h4 class="alert-heading">Well done!</h4>
-                                    <p>Aww yeah, you successfully read this important alert message. This example text is going
-                                        to run a bit longer so that you can see how spacing within an alert works with this
-                                        kind of content.</p>
-                                    <hr>
-                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                </div>
+                    <app-new-project *ngIf="functionList['newproject']"></app-new-project>
 
-                                <div class="alert alert-warning" role="alert">
-                                    <h4 class="alert-heading">Well done!</h4>
-                                    <p>Aww yeah, you successfully read this important alert message. This example text is going
-                                        to run a bit longer so that you can see how spacing within an alert works with this
-                                        kind of content.</p>
-                                    <hr>
-                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                </div>
+                    <app-new-project-team *ngIf="functionList['newprojectteam']"></app-new-project-team>
 
-                                <div class="alert alert-danger" role="alert">
-                                    <h4 class="alert-heading">Well done!</h4>
-                                    <p>Aww yeah, you successfully read this important alert message. This example text is going
-                                        to run a bit longer so that you can see how spacing within an alert works with this
-                                        kind of content.</p>
-                                    <hr>
-                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                </div>
-                            </div>
-                        </div>
+                    <app-edit-project-team *ngIf="functionList['editprojectteam']"></app-edit-project-team>
+
+                    <app-new-project-task *ngIf="functionList['newprojecttask']"></app-new-project-task>
+
+                    <app-new-task-assignation *ngIf="functionList['editprojecttask']"></app-new-task-assignation>
 
 
 
-                    </div>
+                    <app-view-activity *ngIf="functionList['viewactivity']"></app-view-activity>
 
-
-                </div>
-
-                <div class="row">
-
-                    <div style="margin: -15px;">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Dismissing Alerts</strong>
-                                </div>
-                                <div class="card-body">
-                                    <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-primary">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-secondary alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-secondary">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-success">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-danger">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-warning">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-info alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-info">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-light alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-light">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="sufee-alert alert with-close alert-dark alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-dark">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Contents</strong>
-                                </div>
-                                <div class="card-body">
-                                    <div class="alert alert-success" role="alert">
-                                        <h4 class="alert-heading">Well done!</h4>
-                                        <p>Aww yeah, you successfully read this important alert message. This example text is
-                                            going to run a bit longer so that you can see how spacing within an alert works
-                                            with this kind of content.</p>
-                                        <hr>
-                                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                    </div>
-
-                                    <div class="alert alert-warning" role="alert">
-                                        <h4 class="alert-heading">Well done!</h4>
-                                        <p>Aww yeah, you successfully read this important alert message. This example text is
-                                            going to run a bit longer so that you can see how spacing within an alert works
-                                            with this kind of content.</p>
-                                        <hr>
-                                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                    </div>
-
-                                    <div class="alert alert-danger" role="alert">
-                                        <h4 class="alert-heading">Well done!</h4>
-                                        <p>Aww yeah, you successfully read this important alert message. This example text is
-                                            going to run a bit longer so that you can see how spacing within an alert works
-                                            with this kind of content.</p>
-                                        <hr>
-                                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
+                    <app-new-day-activity *ngIf="functionList['newdayactivity']"> </app-new-day-activity>
 
                 </div>
 
             </div>
-            <!-- .alerts -->
-
-
         </div>
-        <!-- .animated -->
-    </div>
-    <!-- .content -->
 
+
+
+    </div>
 
 </div>
-<!-- /#right-panel -->
-
-<!-- Right Panel -->

@@ -1,0 +1,12 @@
+<p-pickList [source]="sourceList" [target]="targetList" sourceHeader="{{sourceLabel}}" targetHeader="{{targetLabel}}"
+    [responsive]="true" filterBy="label" dragdrop="true" sourceFilterPlaceholder="Search" targetFilterPlaceholder="Search" [sourceStyle]="{'height':'300px'}"
+    [targetStyle]="{'height':'300px'}" [showTargetControls]="false" [showSourceControls]="false" [responsive]="true"
+    (onMoveToTarget)="onExchange();" (onMoveToSource)="onExchange();" (onMoveAllToTarget)="onExchange();" (onMoveAllToSource)="onExchange();" >
+
+    <ng-template let-element pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <label>{{element.label}}</label>
+        </div>
+    </ng-template>
+
+</p-pickList>

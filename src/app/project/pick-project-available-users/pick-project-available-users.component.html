@@ -1,0 +1,6 @@
+<div *ngIf="!loaded">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="loaded">
+  <app-pick-list [list]="userList" [label]="userListLabel" (returnFunction)="onExchange($event)" ></app-pick-list>
+</div>

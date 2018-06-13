@@ -16,7 +16,16 @@ class Models {
                     code: String,
                     date: Date
                 },
-                authToken: String
+                authToken: String,
+                projects: [],
+                tasks: [],
+                jobs: [],
+            };
+
+        if (schemaName == "UserList")
+            return {
+                email: String,
+                mobilephone: String,
             };
 
         // emailOTP
@@ -30,14 +39,56 @@ class Models {
                 }
             };
 
-        // emailOTP
         if (schemaName == "otpManager")
             return {
-                date : Date,
-                total : Number,
-                mailList : [],
+                date: Date,
+                total: Number,
+                mailList: [],
                 lastTime: Number
             };
+
+        // Project
+        if (schemaName == "Project")
+            return {
+                projectName: String,
+                projectAlias: String,
+                startDate: Date,
+                deliveryDate: Date,
+                selledDays: Number,
+                estimatedDays: Number,
+                selledCostForDay: Number,
+                estimatedCostForDay: Number,
+
+                projectFounder: {},
+                projectTeam: [],
+                projectTasks: [],
+
+                projectNotes: [],
+                isClosed: Boolean,
+            };
+
+        if (schemaName == "ProjectTask")
+        return {
+            projectName: String,
+
+            taskName: String,
+            taskAlias: String,
+
+            startDate: Date,
+            deliveryDate: Date,
+            selledDays: Number,
+            estimatedDays: Number,
+            selledCostForDay: Number,
+            estimatedCostForDay: Number,
+            completion : Number,  
+
+            taskFounder: {},
+            taskTeam: [],
+
+            taskNotes: [],
+            isClosed: Boolean,
+        };
+
     }
 }
 

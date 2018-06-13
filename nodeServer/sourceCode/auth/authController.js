@@ -1,7 +1,7 @@
 var BaseController = require('../controllerUtils/baseController').BaseController;
 var standardClientSession = require("../clientSession/standardClientSession").standardClientSession;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
-var publicDBApi = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var EntitiesFactory = require('../entitiesUtils/entitiesFactory').EntitiesFactory;
 
 class AuthController extends BaseController {
     applyController(req, res, next) {
@@ -45,27 +45,36 @@ class LoginStep extends BaseControllerChain {
             console.log("LOGIN START");
             if (standardClientSession.canLogin(req)) {
                 console.log("LOGIN CAN LOGIN");
-                loginFlow(req, (err, ret) => {
-                    if (ret){
+               return loginFlow(req, (err, ret) => {
+                    if (ret) {
                         console.log("LOGIN SUCCESS");
+                        
                         var succ = returnCodeFactory.successRet("Login Success");
                         return res.status(succ.code).json({ message: succ.message });
                     }
                     console.log("LOGIN FAIL");
                     return res.status(err.code).json({ message: err.message });
-                })
+                });
             }
-            else{
+            /*else {
                 console.log("LOGIN CAN'T LOGIN");
                 return next(); // go to index.html
-            }
+            }*/
+            standardClientSession.isLogged(req, (err, ret) => {
+                if(ret){
+                    console.log("USER LOGGED GOING TO DASHBOARD");
+                    return res.redirect("/dashboard");
+                }
+                console.log("LOGIN CAN'T LOGIN");
+                return next(); // go to index.html
+            })
         }
     }
 }
 
 class LogoutStep extends BaseControllerChain {
     constructor(nextStep) {
-       super(nextStep);
+        super(nextStep);
     }
     apply(req, res, next) {
         if (req.path.toLowerCase() != "/logout") {
@@ -75,7 +84,7 @@ class LogoutStep extends BaseControllerChain {
             standardClientSession.isLogged(req, (err, ret) => {
                 if (ret) {
                     logoutFlow(req, (err, ret) => {
-                        if (ret){
+                        if (ret) {
                             var succ = returnCodeFactory.successRet("Logout Success");
                             return res.status(succ.code).json({ message: succ.message });
                         }
@@ -93,15 +102,22 @@ class LogoutStep extends BaseControllerChain {
 class NextStep extends BaseControllerChain {
     constructor(nextStep) {
         super(nextStep);
-     }
+    }
     apply(req, res, next) {
         return standardClientSession.isLogged(req, (err, ret) => {
-            if (ret){
+            if (ret) {
                 console.log("LOGIN IS LOGGED");
                 return next();
             }
-            /*console.log("LOGIN IS NOT LOGGED");
-            return res.status(201).json({ msg: "NOT LOGGED" });*/
+
+            console.log("LOGIN IS NOT LOGGED");
+            if (req.path.includes("api/")) {
+                console.log(req.path)
+                console.log("API UNAUTHORIZED");
+                var unauth = returnCodeFactory.unauthorizedError("UnauthorizedError");
+                return res.status(unauth.code).json({ message: unauth.message });
+            }
+
             res.redirect('/login');
         });
     }
@@ -111,7 +127,7 @@ class NextStep extends BaseControllerChain {
 /****************** Flow ******************/
 
 function loginFlow(req, callback) {
-    var user = publicDBApi.getSecretUserEntity();
+    var user = EntitiesFactory.getUserEntity();
     var data = {
         query: {
             email: req.body.email,
@@ -123,11 +139,11 @@ function loginFlow(req, callback) {
         }
     }
     user.find(data, (err, ret) => {
-        if (err){
+        if (err) {
             console.log("LOGIN FIND USER ERROR");
             return callback(returnCodeFactory.dbError());
         }
-        if (!ret || !ret[0]){
+        if (!ret || !ret[0]) {
             console.log("LOGIN USER NOT FOUND ");
             return callback(returnCodeFactory.dataError('User Not Valid'));
         }
@@ -136,8 +152,8 @@ function loginFlow(req, callback) {
         data.update = { authToken: token }
 
         var updateData = {
-            query : {
-                email : req.body.email
+            query: {
+                email: req.body.email
             }
         }
         updateData.update = {
@@ -145,7 +161,7 @@ function loginFlow(req, callback) {
         }
 
         return user.update(updateData, (err, ret) => {
-            if (err){
+            if (err) {
                 console.log("LOGIN UPDATE ERROR ");
                 return callback(returnCodeFactory.dbError());
             }
@@ -158,7 +174,7 @@ function loginFlow(req, callback) {
 }
 
 function logoutFlow(req, callback) {
-    var user = publicDBApi.getSecretUserEntity();
+    var user = EntitiesFactory.getUserEntity();
     var data = {
         query: {
             email: req.body.email,

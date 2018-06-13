@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   @Output() returnFunction = new EventEmitter<any>(); // output event function
 
   loginForm: FormGroup;
+  loader;
   constructor(private formBuilder: FormBuilder, private http: Http, private authApiService: AuthApiService) {
     this.initForm();
   }
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
 
     this.password = <FormControl>this.loginForm.get('password');
     this.email = <FormControl>this.loginForm.get('email');
-    //$("#spinner").hide();
+
   }
 
   resetForm() {
@@ -53,9 +54,13 @@ export class LoginComponent implements OnInit {
       password: this.password.value
     };
     this.resetForm();
-    //$("#spinner").show();
+
+    this.loader = true;
+
     this.authApiService.otpRequest(data).then((res: any) => {
+      //this.loader = false;
       if (res.status == 200) {
+        this.loader = false;
         $("#loginDiv").fadeTo(1500, 0, () => {
           var retData: any = data;
           retData.status = 200;
@@ -63,16 +68,18 @@ export class LoginComponent implements OnInit {
         });
       }
       else if (res.status == 204) {
+        // OTP not required
         var retData: any = data;
         retData.status = 204;
         this.returnFunction.emit(retData);
       }
       else {
+        this.loader = false;
         var retData: any = data;
         retData.status = res.status;
         retData.message = res.message;
         this.returnFunction.emit(retData);
-        //$("#spinner").hide();
+
       }
 
     });

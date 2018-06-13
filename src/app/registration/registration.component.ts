@@ -18,6 +18,8 @@ export class RegistrationComponent implements OnInit {
     this.initForm();
   }
 
+
+  ccRegex: RegExp = /^[0-9]{10}$/; 
   ngOnInit() {
   }
 
@@ -51,9 +53,9 @@ export class RegistrationComponent implements OnInit {
       company: new FormControl(''),
 
       password: new FormControl('',
-        Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(20),
+        Validators.compose([Validators.required/*, Validators.minLength(6), Validators.maxLength(20),
         Validators.pattern(/[a-z]+/), Validators.pattern(/[A-Z]+/), Validators.pattern(/[0-9]+/),
-        Validators.pattern(/[\W]+/)])
+        Validators.pattern(/[\W]+/)*/])
       ),
 
       mobilePhone: new FormControl('',
@@ -74,7 +76,7 @@ export class RegistrationComponent implements OnInit {
   password_confirmation: String = "";
 
   passwordVerify() {
-    this.password.setValue(this.validatePasswordFormatAllKeys(this.password.value));
+   /* this.password.setValue(this.validatePasswordFormatAllKeys(this.password.value));
     this.password_confirmation = this.validatePasswordFormatAllKeys(this.password_confirmation);
     var psw: String = this.password.value;
     this.count = this.count + 1;
@@ -84,7 +86,7 @@ export class RegistrationComponent implements OnInit {
     }
     else {
       this.passwordMatch = false;
-    }
+    }*/
   }
 
   validatePasswordFormatAllKeys(password: String): String {
@@ -95,7 +97,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   validatePasswordFormatSingleKey(password: String): String {
-    if (password != null || password != "") {
+    /*if (password != null || password != "") {
       var key = password.charCodeAt(password.length - 1)
       var newpwd = password;
       if (key == 32 || key == 160 || key == 5760 || key == 8192 || key == 8192 || key == 8194 || key == 8195
@@ -104,7 +106,7 @@ export class RegistrationComponent implements OnInit {
         newpwd = newpwd.substring(0, password.length - 1)
       }
       return newpwd;
-    }
+    }*/
     return "";
   }
 

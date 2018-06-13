@@ -1,5 +1,5 @@
 var BaseController = require('../controllerUtils/baseController').BaseController;
-var dbAPI = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var EntitiesFactory = require('../entitiesUtils/entitiesFactory').EntitiesFactory;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 
 class RegistrationController extends BaseController {
@@ -81,7 +81,7 @@ class NextStep extends BaseControllerChain {
 
 /****************** Flow ******************/
 
-var user = dbAPI.getSecretUserEntity();
+var user = EntitiesFactory.getUserEntity();
 
 function registrationFlow(data, callback) {
     var findData = {

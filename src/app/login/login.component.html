@@ -76,9 +76,16 @@
                         </label>
 
                     </div>
-                    <button [(disabled)]="!loginForm.valid" type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">
-                        <i class="fa fa-user fa-2x" style="color:white"> Sign in</i>
-                    </button>
+
+                    <div *ngIf="loader">
+                        <app-loader></app-loader>
+                    </div>
+                    <div *ngIf="!loader">
+                        <button [(disabled)]="!loginForm.valid" type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">
+                            <i class="fa fa-user fa-2x" style="color:white"> Sign in</i>
+                        </button>
+                    </div>
+
                     <div class="register-link m-t-15 text-center">
                         <p>Don't have account ?
                             <a routerLink="/registration" routerLinkActive="active"> Sign Up Here!</a>

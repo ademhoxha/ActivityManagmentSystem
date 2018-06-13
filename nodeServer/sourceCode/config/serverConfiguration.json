@@ -3,6 +3,6 @@
     "port": "7777",
     "route" : "standardRoute",
     "opt" : "N",
-    "sessionDuration" : 3,
-    "sessionDurationExtention": 1
+    "sessionDuration" : 10,
+    "sessionDurationExtention": 2
 }

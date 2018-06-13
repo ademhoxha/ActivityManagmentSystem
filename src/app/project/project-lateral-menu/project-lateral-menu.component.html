@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
   <h3 class="menu-title">Projects</h3>
   <li>
-    <a href="index.html">
+    <a (click)="submitFunc('viewproject')">
       <i class="menu-icon fa fa-folder-open"></i>View Projects </a>
   </li>
 
@@ -11,11 +11,11 @@
     <ul class="sub-menu children dropdown-menu">
       <li>
         <i class="menu-icon fa fa-save"></i>
-        <a href="page-login.html">New Project</a>
+        <a (click)="submitFunc('newproject')">New Project</a>
       </li>
       <li>
         <i class="menu-icon fa fa-edit"></i>
-        <a href="page-register.html">Edit Project</a>
+        <a (click)="submitFunc('editproject')">Edit Project</a>
       </li>
     </ul>
   </li>
@@ -26,11 +26,11 @@
     <ul class="sub-menu children dropdown-menu">
       <li>
         <i class="menu-icon fa fa-user-plus"></i>
-        <a href="page-login.html">New Project Team</a>
+        <a (click)="submitFunc('newprojectteam')">New Project Team</a>
       </li>
       <li>
         <i class="menu-icon fa fa-edit"></i>
-        <a href="page-login.html">Edit Project Team</a>
+        <a (click)="submitFunc('editprojectteam')">Edit Project Team</a>
       </li>
     </ul>
   </li>
@@ -41,15 +41,15 @@
     <ul class="sub-menu children dropdown-menu">
       <li>
         <i class="menu-icon fa fa-plus-square"></i>
-        <a href="page-login.html">New Project Task</a>
+        <a (click)="submitFunc('newprojecttask')">New Project Task</a>
       </li>
       <li>
         <i class="menu-icon fa fa-edit"></i>
-        <a href="page-login.html">Edit Project Task</a>
+        <a (click)="submitFunc('editprojecttask')">Edit Project Task</a>
       </li>
       <li>
         <i class="menu-icon fa fa-plus-circle"></i>
-        <a href="page-register.html">Job Assignation</a>
+        <a (click)="submitFunc('newjobassignation')">Job Assignation</a>
       </li>
     </ul>
   </li>

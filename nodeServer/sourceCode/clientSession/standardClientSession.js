@@ -1,5 +1,5 @@
 var IClientSession = require("./IClientSession").IClientSession;
-var publicDBApi = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var EntitiesFactory = require('../entitiesUtils/entitiesFactory').EntitiesFactory;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 var configuration = require('../config/serverConfigUtils');
 
@@ -15,7 +15,7 @@ class standardClientSession extends IClientSession {
     }
 
     login(req, callback) {
-        var user = publicDBApi.getSecretUserEntity();
+        var user = EntitiesFactory.getUserEntity();
         var data = {
             query: {
                 email: req.body.email,
@@ -62,7 +62,7 @@ class standardClientSession extends IClientSession {
     }
 
     logout(req, callback) {
-        var user = publicDBApi.getSecretUserEntity();
+        var user = EntitiesFactory.getUserEntity();
         var data = {
             query: {
                 email: req.body.email,
@@ -89,7 +89,7 @@ class standardClientSession extends IClientSession {
     isLogged(req, callback) {
         console.log("LOGIN SEE IF LOGGED  SESSION:" + JSON.stringify(req.session));
         if (req.session.email && req.session.ip && req.session.token) {
-            var user = publicDBApi.getSecretUserEntity();
+            var user = EntitiesFactory.getUserEntity();
             var data = {
                 query: {
                     email: req.session.email,

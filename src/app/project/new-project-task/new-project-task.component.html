@@ -1,0 +1,130 @@
+<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+</app-operation-result>
+
+<div class="card">
+  <div class="card-header">
+    <strong class="card-title">New Project Task</strong>
+  </div>
+  <div class="card-body">
+
+    <p-tabView (onChange)="onTabChange($event)">
+
+      <p-tabPanel header="Project selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['search']">
+        <div *ngIf="searchReset">
+          <app-select-project (returnFunction)="projectSelection($event)"></app-select-project>
+        </div>
+      </p-tabPanel>
+
+
+      <p-tabPanel header="Insert a new Task" leftIcon="fa-th-list" [selected]="tabSelected['insertTask']" [disabled]="tabDisabled['insertTask']">
+
+        <div *ngIf="resetTaskView">
+
+          <!--  get task list   -->
+          <h4 class="col-md-12">Show task</h4>
+
+        </div>
+
+        <div class="col-md-10">
+
+          <h4 class="col-md-12">Add New Task</h4>
+
+          <form name="componentForm" id="componentForm" [formGroup]="componentForm">
+
+
+            <div class="container col-md-12">
+              <div class="row justify-content-md-center">
+                <div class="form-group col-md-8">
+                  <label>Task Name</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-info" style="width: 15px;"></i>
+                    </div>
+                    <p-inputMask name="taskName" formControlName="taskName" type="text" class="form-control" id='taskName' placeholder="....."
+                      mask="aaa?aaaaaaa" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <app-start-end-date #dates></app-start-end-date>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Task Selled Days Number</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-hourglass-start" style="width: 15px;"></i>
+                  </div>
+                  <p-inputMask name="selledDays" formControlName="selledDays" type="text" class="form-control" id='selledDays' placeholder="0"
+                    mask="9?999" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Task Estimated Days Number</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-hourglass-end" style="width: 15px;"></i>
+                  </div>
+                  <p-inputMask name="estimatedDays" formControlName="estimatedDays" type="text" class="form-control" id='estimatedDays' placeholder="0"
+                    mask="9?999" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Task Selled Cost for Day</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-euro" style="width: 15px;"></i>
+                  </div>
+                  <p-inputMask name="costSelledDays" formControlName="costSelledDays" type="text" class="form-control" id='costSelledDays'
+                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Task Estimated Cost for Day</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-euro" style="width: 15px;"></i>
+                  </div>
+                  <p-inputMask name="estcostSelledDays" formControlName="estcostSelledDays" type="text" class="form-control" id='estcostSelledDays'
+                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>
+      </p-tabPanel>
+
+    </p-tabView>
+
+  </div>
+
+  <div class="card-footer">
+
+    <div *ngIf="!loader">
+      <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid && dates.startDate && dates.endDate">
+        <i class="fa fa-dot-circle-o"></i> Submit
+      </button>
+      <button type="reset" class="btn btn-danger" (click)="componentForm.reset();" [(disabled)]="tabSelected['search']">
+        <i class="fa fa-ban"></i> Reset
+      </button>
+    </div>
+    <div *ngIf="loader">
+      <app-loader></app-loader>
+    </div>
+
+  </div>
+
+</div>

@@ -1,22 +1,15 @@
-var UserEntity = require('../sourceCode/entities/userEntity').UserEntity;
-var OtpReceiverEntity = require('../sourceCode/entities/otpReceiver').OtpReceiver;
-var OtpManagerEntity = require('../sourceCode/entities/otpManager').otpManager;
-var SecretUserEntity = require('../sourceCode/entities/secretUserEntity').SecretUserEntity;
+var BaseEntityPrototype = require('../sourceCode/entities/baseEntityPrototype').BaseEntityPrototype;
+var SecretEntityPrototype = require('../sourceCode/entities/secretEntityPrototype').SecretEntityPrototype;
+
 
 class publicDBApi {
     
-    getUserEntity(){
-       return new UserEntity();
+    getBaseEntityPrototype(){
+       return BaseEntityPrototype;
     }
-    getOtpReceiverEntity(){
-        return new OtpReceiverEntity();
+    getSecretEntityPrototype(){
+        return SecretEntityPrototype;
     }
-    getOtpManagerEntity(){
-        return new OtpManagerEntity();
-    }
-    getSecretUserEntity(){
-        return new SecretUserEntity();
-     }
 }
 
 var istance = new publicDBApi();

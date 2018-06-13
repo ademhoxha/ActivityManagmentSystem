@@ -11,11 +11,13 @@ function startServer(data) {
     /* MIDDLEWARES PART */
     middlewareUtils.getSessionMiddleware().applyMiddleware(); // apply client session
     
-    
     /* ROUTERS */
     routeUtils.getOtpRoute().applyRoute();  // otp api
     routeUtils.getRegistrationRoute().applyRoute(); // registration api
-    routeUtils.getAuthRoute().applyRoute(); // authentication ruote
+    routeUtils.getAuthRoute().applyRoute(); // authentication ruote => next() only if logged
+
+    routeUtils.getProjectRoute().applyRoute(); // new project
+    
     
     routeUtils.getRuoteClass(data.route).applyRoute(); // standard route => send angular FE
     

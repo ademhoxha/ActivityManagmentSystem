@@ -1,6 +1,4 @@
-var mongoCrudOperations = require('../mongoDB/mongoCrudOperations').mongoCrudOperations;
-var mongooseProxy = require('../mongoDB/mongooseProxy').mongooseProxy;
-var BaseEntityPrototype = require('./baseEntityPrototype').BaseEntityPrototype;
+var BaseEntityPrototype = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi.getBaseEntityPrototype();
 const dbConfig = require('../config/dbConfig');
 
 class otpManager extends BaseEntityPrototype {

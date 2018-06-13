@@ -1,0 +1,27 @@
+<div class="col-md-3">
+  <div class="form-group">
+    <label>{{startDateLabel}}</label>
+    <div class="input-group">
+      <div class="ui-g-12 ui-fluid" style="margin-left: -10px; margin-top: -10px; margin-bottom: 0px;">
+        <p-calendar [(ngModel)]="startDate" [showIcon]="true" [disabledDays]="_disabledDays" monthNavigator="true" yearRange="_yearRange"
+          showButtonBar="true" dateFormat="dd.mm.yy" icon="fa-play" [ngModelOptions]="{standalone: true}" (onSelect)="dateIntegrity()"
+          (onTodayClick)="dateIntegrity()" (onClearClick)="dateIntegrity()">
+        </p-calendar>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-3 offset-md-6">
+  <div class="form-group">
+    <label>{{endDateLabel}}</label>
+    <div class="input-group">
+      <div class="ui-g-12 ui-fluid" style="margin-left: -10px; margin-top: -10px; margin-bottom: 0px;">
+        <p-calendar [(ngModel)]="endDate" [showIcon]="true" [disabledDays]="_disabledDays" monthNavigator="true" yearRange="_yearRange"
+          showButtonBar="true" dateFormat="dd.mm.yy" icon="fa-truck" [ngModelOptions]="{standalone: true}" [minDate]="minDeliveryDate">
+        </p-calendar>
+      </div>
+    </div>
+  </div>
+</div>

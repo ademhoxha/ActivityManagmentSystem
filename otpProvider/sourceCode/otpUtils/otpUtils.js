@@ -1,6 +1,6 @@
-var dbApi = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
-var otpManager = dbApi.getOtpManagerEntity();
-var otpReceiver = dbApi.getOtpReceiverEntity();
+var EntitiesFactory = require('../entitiesUtils/entitiesFactory').EntitiesFactory;
+var otpManager = EntitiesFactory.getOtpManager();
+var otpReceiver = EntitiesFactory.getOtpReceiver();
 var config = require('../../config/config');
 
 class OTPUtils {

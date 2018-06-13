@@ -48,7 +48,7 @@ export class LoginPageComponent implements OnInit {
       }, 200)
       setTimeout(() => { 
         this.errorFlag = false; 
-      }, 10000)
+      }, 4000)
 
     }
   }
@@ -70,7 +70,7 @@ export class LoginPageComponent implements OnInit {
           }, 200)
           setTimeout(() => { 
             this.errorFlag = false; 
-          }, 10000)
+          }, 4000)
         }
       });
     }
@@ -83,7 +83,7 @@ export class LoginPageComponent implements OnInit {
       }, 200)
       setTimeout(() => { 
         this.errorFlag = false; 
-      }, 10000)
+      }, 4000)
     }
   }
 
@@ -94,12 +94,16 @@ export class LoginPageComponent implements OnInit {
       }
       else{
         this.errorData.message = res.message;
+        this.loginFlag = false;
+        setTimeout(() => { 
+          this.loginFlag = true;
+        }, 10)
         setTimeout(() => { 
           this.errorFlag = true; 
         }, 200)
         setTimeout(() => { 
           this.errorFlag = false; 
-        }, 10000)
+        }, 4000)
       }
     });
   }

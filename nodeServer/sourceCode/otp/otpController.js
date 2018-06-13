@@ -1,5 +1,5 @@
 var BaseController = require('../controllerUtils/baseController').BaseController;
-var dbAPI = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi;
+var EntitiesFactory = require('../entitiesUtils/entitiesFactory').EntitiesFactory;
 var returnCodeFactory = require('../error/returnCodeFactory').ReturnCodeFactory;
 var configuration = require('../config/serverConfigUtils');
 
@@ -107,7 +107,7 @@ class NextStep extends BaseControllerChain {
 
 /****************** Flow ******************/
 
-var user = dbAPI.getSecretUserEntity();
+var user = EntitiesFactory.getUserEntity();
 
 function otpRequestFlow(userData, callback) {
     var data = {};
