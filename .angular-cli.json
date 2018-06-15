@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "mean-contactlist-angular2"
+    "name": "frontEnd-angular2"
   },
   "apps": [
     {
@@ -21,23 +21,20 @@
       "prefix": "app",
       "styles": [
         "styles.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css",
         "../node_modules/font-awesome/css/font-awesome.css",
-        "assets/css/bootstrap.min.css",
         "assets/css/normalize.css",
         "assets/css/themify-icons.css",
         "assets/css/flag-icon.min.css",
         "assets/css/cs-skin-elastic.css",
-        "assets/scss/style.css",
-        "../node_modules/primeng/resources/themes/omega/theme.css",
-        "../node_modules/primeng/resources/primeng.min.css"
+        "assets/scss/style.css"
       ],
       "scripts": [
         "assets/js/vendor/jquery-2.1.4.min.js",
         "assets/js/popper.min.js",
         "assets/js/plugins.js",
-        "assets/js/main.js",
-        "../node_modules/inputmask/dist/jquery.inputmask.bundle.js",
-        "../node_modules/inputmask/dist/inputmask/bindings/inputmask.binding.js"
+        "assets/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
