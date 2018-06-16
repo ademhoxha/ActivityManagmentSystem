@@ -1,0 +1,10 @@
+.form-control {
+    padding : 0px;
+    margin: 0px;
+    border: 1px;
+}
+
+.ui-fluid .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+    width: calc(100% - 1em);
+    height: 37px;
+}

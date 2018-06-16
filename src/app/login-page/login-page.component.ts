@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthApiService } from '../auth-api/auth-api.service';
-import { Http, Response } from '@angular/http';
+import { AuthApiService } from './auth-api/auth-api.service';
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   otpFlag: boolean;
   errorFlag : boolean;
   otpData : any = { duration : 3*60*1000}
-  constructor(private router: Router, private http: Http, private authApiService: AuthApiService) {
+  constructor(private router: Router, private authApiService: AuthApiService) {
     this.loginFlag = true;
     this.otpFlag = false;
     this.errorFlag = false;

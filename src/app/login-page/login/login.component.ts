@@ -1,13 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import * as $ from 'jquery';
 
 import { AuthApiService } from '../auth-api/auth-api.service';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-login',

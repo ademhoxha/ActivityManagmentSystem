@@ -1,0 +1,14 @@
+<div *ngIf="!projectList">
+  <app-loader></app-loader>
+</div>
+<div class="col-md-12" *ngIf="projectList">
+  <div class="form-group">
+    <label class="col-md-12">Select a Project</label>
+    <div class="col-md-6">
+      <app-dropdown-list [list]="projectList" #pL></app-dropdown-list>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary" (click)="projectSearch(pL.selectedItem)">Search</button>
+    </div>
+  </div>
+</div>

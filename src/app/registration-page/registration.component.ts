@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { AuthApiService } from '../auth-api/auth-api.service';
+import { RegistrationService } from './registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +13,7 @@ import { AuthApiService } from '../auth-api/auth-api.service';
 export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http: Http, private authApiService: AuthApiService) {
+  constructor(private formBuilder: FormBuilder, private http: Http, private registrationService: RegistrationService) {
     this.initForm();
   }
 
@@ -114,7 +113,7 @@ export class RegistrationComponent implements OnInit {
     this.passwordVerify();
     if (this.passwordMatch) {
       var body = this.setRequestParameters();
-      this.authApiService.registrationRequest(body).then((res: any) => { this.response = res.msg });
+      this.registrationService.registrationRequest(body).then((res: any) => { this.response = res.msg });
     }
   }
 
