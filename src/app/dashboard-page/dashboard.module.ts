@@ -15,6 +15,7 @@ import { NotificationItemComponent } from '@app/notification-modules/notificatio
 
 import { DropdownMessageComponent } from '@app/message-modules/dropdown-message/dropdown-message.component';
 import { MessageItemComponent } from '@app/message-modules/message-item/message-item.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 
 
@@ -34,6 +35,7 @@ import { MessageItemComponent } from '@app/message-modules/message-item/message-
     NotificationItemComponent,
     MessageItemComponent,
     DropdownMessageComponent,
+    TopMenuComponent,
 
   ]
 })
