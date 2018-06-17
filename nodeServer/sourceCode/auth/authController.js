@@ -83,17 +83,16 @@ class LogoutStep extends BaseControllerChain {
         else {
             standardClientSession.isLogged(req, (err, ret) => {
                 if (ret) {
-                    logoutFlow(req, (err, ret) => {
+                    return logoutFlow(req, (err, ret) => {
                         if (ret) {
                             var succ = returnCodeFactory.successRet("Logout Success");
-                            return res.status(succ.code).json({ message: succ.message });
+                            //return res.status(succ.code).json({ message: succ.message });
+                            return res.redirect('/login'); // it is a post request not an api...
                         }
-                        return res.status(err.code).json({ message: err.message });;
-
+                        return res.status(err.code).json({ message: err.message });
                     })
                 }
-                //return res.status(err.code).json({ message: err.message});
-                res.redirect('/login');
+                return res.status(err.code).json({ message: err.message});
             })
         }
     }
@@ -177,8 +176,8 @@ function logoutFlow(req, callback) {
     var user = EntitiesFactory.getUserEntity();
     var data = {
         query: {
-            email: req.body.email,
-            password: req.body.password
+            email: req.session.email,
+            //password: req.body.password
         }
     }
     user.find(data, (err, ret) => {

@@ -6,9 +6,7 @@ var configuration = require('../config/serverConfigUtils');
 
 class authRoute extends baseRoute {
     applyRoute() {
-        // session
-        var standardClientSession = require("../clientSession/standardClientSession").standardClientSession;
-
+ 
         app.all("*", function (req, res, next) {
             // see if otp is enabled
             var confData = configuration.getConfiguration();
