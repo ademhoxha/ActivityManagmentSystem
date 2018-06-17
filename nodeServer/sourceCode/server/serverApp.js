@@ -2,7 +2,6 @@
     Author: Adem Hoxha  
     Date: 2018/04/21 
 */ 
-var path = require('path')
 var express = require('express');
 var helmet = require('helmet')
 const bodyParser = require('body-parser');

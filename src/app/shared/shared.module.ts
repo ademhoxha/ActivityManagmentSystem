@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// 3rd prty 
+// 3rd party 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { CalendarModule } from 'primeng/calendar';
@@ -19,11 +19,13 @@ import { TabViewModule } from 'primeng/tabview';
 import { PickListModule } from 'primeng/picklist';
 import { TableModule } from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { BlockUIModule } from 'primeng/blockui';
 
 // custom shared components
 import { ErrorComponent } from './error/error.component';
 import { LoaderComponent } from './loader/loader.component';
 import { OperationResultComponent } from './operation-result/operation-result.component';
+import { BlockUiComponent } from './block-ui/block-ui.component';
 
 @NgModule({
   imports: [
@@ -33,39 +35,7 @@ import { OperationResultComponent } from './operation-result/operation-result.co
     FormsModule,
     ReactiveFormsModule,
 
-    // 3rd prty
-    AngularFontAwesomeModule,
-
-    CalendarModule,
-    InputMaskModule,
-    ConfirmDialogModule,
-    GrowlModule,
-    InputTextModule,
-    KeyFilterModule,
-    DropdownModule,
-    AutoCompleteModule,
-    TabViewModule,
-    PickListModule,
-    TableModule,
-    ProgressSpinnerModule
-  ],
-  providers: [ConfirmationService],
-  declarations: [
-
-    // custom shared components
-    ErrorComponent,
-    LoaderComponent,
-    OperationResultComponent,
-
-  ],
-  exports: [
-    CommonModule,
-
-    // angular
-    FormsModule,
-    ReactiveFormsModule,
-
-    // 3rd prty
+    // 3rd party
     AngularFontAwesomeModule,
 
     CalendarModule,
@@ -80,11 +50,50 @@ import { OperationResultComponent } from './operation-result/operation-result.co
     PickListModule,
     TableModule,
     ProgressSpinnerModule,
+    BlockUIModule
+  ],
+  providers: [
+    // 3rd party
+    ConfirmationService
+  ],
+  declarations: [
 
     // custom shared components
     ErrorComponent,
     LoaderComponent,
-    OperationResultComponent
+    OperationResultComponent,
+    BlockUiComponent,
+
+  ],
+  exports: [
+    CommonModule,
+
+    // angular
+    FormsModule,
+    ReactiveFormsModule,
+
+    // 3rd party
+    AngularFontAwesomeModule,
+
+    CalendarModule,
+    InputMaskModule,
+    ConfirmDialogModule,
+    GrowlModule,
+    InputTextModule,
+    KeyFilterModule,
+    DropdownModule,
+    AutoCompleteModule,
+    TabViewModule,
+    PickListModule,
+    TableModule,
+    ProgressSpinnerModule,
+    BlockUIModule,
+
+    // custom shared components
+    ErrorComponent,
+    LoaderComponent,
+    OperationResultComponent,
+    BlockUiComponent
   ]
 })
 export class SharedModule { }
