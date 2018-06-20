@@ -14,6 +14,9 @@ const routes: Routes = [
  // { path: 'dashboard', component: DashboardExampleComponent },
  { path: 'dashboard', loadChildren: 'app/dashboard-page/dashboard.module#DashboardModule' },
 
+ // only for test purpose! comment on the server
+ { path: 'test', loadChildren: 'app/test/test.module#TestModule' },
+
   //{ path: 'test', component: TestComponent },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ]
