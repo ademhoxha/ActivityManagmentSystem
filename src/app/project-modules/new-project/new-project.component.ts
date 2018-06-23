@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
-import { Http} from '@angular/http';
+import { ProjectUtils } from '../project-utils';
 import 'rxjs/add/operator/toPromise';
 
-import { ConfirmationService } from 'primeng/api';
 
 import {ProjectApiService  } from '@app/project-modules/project-core/project-api.service';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
+
 
 
 @Component({
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 })
 export class NewProjectComponent implements OnInit {
 
-
+  
   newProjectForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private confirmationService: ConfirmationService, 
     private projectAPI: ProjectApiService, private router:Router) { }
@@ -41,16 +42,35 @@ export class NewProjectComponent implements OnInit {
     this.date1 = new Date(startDate);
     this.date2 = new Date(endDate);
 
-    if (this.date1 >= this.date2) {
+
+    var data = {};
+    data["projectName"]=this.newProjectForm.get("projectName").value;
+    data["startDate"]= this.date1;
+    data["deliveryDate"]=this.date2;
+    data["selledDays"]=this.newProjectForm.get("selledDays").value;
+    data["estimatedDays"]=this.newProjectForm.get("estimatedDays").value;
+    data["selledCostForDay"]=this.newProjectForm.get("costSelledDays").value;
+    data["estimatedCostForDay"]=this.newProjectForm.get("estcostSelledDays").value;
+
+    var validationClass = new ProjectUtils();
+    var validationRet = validationClass.validateNewProjectData(data)
+
+    console.log(validationRet)
+
+    if (validationRet.status == validationClass.statusError) {
+      var msg = "";
+      validationRet.message.forEach(element => {
+        msg = msg+"\n"+element
+      });
       this.confirmationService.confirm({
-        message: 'Are you sure to use these date?',
+        message: msg+"\n"+' - Are you sure to continue?',
         accept: () => {
-          this.callService();
+          this.callService(data);
         }
       });
     }
     else{
-      this.callService();
+      this.callService(data);
     }
   }
 
@@ -85,15 +105,8 @@ export class NewProjectComponent implements OnInit {
     });
   }
 
-  callService(){
-    var data = {};
-    data["projectName"]=this.newProjectForm.get("projectName").value;
-    data["startDate"]= this.date1;
-    data["deliveryDate"]=this.date2;
-    data["selledDays"]=this.newProjectForm.get("selledDays").value;
-    data["estimatedDays"]=this.newProjectForm.get("estimatedDays").value;
-    data["selledCostForDay"]=this.newProjectForm.get("costSelledDays").value;
-    data["estimatedCostForDay"]=this.newProjectForm.get("estcostSelledDays").value;
+  callService(data){
+
     this.newProjectForm.reset();
 
     this.loader = true;

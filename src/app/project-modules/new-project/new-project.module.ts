@@ -14,6 +14,8 @@ import { NewProjectComponent } from './new-project.component';
   declarations: [
     NewProjectComponent
   ],
+  providers : [
+  ]
 
 })
 export class NewProjectModule { }

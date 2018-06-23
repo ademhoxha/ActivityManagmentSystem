@@ -26,6 +26,7 @@ import { ErrorComponent } from './error/error.component';
 import { LoaderComponent } from './loader/loader.component';
 import { OperationResultComponent } from './operation-result/operation-result.component';
 import { BlockUiComponent } from './block-ui/block-ui.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { BlockUiComponent } from './block-ui/block-ui.component';
     LoaderComponent,
     OperationResultComponent,
     BlockUiComponent,
+    PopUpComponent
 
   ],
   exports: [
@@ -93,7 +95,8 @@ import { BlockUiComponent } from './block-ui/block-ui.component';
     ErrorComponent,
     LoaderComponent,
     OperationResultComponent,
-    BlockUiComponent
+    BlockUiComponent,
+    PopUpComponent
   ]
 })
 export class SharedModule { }

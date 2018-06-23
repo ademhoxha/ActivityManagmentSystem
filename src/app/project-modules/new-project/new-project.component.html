@@ -1,14 +1,16 @@
 <app-operation-result *ngIf="resultFlag" [inputData]="resultData">
 </app-operation-result>
 
+<app-pop-up></app-pop-up>
+
 <app-block-ui [flag]="loader"></app-block-ui>
+
 
 <div class="card">
   <div class="card-header">
     <strong class="card-title">Insert a New Project</strong>
   </div>
   <div class="card-body">
-
 
     <form name="registrationForm" id="registrationForm" [formGroup]="newProjectForm" (submit)='newProject(dates.startDate, dates.endDate)'>
 
