@@ -1,0 +1,37 @@
+<h3 class="first">Basic</h3>
+<p-tree [value]="filesTreeA"></p-tree>
+
+<h3 class="first">Selected: {{selectedFile.label}}</h3>
+<p-tree [value]="filesTreeA" selectionMode="single" [(selection)]="selectedFile"></p-tree>
+
+<h3 class="first">Drag and Drop</h3>
+<p-tree [value]="filesTreeA"  draggableNodes="true" droppableNodes="true"></p-tree>
+
+<!-- <div class="ui-g ui-fluid">
+  <div class="ui-g-12 ui-md-3">
+      <h4>Files</h4>
+      <p-tree [value]="filesTree7" draggableNodes="true" droppableNodes="true" dragdropScope="files"></p-tree>
+  </div>
+
+  <div class="ui-g-12 ui-md-1" style="text-align:center">
+      <i class="fa fa-exchange" style="font-size:36px;margin-top: 28px;"></i>
+  </div>
+
+  <div class="ui-g-12 ui-md-3">
+      <h4>Server 1</h4>
+      <p-tree [value]="filesTree8" draggableNodes="true" droppableNodes="true" dragdropScope="files"></p-tree>
+  </div>
+
+  <div class="ui-g-12 ui-md-1" style="text-align:center">
+      <i class="fa fa-exchange" style="font-size:36px;margin-top: 28px;"></i>
+  </div>
+
+  <div class="ui-g-12 ui-md-3">
+      <h4>Server 2</h4>
+      <p-tree [value]="filesTree9" draggableNodes="true" droppableNodes="true" dragdropScope="other"></p-tree>
+  </div>
+
+  <div class="ui-g-12 ui-md-1">
+
+  </div>
+</div> -->

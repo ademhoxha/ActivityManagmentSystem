@@ -7,6 +7,8 @@ import { TestComponent } from './test/test.component'
 
 import {TreeModule} from 'primeng/tree';
 import {TreeDragDropService} from 'primeng/api';
+import { ReducedViewTestComponent } from './reduced-view-test/reduced-view-test.component';
+import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import {TreeDragDropService} from 'primeng/api';
     TreeModule
   ],
   declarations: [
-    TestComponent
+    TestComponent,
+    ReducedViewTestComponent,
+    DragDropTestComponent
   ],
   exports : [
     TestComponent,
