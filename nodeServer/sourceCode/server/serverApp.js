@@ -7,6 +7,11 @@ var helmet = require('helmet')
 const bodyParser = require('body-parser');
 var errorUtils = require('../error/errorUtils').serverCodes; // just to load
 
+// load db schema
+var models = require('../entities/models').Models;
+var entitiesFactory = require('mongodb-entities').entitiesFactory;
+entitiesFactory.setModel(models);
+
 var app = express();
 app.use(helmet());
 app.use(bodyParser.json());
