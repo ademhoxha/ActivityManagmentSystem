@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node nodeServer/sourceCode/server/expressServer.js",
-    "start_local": "nodemon nodeServer/sourceCode/server/expressServer.js",
+    "server": "nodemon nodeServer/sourceCode/server/expressServer.js",
+    "angular": "ng serve --port 7777",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
