@@ -1,4 +1,4 @@
-var SecretEntityPrototype = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi.getSecretEntityPrototype();
+var SecretEntityPrototype = require('mongodb-entities').entitiesFactory.getSecretEntityPrototype();
 const dbConfig = require('../config/dbConfig');
 
 class SecretUserEntity extends SecretEntityPrototype {

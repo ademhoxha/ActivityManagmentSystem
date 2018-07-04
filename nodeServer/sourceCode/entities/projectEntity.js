@@ -1,4 +1,4 @@
-var BaseEntityPrototype = require('../../../mongoDb/publicDbAPI/publicDBApi').publicDBApi.getBaseEntityPrototype();
+var BaseEntityPrototype = require('mongodb-entities').entitiesFactory.getBaseEntityPrototype();
 const dbConfig = require('../config/dbConfig');
 
 class ProjectEntity extends BaseEntityPrototype {
