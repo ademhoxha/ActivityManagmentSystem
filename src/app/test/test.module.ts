@@ -10,11 +10,18 @@ import {TreeDragDropService} from 'primeng/api';
 import { ReducedViewTestComponent } from './reduced-view-test/reduced-view-test.component';
 import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component';
 
+// 3rd party
+import {ProgressBarModule} from 'primeng/progressbar';
+import {SliderModule} from 'primeng/slider';
+
+
 @NgModule({
   imports: [
     DashboardSharedModule,
     TestRoutingModule,
-    TreeModule
+    TreeModule,
+    ProgressBarModule,
+    SliderModule
   ],
   declarations: [
     TestComponent,
@@ -23,7 +30,9 @@ import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component
   ],
   exports : [
     TestComponent,
-    TreeModule
+    TreeModule,
+    ProgressBarModule,
+    SliderModule
   ],
   providers : [
     TreeDragDropService
