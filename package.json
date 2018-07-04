@@ -1,5 +1,5 @@
 {
-  "name": "mean-contactlist-angular2",
+  "name": "activity-manager-system-fe",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -7,6 +7,8 @@
     "start": "node nodeServer/sourceCode/server/expressServer.js",
     "server": "nodemon nodeServer/sourceCode/server/expressServer.js",
     "angular": "ng serve --port 7777",
+    "s": "nodemon nodeServer/sourceCode/server/expressServer.js",
+    "a": "ng serve --port 7777",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
