@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
+  encapsulation: ViewEncapsulation.None, // to edit primeNg style form css file
   styleUrls: ['./error.component.css']
 })
 export class ErrorComponent implements OnInit {

@@ -8,3 +8,8 @@
 .errorSpinner {
     margin : auto;
 }
+
+p  {
+    color: white;
+    size: 50px;
+}

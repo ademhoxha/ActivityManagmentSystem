@@ -3,3 +3,33 @@
     margin: 0px;
     border: 1px;
 }
+
+
+.ui-tabview .ui-tabview-nav {
+    margin: 0;
+    padding: .25em .5em 0 .25em;
+    background: #1976d2!important;
+}
+
+.ui-state-disabled {
+    background: #1976d2!important;
+    /*opacity: 0.5;*/
+}
+
+.ui-state-disabled *, .ui-widget:disabled *  {
+    color: white!important;
+    font-weight: 400!important;
+    text-shadow: none;
+   /* opacity: 1;*/
+}
+
+.ui-state-disabled, .ui-widget:disabled {
+    opacity: 0.8;
+}
+
+.ui-tabview .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled) a {
+    background: #1976d2!important;
+    color: white!important;
+    font-weight: 400!important;
+    text-shadow: none;
+}

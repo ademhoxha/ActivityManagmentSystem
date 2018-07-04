@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-project-task',
   templateUrl: './new-project-task.component.html',
+  encapsulation: ViewEncapsulation.None, // to edit primeNg style form css file
   styleUrls: ['./new-project-task.component.css']
 })
 export class NewProjectTaskComponent implements OnInit {
