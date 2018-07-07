@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-start-end-date',
   templateUrl: './start-end-date.component.html',
+  encapsulation: ViewEncapsulation.None, // to edit primeNg style form css file
   styleUrls: ['./start-end-date.component.css']
 })
 export class StartEndDateComponent implements OnInit {

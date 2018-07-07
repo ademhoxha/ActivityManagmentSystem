@@ -9,16 +9,16 @@
   </div>
   <div class="card-body">
 
-    <p-tabView (onChange)="onTabChange($event)">
+    <p-tabView (onChange)="onTabChange($event)" styleClass="_tabView">
 
-      <p-tabPanel header="Project selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['search']">
+      <p-tabPanel header="Project selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['search']" styleClass="_tabView">
         <div *ngIf="searchReset">
           <app-select-project (returnFunction)="projectSelection($event)"></app-select-project>
         </div>
       </p-tabPanel>
 
 
-      <p-tabPanel header="Insert a new Task" leftIcon="fa-th-list" [selected]="tabSelected['insertTask']" [disabled]="tabDisabled['insertTask']">
+      <p-tabPanel header="Insert a new Task" leftIcon="fa-th-list" [selected]="tabSelected['insertTask']" [disabled]="tabDisabled['insertTask']" styleClass="_tabView"> 
 
         <div *ngIf="resetTaskView">
 

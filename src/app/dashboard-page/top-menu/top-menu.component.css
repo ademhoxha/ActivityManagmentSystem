@@ -10,4 +10,23 @@
 }
 
 
+._open-proj-top-menu {
+    background-image: linear-gradient(left, #F39611, #EE4F10);
+}
 
+
+._workers-top-menu {
+    background-image: linear-gradient(left, #E02364, #A22650);
+}
+
+._proj-avrg-top-menu {
+    background-image: linear-gradient(left, #7DC931, #14A143);
+}
+
+._comm-top-menu {
+    background-image: linear-gradient(left, #326DDF, #214B9C);
+}
+
+._allert-top-menu {
+    background-image: linear-gradient(left, #FBFB00, #AAA739);
+}

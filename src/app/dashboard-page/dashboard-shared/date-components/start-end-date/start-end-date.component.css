@@ -1,0 +1,29 @@
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active {
+    background-color: green;
+    color: #ffffff;
+    border: 10px;
+    border-radius: 5px;
+}
+
+.ui-button.ui-button-secondary.ui-state-default, .ui-splitbutton.ui-button-secondary .ui-button.ui-state-default{
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: darkred;
+}
+
+.ui-button.ui-button-secondary.ui-state-default:hover, .ui-splitbutton.ui-button-secondary .ui-button.ui-state-default:hover{
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: darkred;
+}
+
+.ui-datepicker select.ui-datepicker-month {
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: darkred;
+}
+
+.ui-datepicker span.ui-datepicker-year {
+    text-decoration: underline;
+    color: darkred;
+}

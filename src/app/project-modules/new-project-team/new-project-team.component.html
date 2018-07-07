@@ -9,17 +9,17 @@
   </div>
   <div class="card-body" style="width:'100%'">
 
-    <p-tabView (onChange)="onTabChange($event)">
+    <p-tabView (onChange)="onTabChange($event)" styleClass="_tabView">
 
 
-      <p-tabPanel header="Project selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['search']">
+      <p-tabPanel header="Project selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['search']" styleClass="_tabView">
         <div *ngIf="searchReset">
           <app-select-project (returnFunction)="projectSelection($event)"></app-select-project>
         </div>
       </p-tabPanel>
 
 
-      <p-tabPanel header="Team Initialization" leftIcon="fa-th-list" [selected]="tabSelected['insertTeam']" [disabled]="tabDisabled['insertTeam']">
+      <p-tabPanel header="Team Initialization" leftIcon="fa-th-list" [selected]="tabSelected['insertTeam']" [disabled]="tabDisabled['insertTeam']" styleClass="_tabView">
 
         <div *ngIf="resetUserList">
           <app-project-user-list-table [inputData]="availableUsersInputData" (errorFunction)="userListError($event)"></app-project-user-list-table>

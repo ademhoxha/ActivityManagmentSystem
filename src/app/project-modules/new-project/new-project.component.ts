@@ -13,7 +13,6 @@ import { ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'app-new-project',
   templateUrl: './new-project.component.html',
-  encapsulation: ViewEncapsulation.None, // to edit primeNg style form css file
   styleUrls: ['./new-project.component.css']
 })
 export class NewProjectComponent implements OnInit {
