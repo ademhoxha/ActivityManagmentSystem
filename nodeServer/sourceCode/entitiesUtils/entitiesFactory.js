@@ -1,6 +1,5 @@
 var ProjectEntity= require('../entities/projectEntity').ProjectEntity;
 var SecretUserEntity= require('../entities/secretUserEntity').SecretUserEntity;
-var UserEntity= require('../entities/userEntity').UserEntity;
 var UserList= require('../entities/userList').UserList;
 var ProjectTaskEntity = require('../entities/projectTaskEntity').ProjectTaskEntity;
 

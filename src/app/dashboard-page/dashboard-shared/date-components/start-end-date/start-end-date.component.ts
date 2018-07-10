@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-start-end-date',
@@ -9,6 +9,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 export class StartEndDateComponent implements OnInit {
 
   @Input() inputData: any;
+  @Output() returnFunction = new EventEmitter<any>();
   public startDate: Date;
   public endDate: Date;
   constructor() { }
@@ -26,8 +27,8 @@ export class StartEndDateComponent implements OnInit {
 
 
   minDeliveryDate: Date = new Date();
-  dateIntegrity() {
-   if (this.startDate && this.startDate != null) {
+  dateIntegrity(skip) {
+    if (this.startDate && this.startDate != null) {
       this.minDeliveryDate = new Date(this.startDate);
       this.minDeliveryDate.setDate(this.startDate.getDate() + 1);
       if (this.endDate && this.endDate != null && this.endDate <= this.startDate) {
@@ -35,13 +36,42 @@ export class StartEndDateComponent implements OnInit {
         this.endDate.setDate(this.startDate.getDate() + 1);
       }
     }
+    if(!skip) // skyp first time
+      this.onDateChange();
+  }
+
+  deliveryClear() {
+    if (!this.startDate){
+      this.startDate = new Date();
+    }
+    this.endDate = new Date();
+    this.endDate.setDate(this.startDate.getDate() + 1);
+    this.minDeliveryDate.setDate(this.startDate.getDate() + 1);
+    this.onDateChange();
+  }
+
+  startDateClear() {
+    if (!this.endDate){
+      this.startDate = new Date();
+      this.endDate.setDate(this.startDate.getDate() + 1);
+      this.minDeliveryDate = new Date();
+      this.minDeliveryDate.setDate(this.startDate.getDate() + 1);
+    }
+    else{
+      this.startDate = new Date();
+      this.startDate.setDate(this.endDate.getDate() - 1);
+      this.minDeliveryDate = new Date();
+      this.minDeliveryDate.setDate(this.startDate.getDate());
+    }
+    this.onDateChange();
   }
 
 
   initDates() {
     this.startDate = new Date();
     this.endDate = new Date();
-    this.dateIntegrity();
+    this.dateIntegrity(true);
+    //this.onDateChange();
   }
 
   initOptions() {
@@ -57,6 +87,14 @@ export class StartEndDateComponent implements OnInit {
     if (this.inputData["endDateLabel"]) {
       this.endDateLabel = this.inputData["endDateLabel"];
     }
+  }
+
+
+  onDateChange() {
+    var data = {};
+    data['startDate'] = this.startDate;
+    data['endDate'] = this.endDate;
+    this.returnFunction.emit(data);
   }
 
 }

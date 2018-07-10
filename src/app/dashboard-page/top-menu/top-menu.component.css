@@ -6,27 +6,54 @@
 .pointer {cursor: pointer;}
 
 .pointer:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
+  /*  text-decoration: underline;
+    text-decoration-color: white;*/
+}
+
+.pointer:hover ._variation a {
+    animation:zoom-animation 0.4s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes zoom-animation {
+    0%   {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+._grad-orange {
+    background-image: linear-gradient(to left, #F39611, #EE4F10);
+}
+
+._grad-violet {
+    background-image: linear-gradient(to left, #E02364, #A22650);
+}
+
+._grad-green {
+    background-image: linear-gradient(to left, #7DC931, #14A143);
+}
+
+._grad-blue {
+    background-image: linear-gradient(to left, #326DDF, #214B9C);
+}
+
+._grad-yellow {
+    background-image: linear-gradient(to left, #FBFB00, #AAA739);
 }
 
 
-._open-proj-top-menu {
-    background-image: linear-gradient(left, #F39611, #EE4F10);
+._grad-red {
+    background-image: linear-gradient(to left, #f5515f, #a1051d);
 }
 
-
-._workers-top-menu {
-    background-image: linear-gradient(left, #E02364, #A22650);
+._grad-violet-blue {
+    background-image: linear-gradient(to left, #c53364, #036ed9);
 }
 
-._proj-avrg-top-menu {
-    background-image: linear-gradient(left, #7DC931, #14A143);
-}
-
-._comm-top-menu {
-    background-image: linear-gradient(left, #326DDF, #214B9C);
-}
-
-._allert-top-menu {
-    background-image: linear-gradient(left, #FBFB00, #AAA739);
+._grad-light-blue {
+    background-image: linear-gradient(to left, #0ff0b3, #036ed9);
 }

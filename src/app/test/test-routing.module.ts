@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { TestComponent } from './test/test.component'
 import { ReducedViewTestComponent } from './reduced-view-test/reduced-view-test.component';
 import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component';
+import { ClickWaveComponent } from './click-wave/click-wave.component';
+
 
 const routes: Routes = [
   {
@@ -12,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: 'view', component: ReducedViewTestComponent },
       { path: 'drag', component: DragDropTestComponent },
+      { path: 'click', component: ClickWaveComponent },
     ]
   }
 ];

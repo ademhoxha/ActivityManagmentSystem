@@ -20,6 +20,7 @@ import { PickListModule } from 'primeng/picklist';
 import { TableModule } from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BlockUIModule } from 'primeng/blockui';
+import { FieldsetModule } from 'primeng/fieldset';
 
 // custom shared components
 import { ErrorComponent } from './error/error.component';
@@ -51,7 +52,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     PickListModule,
     TableModule,
     ProgressSpinnerModule,
-    BlockUIModule
+    BlockUIModule,
+    FieldsetModule
   ],
   providers: [
     // 3rd party
@@ -90,6 +92,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     TableModule,
     ProgressSpinnerModule,
     BlockUIModule,
+    FieldsetModule,
 
     // custom shared components
     ErrorComponent,

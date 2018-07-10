@@ -2,8 +2,23 @@
     background-color: red;
 }*/
 
- ._toggle.ui-fieldset .ui-fieldset-legend  {
+.pi-minus:before {
+    color : red;
+}
+
+.pi-plus:before {
+    color: green;
+}
+
+._toggle.ui-fieldset-toggleable .ui-fieldset-legend a {
+    padding: 0px;
+    height: 1.7em;
+    font-size: 75%;
+}
+
+._toggle.ui-fieldset .ui-fieldset-legend  {
     border-color: black;
+    /*background-color: lightgray;*/
 }
 
 ._toggle.ui-fieldset .ui-fieldset-legend:hover  {
@@ -17,9 +32,10 @@
 
 ._green-border {
     border: solid;
-    border-width: 7.5px; 
+    border-width: 10px; 
     border-color: green; 
     width: 10px;
+    color: green; 
 }
 
 ._white-border {
@@ -49,12 +65,10 @@
     border-color: white; 
 }
 
-
-
 ._inline {
     padding:0px !important;
     align-content: center;
-    height: 4em;
+    height: 3em;
 }
 
 ._inline-start-border {
@@ -63,8 +77,8 @@
 ._inline-content {
     width: 100%;
     margin-top: 1em;
-    margin-left:0.5em;
+    margin-left:1em;
 }
 ._inline-end-border {
     width: 1.5px;
-}
+} 

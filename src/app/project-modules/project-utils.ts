@@ -30,4 +30,15 @@ export class ProjectUtils {
        return ret;
     }
 
+    getProjectCost(selledDays, selledCostForDay, estimatedDays, estimatedCostForDay ) : number {
+        return Math.floor(( selledDays * selledCostForDay ) -  ( estimatedDays * estimatedCostForDay ));
+    }
+
+    getProjectNumberOfDays(deliveryDate, startDate) : number {
+        return Math.floor((deliveryDate.getTime() -  startDate.getTime()) / (1000 * 60 * 60 * 24));
+    }
+
+    getProjectWorkers(estimatedDays, numberOfDays) : number {
+        return Math.floor(estimatedDays / (numberOfDays*(0.73) ));
+    }
 }

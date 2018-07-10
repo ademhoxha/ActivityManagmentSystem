@@ -1,21 +1,21 @@
 
-._click-wave-lg {
+._click-wave {
     position: fixed;
     box-sizing:border-box;
     border-style:solid;
-    border-color:white;
+    border-color:black;
     border-radius:50%;
-    animation:clickWave-lg 0.4s ease-out;
+    animation:clickWave 0.4s ease-out;
     z-index:99999;
 }
 
-@keyframes clickWave-lg {
+@keyframes clickWave {
     0%   {
         opacity: 1;
         width: 0.5em;
         height: 0.5em;
         margin: -0.25em;
-        border-width:0.7em;
+        border-width:0.5em;
     }
     100% {
         opacity:0.2;
@@ -28,18 +28,21 @@
 
 
 
-._click-wave-sm {
+
+/*div._click-wave-Special::after {
+    content:"";
     position: fixed;
-    box-sizing:border-box;
-    border-style:solid;
-    border-color:white;
-    border-radius:50%;
-    animation:clickWave-sm 0.4s ease-out;
+    animation:clickWave2 1s ease-out;
     z-index:99999;
 }
 
-@keyframes clickWave-sm {
+@keyframes clickWave2 {
     0%   {
+        box-sizing:border-box;
+        border-style:solid;
+        border-color:black;
+        border-radius:50%;
+
         opacity: 1;
         width: 0.5em;
         height: 0.5em;
@@ -47,12 +50,15 @@
         border-width:0.5em;
     }
     100% {
+        box-sizing:border-box;
+        border-style:solid;
+        border-color:black;
+        border-radius:50%;
+
         opacity:0.2;
-        width:5em; 
-        height:5em;
-        margin:-2.5em;
+        width:15em; 
+        height:15em;
+        margin:-7.5em;
         border-width:0.03em;
     }
-}
-
-
+}*/

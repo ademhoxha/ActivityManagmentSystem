@@ -2,8 +2,8 @@
   <h3>Indeterminate</h3>
   <p-progressBar [style]="{'height': '25px'}" [value]="50" [showValue]="false"></p-progressBar> -->
 
- 
-<p-tabView>
+
+<!--<p-tabView>
   <p-tabPanel header="Header 1">
      Content 1
   </p-tabPanel>
@@ -13,5 +13,67 @@
   <p-tabPanel header="Header 3">
       Content 3    
   </p-tabPanel>
-</p-tabView>
+</p-tabView>-->
 
+<p-fieldset legend="Project Summary" [toggleable]="true" styleClass="_toggle">
+
+    <div class="ui-g-12" style="padding-left:20px;">
+
+        <div class="ui-g-12">
+
+            <div class="ui-g-4 ui-sm-6">
+                <h5>Project Name</h5>
+            </div>
+
+            <div class="ui-g-3 ui-sm-6">
+                <h5>Delivery Date</h5>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">
+                <h5>Number of days</h5>
+            </div>
+
+            <div class="ui-g-3 ui-sm-6">
+                <h5>Project Earnings</h5>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui-g-12">
+        <div class=" _short ui-g-4 ui-sm-6 _inline" style="display: inline-flex;">
+            <div class="_green-border _inline-start-border ">
+            </div>
+            <h5 class="_inline-content">Project Name</h5>
+            <div class="_white-border _inline-end-border">
+            </div>
+        </div>
+
+
+        <div class=" _short ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
+            <h5 class="_inline-content">Delivery Date</h5>
+            <div class="_white-border _inline-end-border">
+            </div>
+        </div>
+
+
+        <div class=" _short  ui-g-2 ui-sm-6 _inline" style="display: inline-flex;">
+            <h5 class="_inline-content">Number of days</h5>
+            <div class="_white-border _inline-end-border">
+            </div>
+        </div>
+
+
+
+        <div class=" _short  ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
+            <h5 class="_inline-content">Project Earnings</h5>
+            <div class="_white-border _inline-end-border">
+            </div>
+        </div>
+    </div>
+
+
+
+</p-fieldset>

@@ -4,15 +4,17 @@ import { TestRoutingModule } from './test-routing.module';
 import { DashboardSharedModule } from '@app/dashboard-page/dashboard-shared/dashboard-shared.module'
 
 import { TestComponent } from './test/test.component'
+import { ClickWaveComponent } from './click-wave/click-wave.component';
 
-import {TreeModule} from 'primeng/tree';
-import {TreeDragDropService} from 'primeng/api';
+import { TreeModule } from 'primeng/tree';
+import { TreeDragDropService } from 'primeng/api';
 import { ReducedViewTestComponent } from './reduced-view-test/reduced-view-test.component';
 import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component';
 
 // 3rd party
-import {ProgressBarModule} from 'primeng/progressbar';
-import {SliderModule} from 'primeng/slider';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { SliderModule } from 'primeng/slider';
+
 
 
 @NgModule({
@@ -26,15 +28,18 @@ import {SliderModule} from 'primeng/slider';
   declarations: [
     TestComponent,
     ReducedViewTestComponent,
-    DragDropTestComponent
+    DragDropTestComponent,
+    ClickWaveComponent
   ],
-  exports : [
+  exports: [
     TestComponent,
+    ClickWaveComponent,
+    DragDropTestComponent,
     TreeModule,
     ProgressBarModule,
     SliderModule
   ],
-  providers : [
+  providers: [
     TreeDragDropService
   ]
 })

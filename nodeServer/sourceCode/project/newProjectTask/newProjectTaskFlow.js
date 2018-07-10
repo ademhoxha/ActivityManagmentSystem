@@ -122,7 +122,6 @@ function findTask(data, callback) {
         projectName : data.query.projectName,
         taskName : data.query.taskName 
     }}
-
     task.find(dataFind, (err, ret) => {
         if (err) {
             console.log("New Project Task => findTask(data, callback) " + err)

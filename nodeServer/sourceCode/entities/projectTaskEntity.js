@@ -44,7 +44,7 @@ function mapInsertData(data){
 
 
 function mapFindRemoveData(data){
-    var retData = { query : {} };
+    var retData = data;
     retData.query.taskAlias = data.query.taskName.toLowerCase();
     if(!retData.query.taskAlias)
         retData.query.taskAlias = data.query.taskAlias.toLowerCase();
@@ -53,7 +53,7 @@ function mapFindRemoveData(data){
 }
 
 function mapUpdateData(data){
-    var retData = { query : {} };
+    var retData = data;
     retData.query.taskAlias = data.query.taskName.toLowerCase();
     if(!retData.query.taskAlias)
         retData.query.taskAlias = data.query.taskAlias.toLowerCase();

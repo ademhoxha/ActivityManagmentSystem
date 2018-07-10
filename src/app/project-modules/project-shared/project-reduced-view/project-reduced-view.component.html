@@ -1,0 +1,62 @@
+<p-fieldset legend="Project Summary" [toggleable]="true" [collapsed]="true" styleClass="_toggle">
+
+  <div class="ui-g-12" style="padding-left:20px; height: 3.5em;">
+
+    <div class="ui-g-12">
+
+      <div class="ui-g-4 ui-sm-6">
+        <h5>Project Name</h5>
+      </div>
+
+      <div class="ui-g-3 ui-sm-6">
+        <h5>Project Earnings</h5>
+      </div>
+
+      <div class="ui-g-2 ui-sm-6">
+        <h5>Number of days</h5>
+      </div>
+
+      <div class="ui-g-3 ui-sm-6">
+        <h5>Estimated workers</h5>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="ui-g-12">
+    <div class=" _short ui-g-4 ui-sm-6 _inline" style="display: inline-flex;">
+      <div class="_green-border _inline-start-border ">
+      </div>
+      <h6 class="_inline-content">{{projectName.value}}</h6>
+      <div class="_white-border _inline-end-border">
+      </div>
+    </div>
+
+
+    <div class=" _short ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
+      <h6 class="_inline-content">{{projectEarnings}}</h6>
+      <div class="_white-border _inline-end-border">
+      </div>
+    </div>
+
+
+    <div class=" _short  ui-g-2 ui-sm-6 _inline" style="display: inline-flex;">
+      <h6 class="_inline-content">{{numberOfDays}}</h6>
+      <div class="_white-border _inline-end-border">
+      </div>
+    </div>
+
+
+
+    <div class=" _short  ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
+      <h6 class="_inline-content">{{estimatedWorkers}}</h6>
+      <div class="_white-border _inline-end-border">
+      </div>
+    </div>
+  </div>
+
+
+
+</p-fieldset>
