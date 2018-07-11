@@ -5,6 +5,7 @@ import { TestComponent } from './test/test.component'
 import { ReducedViewTestComponent } from './reduced-view-test/reduced-view-test.component';
 import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component';
 import { ClickWaveComponent } from './click-wave/click-wave.component';
+import { TableStyleComponent } from './table-style/table-style.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'view', component: ReducedViewTestComponent },
       { path: 'drag', component: DragDropTestComponent },
       { path: 'click', component: ClickWaveComponent },
+      { path: 'table', component: TableStyleComponent },
     ]
   }
 ];

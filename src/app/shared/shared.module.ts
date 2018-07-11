@@ -21,6 +21,7 @@ import { TableModule } from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BlockUIModule } from 'primeng/blockui';
 import { FieldsetModule } from 'primeng/fieldset';
+import { TooltipModule } from 'primeng/tooltip';
 
 // custom shared components
 import { ErrorComponent } from './error/error.component';
@@ -53,7 +54,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     TableModule,
     ProgressSpinnerModule,
     BlockUIModule,
-    FieldsetModule
+    FieldsetModule,
+    TooltipModule
   ],
   providers: [
     // 3rd party
@@ -93,7 +95,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     ProgressSpinnerModule,
     BlockUIModule,
     FieldsetModule,
-
+    TooltipModule,
+    
     // custom shared components
     ErrorComponent,
     LoaderComponent,

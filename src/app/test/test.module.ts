@@ -14,6 +14,7 @@ import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component
 // 3rd party
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SliderModule } from 'primeng/slider';
+import { TableStyleComponent } from './table-style/table-style.component';
 
 
 
@@ -29,7 +30,8 @@ import { SliderModule } from 'primeng/slider';
     TestComponent,
     ReducedViewTestComponent,
     DragDropTestComponent,
-    ClickWaveComponent
+    ClickWaveComponent,
+    TableStyleComponent
   ],
   exports: [
     TestComponent,
@@ -37,7 +39,8 @@ import { SliderModule } from 'primeng/slider';
     DragDropTestComponent,
     TreeModule,
     ProgressBarModule,
-    SliderModule
+    SliderModule,
+    TableStyleComponent
   ],
   providers: [
     TreeDragDropService

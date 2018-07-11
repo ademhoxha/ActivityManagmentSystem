@@ -106,7 +106,7 @@ export class NewProjectComponent implements OnInit {
 
   callService(data) {
 
-    this.newProjectForm.reset();
+    this.reset();
 
     this.loader = true;
 
@@ -163,7 +163,9 @@ export class NewProjectComponent implements OnInit {
     }
 
     if(estDays > 0 && this.numberOfDays && this.numberOfDays > 0){
-      this.workers = validationClass.getProjectWorkers(estDays, this.numberOfDays)
+      this.workers = validationClass.getProjectWorkers(estDays, this.numberOfDays);
+    }else{
+      this.workers = 0;
     }
 
   }
@@ -172,6 +174,11 @@ export class NewProjectComponent implements OnInit {
     this.date1 = data["startDate"];
     this.date2 = data["endDate"];
     this.projectReducedView(data["startDate"],data["endDate"]);
+  }
+
+  reset(){
+    this.newProjectForm.reset();
+    this.projectReducedView(this.date1, this.date2);
   }
 
 }

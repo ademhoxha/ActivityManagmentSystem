@@ -115,7 +115,7 @@
       <button type="submit" class="btn btn-success" (click)='newProject(dates.startDate, dates.endDate)' [(disabled)]="!newProjectForm.valid && dates.startDate && dates.endDate">
         <i class="fa fa-dot-circle-o"></i> Submit
       </button>
-      <button type="reset" class="btn btn-danger" (click)="newProjectForm.reset();">
+      <button type="reset" class="btn btn-danger" (click)="reset()">
         <i class="fa fa-ban"></i> Reset
       </button>
     </div>
