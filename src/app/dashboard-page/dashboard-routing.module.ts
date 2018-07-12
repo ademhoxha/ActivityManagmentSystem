@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: 'app/project-modules/new-project-team/new-project-team.module#NewProjectTeamModule'
       },
       {
+        path: 'removeprojectmember',
+        loadChildren: 'app/project-modules/remove-project-member/remove-project-member.module#RemoveProjectMemberModule'
+      },
+      {
         path: 'newprojecttask',
         loadChildren: 'app/project-modules/new-project-task/new-project-task.module#NewProjectTaskModule'
       }

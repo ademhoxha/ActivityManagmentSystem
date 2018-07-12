@@ -6,11 +6,11 @@ import { ProjectApiService } from '@app/project-modules/project-core/project-api
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-new-project-team',
-  templateUrl: './new-project-team.component.html',
-  styleUrls: ['./new-project-team.component.css']
+  selector: 'app-remove-project-member',
+  templateUrl: './remove-project-member.component.html',
+  styleUrls: ['./remove-project-member.component.css']
 })
-export class NewProjectTeamComponent implements OnInit {
+export class RemoveProjectMemberComponent implements OnInit {
 
   resultFlag: boolean = false;
   resultData = {};
@@ -34,10 +34,10 @@ export class NewProjectTeamComponent implements OnInit {
     this.tabSelected = {};
 
     this.tabDisabled["search"] = false;
-    this.tabDisabled["insertTeam"] = true;
+    this.tabDisabled["editTeam"] = true;
 
     this.tabSelected["search"] = true;
-    this.tabSelected["insertTeam"] = false;
+    this.tabSelected["editTeam"] = false;
 
     this.resetUserList = false;
   }
@@ -59,10 +59,10 @@ export class NewProjectTeamComponent implements OnInit {
 
     this.resetUserList = false;
 
-    this.tabDisabled["insertTeam"] = false;
+    this.tabDisabled["editTeam"] = false;
 
     this.tabSelected["search"] = false;
-    this.tabSelected["insertTeam"] = true;
+    this.tabSelected["editTeam"] = true;
 
     setTimeout(() => { this.resetUserList = true; }, 150)
   }
@@ -71,11 +71,11 @@ export class NewProjectTeamComponent implements OnInit {
     console.log("INDEX: " + event.index);
     if (event.index == 0) {
       this.tabSelected["search"] = true;
-      this.tabSelected["insertTeam"] = false;
+      this.tabSelected["editTeam"] = false;
     }
     else {
       this.tabSelected["search"] = false;
-      this.tabSelected["insertTeam"] = true;
+      this.tabSelected["editTeam"] = true;
     }
   }
 
@@ -107,14 +107,14 @@ export class NewProjectTeamComponent implements OnInit {
     this.targetList.forEach(element => {
       userList.push(element.value);
     })
-    data["newProjectMembers"] = userList;
+    data["removedlist"] = userList;
 
     this.resetList()
     this.loader = true;
 
     // call service
     console.log(data)
-    this.projectAPI.projectEditTeamRequest(data).then((res: any) => {
+    this.projectAPI.projectRemoveTeamMemberRequest(data).then((res: any) => {
       console.log("status: " + res.status)
       this.loader = false;
 
@@ -136,7 +136,6 @@ export class NewProjectTeamComponent implements OnInit {
   sourceList = [];
   targetList = [];
   onPickUp(data) {
-    console.log(data)
     this.sourceList = data['sourceList'];
     this.targetList = data['targetList'];
   }

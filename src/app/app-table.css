@@ -39,8 +39,8 @@
 }
 
 ._table-custom.ui-table .ui-table-thead > tr > th, ._table-custom.ui-table .ui-table-tfoot > tr > td {
-    padding-top: 1.25em;
-    padding-bottom: 1.25em;
+    padding-top: 1.10em;
+    padding-bottom: 1.10em;
     text-align: center;
 
     font-family: Montserrat-Medium;

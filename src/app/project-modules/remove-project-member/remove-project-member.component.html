@@ -5,7 +5,7 @@
 
 <div class="card">
   <div class="card-header">
-    <strong class="card-title">Insert a New Project Team</strong>
+    <strong class="card-title">Modify a Project Team</strong>
   </div>
   <div class="card-body" style="width:'100%'">
 
@@ -19,7 +19,7 @@
       </p-tabPanel>
 
 
-      <p-tabPanel header="Team Modify" leftIcon="fa-th-list" [selected]="tabSelected['insertTeam']" [disabled]="tabDisabled['insertTeam']" styleClass="_tabView">
+      <p-tabPanel header="Team Modify" leftIcon="fa-th-list" [selected]="tabSelected['editTeam']" [disabled]="tabDisabled['editTeam']" styleClass="_tabView">
 
         <div *ngIf="resetUserList">
           <app-project-user-list-table [inputData]="availableUsersInputData" (errorFunction)="userListError($event)"></app-project-user-list-table>
@@ -27,9 +27,9 @@
         </div>
 
         <div class="col-md-10" *ngIf="resetUserList">
-          <h4 class="col-md-12">Add Users to the project</h4>
+          <h4 class="col-md-12">Remove Users from the project</h4>
           <br>
-          <app-pick-project-available-users [inputData]="availableUsersInputData" (errorFunction)="userListError($event)" (returnFunction)="onPickUp($event)"></app-pick-project-available-users>
+          <app-remove-project-user-pu [inputData]="availableUsersInputData" (errorFunction)="userListError($event)" (returnFunction)="onPickUp($event)"></app-remove-project-user-pu>
         </div>
       </p-tabPanel>
 

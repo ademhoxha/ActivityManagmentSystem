@@ -95,6 +95,30 @@ export class ProjectApiService {
     });
   }
 
+
+  projectRemoveTeamMemberRequest(data): Promise<void | any> {
+    let url = "/api/project/removeTeamMembers";
+    const body = { 
+      projectName : data.projectName,
+      removedlist :  data.removedlist
+    }; 
+    console.log("ProjectName: "+data.projectName)
+    return this.http.post(url, body).toPromise().then((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    }).catch((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    });
+  }
+
+
   newProjectTaskRequest(data): Promise<void | any> {
     let url = "/api/project/newProjectTask";
     const body = { 
