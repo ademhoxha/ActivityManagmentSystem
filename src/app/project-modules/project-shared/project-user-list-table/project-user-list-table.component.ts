@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-project-user-list-table',
   templateUrl: './project-user-list-table.component.html',
+  
   styleUrls: ['./project-user-list-table.component.css']
 })
 export class ProjectUserListTableComponent implements OnInit {

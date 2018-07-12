@@ -1,0 +1,65 @@
+._table-violet-grad-color  {
+    background: #7918f2;
+    background: -webkit-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: -o-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: -moz-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: linear-gradient(-68deg, #ac32e4 , #4801ff)
+}
+
+._table-dark-color {
+    background-color: black;
+}
+
+._table-custom-div {
+    position: relative;
+    border: 1px solid;
+    border-radius: 16px; 
+    overflow: hidden;
+}
+
+/*._table-custom.ui-widget,*/ ._table-custom.ui-widget .ui-table-wrapper * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: transparent !important;
+    color: white;
+}
+
+._table-custom.ui-table .ui-table-tbody > tr > td {
+    border: 0px;
+}
+
+._table-custom.ui-table .ui-table-tbody>tr>td, ._table-custom.ui-table .ui-table-tfoot>tr>td {
+    padding-top: .85em;
+    padding-bottom: .85em;
+    text-align: center;
+
+    font-family: Montserrat-Regular;
+    font-weight: unset;
+    font-size: 14px;
+}
+
+._table-custom.ui-table .ui-table-thead > tr > th, ._table-custom.ui-table .ui-table-tfoot > tr > td {
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
+    text-align: center;
+
+    font-family: Montserrat-Medium;
+    font-weight: unset;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: rgba(255,255,255,0.32) !important;
+    color: #fff;
+    border: 0px;
+}
+
+/*._table-custom.ui-table .ui-table-thead>tr:hover>th,*/ ._table-custom.ui-table .ui-table-tbody>tr:hover>td, ._table-custom.ui-table .ui-table-tfoot>tr:hover>td {
+    background-color: rgba(255,255,255,0.1) !important;
+}
+
+/*._table-custom.ui-table .ui-table-thead>tr:hover>th:hover,*/ ._table-custom.ui-table .ui-table-tbody>tr:hover>td:hover, ._table-custom.ui-table .ui-table-tfoot>tr:hover>td:hover {
+    background-color: rgba(255,255,255,0.25) !important;
+    border:1px solid white;
+    text-decoration: underline;
+    font-size: 18px;
+    text-transform: uppercase;
+}

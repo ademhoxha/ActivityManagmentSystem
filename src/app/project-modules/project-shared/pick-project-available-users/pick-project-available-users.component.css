@@ -1,0 +1,45 @@
+.ui-picklist .ui-picklist-filter-container .ui-picklist-filter {
+    border-radius: 10px;
+    border-color: #85144b;
+}
+
+.ui-picklist .ui-picklist-caption {
+    background: #7918f2;
+    background: -webkit-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: -o-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: -moz-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: linear-gradient(-68deg, #ac32e4 , #4801ff);
+    color: white;
+
+    font-family: Montserrat-Medium;
+    font-weight: unset;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.ui-corner-bottom {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+/*
+.ui-picklist-buttons-cell * {
+    background: #7918f2;
+    background: -webkit-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: -o-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: -moz-linear-gradient(-68deg, #ac32e4 , #4801ff);
+    background: linear-gradient(-68deg, #ac32e4 , #4801ff);
+}
+
+.ui-picklist-buttons-cell .ui-button-icon-only .ui-button-icon-left {
+    border: 1px solid white;
+    border-radius: 16px;
+}
+
+.ui-button:hover {
+    background-color: rgba(255,255,255,0.25) !important;
+}
+*/

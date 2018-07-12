@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
 import { ProjectApiService } from '@app/project-modules/project-core/project-api.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-pick-project-available-users',
   templateUrl: './pick-project-available-users.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./pick-project-available-users.component.css']
 })
 export class PickProjectAvailableUsersComponent implements OnInit {
