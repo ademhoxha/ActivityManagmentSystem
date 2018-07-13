@@ -33,7 +33,7 @@ export class RemoveProjectUserPuComponent implements OnInit {
 
       console.log("status: " + res.status)
       if (res.status == 200) {
-        this.userList = res.userList;
+        this.userList = res.projectTeam;
         this.loaded = true;
       }
       else if (res.status == 401) {

@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-md-10" *ngIf="resetUserList">
-          <h4 class="col-md-12">Add Users to the project</h4>
+          <!--<h4 class="col-md-12">Add Users to the project</h4>-->
           <br>
           <app-pick-project-available-users [inputData]="availableUsersInputData" (errorFunction)="userListError($event)" (returnFunction)="onPickUp($event)"></app-pick-project-available-users>
         </div>

@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-md-10" *ngIf="resetUserList">
-          <h4 class="col-md-12">Remove Users from the project</h4>
+        <!--  <h4 class="col-md-12">Remove Users from the project</h4> -->
           <br>
           <app-remove-project-user-pu [inputData]="availableUsersInputData" (errorFunction)="userListError($event)" (returnFunction)="onPickUp($event)"></app-remove-project-user-pu>
         </div>
