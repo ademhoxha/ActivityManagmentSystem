@@ -1,17 +1,22 @@
+// load db schema
+var models = require('../../entities/models').Models;
+var entitiesFactory = require('mongodb-entities').entitiesFactory;
+entitiesFactory.setModel(models);
+
 var flow = require('./newProjectTaskFlow');
 
 var data = {
     taskFounder: "adem.hoxha@hotmail.it",
-    projectName: "NewTaskPrj",
-    taskName: "Task555",
+    projectName: "TaskAAA",
+    taskName: "Task000",
     startDate: new Date(),
     deliveryDate: new Date(),
     selledDays: 10,
     estimatedDays: 5,
     selledCostForDay: 300,
-    estimatedCostForDay: 125
+    estimatedCostForDay: 125,
+    extraDays: 17,
 }
-
 
 flow.TestFlow(data, (err, ret) => {
     if (err) {

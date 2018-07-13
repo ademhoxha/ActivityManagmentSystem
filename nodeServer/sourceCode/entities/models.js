@@ -23,21 +23,6 @@ var models = {
         mobilephone: String,
     },
 
-    OtpReceiver: {
-        receiver: String,
-        otp: {
-            code: String,
-            date: Date,
-            time: Number
-        }
-    },
-
-    otpManager: {
-        date: Date,
-        total: Number,
-        mailList: [],
-        lastTime: Number
-    },
     Project: {
         projectName: String,
         projectAlias: String,
@@ -51,6 +36,8 @@ var models = {
         projectFounder: {},
         projectTeam: [],
         projectTasks: [],
+
+        extraDays: [],
 
         projectNotes: [],
         isClosed: Boolean,
@@ -67,14 +54,45 @@ var models = {
         estimatedDays: Number,
         selledCostForDay: Number,
         estimatedCostForDay: Number,
-        completion: Number,
+
+        completionPercentage: Number,
+
+        extraDays: Number,
 
         taskFounder: {},
         taskTeam: [],
 
         taskNotes: [],
         isClosed: Boolean,
-    }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+    OtpReceiver: {
+        receiver: String,
+        otp: {
+            code: String,
+            date: Date,
+            time: Number
+        }
+    },
+
+    otpManager: {
+        date: Date,
+        total: Number,
+        mailList: [],
+        lastTime: Number
+    },
 }
 
 

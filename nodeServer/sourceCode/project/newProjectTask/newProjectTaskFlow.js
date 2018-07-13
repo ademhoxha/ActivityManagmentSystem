@@ -19,7 +19,7 @@ class NewProjectTaskFlow extends BaseFlow {
 
 module.exports = {
     NewProjectTaskFlow: NewProjectTaskFlow,
-    TestFlow : StartFlow // only for test
+    TestFlow: StartFlow // only for test
 }
 
 class NewTaskRequest extends BaseControllerChain {
@@ -41,8 +41,8 @@ class NewTaskRequest extends BaseControllerChain {
                 selledDays: req.body.selledDays,
                 estimatedDays: req.body.estimatedDays,
                 selledCostForDay: req.body.selledCostForDay,
-                estimatedCostForDay: req.body.estimatedCostForDay
-
+                estimatedCostForDay: req.body.estimatedCostForDay,
+                projectExtraDays: req.body.extraDays,
             };
             StartFlow(data, (err, ret) => {
                 if (err) {
@@ -77,7 +77,8 @@ function StartFlow(userData, callback) {
         selledDays: userData.selledDays,
         estimatedDays: userData.estimatedDays,
         selledCostForDay: userData.selledCostForDay,
-        estimatedCostForDay: userData.estimatedCostForDay
+        estimatedCostForDay: userData.estimatedCostForDay,
+        projectExtraDays: userData.extraDays,
     };
     // validation Data TODO
     findProject(data, callback);
@@ -95,16 +96,41 @@ function findProject(data, callback) {
             return callback(returnCodeFactory.dbError());
         }
         else if (ret && ret[0]) {
-            console.log("PROJECT FOUND")
+            console.log("Project Found")
             var elabData = {};
             elabData.mongoObj = ret;
-            elabData.properties = ["projectTasks"];
+            elabData.properties = ["projectTasks", "extraDays"];
             var retList = mongoOperations.getJSONPropertiesfromMongo(elabData);
 
             data.info = {};
-            data.info.projectTasks = [data.query.taskName];
+            data.info.projectTasks = [{
+                taskName: data.query.taskName,
+                estimatedDays: data.query.estimatedDays
+            }];
             if (retList && retList[0].projectTasks && retList[0].projectTasks.length > 0) {
-                data.info.projectTasks = data.info.projectTasks.concat(retList[0].projectTasks)
+
+                // can be used but is prefered to use the task find query (method findTask)
+                /*  retList[0].projectTasks.forEach(element => {
+                      if(element.taskName.toLowerCase() == data.query.taskName.toLowerCase()){
+                          console.log("This project has a task with the same name")
+                          return callback(returnCodeFactory.dataError("Task Name Used"));
+                      }
+                  });*/
+
+                data.info.projectTasks = data.info.projectTasks.concat(retList[0].projectTasks);
+            }
+
+            // extra days
+            if (data.query.projectExtraDays && data.query.projectExtraDays > 0) {
+                data.info.extraDays = [];
+                if (retList && retList[0].extraDays && retList[0].extraDays.length > 0) {
+                    data.info.extraDays = retList[0].extraDays;
+                }
+                data.info.extraDays = data.info.extraDays.concat([{
+                    taskName: data.query.taskName,
+                    extraDays: data.query.projectExtraDays
+                }]);
+                console.log(data.info.extraDays)
             }
 
             return findTask(data, callback);
@@ -116,20 +142,21 @@ function findProject(data, callback) {
     });
 }
 
-
 function findTask(data, callback) {
-    var dataFind = { query : {
-        projectName : data.query.projectName,
-        taskName : data.query.taskName 
-    }}
+    var dataFind = {
+        query: {
+            projectName: data.query.projectName,
+            taskName: data.query.taskName
+        }
+    }
     task.find(dataFind, (err, ret) => {
         if (err) {
             console.log("New Project Task => findTask(data, callback) " + err)
             return callback(returnCodeFactory.dbError());
         }
         else if (ret && ret[0]) {
-           console.log("This project has a task with the same name")
-           return callback(returnCodeFactory.dataError("Task Name Used"));
+            console.log("This project has a task with the same name")
+            return callback(returnCodeFactory.dataError("Task Name Used"));
         }
 
         console.log("Task Name Available for this project");
@@ -146,22 +173,27 @@ function newTask(data, callback) {
             console.log("New Project Task => newTask(data, callback) " + err)
             return callback(returnCodeFactory.dbError());
         }
-        console.log("NEW TASK")
+        console.log("Task Added")
         return editProject(data, callback);
     });
 }
 
 function editProject(data, callback) {
     var dataUpdate = { query: {}, update: {} }
+
     dataUpdate.query.projectName = data.query.projectName;
+
     dataUpdate.update.projectTasks = data.info.projectTasks;
+
+    if (data.info.extraDays)
+        dataUpdate.update.extraDays = data.info.extraDays;
 
     project.update(dataUpdate, (err, ret) => {
         if (err) {
             console.log("New Project Task => editProject(data, callback) " + err)
             return callback(returnCodeFactory.dbError());
         }
-        console.log("PROJECT EDITED")
+        console.log("Project Successfuly Modified")
         return findUser(data, callback);
     });
 }
@@ -178,7 +210,7 @@ function findUser(data, callback) {
             return callback(returnCodeFactory.dbError());
         }
         else if (ret && ret[0]) {
-            console.log("USER FOUND")
+            console.log("User Found")
             var elabData = {};
             elabData.mongoObj = ret;
             elabData.properties = ["tasks"];
@@ -208,7 +240,7 @@ function updateUser(data, callback) {
             console.log("New Project Task => updateUser(data, callback) " + err)
             return callback(returnCodeFactory.dbError());
         }
-        console.log("USER UPDATED")
+        console.log("User Updated")
         return callback(undefined, true);
     });
 }

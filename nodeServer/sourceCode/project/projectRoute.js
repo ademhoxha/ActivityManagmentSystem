@@ -5,6 +5,7 @@ var ProjectAvailableUsersRoute = require('./projectAvailableUsers/projectAvailab
 var EditProjectTeamRoute = require('./editProjectTeam/editProjectTeamRoute').EditProjectTeamRoute;
 var NewProjectTaskRoute = require('./newProjectTask/newProjectTaskRoute').NewProjectTaskRoute;
 var RemoveProjectMembersRoute = require('./removeProjectMembers/removeProjectMembersRoute').RemoveProjectMembersRoute;
+var GetProjectRoute = require('./getProject/getProjectRoute').GetProjectRoute;
 
 class ProjectRoute extends baseRoute {
 
@@ -15,6 +16,7 @@ class ProjectRoute extends baseRoute {
         var editProjectTem = new EditProjectTeamRoute();
         var newProjectTaskRoute = new NewProjectTaskRoute();
         var removeProjectMembersRoute = new RemoveProjectMembersRoute();
+        var getProjectRoute = new GetProjectRoute();
         
         newProject.applyRoute();
         projectList.applyRoute();
@@ -22,6 +24,7 @@ class ProjectRoute extends baseRoute {
         editProjectTem.applyRoute();
         newProjectTaskRoute.applyRoute();
         removeProjectMembersRoute.applyRoute();
+        getProjectRoute.applyRoute();
     }
 
 }

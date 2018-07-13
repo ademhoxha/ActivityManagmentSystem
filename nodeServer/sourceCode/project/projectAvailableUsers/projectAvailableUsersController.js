@@ -62,9 +62,9 @@ class AvailableUsers extends BaseControllerChain {
                     console.log(ret.userList)*/
                     return res.status(succ.code).json({
                         message: succ.message,
-                        userList: ret.userList, 
-                        availableUserList: ret.availableUserList, 
-                        projectTeam : ret.projectTeam
+                        userList: ret.userList,
+                        availableUserList: ret.availableUserList,
+                        projectTeam: ret.projectTeam
                     });
                 }
             });
@@ -138,7 +138,7 @@ function findProject(data, callback) {
         if (retList[0].projectFounder)
             nextData.query.userList.push(retList[0].projectFounder);
 
-        if (retList[0].projectTeam && retList[0].projectTeam.length > 0){
+        if (retList[0].projectTeam && retList[0].projectTeam.length > 0) {
             nextData.query.userList = nextData.query.userList.concat(retList[0].projectTeam);
             nextData.query.projectTeam = retList[0].projectTeam;
         }
@@ -189,8 +189,10 @@ function mapResult(data, callback) {
     data.query.availableUserList.forEach(element => {
         ret.availableUserList.push({ label: element, value: element })
     });
-    data.query.projectTeam.forEach(element => {
-        ret.projectTeam.push({ label: element, value: element })
-    });
+    if (data.query.projectTeam) {
+        data.query.projectTeam.forEach(element => {
+            ret.projectTeam.push({ label: element, value: element })
+        });
+    }
     return callback(undefined, ret);
 }

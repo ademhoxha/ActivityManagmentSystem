@@ -18,8 +18,6 @@ export class NewProjectTeamComponent implements OnInit {
   constructor( private projectAPI: ProjectApiService, private router: Router) {
   }
 
-
-
   ngOnInit() {
     this.initTabview();
   }

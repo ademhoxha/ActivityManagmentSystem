@@ -12,6 +12,7 @@ export class DropdownListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.selectedItem = this.list[0].value;
+    if(this.list[0])
+      this.selectedItem = this.list[0].value;
   }
 }

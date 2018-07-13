@@ -8,7 +8,7 @@
       <app-dropdown-list [list]="projectList" #pL></app-dropdown-list>
     </div>
     <div class="col-md-6">
-      <button class="btn btn-primary" (click)="projectSearch(pL.selectedItem)">Search</button>
+      <button class="btn btn-primary" (click)="projectSearch(pL.selectedItem)" [disabled]="!pL.selectedItem">Search</button>
     </div>
   </div>
 </div>

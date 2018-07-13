@@ -27,7 +27,6 @@ class RemoveProjectMembersRequest extends BaseControllerChain {
         super(nextStep);
     }
     apply(req, res, next) {
-        console.log(req.path)
         if (req.path.toLowerCase() != "/api/project/removeteammembers") {
             return super.next(req, res, next);
         }
