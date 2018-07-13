@@ -4,35 +4,96 @@
     border: 1px;
 }
 
- /*._tabView.ui-tabview .ui-tabview-nav {
-    margin: 0;
-    padding: .25em .5em 0 .25em;
-    background: #1976d2!important;
+.ui-g-12._projectSummary {
+    background-color: lightgrey;
+    padding: 0em;
 }
 
-._tabView.ui-state-disabled {
-    background: #1976d2!important;
+
+._green-border {
+    border: solid;
+    border-width: 10px; 
+    border-color: green; 
+    width: 10px;
+    color: green; 
+    width: 10px;
 }
 
-._tabView .ui-tabview-nav .ui-state-disabled *, ._tabView .ui-tabview-nav .ui-widget:disabled *  {
-    color: white!important;
-    font-weight: 400!important;
-    text-shadow: none;
+._content {
+    /*width: 100%-10px;*/
+    padding-top:1.6em;
+    padding-bottom:1.6em;
+    padding-left: 0.2em;
 }
 
-._tabView .ui-tabview-nav .ui-state-disabled, ._tabView .ui-tabview-nav .ui-widget:disabled {
-    opacity: 0.8;
-    background:gray!important;
+._padding {
+    padding: 0em;
+    height: 5em;
 }
 
-.ui-tabview .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled) a {
-    background: #1976d2!important;
-    color: white!important;
-    font-weight: 400!important;
-    text-shadow: none;
+.ui-inputswitch {
+    height: 100%;
+    color: red;
+    border: 1.5px solid #85144b;
+    border-radius: 16px;
 }
 
-.ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled) a:hover {
-    text-decoration: underline;
+.ui-inputswitch .ui-inputswitch-on span/*, .ui-inputswitch .ui-inputswitch-off span*/ {
+    color: green;
+    background-color: white;
+}
+
+._estimated_days {
+    display: inline-flex;
+}
+
+._estimated_days_group {
+    width: 50%;
+}
+
+._cost-group {
+    width: 55%;
+    margin-right: 0.3em;
+}
+
+._cost-group-div {
+    display: inline-flex;
+}
+
+@media (max-width: 990px) {
+    ._estimated_days {
+        display: block;
+    }
+
+    /* To have same type */
+
+    ._cost-group-div {
+        display: block;
+    }
+
+    ._cost-group {
+        width: 100%;
+        margin-right: 0em;
+    }
+
+    ._double-date-div {
+        display: block !important;
+    }
+
+    ._double-date {
+        width: 100% !important;
+        margin-right: 0em !important;
+    }
+}
+
+
+/*@media (max-width: 770px) {
+    ._cost-group-div {
+        display: block;
+    }
+
+    ._cost-group {
+        width: 100%;
+        margin-right: 0em;
+    }
 }*/
-

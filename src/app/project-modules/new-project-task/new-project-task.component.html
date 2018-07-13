@@ -18,21 +18,38 @@
       </p-tabPanel>
 
 
-      <p-tabPanel header="Insert a new Task" leftIcon="fa-th-list" [selected]="tabSelected['insertTask']" [disabled]="tabDisabled['insertTask']" styleClass="_tabView"> 
+      <p-tabPanel header="Insert a new Task" leftIcon="fa-th-list" [selected]="tabSelected['insertTask']" [disabled]="tabDisabled['insertTask']"
+        styleClass="_tabView">
 
-        <div *ngIf="resetTaskView">
+        <!--    <div *ngIf="resetTaskView">
 
-          <!--  get task list   -->
-          <h4 class="col-md-12">Show task</h4>
+  
+        <h4 class="col-md-12">Show task</h4> 
 
-        </div>
+        </div> -->
 
         <div class="ui-g">
 
-          <h4 class="col-md-12">Add New Task</h4>
+          <!--  <h4 class="col-md-12">Add New Task</h4> -->
 
           <form name="componentForm" id="componentForm" [formGroup]="componentForm">
 
+            <div class="ui-g-12 _projectSummary">
+              <div class="ui-g-3 ui-sm-12 _padding" style="display: inline-flex;">
+                <div class="_green-border"></div>
+                <h4 class="_content">Project Dates: </h4>
+              </div>
+
+              <div class="ui-g-3 ui-sm-12 _padding">
+                <h4 class="_content">Project Remaning Days: </h4>
+              </div>
+              <div class="ui-g-3 ui-sm-12 _padding">
+                <h4 class="_content">Project Actual Extra Days: </h4>
+              </div>
+              <div class="ui-g-3 ui-sm-12 _padding">
+                <h4 class="_content">Other: </h4>
+              </div>
+            </div>
 
 
             <div class="ui-g-12">
@@ -52,34 +69,78 @@
               <app-start-end-date #dates></app-start-end-date>
             </div>
 
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
+     <!--       <div class="ui-g-12">
               <div class="form-group">
-                <label>Task Selled Days Number</label>
+                <label> Task Selled Days Number</label>
                 <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-hourglass-start" style="width: 15px;"></i>
+                  <div style="display: inline-flex;">
+                    <div style="margin-right: 0.3em">
+                      <p-spinner [min]="0" [max]="100" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
+                    </div>
+                    <div style="margin-right: 0.3em">
+                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
+                    </div>
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
                   </div>
-                  <p-inputMask name="selledDays" formControlName="selledDays" type="text" class="form-control" id='selledDays' placeholder="0"
-                    mask="9?999" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
                 </div>
               </div>
             </div>
 
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
+            <div class="ui-g-12">
               <div class="form-group">
-                <label>Task Estimated Days Number</label>
+                <label> Task Estimated Days Number</label>
                 <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-hourglass-end" style="width: 15px;"></i>
+                  <div style="display: inline-flex;">
+                    <div style="margin-right: 0.3em">
+                      <p-spinner [min]="0" [max]="100" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
+                    </div>
+                    <div style="margin-right: 0.3em">
+                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
+                    </div>
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
                   </div>
-                  <p-inputMask name="estimatedDays" formControlName="estimatedDays" type="text" class="form-control" id='estimatedDays' placeholder="0"
-                    mask="9?999" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                </div>
+              </div>
+            </div> -->
+
+
+
+
+
+            <div class="ui-g-12 _estimated_days">
+              <div class="form-group  _estimated_days_group" style="margin-right: 0.3em">
+                <label> Task Selled Days Number</label>
+                <div class="input-group">
+                  <div style="display: inline-flex;">
+                    <div style="margin-right: 0.3em">
+                      <p-spinner [min]="0" [max]="100" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
+                    </div>
+                    <div style="margin-right: 0.3em">
+                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
+                    </div>
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group _estimated_days_group">
+                <label> Task Estimated Days Number</label>
+                <div class="input-group">
+                  <div style="display: inline-flex;">
+                    <div style="margin-right: 0.3em">
+                      <p-spinner [min]="0" [max]="100" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
+                    </div>
+                    <div style="margin-right: 0.3em">
+                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
+                    </div>
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
-              <div class="form-group">
+            <div class="ui-g-12 _cost-group-div">
+              <div class="form-group _cost-group">
                 <label>Task Selled Cost for Day</label>
                 <div class="input-group">
                   <div class="input-group-addon">
@@ -89,10 +150,8 @@
                     placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
                 </div>
               </div>
-            </div>
-
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
-              <div class="form-group">
+           
+              <div class="form-group  _cost-group">
                 <label>Task Estimated Cost for Day</label>
                 <div class="input-group">
                   <div class="input-group-addon">

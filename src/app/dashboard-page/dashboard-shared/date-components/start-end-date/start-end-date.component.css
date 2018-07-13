@@ -27,3 +27,28 @@
     text-decoration: underline;
     color: darkred;
 }
+
+
+._double-date {
+    width: 55%;
+    margin-right: 0.3em;
+}
+
+._double-date-div {
+    display: inline-flex;
+}
+
+._no-padding {
+    padding-left: 0em;
+}
+
+@media (max-width: 770px) {
+    ._double-date-div {
+        display: block;
+    }
+
+    ._double-date {
+        width: 100%;
+        margin-right: 0em;
+    }
+}

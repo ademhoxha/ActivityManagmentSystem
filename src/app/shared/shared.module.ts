@@ -22,6 +22,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BlockUIModule } from 'primeng/blockui';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TooltipModule } from 'primeng/tooltip';
+import { SpinnerModule } from 'primeng/spinner';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 // custom shared components
 import { ErrorComponent } from './error/error.component';
@@ -55,7 +57,9 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     ProgressSpinnerModule,
     BlockUIModule,
     FieldsetModule,
-    TooltipModule
+    TooltipModule,
+    SpinnerModule,
+    InputSwitchModule
   ],
   providers: [
     // 3rd party
@@ -96,7 +100,9 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     BlockUIModule,
     FieldsetModule,
     TooltipModule,
-    
+    SpinnerModule,
+    InputSwitchModule,
+
     // custom shared components
     ErrorComponent,
     LoaderComponent,

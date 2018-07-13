@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-project-task',
   templateUrl: './new-project-task.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./new-project-task.component.css']
 })
 export class NewProjectTaskComponent implements OnInit {
@@ -64,7 +65,8 @@ export class NewProjectTaskComponent implements OnInit {
     this.tabSelected = {};
 
     this.tabDisabled["search"] = false;
-    this.tabDisabled["insertTask"] = true;
+    //this.tabDisabled["insertTask"] = true; 
+    this.tabDisabled["insertTask"] = false; // only debug
 
     this.tabSelected["search"] = true;
     this.tabSelected["insertTask"] = false;
