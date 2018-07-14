@@ -64,7 +64,9 @@
     ._estimated_days {
         display: block;
     }
-
+    ._estimated_days_group {
+        width: 100%;
+    }
     /* To have same type */
 
     ._cost-group-div {
@@ -83,6 +85,45 @@
     ._double-date {
         width: 100% !important;
         margin-right: 0em !important;
+    }
+}
+
+._days-content{
+    display: inline-flex;
+    width: 100%;
+    max-width: 216px;
+}
+
+
+@media (max-width: 500px) {
+    ._days-content{
+        display: block;
+    }
+
+    .ui-inputswitch{
+        height: 1.5em !important;
+        margin-top: 0.7em;
+        margin-bottom: 0.7em;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 300px) {
+
+   .ui-inputswitch-on span {
+        display: none !important;
+    }
+
+    .ui-inputswitch-on:after {
+        content: 'Yes' !important;
+    }
+
+    .ui-inputswitch-off span {
+        display: none !important;
+    }
+
+    .ui-inputswitch-off:after {
+        content: 'No' !important;
     }
 }
 

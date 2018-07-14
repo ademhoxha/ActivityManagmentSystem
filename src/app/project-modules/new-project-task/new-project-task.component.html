@@ -28,12 +28,10 @@
 
         </div> -->
 
-        <div class="ui-g">
+        <!--  <h4 class="col-md-12">Add New Task</h4> -->
 
-          <!--  <h4 class="col-md-12">Add New Task</h4> -->
-
-          <form name="componentForm" id="componentForm" [formGroup]="componentForm">
-
+        <form name="componentForm" id="componentForm" [formGroup]="componentForm">
+          <div class="ui-g">
             <div class="ui-g-12 _projectSummary">
               <div class="ui-g-3 ui-sm-12 _padding" style="display: inline-flex;">
                 <div class="_green-border"></div>
@@ -69,7 +67,7 @@
               <app-start-end-date #dates></app-start-end-date>
             </div>
 
-     <!--       <div class="ui-g-12">
+            <!--       <div class="ui-g-12">
               <div class="form-group">
                 <label> Task Selled Days Number</label>
                 <div class="input-group">
@@ -111,7 +109,7 @@
               <div class="form-group  _estimated_days_group" style="margin-right: 0.3em">
                 <label> Task Selled Days Number</label>
                 <div class="input-group">
-                  <div style="display: inline-flex;">
+                  <div class="_days-content">
                     <div style="margin-right: 0.3em">
                       <p-spinner [min]="0" [max]="100" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
                     </div>
@@ -126,7 +124,7 @@
               <div class="form-group _estimated_days_group">
                 <label> Task Estimated Days Number</label>
                 <div class="input-group">
-                  <div style="display: inline-flex;">
+                  <div class="_days-content">
                     <div style="margin-right: 0.3em">
                       <p-spinner [min]="0" [max]="100" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
                     </div>
@@ -150,7 +148,7 @@
                     placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
                 </div>
               </div>
-           
+
               <div class="form-group  _cost-group">
                 <label>Task Estimated Cost for Day</label>
                 <div class="input-group">
@@ -163,10 +161,10 @@
               </div>
             </div>
 
+          </div>
+        </form>
 
-          </form>
 
-        </div>
       </p-tabPanel>
 
     </p-tabView>
