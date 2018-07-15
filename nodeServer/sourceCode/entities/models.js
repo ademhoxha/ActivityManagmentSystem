@@ -65,18 +65,6 @@ var models = {
         isClosed: Boolean,
     },
 
-
-
-
-
-
-
-
-
-
-
-
-
     OtpReceiver: {
         receiver: String,
         otp: {

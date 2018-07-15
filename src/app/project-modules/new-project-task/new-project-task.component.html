@@ -38,8 +38,9 @@
                   <div class="input-group-addon">
                     <i class="fa fa-info" style="width: 15px;"></i>
                   </div>
-                  <p-inputMask name="taskName" formControlName="taskName" type="text" class="form-control" id='taskName' placeholder="....."
-                    mask="aaa?aaaaaaa" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                <!--  <p-inputMask name="taskName" formControlName="taskName" type="text" class="form-control" id='taskName' placeholder="....."
+                    mask="aaa?aaaaaaaaaaaaaaaaaa" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask> -->
+                    <input name="taskName" formControlName="taskName" type="text" class="form-control _form-special" maxlength="19" placeholder="Insert A Task Name">
                 </div>
               </div>
             </div>
@@ -91,8 +92,9 @@
                   <div class="input-group-addon">
                     <i class="fa fa-euro" style="width: 15px;"></i>
                   </div>
-                  <p-inputMask name="costSelledDays" formControlName="costSelledDays" type="text" class="form-control" id='costSelledDays'
-                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                  <!--<p-inputMask name="costSelledDays" formControlName="costSelledDays" type="text" class="form-control" id='costSelledDays'
+                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask> -->
+                    <input name="costSelledDays" formControlName="costSelledDays" type="text" pKeyFilter="pint" class="form-control _form-special" maxlength="3" placeholder="0">
                 </div>
               </div>
 
@@ -102,8 +104,9 @@
                   <div class="input-group-addon">
                     <i class="fa fa-euro" style="width: 15px;"></i>
                   </div>
-                  <p-inputMask name="estcostSelledDays" formControlName="estcostSelledDays" type="text" class="form-control" id='estcostSelledDays'
-                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>
+                 <!-- <p-inputMask name="estcostSelledDays" formControlName="estcostSelledDays" type="text" class="form-control" id='estcostSelledDays'
+                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>-->
+                    <input name="estcostSelledDays" formControlName="estcostSelledDays" type="text" pKeyFilter="pint" class="form-control _form-special" maxlength="3" placeholder="0">
                 </div>
               </div>
             </div>

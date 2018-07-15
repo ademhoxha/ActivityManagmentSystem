@@ -52,3 +52,10 @@
         margin-right: 0em;
     }
 }
+
+
+
+/* fix height problem */
+.ui-calendar.ui-calendar-w-btn .ui-inputtext {
+    height: 2.4em;
+}
