@@ -1,127 +1,213 @@
 <p-fieldset legend="Project Summary" [toggleable]="true" [collapsed]="true" styleClass="_toggle">
 
-  <div class="ui-g-12" style="padding-left:20px; height: 3.5em;">
-
-    <div class="ui-g-12">
-
-      <div class="ui-g-3 ui-sm-6">
-        <h5>Project Name</h5>
+  <!-- <div class="ui-g-12" style="padding-left:20px; height: 3.5em;">
+  
+      <div class="ui-g-12">
+  
+        <div class="ui-g-3 ui-sm-6">
+          <h5>Project Name</h5>
+        </div>
+  
+        <div class="ui-g-3 ui-sm-6">
+          <h5>Project Earnings</h5>
+        </div>
+  
+        <div class="ui-g-3 ui-sm-6">
+          <h5>Number of days</h5>
+        </div>
+  
+        <div class="ui-g-3 ui-sm-6">
+          <h5>Estimated workers</h5>
+        </div>
+  
       </div>
-
-      <div class="ui-g-3 ui-sm-6">
-        <h5>Project Earnings</h5>
-      </div>
-
-      <div class="ui-g-3 ui-sm-6">
-        <h5>Number of days</h5>
-      </div>
-
-      <div class="ui-g-3 ui-sm-6">
-        <h5>Estimated workers</h5>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="ui-g-12">
-    <div class=" _short ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
-      <div class="_green-border _inline-start-border ">
-      </div>
-      <h6 class="_inline-content">{{projectName.value}}</h6>
-      <div class="_white-border _inline-end-border">
-      </div>
-    </div>
-
-
-    <!--<div class=" _short ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
-      <h6 class="_inline-content">{{projectEarnings}}</h6>
-      <div class="_white-border _inline-end-border">
-      </div>
-    </div>-->
-    <div class=" _short ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
-
-      <div class="_inline-content" style="display: inline-flex;" *ngIf="projectEarnings < 0" pTooltip="Project profit are negative!"
-        tooltipPosition="bottom">
-        <i class="fa fa-arrow-down _earnings-arrow _earnings-down"></i>
-        <h6 class="_earnings-value">{{projectEarnings}}
-          <i class="fa fa-euro _earnings-down"></i>
-        </h6>
-      </div>
-
-      <div class="_inline-content" style="display: inline-flex;" *ngIf="!(projectEarnings < 0) && !(projectEarnings > 0)" pTooltip="No Project profit"
-        tooltipPosition="bottom">
-        <i class="_earnings-arrow _earnings-equals"></i>
-        <h6 class="_earnings-value">{{projectEarnings}}
-          <i class="fa fa-euro _earnings-equals"></i>
-        </h6>
-      </div>
-
-      <div class="_inline-content" style="display: inline-flex;" *ngIf="projectEarnings > 0" pTooltip="No Project profit" tooltipPosition="bottom"
-        pTooltip="Project profit are positive!" tooltipPosition="bottom">
-        <i class="fa fa-arrow-up _earnings-arrow _earnings-up"></i>
-        <h6 class="_earnings-value">{{projectEarnings}}
-          <i class="fa fa-euro _earnings-up"></i>
-        </h6>
-      </div>
-
-      <div class="_white-border _inline-end-border">
-      </div>
-    </div>
-
-
-    <!--  <div class=" _short  ui-g-2 ui-sm-6 _inline" style="display: inline-flex;">
-      <h6 class="_inline-content">{{numberOfDays}}</h6>
-      <div class="_white-border _inline-end-border">
-      </div>
+  
     </div> -->
-    <div class=" _short ui-g-3 ui-sm-6 _inline" style="display: inline-flex;">
-      <div class="_inline-content" style="display: inline-flex;">
 
-        <h6 class="_days-value" pTooltip="Number of days from starting date to delivery date (estimation maded with four workers for day)"
-          tooltipPosition="bottom">
-          <i class="fa fa-clock-o _days-hashtag _earnings-up" *ngIf="(numberOfDays - (estimatedDays.value/4)) > 0"></i>
-          <i class="fa fa-clock-o _days-hashtag _earnings-equals" *ngIf="!((numberOfDays - (estimatedDays.value/4)) > 0) && !((numberOfDays - (estimatedDays.value/4)) < 0)"></i>
-          <i class="fa fa-clock-o _days-hashtag _earnings-down" *ngIf="(numberOfDays - (estimatedDays.value/4)) < 0"></i>
-          {{numberOfDays}}
-        </h6>
-        <h6 class="_days-value" *ngIf="(estimatedDays.value - selledDays.value) > 0" pTooltip="Difference between estimated and selled days"
-          tooltipPosition="bottom">
-          (
-          <i class="fa fa-cart-plus _days-hashtag _earnings-down"></i>
-          {{estimatedDays.value - selledDays.value}} )
-        </h6>
-        <h6 class="_days-value" *ngIf="(selledDays.value - estimatedDays.value) > 0" pTooltip="Difference between selled and estimated days"
-          tooltipPosition="bottom">
-          (
-          <i class="fa fa-cart-arrow-down _days-hashtag _earnings-up"></i>
-          {{selledDays.value - estimatedDays.value}} )
-        </h6>
-        <h6 class="_days-value" *ngIf="!((selledDays.value - estimatedDays.value) > 0) && !((selledDays.value - estimatedDays.value) < 0)"
-          pTooltip="Estimated days are the same of selled days" tooltipPosition="bottom">
-          (
-          <i class="fa fa-shopping-cart _days-hashtag _earnings-equals"></i>
-          {{selledDays.value - estimatedDays.value}} )
-        </h6>
+  <div class="ui-g">
+
+    <div class="ui-g-12 _prv-no-padding">
+
+
+      <div class=" _prv-resposivee-50">
+
+
+        <!--<div class="_short _inline">
+          <div class="_green-border _inline-start-border ">
+          </div>
+          <h6 class="_inline-content">{{projectName.value}}</h6>
+          <div class="_white-border _inline-end-border">
+          </div>
+        </div>-->
+
+
+
+        <div class="_short _inline">
+
+          <div class="_pvr-block">
+
+            <div class="_pvr-block-content">
+
+              <div class="_green-border _inline-start-border ">
+              </div>
+              <h6 class="_inline-content">{{projectName.value}}</h6>
+              <div class="_white-border _inline-end-border">
+              </div>
+
+            </div>
+
+            <div class="_pvr-white-border"></div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="_short _inline">
+
+          <div class="_pvr-block">
+
+            <div class="_pvr-block-content">
+
+              <div class="_pvr-border ">
+              </div>
+
+              <div class="_inline-content" *ngIf="projectEarnings < 0" style="display: inline-flex;" pTooltip="Project profit are negative!"
+                tooltipPosition="bottom">
+                <i class="fa fa-arrow-down _earnings-arrow _earnings-down"></i>
+                <h6 class="_earnings-value">{{projectEarnings}}
+                  <i class="fa fa-euro _earnings-down"></i>
+                </h6>
+              </div>
+
+              <div class="_inline-content" style="display: inline-flex;" *ngIf="!(projectEarnings < 0) && !(projectEarnings > 0)" pTooltip="No Project profit"
+                tooltipPosition="bottom">
+                <i class="_earnings-arrow _earnings-equals"></i>
+                <h6 class="_earnings-value">{{projectEarnings}}
+                  <i class="fa fa-euro _earnings-equals"></i>
+                </h6>
+              </div>
+
+              <div class="_inline-content" style="display: inline-flex;" *ngIf="projectEarnings > 0" pTooltip="No Project profit" tooltipPosition="bottom"
+                pTooltip="Project profit are positive!" tooltipPosition="bottom">
+                <i class="fa fa-arrow-up _earnings-arrow _earnings-up"></i>
+                <h6 class="_earnings-value">{{projectEarnings}}
+                  <i class="fa fa-euro _earnings-up"></i>
+                </h6>
+              </div>
+
+
+              <div class="_white-border _inline-end-border">
+              </div>
+
+            </div>
+
+            <div class="_pvr-white-border"></div>
+
+          </div>
+
+
+        </div>
+
 
       </div>
-      <div class="_white-border _inline-end-border">
+
+
+      <div class=" _prv-resposivee-50">
+
+
+
+        <div class=" _short  _inline">
+
+
+
+
+          <div class="_pvr-block">
+
+            <div class="_pvr-block-content">
+
+              <div class="_pvr-border ">
+              </div>
+
+
+              <div class="_inline-content" style="display: inline-flex;">
+
+                <h6 class="_days-value" pTooltip="Number of days from starting date to delivery date (estimation maded with four workers for day)"
+                  tooltipPosition="bottom">
+                  <i class="fa fa-clock-o _days-hashtag _earnings-up" *ngIf="(numberOfDays - (estimatedDays.value/4)) > 0"></i>
+                  <i class="fa fa-clock-o _days-hashtag _earnings-equals" *ngIf="!((numberOfDays - (estimatedDays.value/4)) > 0) && !((numberOfDays - (estimatedDays.value/4)) < 0)"></i>
+                  <i class="fa fa-clock-o _days-hashtag _earnings-down" *ngIf="(numberOfDays - (estimatedDays.value/4)) < 0"></i>
+                  {{numberOfDays}}
+                </h6>
+                <h6 class="_days-value" *ngIf="(estimatedDays.value - selledDays.value) > 0" pTooltip="Difference between estimated and selled days"
+                  tooltipPosition="bottom">
+                  (
+                  <i class="fa fa-cart-plus _days-hashtag _earnings-down"></i>
+                  {{estimatedDays.value - selledDays.value}} )
+                </h6>
+                <h6 class="_days-value" *ngIf="(selledDays.value - estimatedDays.value) > 0" pTooltip="Difference between selled and estimated days"
+                  tooltipPosition="bottom">
+                  (
+                  <i class="fa fa-cart-arrow-down _days-hashtag _earnings-up"></i>
+                  {{selledDays.value - estimatedDays.value}} )
+                </h6>
+                <h6 class="_days-value" *ngIf="!((selledDays.value - estimatedDays.value) > 0) && !((selledDays.value - estimatedDays.value) < 0)"
+                  pTooltip="Estimated days are the same of selled days" tooltipPosition="bottom">
+                  (
+                  <i class="fa fa-shopping-cart _days-hashtag _earnings-equals"></i>
+                  {{selledDays.value - estimatedDays.value}} )
+                </h6>
+
+              </div>
+              <div class="_white-border _inline-end-border">
+              </div>
+
+
+            </div>
+
+            <div class="_pvr-white-border"></div>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="_short  _inline" pTooltip="Estimated day workers to deliver in time the project" tooltipPosition="bottom">
+
+
+          <div class="_pvr-block">
+
+            <div class="_pvr-block-content">
+
+              <div class="_pvr-border ">
+              </div>
+
+              <h6 class="_inline-content" *ngIf="estimatedWorkers > 4">
+                <i class="fa fa-users _earnings-down"></i> {{estimatedWorkers}}</h6>
+
+              <h6 class="_inline-content" *ngIf="estimatedWorkers < 5">
+                <i class="fa fa-users _earnings-up"></i> {{estimatedWorkers}}</h6>
+
+              <div class="_dark-border _inline-end-border">
+              </div>
+
+            </div>
+
+            <div class="_pvr-white-border"></div>
+          </div>
+
+        </div>
+
+
+
+
       </div>
+
+
     </div>
 
-
-
-
-
-    <div class=" _short  ui-g-3 ui-sm-6 _inline" style="display: inline-flex;" pTooltip="Estimated day workers to deliver in time the project" tooltipPosition="bottom">
-      <h6 class="_inline-content" *ngIf="estimatedWorkers > 4">  <i class="fa fa-users _earnings-down"></i> {{estimatedWorkers}}</h6>
-      <h6 class="_inline-content" *ngIf="estimatedWorkers < 5">  <i class="fa fa-users _earnings-up"></i> {{estimatedWorkers}}</h6>
-      <div class="_white-border _inline-end-border">
-      </div>
-    </div>
   </div>
-
-
 
 </p-fieldset>

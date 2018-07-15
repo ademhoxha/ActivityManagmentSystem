@@ -53,8 +53,14 @@ class GetProjectRequest extends BaseControllerChain {
                         selledDays: ret.selledDays,
                         estimatedDays: ret.estimatedDays,
 
-                        extraDays: ret.extraDays,
-                        remainingDays: ret.remainingDays
+                        remainingSelledDays: ret.remainingSelledDays,
+                        remainingEstimatedDays: ret.remainingEstimatedDays,
+
+                        extraSelledDays: ret.extraSelledDays,
+                        extraEstimatedDays: ret.extraEstimatedDays,
+
+                        selledCostForDay: ret.selledCostForDay,
+                        estimatedCostForDay: ret.estimatedCostForDay
                     });
                 }
             });
@@ -111,20 +117,31 @@ function mapData(data, callback) {
     ret.startDate = retList[0].startDate;
     ret.deliveryDate = retList[0].deliveryDate;
 
-    ret.selledDays = retList[0].selledDays;
-    ret.estimatedDays = retList[0].estimatedDays;
+    ret.selledCostForDay = retList[0].selledCostForDay;
+    ret.estimatedCostForDay = retList[0].estimatedCostForDay;
 
-    ret.remainingDays = retList[0].estimatedDays;
+    ret.selledDays = retList[0].selledDays; // initial selled days 
+    ret.remainingSelledDays = retList[0].selledDays; // remaning selled days
+
+    ret.estimatedDays = retList[0].estimatedDays;  // initial estimated days 
+    ret.remainingEstimatedDays = retList[0].estimatedDays; // remaning estimated days
+
+    ret.extraEstimatedDays = 0;
+    ret.extraSelledDays = 0;
     if (retList[0].projectTasks) {
         retList[0].projectTasks.forEach(element => {
-            ret.remainingDays = ret.remainingDays - element.estimatedDays;
-        });
-    }
-
-    ret.extraDays = 0;
-    if (retList[0].extraDays) {
-        retList[0].extraDays.forEach(element => {
-            ret.extraDays = ret.extraDays + element.extraDays;
+            if (element.estimatedDays) {
+                ret.remainingEstimatedDays = ret.remainingEstimatedDays - element.estimatedDays;
+            }
+            if (element.selledDays) {
+                ret.remainingSelledDays = ret.remainingSelledDays - element.selledDays;
+            }
+            if (element.extraEstimatedDays) {
+                ret.extraEstimatedDays = ret.extraEstimatedDays + element.extraEstimatedDays;
+            }
+            if (element.extraSelledDays) {
+                ret.extraSelledDays = ret.extraSelledDays + element.extraSelledDays;
+            }
         });
     }
 

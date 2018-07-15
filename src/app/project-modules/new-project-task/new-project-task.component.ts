@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -25,6 +25,8 @@ export class NewProjectTaskComponent implements OnInit {
     this.initTabview();
   }
 
+  labelOn = "Yes Extra Days";
+  labelOff = "No Extra Days";
   initForm() {
     this.componentForm = this.formBuilder.group({
       taskName: new FormControl('',
@@ -65,8 +67,8 @@ export class NewProjectTaskComponent implements OnInit {
     this.tabSelected = {};
 
     this.tabDisabled["search"] = false;
-    //this.tabDisabled["insertTask"] = true; 
-    this.tabDisabled["insertTask"] = false; // only debug
+    this.tabDisabled["insertTask"] = true;
+    //this.tabDisabled["insertTask"] = false; // only debug
 
     this.tabSelected["search"] = true;
     this.tabSelected["insertTask"] = false;
@@ -95,17 +97,69 @@ export class NewProjectTaskComponent implements OnInit {
       this.lanchReturnMessage(retData.state, retData.message);
       return this.initTabview();
     }
-
-    this.resetTaskView = false;
-
-    this.tabDisabled["insertTask"] = false;
-
-    this.tabSelected["search"] = false;
-    this.tabSelected["insertTask"] = true;
-
-    setTimeout(() => { this.resetTaskView = true; }, 150)
+    
+    this.reset();
+    return this.loadProjectInfo();
   }
 
+  loadProjectInfo() {
+    this.openTab();
+
+    var data = { projectName: this.projectName };
+    console.log("LAUNCH LOAD PROJECT: " + data.projectName)
+    this.projectAPI.getProjectRequest(data).then((res: any) => {
+      console.log("status LOAD PROJECT: " + res.status)
+
+      if (res.status == 200) {
+        return this.mapData(res);
+      }
+      else if (res.status == 401) {
+        this.router.navigateByUrl('/login');
+      }
+      else {
+        this.lanchReturnMessage("error", res.message);
+        return this.initTabview();
+      }
+
+      this.searchReset = false;
+      setTimeout(() => { this.resetForm(); }, 150)
+    });
+  }
+
+  prjRemaningSelledDays: number;
+  prjRemaningEstimatedDays: number;
+  prjExtraSelledDays: number;
+  prjExtraEstimatedDays: number;
+  prjSelledDays: number;
+  prjEstimatedDays: number;
+  mapData(data) {
+    console.log("dataaaa");
+    console.log(data);
+    this.prjRemaningSelledDays = data.remainingSelledDays;
+    this.prjRemaningEstimatedDays = data.remainingEstimatedDays;
+    this.prjSelledDays = data.selledDays;
+    this.prjEstimatedDays = data.estimatedDays;
+    this.prjExtraSelledDays = data.extraSelledDays;
+    this.prjExtraEstimatedDays = data.extraEstimatedDays;
+    this.componentForm.get("costSelledDays").setValue(data.selledCostForDay ? data.selledCostForDay : 0);
+    this.componentForm.get("estcostSelledDays").setValue(data.estimatedCostForDay ? data.estimatedCostForDay : 0);
+    this.openView();
+  }
+
+  viewLoader: boolean = true;
+  openTab() {
+    this.tabDisabled["insertTask"] = false;
+    this.tabSelected["search"] = false;
+    this.tabSelected["insertTask"] = true;
+    this.viewLoader = true;
+  }
+
+  openView() {
+    //  setTimeout(() => { 
+    this.resetTaskView = true;
+    this.viewLoader = false;
+    //  }, 150)
+  }
 
   lanchReturnMessage(severity, message) {
     this.resultData["severity"] = severity;
@@ -116,32 +170,30 @@ export class NewProjectTaskComponent implements OnInit {
     }, 4000)
   }
 
-  userListError(data) {
-    this.lanchReturnMessage(data.severity, data.message);
-    this.searchReset = false;
-    setTimeout(() => { this.initTabview(); }, 150)
-  }
-
-  onReset() {
-    this.searchReset = false;
-    setTimeout(() => { this.initTabview(); }, 150)
-  }
-
   loader = false;
-  onSubmit(startDate, endDate) { 
+  onSubmit(startDate, endDate) {
 
     var data = {
-      projectName : this.projectName,
-      taskName : this.componentForm.get("taskName").value,
-      startDate : startDate,
-      deliveryDate : endDate,
-      selledDays :this.componentForm.get("selledDays").value,
-      estimatedDays :this.componentForm.get("estimatedDays").value,
-      selledCostForDay : this.componentForm.get("costSelledDays").value,
-      estimatedCostForDay :this.componentForm.get("estcostSelledDays").value
+      projectName: this.projectName,
+      taskName: this.componentForm.get("taskName").value,
+      startDate: startDate,
+      deliveryDate: endDate,
+      selledDays: this.componentForm.get("selledDays").value,
+      estimatedDays: this.componentForm.get("estimatedDays").value,
+      selledCostForDay: this.componentForm.get("costSelledDays").value,
+      estimatedCostForDay: this.componentForm.get("estcostSelledDays").value,
     };
+    // extra days
+    if (this.bExtraSelledDays) {
+      if (this.extraSelledDays && this.extraSelledDays > 0)
+        data["extraSelledDays"] = this.extraSelledDays;
+    }
+    if (this.bExtraEstrimatedDays) {
+      if (this.extraEstimatedDays && this.extraEstimatedDays > 0)
+        data["extraEstimatedDays"] = this.extraEstimatedDays;
+    }
 
-    this.componentForm.reset(); // reset form
+    this.reset(); // reset all data
 
     this.loader = true;
     // call service
@@ -161,8 +213,55 @@ export class NewProjectTaskComponent implements OnInit {
       }
 
       this.searchReset = false;
-      setTimeout(() => { this.initTabview(); }, 150)
+      setTimeout(() => { this.resetForm(); }, 150)
     });
+  }
+
+  resetForm() {
+    this.initTabview();
+    setTimeout(() => {
+      this.bExtraEstrimatedDays = false;
+      this.bExtraSelledDays = false;
+    }, 150)
+  }
+
+
+  // other variable
+  extraSelledDays: number = 0;
+  bExtraSelledDays: boolean = false;
+  extraEstimatedDays: number = 0;
+  bExtraEstrimatedDays: boolean = false;
+  changeExtra() {
+    if (!this.extraEstimatedDays)
+      this.extraEstimatedDays = 0;
+    if (this.extraEstimatedDays == 0) {
+      //this.bExtraEstrimatedDays = false; // not works for one way binding
+      // setTimeout(() => { this.bExtraEstrimatedDays = false; }, 100)
+    }
+
+    if (!this.extraSelledDays)
+      this.extraSelledDays = 0;
+    if (this.extraSelledDays == 0) {
+      //this.bExtraSelledDays = false; // not works for one way binding
+      //  setTimeout(() => { this.bExtraSelledDays = false; }, 100)
+    }
+  }
+
+  changeSwitch() {
+    if (!this.bExtraSelledDays) {
+      if (this.extraSelledDays! = 0)
+        this.extraSelledDays = 0;
+    }
+    if (!this.bExtraEstrimatedDays) {
+      if (this.extraEstimatedDays! = 0)
+        this.extraEstimatedDays = 0;
+    }
+  }
+
+  reset() {
+    this.componentForm.reset();
+    this.extraEstimatedDays = 0;
+    this.extraSelledDays = 0;
   }
 
 }

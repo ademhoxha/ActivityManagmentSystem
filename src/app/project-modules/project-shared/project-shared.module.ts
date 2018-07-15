@@ -8,6 +8,7 @@ import { ProjectUserListTableComponent } from './project-user-list-table/project
 import { SelectProjectComponent } from './select-project/select-project.component';
 import { ProjectReducedViewComponent } from './project-reduced-view/project-reduced-view.component';
 import { RemoveProjectUserPuComponent } from './remove-project-user-pu/remove-project-user-pu.component';
+import { NewTaskReducedViewComponent } from './new-task-reduced-view/new-task-reduced-view.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { RemoveProjectUserPuComponent } from './remove-project-user-pu/remove-pr
     ProjectUserListTableComponent,
     SelectProjectComponent,
     ProjectReducedViewComponent,
-    RemoveProjectUserPuComponent
+    RemoveProjectUserPuComponent,
+    NewTaskReducedViewComponent
   ],
   exports: [
     DashboardSharedModule,
@@ -29,7 +31,8 @@ import { RemoveProjectUserPuComponent } from './remove-project-user-pu/remove-pr
     ProjectUserListTableComponent,
     SelectProjectComponent,
     ProjectReducedViewComponent,
-    RemoveProjectUserPuComponent
+    RemoveProjectUserPuComponent,
+    NewTaskReducedViewComponent
   ]
 })
 export class ProjectSharedModule { }

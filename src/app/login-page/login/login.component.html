@@ -38,11 +38,11 @@
 <div class="sufee-login d-flex align-content-center flex-wrap" id="loginDiv">
     <div class="container">
         <div class="login-content">
-            <div class="login-logo">
+          <!--  <div class="login-logo">
                 <a href="index.html">
                     <img class="align-content" src="../../images/logo.png" alt="">
                 </a>
-            </div>
+            </div> -->
             <div class="login-form">
                 <form (ngSubmit)="onSubmit()" [formGroup]='loginForm'>
                     <div class="form-group">
@@ -81,7 +81,7 @@
                         <app-loader></app-loader>
                     </div>
                     <div *ngIf="!loader">
-                        <button [(disabled)]="!loginForm.valid" type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">
+                        <button [(disabled)]="!loginForm.valid" type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">
                             <i class="fa fa-user fa-2x" style="color:white"> Sign in</i>
                         </button>
                     </div>

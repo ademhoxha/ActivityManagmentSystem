@@ -56,8 +56,8 @@ export class ProjectApiService {
 
   projectUserListRequest(data): Promise<void | any> {
     let url = "/api/project/userList";
-    const body = { projectName : data.projectName}; 
-    console.log("ProjectName: "+data.projectName)
+    const body = { projectName: data.projectName };
+    console.log("ProjectName: " + data.projectName)
     return this.http.post(url, body).toPromise().then((response) => {
       var ret = {}
       if (response.status == 200) // body parser
@@ -75,11 +75,11 @@ export class ProjectApiService {
 
   projectEditTeamRequest(data): Promise<void | any> {
     let url = "/api/project/editTeam";
-    const body = { 
-      projectName : data.projectName,
-      newProjectMembers :  data.newProjectMembers
-    }; 
-    console.log("ProjectName: "+data.projectName)
+    const body = {
+      projectName: data.projectName,
+      newProjectMembers: data.newProjectMembers
+    };
+    console.log("ProjectName: " + data.projectName)
     return this.http.post(url, body).toPromise().then((response) => {
       var ret = {}
       if (response.status == 200) // body parser
@@ -98,11 +98,11 @@ export class ProjectApiService {
 
   projectRemoveTeamMemberRequest(data): Promise<void | any> {
     let url = "/api/project/removeTeamMembers";
-    const body = { 
-      projectName : data.projectName,
-      removedlist :  data.removedlist
-    }; 
-    console.log("ProjectName: "+data.projectName)
+    const body = {
+      projectName: data.projectName,
+      removedlist: data.removedlist
+    };
+    console.log("ProjectName: " + data.projectName)
     return this.http.post(url, body).toPromise().then((response) => {
       var ret = {}
       if (response.status == 200) // body parser
@@ -121,7 +121,7 @@ export class ProjectApiService {
 
   newProjectTaskRequest(data): Promise<void | any> {
     let url = "/api/project/newProjectTask";
-    const body = { 
+    const body = {
       projectName: data.projectName,
       taskName: data.taskName,
       startDate: data.startDate,
@@ -130,9 +130,15 @@ export class ProjectApiService {
       estimatedDays: data.estimatedDays,
       selledCostForDay: data.selledCostForDay,
       estimatedCostForDay: data.estimatedCostForDay,
-      projectExtraDays: data.projectExtraDays
-    }; 
-    console.log("ProjectName: "+data.projectName)
+    };
+    // extra days
+    if (data.extraSelledDays)
+      body["extraSelledDays"] = data.extraSelledDays;
+
+    if (data.extraEstimatedDays)
+      body["extraEstimatedDays"] = data.extraEstimatedDays;
+
+    console.log("ProjectName: " + data.projectName)
     return this.http.post(url, body).toPromise().then((response) => {
       var ret = {}
       if (response.status == 200) // body parser
@@ -151,10 +157,10 @@ export class ProjectApiService {
 
   getProjectRequest(data): Promise<void | any> {
     let url = "/api/project/getProject";
-    const body = { 
-      projectName : data.projectName,
-    }; 
-    console.log("ProjectName: "+data.projectName)
+    const body = {
+      projectName: data.projectName,
+    };
+    console.log("ProjectName: " + data.projectName)
     return this.http.post(url, body).toPromise().then((response) => {
       var ret = {}
       if (response.status == 200) // body parser

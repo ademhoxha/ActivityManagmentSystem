@@ -37,8 +37,6 @@ var models = {
         projectTeam: [],
         projectTasks: [],
 
-        extraDays: [],
-
         projectNotes: [],
         isClosed: Boolean,
     },
@@ -57,7 +55,8 @@ var models = {
 
         completionPercentage: Number,
 
-        extraDays: Number,
+        extraEstimatedDays: Number,
+        extraSelledDays: Number,
 
         taskFounder: {},
         taskTeam: [],

@@ -21,34 +21,15 @@
       <p-tabPanel header="Insert a new Task" leftIcon="fa-th-list" [selected]="tabSelected['insertTask']" [disabled]="tabDisabled['insertTask']"
         styleClass="_tabView">
 
-        <!--    <div *ngIf="resetTaskView">
+        <div *ngIf="viewLoader">
+          <app-loader></app-loader>
+        </div>
 
-  
-        <h4 class="col-md-12">Show task</h4> 
-
-        </div> -->
-
-        <!--  <h4 class="col-md-12">Add New Task</h4> -->
-
-        <form name="componentForm" id="componentForm" [formGroup]="componentForm">
+        <form name="componentForm" id="componentForm" [formGroup]="componentForm" [hidden]="viewLoader">
           <div class="ui-g">
-            <div class="ui-g-12 _projectSummary">
-              <div class="ui-g-3 ui-sm-12 _padding" style="display: inline-flex;">
-                <div class="_green-border"></div>
-                <h4 class="_content">Project Dates: </h4>
-              </div>
-
-              <div class="ui-g-3 ui-sm-12 _padding">
-                <h4 class="_content">Project Remaning Days: </h4>
-              </div>
-              <div class="ui-g-3 ui-sm-12 _padding">
-                <h4 class="_content">Project Actual Extra Days: </h4>
-              </div>
-              <div class="ui-g-3 ui-sm-12 _padding">
-                <h4 class="_content">Other: </h4>
-              </div>
+            <div class="ui-g-12" *ngIf="resetTaskView">
+              <app-new-task-reduced-view></app-new-task-reduced-view>
             </div>
-
 
             <div class="ui-g-12">
               <div class="form-group">
@@ -67,56 +48,20 @@
               <app-start-end-date #dates></app-start-end-date>
             </div>
 
-            <!--       <div class="ui-g-12">
-              <div class="form-group">
-                <label> Task Selled Days Number</label>
-                <div class="input-group">
-                  <div style="display: inline-flex;">
-                    <div style="margin-right: 0.3em">
-                      <p-spinner [min]="0" [max]="100" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
-                    </div>
-                    <div style="margin-right: 0.3em">
-                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
-                    </div>
-                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="ui-g-12">
-              <div class="form-group">
-                <label> Task Estimated Days Number</label>
-                <div class="input-group">
-                  <div style="display: inline-flex;">
-                    <div style="margin-right: 0.3em">
-                      <p-spinner [min]="0" [max]="100" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
-                    </div>
-                    <div style="margin-right: 0.3em">
-                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
-                    </div>
-                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-
-
-
-
             <div class="ui-g-12 _estimated_days">
               <div class="form-group  _estimated_days_group" style="margin-right: 0.3em">
                 <label> Task Selled Days Number</label>
                 <div class="input-group">
                   <div class="_days-content">
                     <div style="margin-right: 0.3em">
-                      <p-spinner [min]="0" [max]="100" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
+                      <p-spinner [min]="0" [max]="prjRemaningSelledDays" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
                     </div>
                     <div style="margin-right: 0.3em">
-                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
+                      <p-inputSwitch onLabel={{labelOn}} offLabel={{labelOff}} [(ngModel)]="bExtraSelledDays" [ngModelOptions]="{standalone: true}" (onChange)="changeSwitch()" 
+                        pTooltip="Check to ADD some extra selled days beyond the initial project selled days." tooltipPosition="bottom"></p-inputSwitch>
                     </div>
-                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraSelledDays" [ngModelOptions]="{standalone: true}"
+                      [disabled]="!bExtraSelledDays" (onChange)="changeExtra()"></p-spinner>
                   </div>
                 </div>
               </div>
@@ -126,12 +71,14 @@
                 <div class="input-group">
                   <div class="_days-content">
                     <div style="margin-right: 0.3em">
-                      <p-spinner [min]="0" [max]="100" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
+                      <p-spinner [min]="0" [max]="prjRemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
                     </div>
                     <div style="margin-right: 0.3em">
-                      <p-inputSwitch onLabel="Yes Extra Days" offLabel="No Extra Days"></p-inputSwitch>
+                      <p-inputSwitch onLabel={{labelOn}} offLabel={{labelOff}} [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}" (onChange)="changeSwitch()"
+                        pTooltip="Check to ADD some extra estimated days beyond the initial project estimated days." tooltipPosition="bottom" ></p-inputSwitch>
                     </div>
-                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3"></p-spinner>
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraEstimatedDays" [ngModelOptions]="{standalone: true}"
+                      [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()"></p-spinner>
                   </div>
                 </div>
               </div>
@@ -162,6 +109,9 @@
             </div>
 
           </div>
+
+
+
         </form>
 
 
@@ -177,7 +127,7 @@
       <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid && dates.startDate && dates.endDate">
         <i class="fa fa-dot-circle-o"></i> Submit
       </button>
-      <button type="reset" class="btn btn-danger" (click)="componentForm.reset();" [(disabled)]="tabSelected['search']">
+      <button type="reset" class="btn btn-danger" (click)="reset();" [(disabled)]="tabSelected['search']">
         <i class="fa fa-ban"></i> Reset
       </button>
     </div>

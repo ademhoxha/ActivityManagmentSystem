@@ -42,7 +42,9 @@ class NewTaskRequest extends BaseControllerChain {
                 estimatedDays: req.body.estimatedDays,
                 selledCostForDay: req.body.selledCostForDay,
                 estimatedCostForDay: req.body.estimatedCostForDay,
-                projectExtraDays: req.body.extraDays,
+
+                extraSelledDays: req.body.extraSelledDays,
+                extraEstimatedDays: req.body.extraEstimatedDays
             };
             StartFlow(data, (err, ret) => {
                 if (err) {
@@ -78,8 +80,15 @@ function StartFlow(userData, callback) {
         estimatedDays: userData.estimatedDays,
         selledCostForDay: userData.selledCostForDay,
         estimatedCostForDay: userData.estimatedCostForDay,
-        projectExtraDays: userData.extraDays,
+        // extraSelledDays: userData.extraSelledDays,
+        // extraEstimatedDays : userData.extraEstimatedDays
     };
+    // estra days
+    if (userData.extraSelledDays)
+        data.query.extraSelledDays = userData.extraSelledDays;
+    if (userData.extraEstimatedDays)
+        data.query.extraEstimatedDays = userData.extraEstimatedDays;
+
     // validation Data TODO
     findProject(data, callback);
 }
@@ -99,14 +108,25 @@ function findProject(data, callback) {
             console.log("Project Found")
             var elabData = {};
             elabData.mongoObj = ret;
-            elabData.properties = ["projectTasks", "extraDays"];
+            elabData.properties = ["projectTasks"];
             var retList = mongoOperations.getJSONPropertiesfromMongo(elabData);
 
             data.info = {};
             data.info.projectTasks = [{
                 taskName: data.query.taskName,
-                estimatedDays: data.query.estimatedDays
+
+                estimatedDays: data.query.estimatedDays,
+                selledDays: data.query.selledDays,
+
+              /*  extraEstimatedDays: data.query.extraEstimatedDays,
+                extraSelledDays: data.query.extraSelledDays*/
             }];
+
+            if (data.query.extraSelledDays)
+                data.info.projectTasks[0].extraSelledDays = data.query.extraSelledDays;
+            if (data.query.extraEstimatedDays)
+                data.info.projectTasks[0].extraEstimatedDays = data.query.extraEstimatedDays;
+
             if (retList && retList[0].projectTasks && retList[0].projectTasks.length > 0) {
 
                 // can be used but is prefered to use the task find query (method findTask)
@@ -118,19 +138,6 @@ function findProject(data, callback) {
                   });*/
 
                 data.info.projectTasks = data.info.projectTasks.concat(retList[0].projectTasks);
-            }
-
-            // extra days
-            if (data.query.projectExtraDays && data.query.projectExtraDays > 0) {
-                data.info.extraDays = [];
-                if (retList && retList[0].extraDays && retList[0].extraDays.length > 0) {
-                    data.info.extraDays = retList[0].extraDays;
-                }
-                data.info.extraDays = data.info.extraDays.concat([{
-                    taskName: data.query.taskName,
-                    extraDays: data.query.projectExtraDays
-                }]);
-                console.log(data.info.extraDays)
             }
 
             return findTask(data, callback);
@@ -160,7 +167,7 @@ function findTask(data, callback) {
         }
 
         console.log("Task Name Available for this project");
-        newTask(data, callback)
+        return newTask(data, callback)
     });
 }
 
@@ -184,9 +191,6 @@ function editProject(data, callback) {
     dataUpdate.query.projectName = data.query.projectName;
 
     dataUpdate.update.projectTasks = data.info.projectTasks;
-
-    if (data.info.extraDays)
-        dataUpdate.update.extraDays = data.info.extraDays;
 
     project.update(dataUpdate, (err, ret) => {
         if (err) {

@@ -56,3 +56,12 @@
 }
 
 
+
+
+
+/*  Input Addon Style Fix*/
+.input-group-addon {
+    color:white !important; 
+    background-color: #2399e5!important;
+    border-radius: 0rem;
+}

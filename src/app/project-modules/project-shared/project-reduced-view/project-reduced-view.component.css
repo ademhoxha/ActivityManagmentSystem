@@ -1,7 +1,3 @@
-/*._toggle.ui-fieldset, ._toggle.ui-fieldset .ui-fieldset-legend  {
-    background-color: red;
-}*/
-
 .pi-minus:before {
     color : red;
 }
@@ -18,23 +14,17 @@
 
 ._toggle.ui-fieldset .ui-fieldset-legend  {
     border-color: black;
-    /*background-color: lightgray;*/
 }
 
 ._toggle.ui-fieldset .ui-fieldset-legend:hover  {
     border-color: black;
 }
 
-
-._short {
-   background-color: lightgray;
-}
-
 ._green-border {
     border: solid;
-    border-width: 10px; 
+    border-width: 6px; 
     border-color: green; 
-    width: 10px;
+    width: 6px;
     color: green; 
 }
 
@@ -110,4 +100,78 @@
 
 ._days-hashtag{
     width: 25%; 
+}
+
+
+/*  Responsive part */
+
+._prv-no-padding {
+    padding: 0em;
+    display: inline-flex;
+    width: 100%;
+}
+
+._prv-resposivee-50 {
+    width: 50%;
+    display: inline-flex;
+    margin-bottom: 0em;
+ }
+
+ ._short {
+    background-color: lightgray;
+    display: inline-flex;
+    width: 50%;
+ }
+
+@media (max-width: 1200px){
+
+     ._prv-no-padding {
+        display: block;
+    }
+
+    ._prv-resposivee-50 {
+        width: 100% !important;
+     }
+}
+
+
+
+@media (max-width: 750px){
+
+   ._prv-resposivee-50 {
+        display: block !important;
+    }
+
+    ._short {
+        width: 100% !important;
+     }
+}
+
+
+._pvr-white-border {
+    height: 5%;
+    background-color: white !important;
+    width: 100%;
+}
+
+._pvr-block-content {
+    display: inline-flex; 
+    width: 100%; 
+    height: 95% !important;
+}
+
+._pvr-block{
+    display: block; 
+    width: 100%;
+}
+
+._pvr-border {
+    border: solid 10px transparent;
+}
+
+._dark-border {
+    border: solid;
+    border-width: 2px; 
+    border-color: darkgray;
+    color: darkgray;
 }
