@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
-import { Http} from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { RegistrationService } from './registration.service';
@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-  ccRegex: RegExp = /^[0-9]{10}$/; 
+  nameCharacter: RegExp = /^[A-Za-z\s]+$/;
   ngOnInit() {
   }
 
@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit {
       company: new FormControl(''),
 
       password: new FormControl('',
-        Validators.compose([Validators.required/*, Validators.minLength(6), Validators.maxLength(20),
+        Validators.compose([Validators.required, Validators.minLength(6)/*, Validators.maxLength(20),
         Validators.pattern(/[a-z]+/), Validators.pattern(/[A-Z]+/), Validators.pattern(/[0-9]+/),
         Validators.pattern(/[\W]+/)*/])
       ),
@@ -75,45 +75,38 @@ export class RegistrationComponent implements OnInit {
   password_confirmation: String = "";
 
   passwordVerify() {
-   /* this.password.setValue(this.validatePasswordFormatAllKeys(this.password.value));
-    this.password_confirmation = this.validatePasswordFormatAllKeys(this.password_confirmation);
-    var psw: String = this.password.value;
-    this.count = this.count + 1;
-    if (this.password.valid && psw.trim() != ""
-      && psw == this.password_confirmation) {
-      this.passwordMatch = true;
-    }
-    else {
-      this.passwordMatch = false;
-    }*/
+     if (this.password.valid && this.password_confirmation
+       && this.password.value == this.password_confirmation) {
+       this.passwordMatch = true;
+     }
+     else {
+       this.passwordMatch = false;
+     }
   }
 
-  validatePasswordFormatAllKeys(password: String): String {
-    if (password != null || password != "") {
-      return password.replace(/\s/, '');
-    }
-    return "";
-  }
-
-  validatePasswordFormatSingleKey(password: String): String {
-    /*if (password != null || password != "") {
-      var key = password.charCodeAt(password.length - 1)
-      var newpwd = password;
-      if (key == 32 || key == 160 || key == 5760 || key == 8192 || key == 8192 || key == 8194 || key == 8195
-        || key == 8196 || key == 8197 || key == 8198 || key == 8199 || key == 8200 || key == 8201 ||
-        key == 8202 || key == 8232 || key == 8233 || key == 8239 || key == 8287 || key == 12288) {
-        newpwd = newpwd.substring(0, password.length - 1)
-      }
-      return newpwd;
-    }*/
-    return "";
-  }
-
+  loader : boolean = false;
+  resultFlag : boolean = false;
+  resultData = [];
+  endRegistration : boolean = false;
   onSubmit() {
-    this.passwordVerify();
+    this.loader = true;
     if (this.passwordMatch) {
       var body = this.setRequestParameters();
-      this.registrationService.registrationRequest(body).then((res: any) => { this.response = res.msg });
+      this.reset()
+      this.registrationService.registrationRequest(body).then((res: any) => { 
+        if (res.status == 200) {
+          this.lanchReturnMessage("success", "Account Successfully Registered!");
+          this.endRegistration = true;
+        }
+       /* else if (res.status == 401) {
+          this.router.navigateByUrl('/login');
+        }*/
+        else {
+          this.lanchReturnMessage("error", res.message);
+          this.loader = false;
+        }
+      //  setTimeout(() => { this.resetForm(); }, 150)
+      });
     }
   }
 
@@ -127,6 +120,21 @@ export class RegistrationComponent implements OnInit {
       surname: this.last_name.value,
     }
     return body;
+  }
+
+  lanchReturnMessage(severity, message) {
+    this.resultData["severity"] = severity;
+    this.resultData["message"] = message;
+    this.resultFlag = true;
+    setTimeout(() => {
+      this.resultFlag = false;
+    }, 4000)
+  }
+
+  reset() {
+    this.registrationForm.reset();
+    this.passwordMatch = false;
+    this.password_confirmation = "";
   }
 
 }

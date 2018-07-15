@@ -51,7 +51,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-user-circle" style="width: 15px;"></i>
                             </div>
-                            <input type="email" class="form-control" id='email' placeholder="..." formControlName="email">
+                            <input type="email" class="form-control _form-special" id='email' placeholder="..." formControlName="email">
                         </div>
                         <div [hidden]="!email.hasError('required') || email.untouched" class="alert alert-danger" role="alert"> Email or Mobile Phone is required
                         </div>
@@ -62,7 +62,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-asterisk" style="width: 15px;"></i>
                             </div>
-                            <input type="password" class="form-control" id='password' placeholder="..." formControlName="password">
+                            <input type="password" class="form-control _form-special" id='password' placeholder="..." formControlName="password">
                         </div>
                         <div [hidden]="!password.hasError('required') || password.untouched" class="alert alert-danger" role="alert"> Password is required
                         </div>
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="register-link m-t-15 text-center">
-                        <p>Don't have account ?
+                        <p  class="_p-text">Don't have account ?
                             <a routerLink="/registration" routerLinkActive="active"> Sign Up Here!</a>
                         </p>
                     </div>

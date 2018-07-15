@@ -23,7 +23,10 @@ import { BlockUIModule } from 'primeng/blockui';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TooltipModule } from 'primeng/tooltip';
 import { SpinnerModule } from 'primeng/spinner';
-import {InputSwitchModule} from 'primeng/inputswitch';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { PasswordModule } from 'primeng/password';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 // custom shared components
 import { ErrorComponent } from './error/error.component';
@@ -31,6 +34,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { OperationResultComponent } from './operation-result/operation-result.component';
 import { BlockUiComponent } from './block-ui/block-ui.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [
@@ -59,7 +63,10 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     FieldsetModule,
     TooltipModule,
     SpinnerModule,
-    InputSwitchModule
+    InputSwitchModule,
+    PasswordModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [
     // 3rd party
@@ -72,7 +79,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     LoaderComponent,
     OperationResultComponent,
     BlockUiComponent,
-    PopUpComponent
+    PopUpComponent,
+    MessageComponent
 
   ],
   exports: [
@@ -102,13 +110,17 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     TooltipModule,
     SpinnerModule,
     InputSwitchModule,
+    PasswordModule,
+    MessagesModule,
+    MessageModule,
 
     // custom shared components
     ErrorComponent,
     LoaderComponent,
     OperationResultComponent,
     BlockUiComponent,
-    PopUpComponent
+    PopUpComponent,
+    MessageComponent
   ]
 })
 export class SharedModule { }

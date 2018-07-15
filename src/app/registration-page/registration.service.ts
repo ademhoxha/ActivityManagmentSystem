@@ -12,16 +12,17 @@ export class RegistrationService {
     let url = "/api/registration";
     return this.http.post(url, body).toPromise().then(response => {
       var ret = {}
-
       if (response.status == 200) // body parser
         ret = response.json();
-
       ret['status'] = response.status;
       return ret;
-    }).catch(() => {
-      var ret = {};
-      ret["status"] = 500;
+    }).catch((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
       return ret;
     });
   }
 }
+
