@@ -27,6 +27,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { PasswordModule } from 'primeng/password';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {ScheduleModule} from 'primeng/schedule';
 
 // custom shared components
 import { ErrorComponent } from './error/error.component';
@@ -66,7 +67,8 @@ import { MessageComponent } from './message/message.component';
     InputSwitchModule,
     PasswordModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    ScheduleModule
   ],
   providers: [
     // 3rd party
@@ -113,6 +115,7 @@ import { MessageComponent } from './message/message.component';
     PasswordModule,
     MessagesModule,
     MessageModule,
+    ScheduleModule,
 
     // custom shared components
     ErrorComponent,

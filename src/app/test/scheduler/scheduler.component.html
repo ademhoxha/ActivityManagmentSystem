@@ -1,0 +1,6 @@
+<button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" 
+(click)="newEvent()">
+<i class="fa fa-user-plus fa-2x" style="color:white"> Add Event</i>
+</button>
+
+<p-schedule [events]="events" [header]="header" defaultDate="2017-02-01" [eventLimit]="4" [editable]="true" (onDayClick)="newEvent($event)" editable="false"></p-schedule>
