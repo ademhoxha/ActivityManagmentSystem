@@ -1,0 +1,36 @@
+
+._scheduler {
+    background-color: #001f3f; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+._scheduler .fc-header-toolbar {
+    border: 10px solid #001f3f;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+._scheduler .fc-center {
+    color: white;
+}
+
+._scheduler .fc-button-group button, ._scheduler .fc-center button  {
+    border: .5px solid white;
+    border-radius: 10px !important;
+}
+
+._scheduler .fc-button-group .fc-prev-button, ._scheduler .fc-button-group .ui-corner-left {
+    margin-right: 0.5em;
+}
+
+._scheduler .fc-day-header {
+    height: 3em;
+    align-content: center;
+    padding-top: .75em;
+    font-size: 22.5px;
+}
+
+._scheduler .fc-axis {
+    width : 50px;
+}

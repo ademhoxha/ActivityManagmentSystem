@@ -1,6 +1,5 @@
-<button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" 
-(click)="newEvent()">
-<i class="fa fa-user-plus fa-2x" style="color:white"> Add Event</i>
+<button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" (click)="newEvent()">
+    <i class="fa fa-user-plus fa-2x" style="color:white"> Add Event</i>
 </button>
 
 <!--<p-schedule [events]="events" [header]="header" defaultDate="2017-02-01" [eventLimit]="4" [editable]="true" 
@@ -11,8 +10,27 @@
 [options]="options"  [hiddenDays]="hiddenDays" [businessHours]="businessHours" 
 [minTime]="minTime" [maxTime]="maxTime" [weekends]="weekends"></p-schedule> -->
 
+<!--<div>
+    <div class="fc-event ui-draggable ui-draggable-handle">
+        DROP ME
+    </div>
+</div>-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p-schedule [events]="events" [header]="header" defaultDate="2017-02-01" [eventLimit]="4" [editable]="true" styleClass="_scheduler"
+    (onDayClick)="newEvent($event)" (onEventClick)="onEventClick($event)" (onEventDragStop)="onEventDrop($event)" (onEventDragStop)="onEventDrop($event)" 
+    [options]="options" [businessHours]="businessHours" [minTime]="minTime" [maxTime]="maxTime" [weekends]="weekends"></p-schedule>
 
-<p-schedule [events]="events" [header]="header" defaultDate="2017-02-01" [eventLimit]="4" [editable]="true" 
-(onDayClick)="newEvent($event)" 
-[options]="options" [businessHours]="businessHours" 
-[minTime]="minTime" [maxTime]="maxTime" [weekends]="weekends"></p-schedule>
+
+<p-dialog header="Event Editing" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70"
+    [maximizable]="true" [baseZIndex]="10000">
+    <span>Please Select The Task</span>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="addTaskToEvent()" label="Confirm"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="removeSelectedEvent()" label="Delete Event" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
