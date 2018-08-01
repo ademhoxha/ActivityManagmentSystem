@@ -32,5 +32,34 @@
 }
 
 ._scheduler .fc-axis {
-    width : 50px;
+    width : 7.5em !important;
 }
+
+._scheduler .fc-axis span{
+    align-content: center;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+._scheduler .fc-time-grid .fc-event-container {
+    margin: 0px !important; 
+}
+
+
+
+/*._scheduler .fc-minor, ._scheduler .fc-divider {
+    border: solid 1px black !important;
+    content: black;
+}*/
+
+
+._scheduler td.fc-axis.fc-time.ui-widget-content {
+    height: 35px;
+}
+
+
+/*.fc-event-container div:active { 
+    background-color: yellow;
+}*/
