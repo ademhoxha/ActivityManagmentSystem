@@ -15,7 +15,8 @@ var models = {
         authToken: String,
         projects: [],
         tasks: [],
-        jobs: [],
+        committedJobs: [],
+        executedJobs: [],
     },
 
     UserList: {
@@ -36,6 +37,7 @@ var models = {
         projectFounder: {},
         projectTeam: [],
         projectTasks: [],
+        projectJobs: [],
 
         projectNotes: [],
         isClosed: Boolean,
@@ -60,11 +62,34 @@ var models = {
 
         taskFounder: {},
         taskTeam: [],
+        jobs: [],
 
         taskNotes: [],
         isClosed: Boolean,
     },
+    Job: {
+        projectName: String,
+        taskName: String,
 
+        jobName: String,
+        jobAlias: String,
+
+        startDate: Date,
+        deliveryDate: Date,
+
+        estimatedDays: Number,
+        estimatedCostForDay: Number,
+
+        completionPercentage: Number,
+
+        extraEstimatedDays: Number,
+
+        jobCommitter: String,
+        jobExecuter: String,
+
+        jobNotes: [],
+        isClosed: Boolean,
+    },
     OtpReceiver: {
         receiver: String,
         otp: {

@@ -11,9 +11,26 @@ export class SchedulerComponent implements OnInit {
 
   schedulerUtils: SchedulerUtils = new SchedulerUtils();
 
-  constructor() { }
+  constructor() {
+    var td = new Date();
+    var dd = td.getDate();
+    var mm = td.getMonth() + 1;
+    this.today = td.getFullYear().toString() + "-";
+
+    if (mm < 10) {
+      this.today += '0';
+    }
+    this.today += mm.toString() + "-";
+
+    if (dd < 10) {
+      this.today += '0';
+    }
+    this.today += dd.toString();
+  }
+
   events: any[] = [];
   idInc: number = 1;
+  today = "";
 
   header: any;
   views: any;
@@ -21,18 +38,23 @@ export class SchedulerComponent implements OnInit {
   hiddenDays = [0, 6]; // hide sunday and saturday
   businessHours = [ // specify an array instead
     {
-      dow: [1, 2, 3], // Monday, Tuesday, Wednesday
-      start: '08:00', // 8am
-      end: '18:00' // 6pm
+      dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+      start: '09:00', // 8am
+      end: '13:00' // 6pm
     },
+    {
+      dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+      start: '14:00', // 8am
+      end: '18:00' // 6pm
+    }/*,
     {
       dow: [4, 5], // Thursday, Friday
       start: '10:00', // 10am
       end: '16:00' // 4pm
-    }
+    }*/
   ];
-  minTime = "08:00:00";
-  maxTime = "18:00:00";
+  minTime = "07:00:00";
+  maxTime = "20:00:00";
   weekends = false;
 
   ngOnInit() {
@@ -40,27 +62,36 @@ export class SchedulerComponent implements OnInit {
       left: 'prev,next',
       center: 'title, today',
       // right: 'month,agendaWeek,agendaDay'
-      right: 'agendaFourDay,tenDay'
+     // right: 'agendaDay,agendaFourDay,tenDay'
+     right: 'agendaDay,agendaFourDay,tenDay'
     };
 
     this.views = {
       agendaFourDay: {
         type: 'agenda',
-        duration: { days: 4 },
+        //duration: { days: 4 },
+        dayCount: 4,
         buttonText: '4 day',
         slotEventOverlap: false,
       },
       tenDay: {
         type: 'agenda',
         duration: { days: 10 },
-        buttonText: '10 day'
+       // dayCount: 10,
+        buttonText: '10 day',
+        slotEventOverlap: false,
       }
     }
 
     this.options = {
       views: this.views,
       defaultView: 'agendaFourDay',
-      eventColor: '#85144b'
+      eventColor: '#85144b',
+      weekends: false,
+     /* visibleRange: {
+        start: '2018-07-22',
+        end: '2018-08-25'
+      }*/
     }
   }
 
@@ -135,12 +166,12 @@ export class SchedulerComponent implements OnInit {
     this.events = this.events.filter((element) => {
       console.log("Confirming " + element.id + " --- " + this.clickedEvent.id)
       this.idInc += 1;
-      if (element.id == this.clickedEvent.id){
+      if (element.id == this.clickedEvent.id) {
         element.color = '#2ECC40';
         element.id = this.idInc;
         tempElement = element;
       }
-      else{
+      else {
         return element;
       }
     });
@@ -168,6 +199,11 @@ export class SchedulerComponent implements OnInit {
 
   dragStart(event) {
     console.log("Drag Strart")
+  }
+
+  test(event){
+    console.log("TEST")
+    console.log(event)
   }
 
 }

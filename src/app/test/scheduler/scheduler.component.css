@@ -24,6 +24,10 @@
     margin-right: 0.5em;
 }
 
+._scheduler .fc-button-group .fc-prev-button, ._scheduler .fc-button-group .ui-corner-right {
+    margin-left: 0.5em;
+}
+
 ._scheduler .fc-day-header {
     height: 3em;
     align-content: center;
@@ -62,4 +66,39 @@
 
 /*.fc-event-container div:active { 
     background-color: yellow;
+}*/
+
+._scheduler .fc-day-grid .ui-state-highlight{
+    border-color: #0074D9;
+    background-color: #0074D9;
+    color: #FFFFFF;
+}
+
+
+._scheduler .ui-state-highlight{
+    border-color: #D5D5D5;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+
+._scheduler .fc-time-grid .fc-event {
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    /*border: 2px solid;
+    border-top-color: black !important;
+    border-bottom-color: black !important;*/
+}
+
+
+._scheduler .fc-time-grid .fc-event:hover { 
+    box-shadow: 1px 1px 20px 4px #c51162;
+    background-color: #6a1b9a !important;
+    border-color: #6a1b9a !important;
+}
+
+/*._scheduler tr {
+    background-color: red;
 }*/

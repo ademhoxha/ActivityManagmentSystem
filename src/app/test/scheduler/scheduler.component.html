@@ -6,9 +6,9 @@
 (onDayClick)="newEvent($event)"></p-schedule> -->
 
 <!-- <p-schedule [events]="events" [header]="header" defaultDate="2017-02-01" [eventLimit]="4" [editable]="true" 
-(onDayClick)="newEvent($event)" 
+(onDayClick)="newEvent($event)"  (onEventDragStop)="onEventDrop($event)" (onEventDragStop)="onEventDrop($event)"
 [options]="options"  [hiddenDays]="hiddenDays" [businessHours]="businessHours" 
-[minTime]="minTime" [maxTime]="maxTime" [weekends]="weekends"></p-schedule> -->
+[minTime]="minTime" [maxTime]="maxTime" [weekends]="weekends" [eventRender]="test" ></p-schedule> -->
 
 <!--<div>
     <div class="fc-event ui-draggable ui-draggable-handle">
@@ -21,9 +21,9 @@
 <br>
 <br>
 <br>
-<p-schedule [events]="events" [header]="header" defaultDate="2017-02-01" [eventLimit]="4" [editable]="true" styleClass="_scheduler"
-    (onDayClick)="newEvent($event)" (onEventClick)="onEventClick($event)" (onEventDragStop)="onEventDrop($event)" (onEventDragStop)="onEventDrop($event)" 
-    [options]="options" [businessHours]="businessHours" [minTime]="minTime" [maxTime]="maxTime" [weekends]="weekends"></p-schedule>
+<p-schedule [events]="events" [header]="header" defaultDate={{today}} [eventLimit]="4" [editable]="true" styleClass="_scheduler"
+    (onDayClick)="newEvent($event)" (onEventClick)="onEventClick($event)" 
+    [options]="options" [businessHours]="businessHours" [minTime]="minTime" [maxTime]="maxTime" ></p-schedule>
 
 
 <p-dialog header="Event Editing" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70"

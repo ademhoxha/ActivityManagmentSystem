@@ -8,6 +8,8 @@ const authRoute = require('../auth/authRoute').authRoute;
 const otpRoute = require('../otp/otpRoute').otpRoute;
 const registrationRoute = require('../registration/registrationRoute').registrationRoute;
 const ProjectRoute = require('../project/projectRoute').ProjectRoute;
+const TaskRoute = require('../task/taskRoute').TaskRoute;
+const JobRoute = require('../job/jobRoute').JobRoute;
 
 
 class routeFactory {
@@ -28,6 +30,12 @@ class routeFactory {
     }
     getProjectRoute(){
         return new ProjectRoute();
+    }
+    getTaskRoute(){
+        return new TaskRoute();
+    }
+    getJobRoute(){
+        return new JobRoute();
     }
 }
 
@@ -61,11 +69,23 @@ function getProjectRoute(){
     return factory.getProjectRoute();
 }
 
+function getTaskRoute(){
+    return factory.getTaskRoute();
+}
+
+function getJobRoute(){
+    return factory.getJobRoute();
+}
+
+
+
 module.exports = {
     getRuoteClass : getRuoteClass,
     getLoggerRoute : getLoggerRoute,
     getAuthRoute : getAuthRoute,
     getOtpRoute : getOtpRoute,
     getRegistrationRoute : getRegistrationRoute,
-    getProjectRoute : getProjectRoute
+    getProjectRoute : getProjectRoute,
+    getTaskRoute : getTaskRoute,
+    getJobRoute : getJobRoute
 }

@@ -16,8 +16,11 @@ function startServer(data) {
     routeUtils.getRegistrationRoute().applyRoute(); // registration api
     routeUtils.getAuthRoute().applyRoute(); // authentication ruote => next() only if logged
 
-    routeUtils.getProjectRoute().applyRoute(); // new project
-    
+    routeUtils.getProjectRoute().applyRoute(); // projec routes
+
+    routeUtils.getTaskRoute().applyRoute(); // task routes
+
+    routeUtils.getJobRoute().applyRoute(); // job routes
     
     routeUtils.getRuoteClass(data.route).applyRoute(); // standard route => send angular FE
     
