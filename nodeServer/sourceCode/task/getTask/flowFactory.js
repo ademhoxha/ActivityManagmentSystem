@@ -1,7 +1,7 @@
-var GetProjectFlow = require('./getProjectFlow').GetProjectFlow;
+var TestFlow = require('./getTaskFlow').TestFlow;
 
 function getFlow() {
-    return new GetProjectFlow();
+    return new TestFlow();
 }
 
 module.exports = {
