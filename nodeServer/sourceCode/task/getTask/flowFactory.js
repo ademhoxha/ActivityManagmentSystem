@@ -1,7 +1,7 @@
-var TestFlow = require('./getTaskFlow').TestFlow;
+var GetTaskFlow = require('./getTaskFlow').GetTaskFlow;
 
 function getFlow() {
-    return new TestFlow();
+    return new GetTaskFlow();
 }
 
 module.exports = {
