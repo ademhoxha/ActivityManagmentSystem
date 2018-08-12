@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemoveProjectUserPuComponent } from './remove-project-user-pu.component';
+import { RemoveProjectUserPuComponent } from '@app/project-modules/project-shared/remove-project-user-pu/remove-project-user-pu.component';
 
 describe('RemoveProjectUserPuComponent', () => {
   let component: RemoveProjectUserPuComponent;

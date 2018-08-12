@@ -1,1 +1,1 @@
-export * from './dashboard-shared.module';
+export * from '@app/dashboard-page/dashboard-shared/dashboard-shared.module';

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TestComponent } from './test/test.component'
-import { ReducedViewTestComponent } from './reduced-view-test/reduced-view-test.component';
-import { DragDropTestComponent } from './drag-drop-test/drag-drop-test.component';
-import { ClickWaveComponent } from './click-wave/click-wave.component';
-import { TableStyleComponent } from './table-style/table-style.component';
+import { TestComponent } from '@app/test/test/test.component'
+import { ReducedViewTestComponent } from '@app/test/reduced-view-test/reduced-view-test.component';
+import { DragDropTestComponent } from '@app/test/drag-drop-test/drag-drop-test.component';
+import { ClickWaveComponent } from '@app/test/click-wave/click-wave.component';
+import { TableStyleComponent } from '@app/test/table-style/table-style.component';
 import { SchedulerComponent } from '@app/test/scheduler/scheduler.component';
 
 

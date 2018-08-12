@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableStyleComponent } from './table-style.component';
+import { TableStyleComponent } from '@app/test/table-style/table-style.component';
 
 describe('TableStyleComponent', () => {
   let component: TableStyleComponent;

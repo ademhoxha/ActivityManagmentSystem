@@ -1,0 +1,13 @@
+<p-dialog header="Event Editing" [modal]="true"  [(visible)]="display" [responsive]="true" [width]="350" [minWidth]="200"
+  [minY]="70" [maximizable]="true" appendTo="body">
+  <div class="form-group">
+    <label class="col-md-12">Select a Job</label>
+    <div class="col-md-6">
+      <app-dropdown-list [list]="jobList" (returnFunction)="jobSelected($event)"></app-dropdown-list>
+    </div>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="addJobToEvent()" label="Confirm" [disabled]="!selecteJob"></button>
+    <button type="button" pButton icon="pi pi-close" (click)="removeSelectedEvent()" label="Delete Event" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>

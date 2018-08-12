@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownListComponent } from './dropdown-list.component';
+import { DropdownListComponent } from '@app/dashboard-page/dashboard-shared/list-components/dropdown-list/dropdown-list.component';
 
 describe('DropdownListComponent', () => {
   let component: DropdownListComponent;

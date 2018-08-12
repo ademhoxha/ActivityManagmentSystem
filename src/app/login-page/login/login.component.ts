@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 import * as $ from 'jquery';
 
-import { AuthApiService } from '../auth-api/auth-api.service';
+import { AuthApiService } from '@app/login-page/auth-api/auth-api.service';
 
 @Component({
   selector: 'app-login',

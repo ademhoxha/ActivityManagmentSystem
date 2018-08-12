@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewActivityComponent } from './view-activity.component';
+import { AllDaySchedulerComponent } from './all-day-scheduler.component';
 
-describe('ViewActivityComponent', () => {
-  let component: ViewActivityComponent;
-  let fixture: ComponentFixture<ViewActivityComponent>;
+describe('AllDaySchedulerComponent', () => {
+  let component: AllDaySchedulerComponent;
+  let fixture: ComponentFixture<AllDaySchedulerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewActivityComponent ]
+      declarations: [ AllDaySchedulerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewActivityComponent);
+    fixture = TestBed.createComponent(AllDaySchedulerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

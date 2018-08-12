@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import {SharedModule} from '@app/shared'
 
 // dashboard custom shared components
-import { StartEndDateComponent } from './date-components/start-end-date/start-end-date.component';
-import { DropdownListComponent } from './list-components/dropdown-list/dropdown-list.component';
-import { PickListComponent } from './list-components/pick-list/pick-list.component';
-import { TableComponent } from './table-components/table/table.component';
+import { StartEndDateComponent } from '@app/dashboard-page/dashboard-shared/date-components/start-end-date/start-end-date.component';
+import { DropdownListComponent } from '@app/dashboard-page/dashboard-shared/list-components/dropdown-list/dropdown-list.component';
+import { PickListComponent } from '@app/dashboard-page/dashboard-shared/list-components/pick-list/pick-list.component';
+import { TableComponent } from '@app/dashboard-page/dashboard-shared/table-components/table/table.component';
 
 @NgModule({
   imports: [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RemoveProjectMemberComponent } from './remove-project-member.component';
+import { RemoveProjectMemberComponent } from '@app/project-modules/remove-project-member/remove-project-member.component';
 
 const routes: Routes = [
   {

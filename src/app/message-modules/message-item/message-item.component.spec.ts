@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessageItemComponent } from './message-item.component';
+import { MessageItemComponent } from '@app/message-modules/message-item/message-item.component';
 
 describe('MessageItemComponent', () => {
   let component: MessageItemComponent;

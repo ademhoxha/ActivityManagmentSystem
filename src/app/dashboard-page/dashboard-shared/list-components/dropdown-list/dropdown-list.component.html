@@ -1,1 +1,1 @@
-<p-dropdown *ngIf="list" [options]="list" [(ngModel)]="selectedItem" filter="filter" [style]="{'width':'100%'}" ></p-dropdown>
+<p-dropdown *ngIf="list" [options]="list" [(ngModel)]="selectedItem" filter="filter" [style]="{'width':'100%'}" (onChange)="onChange" ></p-dropdown>

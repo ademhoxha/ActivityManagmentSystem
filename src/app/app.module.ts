@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from '@app/app.component';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '@app/app-routing.module';
 
 
 // external components primeNG

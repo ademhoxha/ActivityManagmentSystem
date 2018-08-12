@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlockUiComponent } from './block-ui.component';
+import { BlockUiComponent } from '@app/shared/block-ui/block-ui.component';
 
 describe('BlockUiComponent', () => {
   let component: BlockUiComponent;

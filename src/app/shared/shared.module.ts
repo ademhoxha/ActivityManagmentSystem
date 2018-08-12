@@ -29,16 +29,16 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ScheduleModule } from 'primeng/schedule';
 import { DragDropModule } from 'primeng/dragdrop';
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 
 
 // custom shared components
-import { ErrorComponent } from './error/error.component';
-import { LoaderComponent } from './loader/loader.component';
-import { OperationResultComponent } from './operation-result/operation-result.component';
-import { BlockUiComponent } from './block-ui/block-ui.component';
-import { PopUpComponent } from './pop-up/pop-up.component';
-import { MessageComponent } from './message/message.component';
+import { ErrorComponent } from '@app/shared/error/error.component';
+import { LoaderComponent } from '@app/shared/loader/loader.component';
+import { OperationResultComponent } from '@app/shared/operation-result/operation-result.component';
+import { BlockUiComponent } from '@app/shared/block-ui/block-ui.component';
+import { PopUpComponent } from '@app/shared/pop-up/pop-up.component';
+import { MessageComponent } from '@app/shared/message/message.component';
 
 @NgModule({
   imports: [

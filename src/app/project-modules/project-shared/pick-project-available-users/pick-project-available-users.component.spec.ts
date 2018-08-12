@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PickProjectAvailableUsersComponent } from './pick-project-available-users.component';
+import { PickProjectAvailableUsersComponent } from '@app/project-modules/project-shared/pick-project-available-users/pick-project-available-users.component';
 
 describe('PickProjectAvailableUsersComponent', () => {
   let component: PickProjectAvailableUsersComponent;

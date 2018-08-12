@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DragDropTestComponent } from './drag-drop-test.component';
+import { DragDropTestComponent } from '@app/test/drag-drop-test/drag-drop-test.component';
 
 describe('DragDropTestComponent', () => {
   let component: DragDropTestComponent;

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LateralActivityMenuComponent } from './lateral-activity-menu.component';
+import { LateralActivityMenuComponent } from '@app/dashboard-page/lateral-activity-menu/lateral-activity-menu.component';
 
 describe('LateralActivityMenuComponent', () => {
   let component: LateralActivityMenuComponent;

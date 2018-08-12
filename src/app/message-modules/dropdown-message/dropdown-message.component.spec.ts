@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownMessageComponent } from './dropdown-message.component';
+import { DropdownMessageComponent } from '@app/message-modules/dropdown-message/dropdown-message.component';
 
 describe('DropdownMessageComponent', () => {
   let component: DropdownMessageComponent;

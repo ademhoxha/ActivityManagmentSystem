@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectLateralMenuComponent } from './project-lateral-menu.component';
+import { ProjectLateralMenuComponent } from '@app/dashboard-page/project-lateral-menu/project-lateral-menu.component';
 
 describe('ProjectLateralMenuComponent', () => {
   let component: ProjectLateralMenuComponent;

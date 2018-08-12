@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { RegistrationService } from './registration.service';
+import { RegistrationService } from '@app/registration-page/registration.service';
 
 @Component({
   selector: 'app-registration',

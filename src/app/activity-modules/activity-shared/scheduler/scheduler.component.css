@@ -1,0 +1,104 @@
+
+._scheduler {
+    background-color: #001f3f; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+._scheduler .fc-header-toolbar {
+    border: 10px solid #001f3f;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+._scheduler .fc-center {
+    color: white;
+}
+
+._scheduler .fc-button-group button, ._scheduler .fc-center button  {
+    border: .5px solid white;
+    border-radius: 10px !important;
+}
+
+._scheduler .fc-button-group .fc-prev-button, ._scheduler .fc-button-group .ui-corner-left {
+    margin-right: 0.5em;
+}
+
+._scheduler .fc-button-group .fc-prev-button, ._scheduler .fc-button-group .ui-corner-right {
+    margin-left: 0.5em;
+}
+
+._scheduler .fc-day-header {
+    height: 3em;
+    align-content: center;
+    padding-top: .75em;
+    font-size: 22.5px;
+}
+
+._scheduler .fc-axis {
+    width : 7.5em !important;
+}
+
+._scheduler .fc-axis span{
+    align-content: center;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+._scheduler .fc-time-grid .fc-event-container {
+    margin: 0px !important; 
+}
+
+
+
+/*._scheduler .fc-minor, ._scheduler .fc-divider {
+    border: solid 1px black !important;
+    content: black;
+}*/
+
+
+._scheduler td.fc-axis.fc-time.ui-widget-content {
+    height: 35px;
+}
+
+
+/*.fc-event-container div:active { 
+    background-color: yellow;
+}*/
+
+._scheduler .fc-day-grid .ui-state-highlight{
+    border-color: #0074D9;
+    background-color: #0074D9;
+    color: #FFFFFF;
+}
+
+
+._scheduler .ui-state-highlight{
+    border-color: #D5D5D5;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+
+._scheduler .fc-time-grid .fc-event {
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    /*border: 2px solid;
+    border-top-color: black !important;
+    border-bottom-color: black !important;*/
+}
+
+
+._scheduler .fc-time-grid .fc-event:hover { 
+    box-shadow: 1px 1px 20px 4px #c51162;
+    background-color: #6a1b9a !important;
+    border-color: #6a1b9a !important;
+}
+
+/*._scheduler tr {
+    background-color: red;
+}*/

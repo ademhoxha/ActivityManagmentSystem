@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent } from '@app/dashboard-page/dashboard.component';
 
 const routes: Routes = [
   {
@@ -23,6 +23,14 @@ const routes: Routes = [
       {
         path: 'newprojecttask',
         loadChildren: 'app/project-modules/new-project-task/new-project-task.module#NewProjectTaskModule'
+      },
+      {
+        path: 'insertdayactivity',
+        loadChildren: 'app/activity-modules/new-day-activity/new-day-activity.module#NewDayActivityModule'
+      },
+      {
+        path: 'managemonthactivity',
+        loadChildren: 'app/activity-modules/month-activity/month-activity.module#MonthActivityModule'
       }
     ]
   },

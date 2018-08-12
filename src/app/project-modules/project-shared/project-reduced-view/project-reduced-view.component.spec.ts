@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectReducedViewComponent } from './project-reduced-view.component';
+import { ProjectReducedViewComponent } from '@app/project-modules/project-shared/project-reduced-view/project-reduced-view.component';
 
 describe('ProjectReducedViewComponent', () => {
   let component: ProjectReducedViewComponent;

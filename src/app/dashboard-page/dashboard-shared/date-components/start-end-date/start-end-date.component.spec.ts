@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StartEndDateComponent } from './start-end-date.component';
+import { StartEndDateComponent } from '@app/dashboard-page/dashboard-shared/date-components/start-end-date/start-end-date.component';
 
 describe('StartEndDateComponent', () => {
   let component: StartEndDateComponent;

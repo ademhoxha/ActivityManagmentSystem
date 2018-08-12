@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PickListComponent } from './pick-list.component';
+import { PickListComponent } from '@app/dashboard-page/dashboard-shared/list-components/pick-list/pick-list.component';
 
 describe('PickListComponent', () => {
   let component: PickListComponent;

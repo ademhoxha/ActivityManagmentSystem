@@ -27,7 +27,7 @@ class GetJobList extends BaseControllerChain {
         super(nextStep);
     }
     apply(req, res, next) {
-        if (req.path.toLowerCase() != "/api/project/getuserjoblist") {
+        if (req.path.toLowerCase() != "/api/job/getuserjoblist") {
             return super.next(req, res, next);
         }
         else {

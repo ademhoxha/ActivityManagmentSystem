@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewProjectTaskComponent } from './new-project-task.component';
+import { NewProjectTaskComponent } from '@app/project-modules/new-project-task/new-project-task.component';
 
 describe('NewProjectTaskComponent', () => {
   let component: NewProjectTaskComponent;

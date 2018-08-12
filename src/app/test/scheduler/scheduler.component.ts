@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SchedulerUtils } from './schedulerUtils';
+import { SchedulerUtils } from '@app/test/scheduler/schedulerUtils';
 
 @Component({
   selector: 'app-scheduler',

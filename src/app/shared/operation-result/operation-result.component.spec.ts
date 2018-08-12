@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OperationResultComponent } from './operation-result.component';
+import { OperationResultComponent } from '@app/shared/operation-result/operation-result.component';
 
 describe('OperationResultComponent', () => {
   let component: OperationResultComponent;

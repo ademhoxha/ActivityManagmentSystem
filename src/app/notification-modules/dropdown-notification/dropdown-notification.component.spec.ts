@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownNotificationComponent } from './dropdown-notification.component';
+import { DropdownNotificationComponent } from '@app/notification-modules/dropdown-notification/dropdown-notification.component';
 
 describe('DropdownNotificationComponent', () => {
   let component: DropdownNotificationComponent;

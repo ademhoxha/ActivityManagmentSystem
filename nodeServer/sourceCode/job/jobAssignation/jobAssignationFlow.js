@@ -27,7 +27,7 @@ class NewTaskRequest extends BaseControllerChain {
         super(nextStep);
     }
     apply(req, res, next) {
-        if (req.path.toLowerCase() != "/api/project/jobassignation") {
+        if (req.path.toLowerCase() != "/api/job/jobassignation") {
             return super.next(req, res, next);
         }
         else {

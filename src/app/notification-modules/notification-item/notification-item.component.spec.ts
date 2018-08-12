@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationItemComponent } from './notification-item.component';
+import { NotificationItemComponent } from '@app/notification-modules/notification-item/notification-item.component';
 
 describe('NotificationItemComponent', () => {
   let component: NotificationItemComponent;

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectProjectComponent } from './select-project.component';
+import { SelectProjectComponent } from '@app/project-modules/project-shared/select-project/select-project.component';
 
 describe('SelectProjectComponent', () => {
   let component: SelectProjectComponent;

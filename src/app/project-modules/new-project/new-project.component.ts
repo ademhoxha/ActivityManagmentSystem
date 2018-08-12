@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ProjectUtils } from '../project-utils';
+import { ProjectUtils } from '@app/project-modules/project-utils';
 import 'rxjs/add/operator/toPromise';
 
 

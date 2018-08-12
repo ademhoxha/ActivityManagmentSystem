@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewTaskReducedViewComponent } from './new-task-reduced-view.component';
+import { NewTaskReducedViewComponent } from '@app/project-modules/project-shared/new-task-reduced-view/new-task-reduced-view.component';
 
 describe('NewTaskReducedViewComponent', () => {
   let component: NewTaskReducedViewComponent;

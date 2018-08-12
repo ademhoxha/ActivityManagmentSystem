@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { RegistrationRoutingModule } from './registration-routing.module';
-import { RegistrationComponent } from './registration.component';
+import { RegistrationRoutingModule } from '@app/registration-page/registration-routing.module';
+import { RegistrationComponent } from '@app/registration-page/registration.component';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app/shared/shared.module';
 
-import { RegistrationService } from './registration.service';
+import { RegistrationService } from '@app/registration-page/registration.service';
 
 @NgModule({
   imports: [

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClickWaveComponent } from './click-wave.component';
+import { ClickWaveComponent } from '@app/test/click-wave/click-wave.component';
 
 describe('ClickWaveComponent', () => {
   let component: ClickWaveComponent;

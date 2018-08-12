@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemoveProjectMemberComponent } from './remove-project-member.component';
+import { RemoveProjectMemberComponent } from '@app/project-modules/remove-project-member/remove-project-member.component';
 
 describe('RemoveProjectMemberComponent', () => {
   let component: RemoveProjectMemberComponent;
