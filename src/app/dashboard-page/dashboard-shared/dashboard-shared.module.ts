@@ -7,6 +7,8 @@ import { StartEndDateComponent } from '@app/dashboard-page/dashboard-shared/date
 import { DropdownListComponent } from '@app/dashboard-page/dashboard-shared/list-components/dropdown-list/dropdown-list.component';
 import { PickListComponent } from '@app/dashboard-page/dashboard-shared/list-components/pick-list/pick-list.component';
 import { TableComponent } from '@app/dashboard-page/dashboard-shared/table-components/table/table.component';
+import { DropdownGroupListComponent } from '@app/dashboard-page/dashboard-shared/list-components/dropdown-group-list/dropdown-group-list.component';
+
 
 @NgModule({
   imports: [
@@ -16,14 +18,16 @@ import { TableComponent } from '@app/dashboard-page/dashboard-shared/table-compo
     StartEndDateComponent,
     DropdownListComponent,
     PickListComponent,
-    TableComponent
+    TableComponent,
+    DropdownGroupListComponent
   ],
   exports: [
     SharedModule,
     StartEndDateComponent,
     DropdownListComponent,
     PickListComponent,
-    TableComponent
+    TableComponent,
+    DropdownGroupListComponent
   ]
 })
 export class DashboardSharedModule { }

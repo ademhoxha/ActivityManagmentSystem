@@ -7,6 +7,7 @@ import { DragDropTestComponent } from '@app/test/drag-drop-test/drag-drop-test.c
 import { ClickWaveComponent } from '@app/test/click-wave/click-wave.component';
 import { TableStyleComponent } from '@app/test/table-style/table-style.component';
 import { SchedulerComponent } from '@app/test/scheduler/scheduler.component';
+import { GroupddComponent } from '@app/test/groupdd/groupdd.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'drag', component: DragDropTestComponent },
       { path: 'click', component: ClickWaveComponent },
       { path: 'table', component: TableStyleComponent },
-      { path: 'schedule', component: SchedulerComponent }
+      { path: 'schedule', component: SchedulerComponent },
+      { path: 'group', component: GroupddComponent }
     ]
   }
 ];

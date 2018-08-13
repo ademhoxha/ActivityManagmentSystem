@@ -16,7 +16,7 @@ export class JobListPopupComponent implements OnInit {
 
   loader = true;
   jobList = [];
-  selecteJob;
+  selectedJob;
   constructor(private jobService: ActivityApiService, private router: Router) { }
 
   ngOnInit() {
@@ -29,24 +29,46 @@ export class JobListPopupComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
       /*else {
-        this.returnFunction.emit({ state: "error", message: "Project List Can't be retrived, please reload the page" });
+        this.returnFunction.emit({ state: "error", message: "Job List Can't be retrived, please reload the page" });
       }*/
     });
   }
 
-  prepareJobList(executedJobList: Array<any>) {
-    this.jobList = executedJobList.map(function (element) {
-      return { label: element, value: element };
-    });
+  prepareJobList(executedJobList) {
+    console.log("executedJobList")
+    console.log(executedJobList)
+    for (var prj in executedJobList) {
+
+      this.jobList = [];
+      for (var tsk in executedJobList[prj]) {
+
+        var jobsArray: Array<any> = executedJobList[prj][tsk];
+
+        this.jobList.push({
+          label: prj + " " + tsk,
+          items: jobsArray.map((element) => {
+            return {
+              label: element, value: {
+                projectName: prj,
+                taskName: tsk,
+                jobName : element
+              }
+            };
+          })
+        });
+
+      }
+
+    }
     this.loader = false;
   }
 
   jobSelected(ret) {
-    this.selecteJob = ret.selectedItem;
+    this.selectedJob = ret.selectedItem;
   }
 
   addJobToEvent() {
-    var ret = { selecteJob: this.selecteJob }
+    var ret = { selectedJob: this.selectedJob }
     this.addJobFunc.emit(ret);
   }
 
@@ -57,5 +79,12 @@ export class JobListPopupComponent implements OnInit {
   onHide() {
     this.hidePopUp.emit(undefined);
   }
+
+  /*prepareJobList(executedJobList: Array<any>) {
+    this.jobList = executedJobList.map(function (element) {
+      return { label: element, value: element };
+    });
+    this.loader = false;
+  }*/
 
 }

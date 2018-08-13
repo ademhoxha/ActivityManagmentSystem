@@ -88,6 +88,15 @@ export class SchedulerUtils implements IScheduler {
         return defaultDate;
     }
 
+    getFirstAvailableScheduledDay(date: Date) {
+        if (date.getDay() == 0)
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate() - 2);
+        else if (date.getDay() == 6)
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
+        else
+            return date;
+    }
+
 }
 
 class schedulerStrategyFactory {
@@ -212,14 +221,17 @@ class DateEvaluation implements EvaluateSchedulerEvent {
 /* Scheduler Builder */
 export interface ISchedulerBuilder {
     initializeSCheduler();
+
+    constraintsEvents();
 }
 
 export class OneDayBuilder implements ISchedulerBuilder {
+
     initializeSCheduler() {
         var schedUtils = new SchedulerUtils();
         var builder = {};
 
-        builder['defaultDay'] = schedUtils.getDefaultDate(new Date());
+        builder['defaultDay'] = schedUtils.getDefaultDate( schedUtils.getFirstAvailableScheduledDay(new Date()) );
 
         builder['header'] = {
             left: '',
@@ -255,14 +267,20 @@ export class OneDayBuilder implements ISchedulerBuilder {
         return builder;
     }
 
+    constraintsEvents() {
+        return undefined;
+    }
+
 }
 
 export class AllDayBuilder implements ISchedulerBuilder {
-    initializeSCheduler(){
-        var schedUtils = new SchedulerUtils();
+
+    schedUtils = new SchedulerUtils();
+
+    initializeSCheduler() {
         var builder = {};
 
-        builder['defaultDay'] = schedUtils.getDefaultDate(new Date());
+        builder['defaultDay'] = this.schedUtils.getDefaultDate( this.schedUtils.getFirstAvailableScheduledDay(new Date()) );
 
         builder['header'] = {
             left: 'prev,next',
@@ -315,4 +333,36 @@ export class AllDayBuilder implements ISchedulerBuilder {
         return builder;
     }
 
+    constraintsEvents() {
+        var today = new Date();
+        var mb = new Date(today.getFullYear(), today.getMonth(), 0);
+
+        //var me = new Date(today.getFullYear(), today.getMonth()+1, 1 ); // end of the month
+        var me = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);// tomorrow
+
+        var prevMonthEnd = this.schedUtils.getDefaultDate(mb) + "T23:30:00";
+        var nextMonthStart = this.schedUtils.getDefaultDate(me) + "T00:30:00";
+        return [{
+            id: 999998,
+            start: (today.getFullYear() - 25).toString() + '-07-24T20:00:00',
+            end: prevMonthEnd,
+            overlap: false,
+            rendering: 'background',
+            color: '#ff9f89',
+            isConstrains: true
+        },
+        {
+            id: 999999,
+            start: nextMonthStart,
+            end: (today.getFullYear() + 25).toString() + '-07-28T20:00:00',
+            overlap: false,
+            rendering: 'background',
+            color: '#ff9f89',
+            isConstrains: true
+        }];
+    }
+
 }
+
+
+

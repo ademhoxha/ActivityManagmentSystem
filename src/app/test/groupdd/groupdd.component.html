@@ -1,0 +1,15 @@
+<h3 class="first">GROUPING EXAMPLE</h3>
+<p-dropdown [options]="groupedCars" [(ngModel)]="selectedCar3" [style]="{'width':'150px'}" placeholder="Select a Car" [group]="true">
+  <ng-template let-group pTemplate="group">
+    <span>{{group.label}}</span>
+  </ng-template>
+</p-dropdown>
+
+<h3 class="first">MULTIPLE GROUPING EXAMPLE</h3>
+<p-dropdown [options]="multipleGroup" [(ngModel)]="selectedCar" [style]="{'width':'150px'}" placeholder="Select a Car" [group]="true">
+  <ng-template let-group pTemplate="group">
+    <ng-template let-group1 pTemplate="group1">
+      <span>{{group1.label}}</span>
+    </ng-template>
+  </ng-template>
+</p-dropdown>

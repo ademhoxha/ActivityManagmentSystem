@@ -1,0 +1,5 @@
+<p-dropdown *ngIf="list" [options]="list" [(ngModel)]="selectedItem" [style]="{'width':'300px'}" placeholder="Select a Car" [group]="true" (onChange)="onChange();">
+  <ng-template let-group pTemplate="group">
+    <span>{{group.label}}</span>
+  </ng-template>
+</p-dropdown>
