@@ -10,8 +10,8 @@ var data = {
     jobExecuter: 'test.test@libero.it',
 
     projectName: "TaskAAA",
-    taskName: "TaskA",
-    jobName: "Job333",
+    taskName: "TaskA",/*TaskA,TaskB,TaskC */ 
+    jobName: "JobAA001",
 
     startDate: new Date(),
     deliveryDate: new Date(),

@@ -112,6 +112,7 @@ export class SchedulerComponent  implements OnInit {
        if (element.id == this.clickedEvent.id) {
          element.color = '#2ECC40';
          element.id = this.idInc;
+         element.title = job;
          tempElement = element;
        }
        else {
@@ -121,6 +122,10 @@ export class SchedulerComponent  implements OnInit {
  
      setTimeout(() => { this.events.push(tempElement); }, 25);
      this.clickedEvent = { id: -1 };
+   }
+
+   onHide(evt){
+    this.display = false;
    }
  
  

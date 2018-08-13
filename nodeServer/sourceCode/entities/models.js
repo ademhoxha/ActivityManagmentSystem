@@ -15,8 +15,8 @@ var models = {
         authToken: String,
         projects: [],
         tasks: [],
-        committedJobs: [],
-        executedJobs: [],
+        committedJobs: {},
+        executedJobs: {},
     },
 
     UserList: {
@@ -37,7 +37,7 @@ var models = {
         projectFounder: {},
         projectTeam: [],
         projectTasks: [],
-        projectJobs: [],
+        projectJobs: {},
 
         projectNotes: [],
         isClosed: Boolean,

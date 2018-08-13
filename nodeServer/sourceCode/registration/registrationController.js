@@ -82,6 +82,7 @@ class NextStep extends BaseControllerChain {
 /****************** Flow ******************/
 
 var user = EntitiesFactory.getUserEntity();
+var userList = EntitiesFactory.getUserList();
 
 function registrationFlow(data, callback) {
     var findData = {
@@ -100,6 +101,18 @@ function registrationFlow(data, callback) {
 
 function registerUser(data, callback) {
     user.insert(data, (err, ret) => {
+        if (err)
+            return callback(returnCodeFactory.dbError());
+        return updateUserList(data);
+    })
+}
+
+function updateUserList(data, callback) {
+    var inserData = {
+        email : data.query.email,
+        mobilephone : data.query.mobilephone
+    }
+    userList.insert(inserData, (err, ret) => {
         if (err)
             return callback(returnCodeFactory.dbError());
         return callback(undefined, ret);

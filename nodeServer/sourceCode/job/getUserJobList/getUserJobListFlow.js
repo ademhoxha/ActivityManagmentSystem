@@ -88,7 +88,30 @@ function findUser(data, callback) {
     });
 }
 
+
 function mapData(data, callback) {
+    var ret = {}; // data for the response
+
+    var elabData = {};
+    elabData.mongoObj = data;
+    var retList = mongoOperations.getJSONPropertiesfromMongo(elabData);
+
+    ret.commitedJobList = {};
+    ret.executedJobList = {};
+
+    if (retList[0].committedJobs) {
+        ret.commitedJobList = retList[0].committedJobs;
+    }
+
+    if (retList[0].executedJobs) {
+        ret.executedJobList = retList[0].executedJobs;
+    }
+
+    console.log(ret);
+    return callback(undefined, ret);
+}
+
+function mapDataOld(data, callback) {
     var ret = {}; // data for the response
 
     var elabData = {};

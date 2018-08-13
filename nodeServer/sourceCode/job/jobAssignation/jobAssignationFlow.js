@@ -115,7 +115,7 @@ function findProject(data, callback) {
             var retList = mongoOperations.getJSONPropertiesfromMongo(elabData);
 
             data.info = {};
-            data.info.projectJobs = [{
+            /*data.info.projectJobs = [{
                 taskName: data.query.taskName,
                 jobName: data.query.jobName,
 
@@ -129,6 +129,33 @@ function findProject(data, callback) {
 
             if (retList && retList[0].projectJobs && retList[0].projectJobs.length > 0) {
                 data.info.projectJobs = data.info.projectJobs.concat(retList[0].projectJobs);
+            }*/
+
+            var job = {
+                jobName: data.query.jobName,
+                estimatedDays: data.query.estimatedDays,
+                jobExecuter: data.query.jobExecuter
+            };
+
+            var isNew = true;
+            data.info.projectJobs = {}
+            if (retList && retList[0].projectJobs) {
+                data.info.projectJobs = retList[0].projectJobs;
+
+                if(data.info.projectJobs[data.query.taskName]){
+                    isNew = false;
+                    data.info.projectJobs[data.query.taskName].push(job); 
+                }
+                else{
+                    isNew = false;
+                    data.info.projectJobs[data.query.taskName] = [];
+                    data.info.projectJobs[data.query.taskName].push(job); 
+                }
+            }
+
+            if(isNew){
+                data.info.projectJobs[data.query.taskName] = [];
+                data.info.projectJobs[data.query.taskName].push(job); 
             }
 
             return findTask(data, callback);
@@ -201,11 +228,38 @@ function findExecuter(data, callback) {
             elabData.properties = ["executedJobs"];
             var retList = mongoOperations.getJSONPropertiesfromMongo(elabData);
 
-            data.info.executerJobs = [data.query.jobName];
+           /* data.info.executerJobs = [{
+                taskName: data.query.taskName,
+                projectName: data.query.projectName,
+                jobName: data.query.jobName,
+            }];
+
             if (retList && retList[0].executedJobs && retList[0].executedJobs.length > 0) {
                 data.info.executerJobs = data.info.executerJobs.concat(retList[0].executedJobs)
-            }
+            }*/
 
+            data.info.executerJobs = {}
+            var isNew = true;
+            if (retList && retList[0].executedJobs) {
+
+                data.info.executerJobs = retList[0].executedJobs;
+
+                if(data.info.executerJobs[data.query.projectName] && data.info.executerJobs[data.query.projectName][data.query.taskName]){
+                    isNew = false;
+                    data.info.executerJobs[data.query.projectName][data.query.taskName].push(data.query.jobName)
+                }
+                else if(data.info.executerJobs[data.query.projectName]){
+                    isNew = false;
+                    data.info.executerJobs[data.query.projectName][data.query.taskName] = [];
+                    data.info.executerJobs[data.query.projectName][data.query.taskName].push(data.query.jobName)
+                }
+            }
+            if(isNew){
+                data.info.executerJobs[data.query.projectName] = {};
+                data.info.executerJobs[data.query.projectName][data.query.taskName]=[];
+                data.info.executerJobs[data.query.projectName][data.query.taskName].push(data.query.jobName)
+            }
+            
             return findCommiter(data, callback);
         }
 
@@ -232,9 +286,34 @@ function findCommiter(data, callback) {
             elabData.properties = ["committedJobs"];
             var retList = mongoOperations.getJSONPropertiesfromMongo(elabData);
 
-            data.info.committerJobs = [data.query.jobName];
+            /*data.info.committerJobs = [{
+                taskName: data.query.taskName,
+                projectName: data.query.projectName,
+                jobName: data.query.jobName,
+            }];
             if (retList && retList[0].committedJobs && retList[0].committedJobs.length > 0) {
                 data.info.committerJobs = data.info.committerJobs.concat(retList[0].committedJobs)
+            }*/
+            data.info.committerJobs = {}
+            var isNew = true;
+            if (retList && retList[0].committedJobs) {
+
+                data.info.committerJobs = retList[0].committedJobs;
+
+                if(data.info.committerJobs[data.query.projectName] && data.info.committerJobs[data.query.projectName][data.query.taskName]){
+                    isNew = false;
+                    data.info.committerJobs[data.query.projectName][data.query.taskName].push(data.query.jobName)
+                }
+                else if(data.info.committerJobs[data.query.projectName]){
+                    isNew = false;
+                    data.info.committerJobs[data.query.projectName][data.query.taskName] = [];
+                    data.info.committerJobs[data.query.projectName][data.query.taskName].push(data.query.jobName)
+                }
+            }
+            if(isNew){
+                data.info.committerJobs[data.query.projectName] = {};
+                data.info.committerJobs[data.query.projectName][data.query.taskName]=[];
+                data.info.committerJobs[data.query.projectName][data.query.taskName].push(data.query.jobName)
             }
 
             return findJob(data, callback);
