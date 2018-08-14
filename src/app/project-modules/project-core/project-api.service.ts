@@ -176,4 +176,78 @@ export class ProjectApiService {
     });
   }
 
+
+  getProjectTaskListRequest(data): Promise<void | any> {
+    let url = "/api/project/getprojecttasklist";
+    const body = { projectName : data.projectName}
+    return this.http.post(url, body).toPromise().then((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    }).catch((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    });
+  }
+
+
+  newJobAssignationRequest(data): Promise<void | any> {
+    let url = "/api/job/jobassignation";
+    const body = {
+      projectName: data.projectName,
+      taskName: data.taskName,
+      jobName: data.jobName,
+
+      startDate: data.startDate,
+      deliveryDate: data.deliveryDate,
+
+      estimatedDays: data.estimatedDays,
+      estimatedCostForDay: data.estimatedCostForDay,
+    };
+    // extra days
+    if (data.extraEstimatedDays)
+      body["extraEstimatedDays"] = data.extraEstimatedDays;
+
+    return this.http.post(url, body).toPromise().then((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    }).catch((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    });
+  }
+
+
+  getTaskRequest(data): Promise<void | any> {
+    let url = "/api/project/gettask";
+    const body = {
+      projectName: data.projectName,
+      taskName: data.taskName,
+    };
+    return this.http.post(url, body).toPromise().then((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    }).catch((response) => {
+      var ret = {}
+      if (response.status == 200) // body parser
+        ret = response.json();
+      ret['status'] = response.status;
+      return ret;
+    });
+  }
+
 }

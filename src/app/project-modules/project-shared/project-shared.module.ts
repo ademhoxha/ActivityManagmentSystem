@@ -9,6 +9,8 @@ import { SelectProjectComponent } from '@app/project-modules/project-shared/sele
 import { ProjectReducedViewComponent } from '@app/project-modules/project-shared/project-reduced-view/project-reduced-view.component';
 import { RemoveProjectUserPuComponent } from '@app/project-modules/project-shared/remove-project-user-pu/remove-project-user-pu.component';
 import { NewTaskReducedViewComponent } from '@app/project-modules/project-shared/new-task-reduced-view/new-task-reduced-view.component';
+import { SelectTaskComponent } from '@app/project-modules/project-shared/select-task/select-task.component';
+
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import { NewTaskReducedViewComponent } from '@app/project-modules/project-shared
     SelectProjectComponent,
     ProjectReducedViewComponent,
     RemoveProjectUserPuComponent,
-    NewTaskReducedViewComponent
+    NewTaskReducedViewComponent,
+    SelectTaskComponent
   ],
   exports: [
     DashboardSharedModule,
@@ -32,7 +35,8 @@ import { NewTaskReducedViewComponent } from '@app/project-modules/project-shared
     SelectProjectComponent,
     ProjectReducedViewComponent,
     RemoveProjectUserPuComponent,
-    NewTaskReducedViewComponent
+    NewTaskReducedViewComponent,
+    SelectTaskComponent
   ]
 })
 export class ProjectSharedModule { }

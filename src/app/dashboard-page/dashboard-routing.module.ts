@@ -31,6 +31,10 @@ const routes: Routes = [
       {
         path: 'managemonthactivity',
         loadChildren: 'app/activity-modules/month-activity/month-activity.module#MonthActivityModule'
+      },
+      {
+        path: 'jobassignation',
+        loadChildren: 'app/project-modules/job-assignation/job-assignation.module#JobAssignationModule'
       }
     ]
   },

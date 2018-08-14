@@ -1,0 +1,14 @@
+<div *ngIf="!taskList">
+  <app-loader></app-loader>
+</div>
+<div class="col-md-12" *ngIf="taskList">
+  <div class="form-group">
+    <label class="col-md-12">Select Task</label>
+    <div class="col-md-6">
+      <app-dropdown-list [list]="taskList" (returnFunction)="taskSelected($event)"></app-dropdown-list>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary" (click)="taskSearch();" [disabled]="!selectedItem">Search</button>
+    </div>
+  </div>
+</div>

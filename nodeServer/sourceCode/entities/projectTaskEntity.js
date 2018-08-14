@@ -43,10 +43,11 @@ function mapInsertData(data) {
 }
 
 function mapFindRemoveUpdateData(data) {
+    console.log(data)
     var retData = data;
     if (data.query.taskName) {
         retData.query.taskAlias = data.query.taskName.toLowerCase();
-        delete data.query.taskName;
+        delete retData.query.taskName;
     }
     else {
         retData.query.taskAlias = retData.query.taskAlias.toLowerCase();
