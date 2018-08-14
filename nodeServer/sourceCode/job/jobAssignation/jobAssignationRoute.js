@@ -5,7 +5,7 @@ var jobAssignationController = require('./jobAssignationController').JobAssignat
 class JobAssignationRoute extends baseRoute {
 
     applyRoute() {
-        app.all("*", function (req, res, next) {
+        app.all("/api/job/jobassignation", function (req, res, next) {
             jobAssignationController.applyController(req, res, next);
         });
     }

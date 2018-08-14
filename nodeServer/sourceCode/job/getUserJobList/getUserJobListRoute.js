@@ -5,7 +5,7 @@ var GetUserJobListController = require('./getUserJobListController').GetUserJobL
 class GetUserJobListRoute extends baseRoute {
 
     applyRoute() {
-        app.all("*", function (req, res, next) {
+        app.all("/api/job/getuserjoblist", function (req, res, next) {
             GetUserJobListController.applyController(req, res, next);
         });
     }

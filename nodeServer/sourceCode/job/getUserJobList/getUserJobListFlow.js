@@ -27,33 +27,33 @@ class GetJobList extends BaseControllerChain {
         super(nextStep);
     }
     apply(req, res, next) {
-        if (req.path.toLowerCase() != "/api/job/getuserjoblist") {
-            return super.next(req, res, next);
-        }
-        else {
+        /* if (req.path.toLowerCase() != "/api/job/getuserjoblist") {
+             return super.next(req, res, next);
+         }
+         else {*/
 
-            var data = {
-                email: req.session.email,
-            };
-            StartFlow(data, (err, ret) => {
-                if (err) {
-                    console.log("Get User Job List Failed")
-                    return res.status(err.code).json({ message: err.message });
-                }
-                else {
-                    console.log("Get User Job List Success")
-                    var succ = returnCodeFactory.successRet("Get User Job List Success");
-                    return res.status(succ.code).json({
-                        message: succ.message,
+        var data = {
+            email: req.session.email,
+        };
+        StartFlow(data, (err, ret) => {
+            if (err) {
+                console.log("Get User Job List Failed")
+                return res.status(err.code).json({ message: err.message });
+            }
+            else {
+                console.log("Get User Job List Success")
+                var succ = returnCodeFactory.successRet("Get User Job List Success");
+                return res.status(succ.code).json({
+                    message: succ.message,
 
-                        commitedJobList: ret.commitedJobList,
-                        executedJobList: ret.executedJobList
-                    });
-                }
-            });
+                    commitedJobList: ret.commitedJobList,
+                    executedJobList: ret.executedJobList
+                });
+            }
+        });
 
-        }
     }
+    // }
 }
 
 
@@ -123,13 +123,13 @@ function mapDataOld(data, callback) {
 
     if (retList[0].committedJobs) {
         retList[0].committedJobs.forEach(element => {
-                ret.commitedJobList.push(element);
+            ret.commitedJobList.push(element);
         });
     }
 
     if (retList[0].executedJobs) {
         retList[0].executedJobs.forEach(element => {
-                ret.executedJobList.push(element);
+            ret.executedJobList.push(element);
         });
     }
 

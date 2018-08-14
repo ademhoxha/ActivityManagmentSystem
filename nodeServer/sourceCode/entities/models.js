@@ -90,6 +90,13 @@ var models = {
         jobNotes: [],
         isClosed: Boolean,
     },
+    Activity: {
+        email: String,
+        year: String,
+        month: String,
+        days: {}
+    },
+
     OtpReceiver: {
         receiver: String,
         otp: {

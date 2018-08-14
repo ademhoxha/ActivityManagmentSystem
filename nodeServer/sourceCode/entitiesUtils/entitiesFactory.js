@@ -3,6 +3,7 @@ var SecretUserEntity= require('../entities/secretUserEntity').SecretUserEntity;
 var UserList= require('../entities/userList').UserList;
 var ProjectTaskEntity = require('../entities/projectTaskEntity').ProjectTaskEntity;
 var JobEntity = require('../entities/jobEntity').JobEntity;
+var ActivityEntity = require('../entities/activityEntity').ActivityEntity;
 
 
 class EntitiesFactory {
@@ -20,6 +21,9 @@ class EntitiesFactory {
     }
     getJobEntity(){
         return new JobEntity();
+    }
+    getActivityEntity(){
+        return new ActivityEntity();
     }
 }
 
