@@ -9,7 +9,6 @@ import { AppComponent } from '@app/app.component';
 import { AppRoutingModule } from '@app/app-routing.module';
 
 
-// external components primeNG
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // external components angular material

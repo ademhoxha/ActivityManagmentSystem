@@ -51,6 +51,7 @@ class RegistrationStep extends BaseControllerChain {
                         surname: req.body.surname
                     }
                 };
+
                 registrationFlow(data, (err, ret) => {
                     if (err) {
                         res.status(err.code).json({ message: err.message });
@@ -91,30 +92,40 @@ function registrationFlow(data, callback) {
         }
     }
     user.find(findData, (err, ret) => {
-        if (err)
+        if (err) {
+            console.log("registrationFlow()")
             return callback(returnCodeFactory.dbError());
-        if (ret && ret[0])
+        }
+        if (ret && ret[0]) {
+            console.log("Exisisting user with the same email");
             return callback(returnCodeFactory.dataError("Exisisting user with the same email"));
+        }
         return registerUser(data, callback);
     })
 }
 
 function registerUser(data, callback) {
     user.insert(data, (err, ret) => {
-        if (err)
+        if (err) {
+            console.log("registerUser()")
             return callback(returnCodeFactory.dbError());
-        return updateUserList(data);
+        }
+        return updateUserList(data, callback);
     })
 }
 
 function updateUserList(data, callback) {
     var inserData = {
-        email : data.query.email,
-        mobilephone : data.query.mobilephone
+        query: {
+            email: data.query.email,
+            mobilephone: data.query.mobilephone
+        }
     }
     userList.insert(inserData, (err, ret) => {
-        if (err)
+        if (err) {
+            console.log("updateUserList()")
             return callback(returnCodeFactory.dbError());
+        }
         return callback(undefined, ret);
     })
 }

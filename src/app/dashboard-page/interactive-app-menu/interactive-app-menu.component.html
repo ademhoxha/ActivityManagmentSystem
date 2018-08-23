@@ -1,0 +1,70 @@
+<!-- <div class="_over-panel _panel_left-slide _panel-first-level _over-panel-no-visible">
+
+  <div class="_over-panel-close _over-panel-close-no-visible" (click)="overPanel();">
+    <i class="fa fa-times"></i>
+  </div>
+
+  <app-app-view-function style="width: 100%" (returnFunction)="onAppFunctionSelected($event)"></app-app-view-function>
+
+</div>
+
+
+<div class="_over-panel _panel_left-slide _panel-second-level _over-panel-no-visible">
+
+  <div class="_over-panel-close _over-panel-close-no-visible" (click)="overSecondLevelPanel();">
+    <i class="fa fa-times"></i>
+  </div>
+
+  <app-app-view-function style="width: 100%" (returnFunction)="onAppFunctionSelected($event)"></app-app-view-function>
+
+</div> -->
+
+
+
+<div class="_over-panel _panel_left-slide _panel-first-level _over-panel-no-visible">
+
+  <div class="_over-panel-top-tab">
+
+    <div class="_over-panel-top-tab-fst-btn">
+      <i class="fa fa-arrows"></i>
+    </div>
+
+    <div class="_over-panel-top-tab-title">
+      <span>App</span>
+    </div>
+
+    <div class="_over-panel-top-tab-snd-btn" (click)="overPanel();">
+      <i class="fa fa-times"></i>
+    </div>
+  </div>
+
+  <app-app-view-function style="width: 100%" (returnFunction)="onAppSelected($event)"></app-app-view-function>
+
+</div>
+
+
+<div class="_over-panel _panel_left-slide _panel-second-level _over-panel-no-visible">
+
+
+  <div class="_over-panel-top-tab">
+
+    <div class="_over-panel-top-tab-fst-btn">
+      <i class="fa fa-arrows"></i>
+    </div>
+
+    <div class="_over-panel-top-tab-title">
+      <span>Operation</span>
+    </div>
+
+    <div class="_over-panel-top-tab-snd-btn" (click)="overSecondLevelPanel();">
+      <i class="fa fa-times"></i>
+    </div>
+
+  </div>
+
+  <div style="width: 100%;">
+    <template #functionContainer></template>
+  </div>
+  <!-- <app-function-view-function style="width: 100%" (returnFunction)="onFunctionSelected($event)"></app-function-view-function> -->
+
+</div>

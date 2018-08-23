@@ -32,9 +32,6 @@ export class JobAssignationComponent implements OnInit {
       jobName: new FormControl('',
         Validators.compose([Validators.required, Validators.minLength(5)])
       ),
-      selledDays: new FormControl('',
-        Validators.compose([Validators.required])
-      ),
       estimatedDays: new FormControl('',
         Validators.compose([Validators.required])
       ),

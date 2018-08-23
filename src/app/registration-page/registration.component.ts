@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+
+import * as $ from 'jquery';
 
 import { RegistrationService } from '@app/registration-page/registration.service';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
@@ -19,7 +22,19 @@ export class RegistrationComponent implements OnInit {
 
 
   nameCharacter: RegExp = /^[A-Za-z\s]+$/;
+  endRegistration : boolean = false;
   ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    $('._view-password').click(function () {
+      $(this).toggleClass('fa-eye fa-eye-slash');
+
+      if ($(this).parents('span').find('input').prop("type") == "text")
+        $(this).parents('span').find('input').prop("type", "password")
+      else
+        $(this).parents('span').find('input').prop("type", "text")
+    })
   }
 
   // required fields
@@ -87,7 +102,6 @@ export class RegistrationComponent implements OnInit {
   loader : boolean = false;
   resultFlag : boolean = false;
   resultData = [];
-  endRegistration : boolean = false;
   onSubmit() {
     this.loader = true;
     if (this.passwordMatch) {

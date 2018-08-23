@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { ProjectUtils } from '@app/project-modules/project-utils';
 import 'rxjs/add/operator/toPromise';
 
+import * as $ from 'jquery';
 
 import { ProjectApiService } from '@app/project-modules/project-core/project-api.service';
 import { Router } from '@angular/router';
@@ -24,6 +25,29 @@ export class NewProjectComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+  }
+
+  ngAfterViewInit(){
+    $('._card-form-conteiner-body').mouseenter(function () {
+     $(this).parents('._card-form-container').find('._card-form-container-header').find('._card-form-container-header-title').addClass('_card-form-container-header-title-hover');
+    })
+
+    $('._card-form-conteiner-body').mouseleave(function () {
+      $(this).parents('._card-form-container').find('._card-form-container-header').find('._card-form-container-header-title').removeClass('_card-form-container-header-title-hover');
+    })
+
+
+    $('._card-form-conteiner-body ._input-group-flex .ui-float-label input').focus(function () {
+      $(this).parents('.ui-float-label').find('._to-right').addClass('_card-form-container-focus-icon');
+      $(this).parents('.ui-float-label').parents('._input-group-flex').addClass('_card-form-container-focus-flex-border');
+
+    })
+    $('._card-form-conteiner-body ._input-group-flex .ui-float-label input').focusout(function () {
+      $(this).parents('.ui-float-label').find('._to-right').removeClass('_card-form-container-focus-icon');
+      $(this).parents('.ui-float-label').parents('._input-group-flex').removeClass('_card-form-container-focus-flex-border');
+    })
+
+
   }
 
 

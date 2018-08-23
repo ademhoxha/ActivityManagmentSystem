@@ -1,0 +1,49 @@
+ /* colors and gradients */   
+ ._grad-violet-light-blue {
+    background-image: -webkit-gradient(linear,left top,right top,from(#9f78ff),to(#32cafe));
+    background-image: -webkit-linear-gradient(left,#9f78ff,#32cafe);
+    background-image: -moz-linear-gradient(left,#9f78ff,#32cafe);
+    background-image: -o-linear-gradient(left,#9f78ff,#32cafe);
+    background-image: linear-gradient(to right,#9f78ff,#32cafe);
+    background-repeat: repeat-x;
+}
+
+
+._grad-sublime-vivid-bg {
+    background: var(--color-sublime-vivid-old);
+    background: var(--color-sublime-vivid-webkit);
+    background: var(--color-sublime-vivid);
+}
+
+._grad-sublime-vivid-border {
+    border-image: var(--color-sublime-vivid-old);
+    border-image: var(--color-sublime-vivid-webkit);
+    border-image: var(--color-sublime-vivid);
+    border-image-slice: 1;
+}
+
+._grad-argon-bg {
+    background: var(--color-argon-old);
+    background: var(--color-argon-webkit);
+    background: var(--color-argon);
+}
+
+._grad-argon-border {
+    border-image: var(--color-argon-old);
+    border-image: var(--color-argon-webkit);
+    border-image: var(--color-argon);
+    border-image-slice: 1;
+}
+
+._grad-electric-violet-bg {
+    background-image: var(--color-electric-violet-old);
+    background-image: var(--color-electric-violet-webkit);
+    background-image: var(--color-electric-violet-argon);
+}
+
+._grad-electric-violet-border {
+    border-image: var(--color-electric-violet-old);
+    border-image: var(--color-electric-violet-webkit);
+    border-image: var(--color-electric-violet);
+    border-image-slice: 1;
+}

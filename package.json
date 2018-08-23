@@ -9,11 +9,11 @@
     "angular": "ng serve --port 7777",
     "s": "nodemon nodeServer/sourceCode/server/expressServer.js",
     "a": "ng serve --port 7777",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {

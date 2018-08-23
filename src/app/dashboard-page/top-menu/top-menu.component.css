@@ -57,3 +57,53 @@
 ._grad-light-blue {
     background-image: linear-gradient(to left, #0ff0b3, #036ed9);
 }
+
+._grad-violet-light-blue {
+background-image: -webkit-gradient(linear,left top,right top,from(#9f78ff),to(#32cafe));
+background-image: -webkit-linear-gradient(left,#9f78ff,#32cafe);
+background-image: -moz-linear-gradient(left,#9f78ff,#32cafe);
+background-image: -o-linear-gradient(left,#9f78ff,#32cafe);
+background-image: linear-gradient(to right,#9f78ff,#32cafe);
+background-repeat: repeat-x;
+}
+
+
+
+
+
+
+@keyframes slid-down {
+    0%   {top:-200px;}
+    60% {top: 0px;}
+    80% {top: -25px;}
+    100% {top: 0px;}
+}
+div._slid-down {
+    animation-timing-function: linear;
+    animation-name: slid-down;
+    animation-duration: 1.5s;
+}
+
+@keyframes slid-left {
+    0%   {left:-200px;}
+    60% {left: 0px;}
+    80% {left: -25px;}
+    100% {left: 0px;}
+}
+div._slid-left {
+    animation-timing-function: linear;
+    animation-name: slid-left;
+    animation-duration: 1.5s;
+}
+
+@keyframes slid-right {
+    0%   {right:-200px;}
+    60% {right: 0px;}
+    80% {right: -25px;}
+    100% {right: 0px;}
+}
+div._slid-right {
+    animation-timing-function: linear;
+    animation-name: slid-right;
+    animation-duration: 1.5s;
+}

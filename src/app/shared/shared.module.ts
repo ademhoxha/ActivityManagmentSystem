@@ -30,6 +30,8 @@ import { MessageModule } from 'primeng/message';
 import { ScheduleModule } from 'primeng/schedule';
 import { DragDropModule } from 'primeng/dragdrop';
 import { DialogModule } from 'primeng/dialog';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 
 // custom shared components
@@ -73,7 +75,9 @@ import { MessageComponent } from '@app/shared/message/message.component';
     MessageModule,
     ScheduleModule,
     DragDropModule,
-    DialogModule
+    DialogModule,
+    TabMenuModule,
+    OverlayPanelModule
   ],
   providers: [
     // 3rd party
@@ -123,6 +127,8 @@ import { MessageComponent } from '@app/shared/message/message.component';
     ScheduleModule,
     DragDropModule,
     DialogModule,
+    TabMenuModule,
+    OverlayPanelModule,
 
     // custom shared components
     ErrorComponent,

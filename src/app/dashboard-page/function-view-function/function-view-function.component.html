@@ -1,0 +1,13 @@
+<div class="_app-card-container">
+  <div class="_function-card-container">
+    <div *ngFor="let function of functions">
+
+      <div class="_function-card" (click)="onClick(function.url)">
+        <i class={{function.icon}}></i>
+        <span>{{function.name}}</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -2,7 +2,7 @@
     styleClass="_scheduler" (onDayClick)="newEvent($event)" (onEventClick)="onEventClick($event)" [options]="options" [businessHours]="businessHours"
     [minTime]="minTime" [maxTime]="maxTime"></p-schedule>
 
-<app-job-list-popup [(display)]="display" (addJobFunc)="addJobToEvent($event)" (removeJobFunc)="removeSelectedEvent($event)" (hidePopUp)="onHide($event)"></app-job-list-popup>
+<app-job-list-popup [(display)]="display" (addJobFunc)="addJobToEvent($event)" (removeJobFunc)="removeSelectedEvent()" (hidePopUp)="onHide($event)"></app-job-list-popup>
 <!--<div *ngIf="display">
     <app-job-list-popup (addJobFunc)="addJobToEvent($event)" (removeJobFunc)="removeSelectedEvent($event)"></app-job-list-popup>
 </div>-->

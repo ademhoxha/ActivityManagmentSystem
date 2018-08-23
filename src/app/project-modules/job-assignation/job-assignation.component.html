@@ -55,17 +55,19 @@
             <div class="form-group ui-g-12">
               <label> Job Estimated Days Number</label>
               <div class="input-group">
-                <div class="_days-content">
-                  <div style="margin-right: 0.3em">
+                <div>
+                  <div style="margin-right: 0.3em; display: inline;">
                     <p-spinner [min]="0" [max]="RemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
                   </div>
-                  <div style="margin-right: 0.3em">
+                  <div style="margin-right: 0.3em; display: inline;">
                     <p-inputSwitch onLabel={{labelOn}} offLabel={{labelOff}} [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}"
                       (onChange)="changeSwitch()" pTooltip="Check to ADD some extra estimated days beyond the initial job estimated days."
                       tooltipPosition="bottom"></p-inputSwitch>
                   </div>
-                  <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraEstimatedDays" [ngModelOptions]="{standalone: true}"
-                    [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()"></p-spinner>
+                  <div style="margin-right: 0.3em; display: inline;">
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraEstimatedDays" [ngModelOptions]="{standalone: true}"
+                      [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()"></p-spinner>
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,7 +101,7 @@
 
     <div *ngIf="!loader">
       <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid || !dates.startDate || !dates.endDate">
-        <i class="fa fa-dot-circle-o"></i> Submit
+        <i class="fa fa-dot-circle-o"></i> Submit {{componentForm.valid}}
       </button>
       <button type="reset" class="btn btn-danger" (click)="reset();" [(disabled)]="tabSelected['PrjSearch']">
         <i class="fa fa-ban"></i> Reset

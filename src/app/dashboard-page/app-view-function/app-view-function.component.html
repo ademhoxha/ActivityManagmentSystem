@@ -1,0 +1,79 @@
+<!--<div class="_app-card-container">
+
+  <div class="_app-card-double-md-container _divide-two">
+    <div class="_app-card _app-card-md">
+      <i class="fa fa-calendar"></i>
+      <span>Activities</span>
+    </div>
+
+    <div class="_app-card _app-card-md">
+      <i class="fa fa-archive"></i>
+      <span>Projects</span>
+    </div>
+
+    <div class="_app-card-double-sm-container">
+
+      <div class="_app-card _app-card-sm" style="width: 50%;">
+        <i class="fa fa-tasks"></i>
+        <span>Tasks</span>
+      </div>
+
+      <div class="_app-card _app-card-sm" style="width: 50%;">
+        <i class="fa fa-plus-circle"></i>
+        <span>Jobs</span>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="_app-card-bg-container _divide-two">
+    <div class="_app-card _app-card-bg">
+      <i class="fa fa-bar-chart"></i>
+      <span>Analysis</span>
+    </div>
+  </div>
+
+
+</div>-->
+
+<div class="_app-card-container">
+
+  <div class="_app-card-double-md-container" style="width: 100%;">
+
+    <div class="_app-card _app-card-md" (click)="onClick('analysis')">
+      <i class="fa fa-bar-chart"></i>
+      <span>Analysis</span>
+    </div>
+
+    <div class="_app-card-double-sm-container">
+
+      <div class="_app-card _app-card-sm" style="width: 50%;" (click)="onClick('projects')">
+        <i class="fa fa-archive"></i>
+        <span>Projects</span>
+      </div>
+
+      <div class="_app-card _app-card-sm" style="width: 50%;" (click)="onClick('tasks')">
+        <i class="fa fa-tasks"></i>
+        <span>Tasks</span>
+      </div>
+
+    </div>
+
+    <div class="_app-card-double-sm-container">
+
+      <div class="_app-card _app-card-sm" style="width: 50%;" (click)="onClick('jobs')">
+        <i class="fa fa-plus-circle"></i>
+        <span>Jobs</span>
+      </div>
+
+      <div class="_app-card _app-card-md" style="width: 50%;" (click)="onClick('activities')">
+        <i class="fa fa-calendar"></i>
+        <span>Activities</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthApiService } from '@app/login-page/auth-api/auth-api.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
@@ -89,7 +90,7 @@ export class LoginPageComponent implements OnInit {
   loginWithoutOTP() {
     this.authApiService.login(this.data).then((res: any) => {
       if (res.status == 200) {
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard/resume'])
       }
       else{
         this.errorData.message = res.message;

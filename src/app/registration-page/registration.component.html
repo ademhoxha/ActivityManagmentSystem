@@ -1,4 +1,4 @@
-<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+<!-- <app-operation-result *ngIf="resultFlag" [inputData]="resultData">
 </app-operation-result>
 
 <div class="sufee-login d-flex align-content-center flex-wrap" *ngIf="endRegistration">
@@ -17,16 +17,12 @@
 <div class="sufee-login d-flex align-content-center flex-wrap" *ngIf="!endRegistration">
   <div class="container">
     <div class="login-content">
-      <!-- <div class="login-logo">
-        <a routerLink="/login" routerLinkActive="active">
-          <img class="align-content" src="../../images/logo.png" alt="">
-        </a>
-      </div> -->
+
       <div class="login-form">
         <form name="registrationForm" id="registrationForm" [formGroup]="registrationForm" (submit)='onSubmit()'>
 
 
-          <!--    <div class="form-group">
+           <div class="form-group">
             <label>Mobile Phone</label>
             <div class="input-group">
               <div class="input-group-addon">
@@ -105,7 +101,67 @@
             <input type="password" id="password_confirmation" class="form-control _form-special" [(ngModel)]="password_confirmation"
               placeholder="Password Confirmation" maxlength="20" pInputText (keyup)="passwordVerify()">
           </div>
-        </div>-->
+        </div>
+
+        </form>
+
+        <div class="form-group" style="margin-top: 2em;">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-key" style="width: 15px;"></i>
+            </div>
+            <span class="ui-float-label" style="width: calc(100% - 50px);">
+              <input type="password" id="password_confirmation" class="form-control _form-special" [(ngModel)]="password_confirmation"
+                maxlength="20" pInputText (keyup)="passwordVerify()">
+              <label for="float-input">Password Confirmation</label>
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="!loader">
+          <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" [(disabled)]="!passwordMatch || !registrationForm.valid"
+            (click)="onSubmit()">
+            <i class="fa fa-user-plus fa-2x" style="color:white"> Register</i>
+          </button>
+          <div class="register-link m-t-15 text-center">
+            <p class="_p-text">Already have account ?
+              <a routerLink="/login" routerLinkActive="active"> Sign in</a>
+            </p>
+          </div>
+        </div>
+        <div *ngIf="loader">
+          <app-loader></app-loader>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+<!--<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+</app-operation-result>
+
+<div class="sufee-login d-flex align-content-center flex-wrap" *ngIf="endRegistration">
+  <div class="container">
+    <div class="login-content">
+      <div class="login-form">
+        <h4>Account Registered, please go to the login page and use your credential.At this moment Email Service and OPT Service are disabled.</h4>
+        <a class="btn btn-success btn-sm" routerLink="./login">
+          <i class="fa fa-sign-in" style="color:white"> Login</i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sufee-login d-flex align-content-center flex-wrap" *ngIf="!endRegistration">
+  <div class="container">
+    <div class="login-content">
+
+      <div class="login-form">
+        <form name="registrationForm" id="registrationForm" [formGroup]="registrationForm" (submit)='onSubmit()'>
+
 
           <div class="form-group" style="margin-top: 2em;">
             <div class="input-group">
@@ -206,12 +262,6 @@
           </div>
         </div>
 
-        <!--  <div class="checkbox">
-            <label>
-              <input type="checkbox"> Agree the terms and policy
-            </label>
-          </div> -->
-
         <div *ngIf="!loader">
           <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" [(disabled)]="!passwordMatch || !registrationForm.valid"
             (click)="onSubmit()">
@@ -228,6 +278,118 @@
         </div>
 
       </div>
+    </div>
+  </div>
+</div> -->
+
+<div style="display: flex; justify-content: center; width: 100%;">
+  <div class="_form">
+
+    <div class="_form-header">
+      <i class="fa fa-user"></i>
+      <span>New Member Registration</span>
+    </div>
+
+    <div class="_form-body">
+
+
+      <app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+      </app-operation-result>
+
+      <div *ngIf="endRegistration">
+        <h4>Account Registered, please go to the login page and use your credential. At this moment Email Service and OPT Service
+          are disabled.</h4>
+        <a class="btn btn-success btn-sm" routerLink="./login">
+          <i class="fa fa-sign-in" style="color:white"> Login</i>
+        </a>
+      </div>
+
+      <div class="ui-g ui-fluid" *ngIf="!endRegistration">
+        <div class="ui-g-12">
+
+          <form name="registrationForm" id="registrationForm" [formGroup]="registrationForm" (submit)='onSubmit()'>
+
+            <div class="_input-group-flex">
+              <span class="ui-float-label">
+                <i class="fa fa-phone _to-right"></i>
+                <input type="text" id="mobilePhoneLBL" formControlName="mobilePhone" pKeyFilter="int" pInputText maxlength="10">
+                <label for="float-input">Mobile Phone</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex">
+              <span class="ui-float-label">
+                <i class="fa fa-envelope _to-right"></i>
+                <input type="email" id="email" formControlName="email" pKeyFilter="email" pInputText maxlength="40">
+                <label for="float-input">Email address</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex">
+              <span class="ui-float-label">
+                <i class="fa fa-user _to-right"></i>
+                <input type="text" id="first_name" formControlName="first_name" [pKeyFilter]="nameCharacter" pInputText maxlength="15">
+                <label for="float-input">First Name</label>
+              </span>
+            </div>
+
+
+
+            <div class="_input-group-flex">
+              <span class="ui-float-label">
+                <i class="fa fa-user _to-right"></i>
+                <input type="text" id="last_name" formControlName="last_name" [pKeyFilter]="nameCharacter" pInputText maxlength="20">
+                <label for="float-input">Last Name</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex">
+              <span class="ui-float-label">
+                <i class="fa fa-building _to-right"></i>
+                <input type="text" id="company" formControlName="company" [pKeyFilter]="nameCharacter" pInputText maxlength="20">
+                <label for="float-input">Company Name</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex">
+              <span class="ui-float-label">
+                <i class="fa fa-lock _to-right"></i>
+                <input type="password" id="password" formControlName="password" pPassword maxlength="20" (keyup)="passwordVerify()">
+                <label for="float-input">Password</label>
+                <i class="fa fa-eye _to-left _view-password"></i>
+              </span>
+            </div>
+
+          </form>
+
+          <div class="_input-group-flex">
+            <span class="ui-float-label">
+              <i class="fa fa-lock _to-right"></i>
+              <input type="password" id="password_confirmation" [(ngModel)]="password_confirmation" maxlength="20" pInputText (keyup)="passwordVerify()">
+              <label for="float-input">Confirm Password</label>
+              <i class="fa fa-eye _to-left _view-password"></i>
+            </span>
+          </div>
+
+          <div class="_form-submit-btn" *ngIf="!loader">
+            <button type="submit" class="btn _grad-sublime-vivid-bg" [(disabled)]="!passwordMatch || !registrationForm.valid" (click)="onSubmit()">
+              <i class="fa fa-user-plus fa-2x" style="color:white"> Sign Up</i>
+            </button>
+          </div>
+
+          <div class="_form-submit-btn" *ngIf="loader">
+            <app-loader></app-loader>
+          </div>
+
+          <div class="_pull-rigth _up-line _grad-sublime-vivid-border" style="padding-top: 1rem;">
+            <span> Already have an account ?
+              <a routerLink="/login">Sign In</a>
+            </span>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

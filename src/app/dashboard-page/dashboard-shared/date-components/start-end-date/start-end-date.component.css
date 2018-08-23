@@ -1,33 +1,32 @@
-.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active {
+._date-calendar .ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active {
     background-color: green;
     color: #ffffff;
     border: 10px;
     border-radius: 5px;
 }
 
-.ui-button.ui-button-secondary.ui-state-default, .ui-splitbutton.ui-button-secondary .ui-button.ui-state-default{
+._date-calendar .ui-button.ui-button-secondary.ui-state-default, .ui-splitbutton.ui-button-secondary .ui-button.ui-state-default{
     border-radius: 15px;
     border-width: 1px;
     border-color: darkred;
 }
 
-.ui-button.ui-button-secondary.ui-state-default:hover, .ui-splitbutton.ui-button-secondary .ui-button.ui-state-default:hover{
+._date-calendar .ui-button.ui-button-secondary.ui-state-default:hover, .ui-splitbutton.ui-button-secondary .ui-button.ui-state-default:hover{
     border-radius: 15px;
     border-width: 1px;
     border-color: darkred;
 }
 
-.ui-datepicker select.ui-datepicker-month {
+._date-calendar .ui-datepicker select.ui-datepicker-month {
     border-radius: 10px;
     border-width: 1px;
     border-color: darkred;
 }
 
-.ui-datepicker span.ui-datepicker-year {
+._date-calendar .ui-datepicker span.ui-datepicker-year {
     text-decoration: underline;
     color: darkred;
 }
-
 
 ._double-date {
     width: 55%;
@@ -56,6 +55,10 @@
 
 
 /* fix height problem */
-.ui-calendar.ui-calendar-w-btn .ui-inputtext {
+._date-calendar .ui-calendar.ui-calendar-w-btn .ui-inputtext {
     height: 2.4em;
+}
+
+._date-calendar  input {
+    border-radius: 0rem !important;
 }

@@ -1,0 +1,25 @@
+<div class="_dashboard">
+
+  <div class="_dashboard-top-menu">
+
+    <div class="_open-app-menu _top-open-app-menu">
+      <i class="fa fa-windows" (click)="overPanel();"></i>
+    </div>
+
+    <app-app-top-menu></app-app-top-menu>
+    <div class="_fixed-center-rigth _grad-electric-violet-bg _open-app-menu" id="openAppPanelDiv">
+      <i class="fa fa-windows" (click)="overPanel();"></i>
+    </div>
+  </div>
+
+  <app-interactive-app-menu></app-interactive-app-menu>
+
+  <div class="_dashboard-body">
+
+    <main [@routerTransition]="testClick(ro)">
+      <router-outlet #ro="outlet"></router-outlet>
+    </main>
+
+  </div>
+
+</div>

@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Http} from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import * as $ from 'jquery';
@@ -10,6 +10,7 @@ import { AuthApiService } from '@app/login-page/auth-api/auth-api.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
@@ -24,6 +25,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    $('._view-password').click(function () {
+      $(this).toggleClass('fa-eye fa-eye-slash');
+
+      if ($(this).parents('span').find('input').prop("type") == "text")
+        $(this).parents('span').find('input').prop("type", "password")
+      else
+        $(this).parents('span').find('input').prop("type", "text")
+    })
   }
 
   password: FormControl;

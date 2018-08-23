@@ -5,7 +5,6 @@ import { DashboardSharedModule } from '@app/dashboard-page/dashboard-shared';
 import { DashboardRoutingModule } from '@app/dashboard-page/dashboard-routing.module';
 
 
-import { DashboardComponent } from '@app/dashboard-page/dashboard.component';
 import { LateralActivityMenuComponent } from '@app/dashboard-page/lateral-activity-menu/lateral-activity-menu.component';
 import { ProjectLateralMenuComponent } from '@app/dashboard-page/project-lateral-menu/project-lateral-menu.component';
 import { SearchComponent } from '@app/dashboard-page/search/search.component';
@@ -16,6 +15,12 @@ import { NotificationItemComponent } from '@app/notification-modules/notificatio
 import { DropdownMessageComponent } from '@app/message-modules/dropdown-message/dropdown-message.component';
 import { MessageItemComponent } from '@app/message-modules/message-item/message-item.component';
 import { TopMenuComponent } from '@app/dashboard-page/top-menu/top-menu.component';
+import { DashboardLateralMenuComponent } from '@app/dashboard-page/dashboard-lateral-menu/dashboard-lateral-menu.component';
+import { DashboardAppViewComponent } from './dashboard-app-view/dashboard-app-view.component';
+import { AppViewFunctionComponent } from './app-view-function/app-view-function.component';
+import { AppTopMenuComponent } from './app-top-menu/app-top-menu.component';
+import { InteractiveAppMenuComponent } from './interactive-app-menu/interactive-app-menu.component';
+import { FunctionViewFunctionComponent } from './function-view-function/function-view-function.component';
 
 
 
@@ -27,7 +32,6 @@ import { TopMenuComponent } from '@app/dashboard-page/top-menu/top-menu.componen
   ],
   declarations: [
 
-    DashboardComponent,
     LateralActivityMenuComponent,
     ProjectLateralMenuComponent,
     SearchComponent,
@@ -36,7 +40,15 @@ import { TopMenuComponent } from '@app/dashboard-page/top-menu/top-menu.componen
     MessageItemComponent,
     DropdownMessageComponent,
     TopMenuComponent,
+    DashboardLateralMenuComponent,
+    DashboardAppViewComponent,
+    AppViewFunctionComponent,
+    AppTopMenuComponent,
+    InteractiveAppMenuComponent,
+    FunctionViewFunctionComponent,
 
-  ]
+  ],
+  entryComponents: [ FunctionViewFunctionComponent ] /* Dynamic Component */
+  
 })
 export class DashboardModule { }

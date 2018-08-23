@@ -8,8 +8,6 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
-        "images",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -25,20 +23,9 @@
         "../node_modules/primeicons/primeicons.css",
         "../node_modules/primeng/resources/themes/omega/theme.css",
         "../node_modules/primeng/resources/primeng.min.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "assets/css/normalize.css",
-        "assets/css/themify-icons.css",
-        "assets/css/flag-icon.min.css",
-        "assets/css/cs-skin-elastic.css",
-        "assets/scss/style.css",
-        "assets/scss/widgets.css"
+        "../node_modules/font-awesome/css/font-awesome.css"
       ],
       "scripts": [
-        "assets/js/vendor/jquery-2.1.4.min.js",
-        "assets/js/popper.min.js",
-        "assets/js/plugins.js",
-        "assets/js/main.js",
-        
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/fullcalendar/dist/fullcalendar.min.js"

@@ -1,15 +1,54 @@
-<h3 class="first">GROUPING EXAMPLE</h3>
-<p-dropdown [options]="groupedCars" [(ngModel)]="selectedCar3" [style]="{'width':'150px'}" placeholder="Select a Car" [group]="true">
-  <ng-template let-group pTemplate="group">
-    <span>{{group.label}}</span>
-  </ng-template>
-</p-dropdown>
+<div class="_card-transition _grad-violet-light-blue ">
 
-<h3 class="first">MULTIPLE GROUPING EXAMPLE</h3>
-<p-dropdown [options]="multipleGroup" [(ngModel)]="selectedCar" [style]="{'width':'150px'}" placeholder="Select a Car" [group]="true">
-  <ng-template let-group pTemplate="group">
-    <ng-template let-group1 pTemplate="group1">
-      <span>{{group1.label}}</span>
-    </ng-template>
-  </ng-template>
-</p-dropdown>
+  <div class="_card-header">
+
+    <div class="_content">
+      <h4>2018/08/16</h4>
+    </div>
+
+    <div  class="_content">
+
+      <div class="_fa-high-border _grad-kashmire">
+        <i class="fa fa-repeat"></i>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="_card-body">
+
+    <div class="_content">
+      <i class="fa fa-sitemap"></i>
+    </div>
+
+    <div class="_content">
+      <h4 class="_content-number">12,515</h4>
+      <h4>Open Projects</h4>
+    </div>
+
+  </div>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<!--<div class="_card-transition">
+  
+    <div class="_card-header">
+      XXX
+    </div>
+  
+    <div class="_card-body">
+      YYY
+    </div>
+  
+    <div class="_card-footer">
+      ZZZ
+    </div>
+  
+  </div>-->

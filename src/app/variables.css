@@ -1,0 +1,20 @@
+ /* colors and gradients */   
+ :root {
+
+    --color-sublime-vivid-old: #FC466B; /* fallback for old browsers */
+    --color-sublime-vivid-webkit: -webkit-linear-gradient(to right, rgb(63,94,251), rgb(252,70,107)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    --color-sublime-vivid: linear-gradient(to right, rgb(63,94,251), rgb(252,70,107));  /* Chrome 10-25, Safari 5.1-6 */
+
+    --color-argon-old: #03001e;  /* fallback for old browsers */
+    --color-argon-webkit: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+    --color-argon: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    --color-electric-violet-old: #4776E6;  /* fallback for old browsers */
+    --color-electric-violet-webkit: -webkit-linear-gradient(to right, #4776e6, #8e54e9);  /* Chrome 10-25, Safari 5.1-6 */
+    --color-electric-violet: linear-gradient(to right, #4776e6, #8e54e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    --color-royal-old: #141E30;  /* fallback for old browsers */
+    --color-royal-webkit: -webkit-linear-gradient(to right, #141E30, #243B55);  /* Chrome 10-25, Safari 5.1-6 */
+    --color-royal: linear-gradient(to right, #141E30, #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}

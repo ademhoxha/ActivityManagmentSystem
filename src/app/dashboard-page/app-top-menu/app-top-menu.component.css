@@ -1,0 +1,44 @@
+._app-top-menu-container {
+    display: flex;
+    flex-direction:row;
+    align-content: center;
+    
+    color: white;
+    font-size: 1rem;
+    margin-left: .5rem;
+    margin-right: .75rem;
+}
+
+._app-top-menu-element {
+    cursor: pointer;
+    margin-left: 1.75rem;
+    padding: .75rem 0 .3rem 0;
+}
+
+._app-top-menu-element div.ui-tooltip {
+    display: none !important;
+}
+
+/*._app-top-menu-element div.ui-tooltip .ui-tooltip-arrow{
+    display: none !important;
+}
+
+._app-top-menu-element div.ui-tooltip .ui-tooltip-text{
+    display: none !important;
+}*/
+
+._app-top-menu-element:hover i, ._app-top-menu-element:hover span {
+    color: rgba(255,255,255,.6);
+    position: relative;
+    top: -.5rem;
+}
+
+@media screen and (max-width: 50rem){
+    ._app-top-menu-element span {
+        display: none;
+    }
+
+    ._app-top-menu-element div.ui-tooltip {
+        display: inline-block !important;
+    }
+}
