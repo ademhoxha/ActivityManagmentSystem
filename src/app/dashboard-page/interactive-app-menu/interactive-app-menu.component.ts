@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import { Router } from '@angular/router';
 import { FunctionViewFunctionComponent } from '@app/dashboard-page/function-view-function/function-view-function.component';
 import { FunctionFactory } from '@app/dashboard-page/interactive-app-menu/FunctionFactory';
+import { ScriptUtils, ScriptType } from '@app/scripts';
 
 @Component({
   selector: 'app-interactive-app-menu',
@@ -30,46 +31,13 @@ export class InteractiveAppMenuComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  /*ngAfterViewInit() {
-    $('div').click(function (e) {
-
-      if (e.target.id != 'appPanel' && $("#appPanel").hasClass("_over-panel-yes-visible") && !$(e.target).hasClass("_open-app-menu")
-        && !$(e.target).parents('._over-panel').length && !$(e.target).parents('._open-app-menu').length) {
-
-        $("#appPanel").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
-        $("#appPanel").children('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible')
-
-      }
-
-    });
-
-  }*/
-
+  scripts = new ScriptUtils();
   ngAfterViewInit() {
-    $('div').click(function (e) {
-      if ($("._panel-first-level").hasClass('_over-panel-yes-visible') && !$(e.target).hasClass("._over-panel")
-        && !$(e.target).parents('._over-panel').length && !$(e.target).parents('._open-app-menu').length) {
-
-        if ($("._panel-second-level").hasClass('_over-panel-yes-visible')) {
-          $("._panel-second-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
-          $("._panel-second-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
-        }
-
-        $("._panel-first-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
-        $("._panel-first-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
-      }
-    });
+    this.scripts.execScriptFunction(ScriptType.PanelRequiredScripts);
   }
 
   overPanel() {
-    if ($("._panel-second-level").hasClass('_over-panel-yes-visible')) {
-      $("._panel-second-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
-      $("._panel-second-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
-    }
-
-    $("._panel-first-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
-    $("._panel-first-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
+    this.scripts.execScriptFunction(ScriptType.PanelCloseAll);
   }
 
   onAppSelected(ret) {
@@ -79,15 +47,11 @@ export class InteractiveAppMenuComponent implements OnInit {
     }
 
     this.createComponent(ret.id);
-    if ($("._panel-second-level").hasClass('_over-panel-no-visible')) {
-      $("._panel-second-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
-      $("._panel-second-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
-    }
+    this.scripts.execScriptFunction(ScriptType.PanelOpenSecond);
   }
 
   overSecondLevelPanel() {
-    $("._panel-second-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
-    $("._panel-second-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
+    this.scripts.execScriptFunction(ScriptType.PanelToogleSecond);
   }
 
   onFunctionSelected(ret){
