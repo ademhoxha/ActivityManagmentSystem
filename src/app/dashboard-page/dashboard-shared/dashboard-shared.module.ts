@@ -8,6 +8,9 @@ import { DropdownListComponent } from '@app/dashboard-page/dashboard-shared/list
 import { PickListComponent } from '@app/dashboard-page/dashboard-shared/list-components/pick-list/pick-list.component';
 import { TableComponent } from '@app/dashboard-page/dashboard-shared/table-components/table/table.component';
 import { DropdownGroupListComponent } from '@app/dashboard-page/dashboard-shared/list-components/dropdown-group-list/dropdown-group-list.component';
+import { InputFormComponent } from '@app/dashboard-page/dashboard-shared/input-form/input-form.component';
+import { StepMenuComponent } from '@app/dashboard-page/dashboard-shared/step-menu/step-menu.component';
+import { StepItemComponent } from '@app/dashboard-page/dashboard-shared/step-item/step-item.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { DropdownGroupListComponent } from '@app/dashboard-page/dashboard-shared
     DropdownListComponent,
     PickListComponent,
     TableComponent,
-    DropdownGroupListComponent
+    DropdownGroupListComponent,
+    InputFormComponent,
+    StepMenuComponent,
+    StepItemComponent
   ],
   exports: [
     SharedModule,
@@ -27,7 +33,10 @@ import { DropdownGroupListComponent } from '@app/dashboard-page/dashboard-shared
     DropdownListComponent,
     PickListComponent,
     TableComponent,
-    DropdownGroupListComponent
+    DropdownGroupListComponent,
+    InputFormComponent,
+    StepMenuComponent,
+    StepItemComponent
   ]
 })
 export class DashboardSharedModule { }

@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { ProjectUtils } from '@app/project-modules/project-utils';
 import 'rxjs/add/operator/toPromise';
 
-import * as $ from 'jquery';
 
 import { ProjectApiService } from '@app/project-modules/project-core/project-api.service';
 import { Router } from '@angular/router';
@@ -26,30 +25,6 @@ export class NewProjectComponent implements OnInit {
   ngOnInit() {
     this.initForm();
   }
-
-  ngAfterViewInit(){
-    $('._card-form-conteiner-body').mouseenter(function () {
-     $(this).parents('._card-form-container').find('._card-form-container-header').find('._card-form-container-header-title').addClass('_card-form-container-header-title-hover');
-    })
-
-    $('._card-form-conteiner-body').mouseleave(function () {
-      $(this).parents('._card-form-container').find('._card-form-container-header').find('._card-form-container-header-title').removeClass('_card-form-container-header-title-hover');
-    })
-
-
-    $('._card-form-conteiner-body ._input-group-flex .ui-float-label input').focus(function () {
-      $(this).parents('.ui-float-label').find('._to-right').addClass('_card-form-container-focus-icon');
-      $(this).parents('.ui-float-label').parents('._input-group-flex').addClass('_card-form-container-focus-flex-border');
-
-    })
-    $('._card-form-conteiner-body ._input-group-flex .ui-float-label input').focusout(function () {
-      $(this).parents('.ui-float-label').find('._to-right').removeClass('_card-form-container-focus-icon');
-      $(this).parents('.ui-float-label').parents('._input-group-flex').removeClass('_card-form-container-focus-flex-border');
-    })
-
-
-  }
-
 
   loader: boolean = false;
   projectName;
@@ -174,11 +149,11 @@ export class NewProjectComponent implements OnInit {
   projectReducedView(startDate: Date, endDate: Date) {
     var validationClass = new ProjectUtils();
 
-    var selDays =  this.newProjectForm.get("selledDays").value != 0 ? this.newProjectForm.get("selledDays").value : 0;
-    var costSelDays =  this.newProjectForm.get("costSelledDays").value != 0 ? this.newProjectForm.get("costSelledDays").value : 0;
-    var estDays =  this.newProjectForm.get("estimatedDays").value != 0 ? this.newProjectForm.get("estimatedDays").value : 0;
-    var costEstDays =  this.newProjectForm.get("estcostSelledDays").value != 0 ? this.newProjectForm.get("estcostSelledDays").value : 0;
-    this.projectCost = validationClass.getProjectCost( selDays, costSelDays, estDays, costEstDays);
+    var selDays = this.newProjectForm.get("selledDays").value != 0 ? this.newProjectForm.get("selledDays").value : 0;
+    var costSelDays = this.newProjectForm.get("costSelledDays").value != 0 ? this.newProjectForm.get("costSelledDays").value : 0;
+    var estDays = this.newProjectForm.get("estimatedDays").value != 0 ? this.newProjectForm.get("estimatedDays").value : 0;
+    var costEstDays = this.newProjectForm.get("estcostSelledDays").value != 0 ? this.newProjectForm.get("estcostSelledDays").value : 0;
+    this.projectCost = validationClass.getProjectCost(selDays, costSelDays, estDays, costEstDays);
 
     if (startDate && endDate) {
       var start = new Date(startDate);
@@ -186,9 +161,9 @@ export class NewProjectComponent implements OnInit {
       this.numberOfDays = validationClass.getProjectNumberOfDays(end, start);
     }
 
-    if(estDays > 0 && this.numberOfDays && this.numberOfDays > 0){
+    if (estDays > 0 && this.numberOfDays && this.numberOfDays > 0) {
       this.workers = validationClass.getProjectWorkers(estDays, this.numberOfDays);
-    }else{
+    } else {
       this.workers = 0;
     }
 
@@ -197,10 +172,10 @@ export class NewProjectComponent implements OnInit {
   onDateChange(data) {
     this.date1 = data["startDate"];
     this.date2 = data["endDate"];
-    this.projectReducedView(data["startDate"],data["endDate"]);
+    this.projectReducedView(data["startDate"], data["endDate"]);
   }
 
-  reset(){
+  reset() {
     this.newProjectForm.reset();
     this.projectReducedView(this.date1, this.date2);
   }

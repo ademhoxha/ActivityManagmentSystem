@@ -1,4 +1,4 @@
-<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+<!--<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
 </app-operation-result>
 
 <app-pop-up></app-pop-up>
@@ -26,11 +26,11 @@
 
     <form name="registrationForm" id="registrationForm" [formGroup]="newProjectForm" (submit)='newProject(dates.startDate, dates.endDate)'>
 
-      <!-- <app-project-reduced-view [projectName]="newProjectForm.get('projectName')" [projectEarnings]="projectCost" [numberOfDays]="numberOfDays"
+      <app-project-reduced-view [projectName]="newProjectForm.get('projectName')" [projectEarnings]="projectCost" [numberOfDays]="numberOfDays"
         [estimatedWorkers]="workers" [selledDays]="newProjectForm.get('selledDays')" [costSelledDays]="newProjectForm.get('costSelledDays')"
         [estimatedDays]="newProjectForm.get('estimatedDays')" [estcostSelledDays]="newProjectForm.get('estcostSelledDays')"
         [startDate]="date1" [endDate]="date2">
-      </app-project-reduced-view> -->
+      </app-project-reduced-view>
 
       <div class="ui-g ui-fluid">
 
@@ -124,6 +124,125 @@
     <div *ngIf="loader">
       <app-loader></app-loader>
     </div>
+
   </div>
 
-</div>
+</div> -->
+
+
+
+<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+</app-operation-result>
+
+<app-pop-up></app-pop-up>
+
+<app-block-ui [flag]="loader"></app-block-ui>
+
+<app-input-form (onRefresh)="reset();">
+
+  <div card-header>
+    <i class="fa fa-plus"></i>
+    <span>Insert a New Project</span>
+  </div>
+
+  <div card-body>
+    <form name="registrationForm" id="registrationForm" [formGroup]="newProjectForm" (submit)='newProject(dates.startDate, dates.endDate)'>
+
+      <!-- <app-project-reduced-view [projectName]="newProjectForm.get('projectName')" [projectEarnings]="projectCost" [numberOfDays]="numberOfDays"
+        [estimatedWorkers]="workers" [selledDays]="newProjectForm.get('selledDays')" [costSelledDays]="newProjectForm.get('costSelledDays')"
+        [estimatedDays]="newProjectForm.get('estimatedDays')" [estcostSelledDays]="newProjectForm.get('estcostSelledDays')"
+        [startDate]="date1" [endDate]="date2">
+      </app-project-reduced-view> -->
+
+      <div class="ui-g ui-fluid">
+
+        <div class="ui-g-12">
+          <div class="_input-group-flex">
+            <label class="_input-group-external-label _input-group-lbl-min-ln">Project Name:</label>
+            <span class="ui-float-label">
+              <i class="fa fa-info _to-right _black-content"></i>
+              <input type="text" pInputText formControlName="projectName" maxlength="19" class="_input-not-rounded">
+              <label for="float-input" class="_input-group-responsive-float-lbl">Project Name</label>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="ui-g-12" style="padding-bottom: 0;">
+          <app-start-end-date #dates (returnFunction)="onDateChange($event)"></app-start-end-date>
+        </div>
+
+
+        <div class="ui-g-12" style="padding-bottom: 0; padding-top: 0;">
+          <div class="_input-group-dbl-form-container">
+
+            <div class="_input-group-flex _input-group-dbl-form _input-group-dbl-form-margin">
+              <label class="_input-group-external-label _input-group-lbl-min-ln">Project Selled Days Numbers:</label>
+              <span class="ui-float-label">
+                <i class="fa fa-hourglass-start _to-right _black-content"></i>
+                <input name="selledDays" formControlName="selledDays" type="text" pKeyFilter="pint" class="_input-not-rounded" style="width: 100%;"
+                  maxlength="4" placeholder="0" (keyup)="projectReducedView(dates.startDate, dates.endDate)" (keydown)="projectReducedView(dates.startDate, dates.endDate)">
+                <label for="float-input" class="_input-group-responsive-float-lbl">Selled Days</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex _input-group-dbl-form">
+              <label class="_input-group-external-label _input-group-lbl-min-ln">Project Estimated Days Number:</label>
+              <span class="ui-float-label">
+                <i class="fa fa-hourglass-start _to-right _black-content"></i>
+                <input formControlName="estimatedDays" type="text" pKeyFilter="pint" class="_input-not-rounded" style="width: 100%;" maxlength="4"
+                  placeholder="0" (keyup)="projectReducedView(dates.startDate, dates.endDate)" (keydown)="projectReducedView(dates.startDate, dates.endDate)">
+                <label for="float-input" class="_input-group-responsive-float-lbl">Estimated Days</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g-12" style="padding-top: 0;">
+          <div class="_input-group-dbl-form-container">
+            <div class="_input-group-flex _input-group-dbl-form _input-group-dbl-form-margin">
+              <label class="_input-group-external-label _input-group-lbl-min-ln">Project Selled Cost for Day:</label>
+              <span class="ui-float-label">
+                <i class="fa fa-euro _to-right _black-content"></i>
+                <input formControlName="costSelledDays" type="text" pKeyFilter="pint" maxlength="3" placeholder="0" class="_input-not-rounded"
+                  style="width: 100%;" (keyup)="projectReducedView(dates.startDate, dates.endDate)" (keydown)="projectReducedView(dates.startDate, dates.endDate)">
+                <label for="float-input" class="_input-group-responsive-float-lbl">Selled Cost for Day</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex _input-group-dbl-form">
+              <label class="_input-group-external-label _input-group-lbl-min-ln">Project Estimated Cost for Day:</label>
+              <span class="ui-float-label">
+                <i class="fa fa-euro _to-right _black-content"></i>
+                <input formControlName="estcostSelledDays" type="text" pKeyFilter="pint" maxlength="3" placeholder="0" class="_input-not-rounded"
+                  style="width: 100%;" (keyup)="projectReducedView(dates.startDate, dates.endDate)" (keydown)="projectReducedView(dates.startDate, dates.endDate)">
+                <label for="float-input" class="_input-group-responsive-float-lbl">Estimated Cost for Day</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div card-footer>
+    <div *ngIf="!loader">
+      <button type="submit" class="btn btn-success" (click)='newProject(dates.startDate, dates.endDate)' [(disabled)]="!newProjectForm.valid && dates.startDate && dates.endDate">
+        <i class="fa fa-dot-circle-o"></i>
+        <span>Submit</span>
+      </button>
+      <button type="reset" class="btn btn-danger" (click)="reset()">
+        <i class="fa fa-ban"></i>
+        <span>Reset</span>
+      </button>
+    </div>
+    <div *ngIf="loader">
+      <app-loader></app-loader>
+    </div>
+  </div>
+
+</app-input-form>

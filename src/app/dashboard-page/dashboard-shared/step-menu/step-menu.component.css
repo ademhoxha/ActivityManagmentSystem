@@ -1,0 +1,173 @@
+
+:root {
+    --s-m-border-width: .3rem;
+    --s-m-border : solid var(--s-m-border-width) transparent;
+    --s-m-bg-color: inherit;
+    --s-m-shadow: none;
+    --s-m-color: rgba(255,255,255,.6);
+    --s-m-padding: none;
+    --s-m-margin: 2rem 0 2rem 0;
+    
+    --s-m-i-width: 20rem;
+    --s-m-i-height: 5rem;
+    --s-m-i-border: solid var(--s-m-border-width) transparent;
+
+    --s-m-i-bg-color: rgba(62,66,75,1);
+    --s-m-i-icon-width: 20%;
+    --s-m-i-title-width: 80%;
+    --s-m-i-icon-font-size: 1.7em;
+    --s-m-i-title-font-size: 1.2rem;
+    --s-m-i-padding: 0 0 0 .7rem;
+
+    --s-m-i-selected-border: solid var(--s-m-border-width) white;
+    --s-m-i-selected-shadow: 0 0 1px 2px white;
+    --s-m-i-selected-color: white;
+
+    --s-m-i-hover-border: var(--s-m-border);
+    --s-m-i-hover-shadow: none;
+    --s-m-i-hover-color: white;
+
+
+    --s-m-c-border: solid var(--s-m-border-width) white;
+
+    --s-m-i-disabled-color: rgba(255,255,255,.6);
+    --s-m-i-disabled-bg-color: rgba(234,41,57,.6);
+
+}
+
+._step-menu-tab {
+    border: var(--s-m-border);
+    background-color: var(--s-m-bg-color);
+    box-shadow: var(--s-m-shadow);
+    color: var(--s-m-color);
+    padding: var(--s-m-padding);
+    margin: var(--s-m-margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+._step-menu-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+._step-menu-tab:not(._responsive-menu) .ui-tooltip{
+    display: none !important;
+}
+
+/*._step-menu-tab ._step-menu-connection {
+    width: 2rem;
+    height: .5rem;
+    border: var(--s-m-c-border);
+}*/
+
+._step-menu-tab:not(._responsive-menu) ._step-menu-item {
+    cursor: pointer;
+    width: var(--s-m-i-width);
+    height: var(--s-m-i-height);
+    border: var(--s-m-i-border);
+    background-color: var(--s-m-i-bg-color);
+    padding: var(--s-m-i-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+._step-menu-tab ._step-menu-item i{
+    width: var(--s-m-i-icon-width);
+    font-size: var(--s-m-i-icon-font-size);
+}
+
+._step-menu-tab ._step-menu-item span{
+    width: var(--s-m-i-title-width);
+    font-size: var(--s-m-i-title-font-size);
+}
+
+._step-menu-tab:not(._responsive-menu) ._step-menu-item:not(._step-selected):not(._step-disabled):hover {
+    border: var(--s-m-i-hover-border);
+    box-shadow: var(--s-m-i-hover-shadow);
+    color: var(--s-m-i-hover-color);
+}
+
+._step-menu-tab ._step-menu-item._step-selected{
+    z-index: 100;
+    /*border: var(--s-m-i-selected-border);
+    box-shadow: var(--s-m-i-selected-shadow);
+    color: var(--s-m-i-selected-color);
+    background-color: green;*/
+    border: var(--app-card-hover-border);
+    border-width: var(--s-m-border-width) !important;
+    background-color: var(--app-card-hover-bg-color);
+    color: var(--app-card-hover-color);
+    animation: app-border-shadow 3s linear infinite;
+}
+
+
+._step-menu-tab ._step-menu-item._step-disabled {
+    cursor: not-allowed;
+    color: var(--s-m-i-disabled-color);
+    background-color: var(--s-m-i-disabled-bg-color);
+}
+
+
+
+/*  Responsive menu  */
+
+._step-menu-tab._responsive-menu ._step-menu-item {
+    width: 5rem;
+    min-width: 5rem;
+    height: var(--s-m-i-height);
+    border: var(--s-m-i-border);
+    background-color: inherit;
+    padding: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+._step-menu-tab._responsive-menu ._step-menu-item span{
+    display: none;
+}
+
+
+._step-menu-tab._responsive-menu  ._step-menu-item._step-selected{
+    z-index: 100;
+    border: initial;
+    border-width: initial;
+    background-color: initial;
+    color: var(--app-card-hover-color);
+    animation: none;
+}
+
+._step-menu-tab._responsive-menu  ._step-menu-item._step-selected i{
+    position: relative;
+    animation: top-animation-step-menu .2s linear forwards;
+}
+
+
+@keyframes top-animation-step-menu {
+    0%   {
+        top: 0;
+    }
+    100% {
+        top: -.75rem;
+    }
+}
+
+
+._step-menu-tab._responsive-menu ._step-menu-item:not(._step-selected):not(._step-disabled):hover {
+    cursor: pointer;
+    color: var(--s-m-i-hover-color);
+}
+
+._step-menu-tab._responsive-menu ._step-menu-item._step-disabled i{
+    color: var(--s-m-i-disabled-bg-color);
+}
+
+._step-menu-tab._responsive-menu .ui-tooltip{
+    display: block;
+    top: 0;
+    position: fixed;
+}

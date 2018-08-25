@@ -1,4 +1,4 @@
-<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+<!--<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
 </app-operation-result>
 
 <app-block-ui [flag]="loader"></app-block-ui>
@@ -28,9 +28,9 @@
         <form name="componentForm" id="componentForm" [formGroup]="componentForm" [hidden]="viewLoader">
           <div class="ui-g">
           
-          <!--  <div class="ui-g-12" *ngIf="resetTaskView">
+          ### <div class="ui-g-12" *ngIf="resetTaskView">
               <app-new-task-reduced-view></app-new-task-reduced-view>
-            </div> -->
+            </div>###
 
             <div class="ui-g-12">
               <div class="form-group">
@@ -39,8 +39,8 @@
                   <div class="input-group-addon">
                     <i class="fa fa-info" style="width: 15px;"></i>
                   </div>
-                <!--  <p-inputMask name="taskName" formControlName="taskName" type="text" class="form-control" id='taskName' placeholder="....."
-                    mask="aaa?aaaaaaaaaaaaaaaaaa" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask> -->
+                ###  <p-inputMask name="taskName" formControlName="taskName" type="text" class="form-control" id='taskName' placeholder="....."
+                    mask="aaa?aaaaaaaaaaaaaaaaaa" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask> ###
                     <input name="taskName" formControlName="taskName" type="text" class="form-control _form-special" maxlength="19" placeholder="Insert A Task Name">
                 </div>
               </div>
@@ -93,8 +93,8 @@
                   <div class="input-group-addon">
                     <i class="fa fa-euro" style="width: 15px;"></i>
                   </div>
-                  <!--<p-inputMask name="costSelledDays" formControlName="costSelledDays" type="text" class="form-control" id='costSelledDays'
-                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask> -->
+                 ###<p-inputMask name="costSelledDays" formControlName="costSelledDays" type="text" class="form-control" id='costSelledDays'
+                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>###
                     <input name="costSelledDays" formControlName="costSelledDays" type="text" pKeyFilter="pint" class="form-control _form-special" maxlength="3" placeholder="0">
                 </div>
               </div>
@@ -105,8 +105,8 @@
                   <div class="input-group-addon">
                     <i class="fa fa-euro" style="width: 15px;"></i>
                   </div>
-                 <!-- <p-inputMask name="estcostSelledDays" formControlName="estcostSelledDays" type="text" class="form-control" id='estcostSelledDays'
-                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>-->
+                 ### <p-inputMask name="estcostSelledDays" formControlName="estcostSelledDays" type="text" class="form-control" id='estcostSelledDays'
+                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>###
                     <input name="estcostSelledDays" formControlName="estcostSelledDays" type="text" pKeyFilter="pint" class="form-control _form-special" maxlength="3" placeholder="0">
                 </div>
               </div>
@@ -141,4 +141,299 @@
 
   </div>
 
-</div>
+</div> -->
+
+
+<!--  <app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+</app-operation-result>
+
+<app-block-ui [flag]="loader"></app-block-ui>
+
+<app-input-form>
+
+  <div card-header>
+    <i class="fa fa-plus"></i>
+    <span>Insert a New Project Task</span>
+  </div>
+
+  <div card-body>
+
+
+    <div *ngIf="searchReset">
+      <app-select-project (returnFunction)="projectSelection($event)"></app-select-project>
+    </div>
+
+
+    <div *ngIf="viewLoader">
+      <app-loader></app-loader>
+    </div>
+
+    <form name="componentForm" id="componentForm" [formGroup]="componentForm" [hidden]="viewLoader">
+      <div class="ui-g ui-fluid">
+
+        
+
+        <div class="ui-g-12">
+          <div class="_input-group-flex">
+            <label class="_input-group-external-label _input-group-lbl-min-ln">Insert A Task Name:</label>
+            <span class="ui-float-label">
+              <i class="fa fa-info _to-right _black-content"></i>
+              <input name="taskName" formControlName="taskName" type="text" class="_input-not-rounded" maxlength="19" style="width: 100%">
+              <label for="float-input" class="_input-group-responsive-float-lbl">Task Name</label>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="ui-g-12" style="padding-bottom: 0;">
+          <app-start-end-date #dates></app-start-end-date>
+        </div>
+
+
+          <div class="ui-g-12 _estimated_days">
+          <div class="form-group  _estimated_days_group" style="margin-right: 0.3em">
+            <label> Task Selled Days Number</label>
+            <div class="input-group">
+              <div class="_days-content">
+                <div style="margin-right: 0.3em">
+                  <p-spinner [min]="0" [max]="prjRemaningSelledDays" formControlName="selledDays" name="selledDays" size="3"></p-spinner>
+                </div>
+                <div style="margin-right: 0.3em">
+                  <p-inputSwitch onLabel={{labelOn}} offLabel={{labelOff}} [(ngModel)]="bExtraSelledDays" [ngModelOptions]="{standalone: true}"
+                    (onChange)="changeSwitch()" pTooltip="Check to ADD some extra selled days beyond the initial project selled days."
+                    tooltipPosition="bottom"></p-inputSwitch>
+                </div>
+                <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraSelledDays" [ngModelOptions]="{standalone: true}"
+                  [disabled]="!bExtraSelledDays" (onChange)="changeExtra()"></p-spinner>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group _estimated_days_group">
+            <label> Task Estimated Days Number</label>
+            <div class="input-group">
+              <div class="_days-content">
+                <div style="margin-right: 0.3em">
+                  <p-spinner [min]="0" [max]="prjRemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
+                </div>
+                <div style="margin-right: 0.3em">
+                  <p-inputSwitch onLabel={{labelOn}} offLabel={{labelOff}} [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}"
+                    (onChange)="changeSwitch()" pTooltip="Check to ADD some extra estimated days beyond the initial project estimated days."
+                    tooltipPosition="bottom"></p-inputSwitch>
+                </div>
+                <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraEstimatedDays" [ngModelOptions]="{standalone: true}"
+                  [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()"></p-spinner>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-g-12" style="padding-top: 0;">
+          <div class="_input-group-dbl-form-container">
+            <div class="_input-group-flex _input-group-dbl-form _input-group-dbl-form-margin">
+              <label class="_input-group-external-label _input-group-lbl-min-ln">Task Selled Cost for Day:</label>
+              <span class="ui-float-label">
+                <i class="fa fa-euro _to-right _black-content"></i>
+                <input name="costSelledDays" formControlName="costSelledDays" type="text" pKeyFilter="pint" class="_input-not-rounded" style="width: 100%;"
+                  maxlength="3" placeholder="0">
+                <label for="float-input" class="_input-group-responsive-float-lbl">Selled Cost for Day</label>
+              </span>
+            </div>
+
+            <div class="_input-group-flex _input-group-dbl-form">
+              <label class="_input-group-external-label _input-group-lbl-min-ln">Task Estimated Cost for Day:</label>
+              <span class="ui-float-label">
+                <i class="fa fa-euro _to-right _black-content"></i>
+                <input name="estcostSelledDays" formControlName="estcostSelledDays" type="text" pKeyFilter="pint" class="_input-not-rounded"
+                  style="width: 100%;" maxlength="3" placeholder="0">
+                <label for="float-input" class="_input-group-responsive-float-lbl">Estimated Cost for Day</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+
+
+  </div>
+
+
+  <div card-footer>
+
+    <div *ngIf="!loader">
+      <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid && dates.startDate && dates.endDate">
+        <i class="fa fa-dot-circle-o"></i> Submit
+      </button>
+      <button type="reset" class="btn btn-danger" (click)="reset();" [(disabled)]="tabSelected['search']">
+        <i class="fa fa-ban"></i> Reset
+      </button>
+    </div>
+    <div *ngIf="loader">
+      <app-loader></app-loader>
+    </div>
+
+  </div>
+
+</app-input-form> -->
+
+<app-operation-result *ngIf="resultFlag" [inputData]="resultData">
+</app-operation-result>
+
+<app-block-ui [flag]="loader"></app-block-ui>
+
+
+<app-input-form (onRefresh)="reset();">
+
+  <div card-header>
+    <i class="fa fa-plus"></i>
+    <span>Insert a New Project Task</span>
+  </div>
+
+  <div card-body>
+
+    <app-step-menu (onChange)="onTabChange($event)">
+
+      <app-step-item title="Project Selection" icon="fa fa-mouse-pointer" [(active)]="tabSelected['search']" [(disabled)]="tabDisabled['search']">
+        <div *ngIf="searchReset">
+          <app-select-project (returnFunction)="projectSelection($event)"></app-select-project>
+        </div>
+      </app-step-item>
+
+      <app-step-item title="Task Information" icon="fa fa-th-list" [(active)]="tabSelected['insertTask']" [(disabled)]="tabDisabled['insertTask']">
+        <div *ngIf="viewLoader">
+          <app-loader></app-loader>
+        </div>
+
+        <form name="componentForm" id="componentForm" [formGroup]="componentForm" [hidden]="viewLoader">
+          <div class="ui-g ui-fluid">
+
+
+
+            <div class="ui-g-12">
+              <div class="_input-group-flex">
+                <label class="_input-group-external-label _input-group-lbl-min-ln">Insert A Task Name:</label>
+                <span class="ui-float-label">
+                  <i class="fa fa-info _to-right _black-content"></i>
+                  <input name="taskName" formControlName="taskName" type="text" class="_input-not-rounded" maxlength="19" style="width: 100%">
+                  <label for="float-input" class="_input-group-responsive-float-lbl">Task Name</label>
+                </span>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12" style="padding-bottom: 0;">
+              <app-start-end-date #dates></app-start-end-date>
+            </div>
+
+            <div class="ui-g-12" style="padding-bottom: 0;">
+
+              <div class="_input-group-dbl-form-container _switch-form">
+
+                <div class="_input-group-flex _input-group-dbl-form  _input-group-dbl-switch-form-container">
+
+
+                  <label class="_input-group-external-label _input-group-lbl-min-ln">Task Selled Days Number:</label>
+
+                  <span class="ui-float-label">
+                    <i class="fa fa-euro _to-right _black-content"></i>
+                    <p-spinner [min]="0" [max]="prjRemaningSelledDays" formControlName="selledDays" name="selledDays" size="3" styleClass="_input-not-rounded"></p-spinner>
+                    <label for="float-input" class="_input-group-responsive-float-lbl">Selled Days</label>
+                  </span>
+
+                  <div class="_input-switch">
+                    <p-inputSwitch [(ngModel)]="bExtraSelledDays" [ngModelOptions]="{standalone: true}" (onChange)="changeSwitch()" pTooltip="Check to ADD some extra selled days beyond the initial project selled days."
+                      tooltipPosition="bottom"></p-inputSwitch>
+                  </div>
+
+                  <span class="ui-float-label _to-rigth-position">
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraSelledDays" [ngModelOptions]="{standalone: true}"
+                      [disabled]="!bExtraSelledDays" (onChange)="changeExtra()" styleClass="_input-not-rounded"></p-spinner>
+                  </span>
+
+                </div>
+
+
+                <div class="_input-group-flex _input-group-dbl-form _input-group-dbl-switch-form-container _input-group-dbl-form-margin-left">
+
+
+                  <label class="_input-group-external-label _input-group-lbl-min-ln">Task Estimated Days Number:</label>
+
+                  <span class="ui-float-label">
+                    <i class="fa fa-euro _to-right _black-content"></i>
+                    <p-spinner [min]="0" [max]="prjRemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
+                    <label for="float-input" class="_input-group-responsive-float-lbl">Estimated Days</label>
+                  </span>
+
+                  <div class="_input-switch">
+                    <p-inputSwitch [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}" (onChange)="changeSwitch()" pTooltip="Check to ADD some extra estimated days beyond the initial project estimated days."
+                      tooltipPosition="bottom"></p-inputSwitch>
+                  </div>
+
+                  <span class="ui-float-label _to-rigth-position">
+                    <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraEstimatedDays" [ngModelOptions]="{standalone: true}"
+                      [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()"></p-spinner>
+                  </span>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+            <div class="ui-g-12" style="padding-top: 0;">
+              <div class="_input-group-dbl-form-container">
+                <div class="_input-group-flex _input-group-dbl-form _input-group-dbl-form-margin">
+                  <label class="_input-group-external-label _input-group-lbl-min-ln">Task Selled Cost for Day:</label>
+                  <span class="ui-float-label">
+                    <i class="fa fa-euro _to-right _black-content"></i>
+                    <input name="costSelledDays" formControlName="costSelledDays" type="text" pKeyFilter="pint" class="_input-not-rounded" style="width: 100%;"
+                      maxlength="3" placeholder="0">
+                    <label for="float-input" class="_input-group-responsive-float-lbl">Selled Cost for Day</label>
+                  </span>
+                </div>
+
+                <div class="_input-group-flex _input-group-dbl-form">
+                  <label class="_input-group-external-label _input-group-lbl-min-ln">Task Estimated Cost for Day:</label>
+                  <span class="ui-float-label">
+                    <i class="fa fa-euro _to-right _black-content"></i>
+                    <input name="estcostSelledDays" formControlName="estcostSelledDays" type="text" pKeyFilter="pint" class="_input-not-rounded"
+                      style="width: 100%;" maxlength="3" placeholder="0">
+                    <label for="float-input" class="_input-group-responsive-float-lbl">Estimated Cost for Day</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </app-step-item>
+
+    </app-step-menu>
+
+
+
+  </div>
+
+  <div card-footer>
+
+    <div *ngIf="!loader">
+      <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid && dates.startDate && dates.endDate">
+        <i class="fa fa-dot-circle-o"></i>
+        <span>Submit</span>
+      </button>
+      <button type="reset" class="btn btn-danger" (click)="reset();" [(disabled)]="tabSelected['search']">
+        <i class="fa fa-ban"></i>
+        <span>Reset</span>
+      </button>
+    </div>
+    <div *ngIf="loader">
+      <app-loader></app-loader>
+    </div>
+
+  </div>
+
+</app-input-form>

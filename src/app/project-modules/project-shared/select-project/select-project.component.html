@@ -1,6 +1,8 @@
-<div *ngIf="!projectList">
+<!--<div *ngIf="!projectList">
   <app-loader></app-loader>
 </div>
+
+
 <div class="col-md-12" *ngIf="projectList">
   <div class="form-group">
     <label class="col-md-12">Select a Project</label>
@@ -10,5 +12,32 @@
     <div class="col-md-6">
       <button class="btn btn-primary" (click)="projectSearch(pL.selectedItem)" [disabled]="!pL.selectedItem">Search</button>
     </div>
+  </div>
+</div>-->
+
+<div *ngIf="!projectList">
+  <app-loader></app-loader>
+</div>
+
+
+<div class="ui-g ui-fluid" *ngIf="projectList">
+
+
+  <div class="ui-g-12">
+
+    <div class="_input-dd-list">
+
+      <div class="_input-group-flex">
+        <label class="_input-group-external-label _input-group-lbl-min-ln">Select a Project:</label>
+        <div style="width: 100%;">
+          <app-dropdown-list [list]="projectList" #pL></app-dropdown-list>
+        </div>
+      </div>
+
+      <div class="_input-group-flex">
+        <button class="btn btn-primary _dd-button-search" (click)="projectSearch(pL.selectedItem)" [disabled]="!pL.selectedItem">Search</button>
+      </div>
+    </div>
+
   </div>
 </div>

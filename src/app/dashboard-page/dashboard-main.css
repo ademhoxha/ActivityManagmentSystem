@@ -14,3 +14,36 @@
     margin: 0 1rem 1rem 1rem;
     padding-top: 8rem;
 }
+
+
+._tabView.ui-tabview .ui-tabview-nav {
+    margin: 0;
+    padding: .25em .5em 0 .25em;
+    background: #1976d2!important;
+}
+
+._tabView.ui-state-disabled {
+    background: #1976d2!important;
+}
+
+._tabView .ui-tabview-nav .ui-state-disabled *, ._tabView .ui-tabview-nav .ui-widget:disabled *  {
+    color: white!important;
+    font-weight: 400!important;
+    text-shadow: none;
+}
+
+._tabView .ui-tabview-nav .ui-state-disabled, ._tabView .ui-tabview-nav .ui-widget:disabled {
+    opacity: 0.8;
+    background:gray!important;
+}
+
+.ui-tabview .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled) a {
+    background: #1976d2!important;
+    color: white!important;
+    font-weight: 400!important;
+    text-shadow: none;
+}
+
+.ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled) a:hover {
+    text-decoration: underline;
+}

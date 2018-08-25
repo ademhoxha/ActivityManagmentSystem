@@ -1,0 +1,31 @@
+<!--<div class="_step-menu-tab">
+
+  <div *ngFor="let item of items; let i = index" class="_step-menu-content">
+
+    <div (click)="selectTab(item)" class="_step-menu-item _step-selected" [class._step-selected]="item.active">
+      <i *ngIf="item.icon" class={{item.icon}}></i>
+      <span>{{item.title}}</span>
+    </div>
+
+    <div *ngIf="i < (items.length - 1)" class="_step-menu-connection">
+
+    </div>
+
+  </div>
+
+</div>
+
+<br>
+<br> -->
+
+<div class="_step-menu-tab" >
+
+  <div *ngFor="let item of items; let i = index" (click)="selectTab(item)" class="_step-menu-item" 
+  [class._step-selected]="item.active" [class._step-disabled]="item.disabled" pTooltip="Dashboard" appendTo="target" tooltipPosition="bottom" >
+    <i *ngIf="item.icon" class={{item.icon}} ></i>
+    <span>{{item.title}}</span>
+  </div>
+
+</div>
+
+<ng-content></ng-content>

@@ -60,7 +60,7 @@
                     <p-spinner [min]="0" [max]="RemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
                   </div>
                   <div style="margin-right: 0.3em; display: inline;">
-                    <p-inputSwitch onLabel={{labelOn}} offLabel={{labelOff}} [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}"
+                    <p-inputSwitch [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}"
                       (onChange)="changeSwitch()" pTooltip="Check to ADD some extra estimated days beyond the initial job estimated days."
                       tooltipPosition="bottom"></p-inputSwitch>
                   </div>

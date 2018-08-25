@@ -1,0 +1,9 @@
+<p>
+  tab-container works!
+</p>
+<ul class="nav nav-tabs">
+  <li *ngFor="let tab of tabs" (click)="selectTab(tab)" >
+    <span>{{tab.title}}</span>
+  </li>
+</ul>
+<ng-content></ng-content>

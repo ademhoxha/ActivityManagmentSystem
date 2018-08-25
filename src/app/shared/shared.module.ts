@@ -30,8 +30,8 @@ import { MessageModule } from 'primeng/message';
 import { ScheduleModule } from 'primeng/schedule';
 import { DragDropModule } from 'primeng/dragdrop';
 import { DialogModule } from 'primeng/dialog';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 
 // custom shared components

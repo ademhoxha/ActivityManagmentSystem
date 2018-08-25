@@ -76,7 +76,7 @@ export class NewProjectTaskComponent implements OnInit {
     this.resetTaskView = false;
   }
 
-  onTabChange(event) {
+  /*onTabChange(event) {
     console.log("INDEX: " + event.index);
     if (event.index == 0) {
       this.tabSelected["search"] = true;
@@ -86,7 +86,18 @@ export class NewProjectTaskComponent implements OnInit {
       this.tabSelected["search"] = false;
       this.tabSelected["insertTask"] = true;
     }
+  }*/
+  onTabChange(ret) {
+    if (ret.title == "Project Selection") {
+      this.tabSelected["search"] = true;
+      this.tabSelected["insertTask"] = false;
+    }
+    else {
+      this.tabSelected["search"] = false;
+      this.tabSelected["insertTask"] = true;
+    }
   }
+  
 
   projectName;
   projectSelection(retData) {
@@ -104,7 +115,6 @@ export class NewProjectTaskComponent implements OnInit {
 
   loadProjectInfo() {
     this.openTab();
-
     var data = { projectName: this.projectName };
     console.log("LAUNCH LOAD PROJECT: " + data.projectName)
     this.projectAPI.getProjectRequest(data).then((res: any) => {

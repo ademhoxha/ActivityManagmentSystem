@@ -17,6 +17,9 @@ import { SliderModule } from 'primeng/slider';
 import { TableStyleComponent } from '@app/test/table-style/table-style.component';
 import { SchedulerComponent } from '@app/test/scheduler/scheduler.component';
 import { GroupddComponent } from './groupdd/groupdd.component';
+import { ContentComponent } from './content/content.component';
+import { TabComponent } from './tab/tab.component';
+import { TabContainerComponent } from '@app/test/tab-container/tab-container.component';
 
 
 
@@ -35,7 +38,10 @@ import { GroupddComponent } from './groupdd/groupdd.component';
     ClickWaveComponent,
     TableStyleComponent,
     SchedulerComponent,
-    GroupddComponent
+    GroupddComponent,
+    ContentComponent,
+    TabComponent,
+    TabContainerComponent
   ],
   exports: [
     TestComponent,
@@ -46,7 +52,9 @@ import { GroupddComponent } from './groupdd/groupdd.component';
     SliderModule,
     TableStyleComponent,
     SchedulerComponent,
-    GroupddComponent
+    GroupddComponent,
+    ContentComponent,
+    TabContainerComponent
   ],
   providers: [
     TreeDragDropService

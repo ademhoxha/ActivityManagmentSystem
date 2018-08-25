@@ -1,0 +1,31 @@
+<div class="card _card-form-container">
+
+  <div class="_card-form-container-header">
+
+    <div class="_card-form-container-header-title">
+      <ng-content select="[card-header]"></ng-content>
+    </div>
+
+    <div class="_card-form-container-header-fst-top-btn" (click)="refresh();">
+      <i class="fa fa-refresh"></i>
+    </div>
+
+    <div class="_card-form-container-header-snd-top-btn" (click)="home();">
+      <i class="fa fa-home"></i>
+    </div>
+
+  </div>
+
+  <div class="card-body _card-form-conteiner-body">
+
+    <ng-content select="[card-body]"></ng-content>
+
+  </div>
+
+  <div class="_card-form-container-footer">
+
+    <ng-content select="[card-footer]"></ng-content>
+
+  </div>
+
+</div>

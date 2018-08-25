@@ -8,6 +8,7 @@ import { ClickWaveComponent } from '@app/test/click-wave/click-wave.component';
 import { TableStyleComponent } from '@app/test/table-style/table-style.component';
 import { SchedulerComponent } from '@app/test/scheduler/scheduler.component';
 import { GroupddComponent } from '@app/test/groupdd/groupdd.component';
+import { ContentComponent } from '@app/test/content/content.component';
 
 
 const routes: Routes = [
@@ -20,8 +21,9 @@ const routes: Routes = [
       { path: 'click', component: ClickWaveComponent },
       { path: 'table', component: TableStyleComponent },
       { path: 'schedule', component: SchedulerComponent },
-      { path: 'group', component: GroupddComponent }
-    ]
+      { path: 'group', component: GroupddComponent },
+      { path: 'content', component: ContentComponent }
+]
   }
 ];
 

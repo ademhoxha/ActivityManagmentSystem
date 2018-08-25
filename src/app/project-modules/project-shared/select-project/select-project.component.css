@@ -1,0 +1,25 @@
+._input-dd-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+._input-dd-list ._input-group-flex {
+    width: 50%;
+}
+
+@media (max-width: 65rem ) {
+    ._input-dd-list {
+        display: block;
+    }
+
+    ._input-dd-list ._input-group-flex {
+        width: 100%;
+    }
+}
+
+._dd-button-search {
+    width: 10rem;
+    height: 2.2rem;
+    margin-bottom: .3rem;
+}

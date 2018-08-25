@@ -182,9 +182,10 @@
     position: fixed;
     background: var(--panel-bg-color);
     /*overflow: hidden;*/
-    overflow: auto;
+    overflow: visible;
     border: var(--panel-border);
     box-shadow: var(--panel-shadow);  
+    min-width: 25rem;
 }
 
 ._over-panel._over-panel-no-visible {
@@ -218,6 +219,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 45rem;
 }
 /* first level */
 ._over-panel._panel-first-level._over-panel-yes-visible {
@@ -356,16 +358,18 @@
     display: none;
 }
 
-@media screen and (max-width: 70rem), (max-height: 40rem){
-    ._over-panel {
+@media screen and (max-width: 32.5rem){
+   /* ._over-panel {
         background: rgba(255, 255, 255, 1);
-    }
+    }*/
 
     ._over-panel._over-panel-yes-visible {
-        animation: none;
+        position: absolute;
+        animation: none !important;
         top:0%;
         width: 100%;
         height: 100%;
+        min-height: 45rem; /* hard code */
     }
 
     ._over-panel-close {
@@ -391,7 +395,13 @@
     }
 }
 
-@media screen and (max-width: 40rem){
+@media screen and (max-height: 40rem){
+    ._over-panel {
+        position: absolute;
+    }
+}
+
+/*@media screen and (max-width: 40rem){
 
     ._over-panel {
         position: absolute;
@@ -411,7 +421,7 @@
     ._over-panel._over-panel-yes-visible {
         height: 45rem;
     }
-}
+}*/
 
 /* END over panel */
 
