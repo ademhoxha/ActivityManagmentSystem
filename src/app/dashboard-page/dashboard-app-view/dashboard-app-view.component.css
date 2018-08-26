@@ -16,6 +16,11 @@
     background: var(--dashboard-top-menu-bg-color);
 }
 
+._dashboard-top-menu-no-scroll {
+    background: none !important;
+    background-color: inherit !important;
+}
+
 ._top-open-app-menu {
     cursor: pointer;
     color: white;

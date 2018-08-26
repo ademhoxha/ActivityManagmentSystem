@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { DashboardResumeRoutingModule } from './dashboard-resume-routing.module';
 import { DashboardResumeComponent } from './dashboard-resume.component';
+import { ProjectSharedModule } from '@app/project-modules/project-shared/project-shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    ProjectSharedModule,
+
     DashboardResumeRoutingModule
   ],
-  declarations: [DashboardResumeComponent]
+  declarations: [
+    DashboardResumeComponent
+  ],
+  providers : [
+  ]
 })
 export class DashboardResumeModule { }

@@ -60,17 +60,17 @@ export class JobAssignationComponent implements OnInit {
   }
 
   onTabChange(event) {
-    if (event.index == 0) {
+    if (event.title == "Project Selection") {
       this.tabSelected["PrjSearch"] = true;
       this.tabSelected["TskSearch"] = false;
       this.tabSelected["insertJob"] = false;
     }
-    else if (event.index == 1) {
+    else if (event.title == "Task Selection") {
       this.tabSelected["PrjSearch"] = false;
       this.tabSelected["TskSearch"] = true;
       this.tabSelected["insertJob"] = false;
     }
-    else if (event.index == 2) {
+    else if (event.title == "Job Information") {
       this.tabSelected["PrjSearch"] = false;
       this.tabSelected["TskSearch"] = false;
       this.tabSelected["insertJob"] = true;

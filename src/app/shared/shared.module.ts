@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // 3rd party 
+import { ChartsModule } from 'ng2-charts';
+
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { CalendarModule } from 'primeng/calendar';
@@ -51,6 +53,8 @@ import { MessageComponent } from '@app/shared/message/message.component';
     ReactiveFormsModule,
 
     // 3rd party
+    ChartsModule,
+
     AngularFontAwesomeModule,
 
     CalendarModule,
@@ -102,6 +106,8 @@ import { MessageComponent } from '@app/shared/message/message.component';
     ReactiveFormsModule,
 
     // 3rd party
+    ChartsModule,
+
     AngularFontAwesomeModule,
 
     CalendarModule,

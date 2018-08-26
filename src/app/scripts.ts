@@ -7,6 +7,7 @@ export enum ScriptType {
     PanelCloseAll = 3,
     PanelOpenSecond = 4,
     PanelToogleSecond = 5,
+    AppTopMenuRequiredScripts = 6,
 
 }
 
@@ -29,6 +30,8 @@ export class ScriptUtils {
             return panelOpenSecondaryPanel();
         else if (type == ScriptType.PanelToogleSecond)
             return panelToogleSecondaryPanel();
+        else if (type == ScriptType.AppTopMenuRequiredScripts)
+            return appTopMenuRequiredScripts();
     }
 
 }
@@ -57,8 +60,8 @@ function inputFormRequiredScripts() {
     $('input').keyup(function () {
 
         if ($(this).hasClass('ng-invalid')) {
-           /* $(this).parents('._input-group-flex').find('._input-group-external-label').removeClass('_card-form-container-focus-icon-black');
-            $(this).parents('._input-group-flex').find('._input-group-external-label').addClass('_card-form-container-focus-icon-red');*/
+            /* $(this).parents('._input-group-flex').find('._input-group-external-label').removeClass('_card-form-container-focus-icon-black');
+             $(this).parents('._input-group-flex').find('._input-group-external-label').addClass('_card-form-container-focus-icon-red');*/
 
             $(this).parents('._input-group-flex').find('i').removeClass('_card-form-container-focus-icon-black');
             $(this).parents('._input-group-flex').find('i').addClass('_card-form-container-focus-icon-red');
@@ -67,7 +70,7 @@ function inputFormRequiredScripts() {
         if ($(this).hasClass('ng-valid')) {
             /*$(this).parents('._input-group-flex').find('._input-group-external-label').removeClass('_card-form-container-focus-icon-red');
             $(this).parents('._input-group-flex').find('._input-group-external-label').addClass('_card-form-container-focus-icon-black');*/
-    
+
             $(this).parents('._input-group-flex').find('i').removeClass('_card-form-container-focus-icon-red');
             $(this).parents('._input-group-flex').find('i').addClass('_card-form-container-focus-icon-black');
         }
@@ -137,4 +140,17 @@ function panelToogleSecondaryPanel() {
 function panelTooglePrimaryPanel() {
     //$("._panel-first-level").find('._over-panel-close').toggleClass('_over-panel-close-yes-visible _over-panel-close-no-visible');
     $("._panel-first-level").toggleClass('_over-panel-no-visible _over-panel-yes-visible');
+}
+
+
+function appTopMenuRequiredScripts() {
+    var lastScrollTop = 50;
+    $(window).scroll(function (event) {
+        var st = $(this).scrollTop();
+        if (st < lastScrollTop) {
+            $('._dashboard-top-menu').addClass('_dashboard-top-menu-no-scroll');
+        } else if ($('._dashboard-top-menu').hasClass('_dashboard-top-menu-no-scroll')) {
+            $('._dashboard-top-menu').removeClass('_dashboard-top-menu-no-scroll');
+        }
+    });
 }

@@ -37,7 +37,7 @@
 /* card container variables */
 :root {
     --cf-container-bg-clr: rgb(64,64,64,1);
-    --cf-container-shadow: -6px 6px 1.5px .5px rgba(0,0,0,.7);
+    --cf-container-shadow: -6px 6px 4px 2px rgba(0,0,0,.3);
     --cf-container-margin: 0 .75rem 0 .75rem;
     --cf-container-input-focus-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.6);
 
@@ -94,8 +94,10 @@
 /* app card variables  */
 :root {
     --app-card-container-padding: 1rem 1rem .3rem 1rem;
-    --app-card-border: solid .5rem transparent;
-    --app-card-bg-color: #606060;
+    --app-card-border: solid .5rem rgb(64,64,64,1);
+    /*--app-card-bg-color: #606060;*/
+    --app-card-bg-color:  linear-gradient(to bottom right, rgba(170,170,170,0.3), rgba(68,68,68,0.3));
+    --app-card-box-shadow: -3px 3px 2px 1px rgba(0,0,0,.3);
     --app-card-color: rgba(255, 255, 255, .9);
 
 
@@ -109,7 +111,8 @@
 
 /*  function card variables  */
 :root {
-    --function-card-bg-color: #606060;
+    --function-card-bg-color: var(--app-card-bg-color);
+    --function-card-box-shadow: var(--app-card-box-shadow);
     --function-card-padding-top: 1rem;
     --function-card-margin-bottom: .5rem;
  

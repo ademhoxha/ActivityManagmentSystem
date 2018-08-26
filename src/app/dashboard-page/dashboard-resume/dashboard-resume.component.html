@@ -1,3 +1,38 @@
-<p>
-  dashboard-resume works!
-</p>
+<app-input-form>
+
+  <div card-header>
+    <i class="fa fa-line-chart"></i>
+    <span>Resume (CharJS Test)</span>
+  </div>
+
+  <div card-body>
+
+    <div class="ui-g ui-fluid">
+
+      <div class="ui-g-12 ui-md-6 ui-lg-6 _graph-container">
+
+        <div class=" _graph-element">
+          <canvas baseChart [data]="lineChartData" [labels]="lineChartLabels" [chartType]="lineChartType"  [colors]="lineChartColors"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [options]="options"></canvas>
+        </div>
+
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-lg-6 _graph-container">
+
+        <div class=" _graph-element">
+          <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"  [options]="options"></canvas>
+        </div>
+
+      </div>
+      <div class="ui-g-12 text-center" style="margin-top: 10px;height: 50%">
+
+        <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</app-input-form>

@@ -137,7 +137,8 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
     flex-direction:column;
     align-content: center;
     /*background-color: rgba(0, 128, 0, .8);*/
-    background-color: var(--app-card-bg-color);
+    background: var(--app-card-bg-color);
+    box-shadow: var(--app-card-box-shadow);
     border: var(--app-card-border);
 
     cursor: pointer;
@@ -167,7 +168,7 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
   /*box-shadow:var(--app-card-hover-box-shadow);*/
   z-index: 100;
   border: var(--app-card-hover-border);
-  background-color: var(--app-card-hover-bg-color);
+  background: var(--app-card-hover-bg-color);
   color: var(--app-card-hover-color);
   animation: app-border-shadow 3s linear infinite;
 }
@@ -261,7 +262,8 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
     display: flex;
     flex-direction:column;
     align-content: center;
-    background-color: var(--function-card-bg-color);
+    background: var(--function-card-bg-color);
+    box-shadow: var(--function-card-box-shadow);
     border: var(--app-card-border);
 
     cursor: pointer;
@@ -305,8 +307,8 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
 
 ._function-card-container ._function-card:hover {
     /*z-index: 100;*/
+    background: var(--function-card-hover-bg-color);
     border: var(--function-card-hover-border);
-    background-color: var(--function-card-hover-bg-color);
     color: var(--function-card-hover-color);
     animation: function-border-shadow 3s linear infinite;
 }

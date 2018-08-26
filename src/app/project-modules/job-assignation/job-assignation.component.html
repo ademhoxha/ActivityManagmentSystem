@@ -3,108 +3,115 @@
 
 <app-block-ui [flag]="loader"></app-block-ui>
 
-<div class="card">
-  <div class="card-header">
-    <strong class="card-title">New Job</strong>
+<app-input-form (onRefresh)="reset();">
+
+  <div card-header>
+    <i class="fa fa-plus"></i>
+    <span>Insert a New Job</span>
   </div>
-  <div class="card-body">
+  <div card-body>
 
-    <p-tabView (onChange)="onTabChange($event)" styleClass="_tabView">
+    <app-step-menu (onChange)="onTabChange($event)">
 
-      <p-tabPanel header="Project selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['PrjSearch']" styleClass="_tabView">
+      <app-step-item title="Project Selection" icon="fa fa-archive" [(active)]="tabSelected['PrjSearch']" [(disabled)]="tabDisabled['PrjSearch']">
         <div *ngIf="projectSearchReset">
           <app-select-project (returnFunction)="projectSelection($event)"></app-select-project>
         </div>
-      </p-tabPanel>
+      </app-step-item>
 
-      <p-tabPanel header="Task selection" leftIcon="fa-mouse-pointer" [selected]="tabSelected['TskSearch']" [disabled]="tabDisabled['TskSearch']"
-        styleClass="_tabView">
+      <app-step-item title="Task Selection" icon="fa fa-mouse-pointer" [(active)]="tabSelected['TskSearch']" [(disabled)]="tabDisabled['TskSearch']">
         <div *ngIf="taskSearchReset">
           <app-select-task [project]="projectName" (returnFunction)="taskSelection($event)"></app-select-task>
         </div>
-      </p-tabPanel>
+      </app-step-item>
 
-      <p-tabPanel header="Insert a new Job" leftIcon="fa-th-list" [selected]="tabSelected['insertJob']" [disabled]="tabDisabled['insertJob']"
-        styleClass="_tabView">
-
+      <app-step-item title="Job Information" icon="fa fa-th-list" [(active)]="tabSelected['insertJob']" [(disabled)]="tabDisabled['insertJob']">
         <div *ngIf="viewLoader">
           <app-loader></app-loader>
         </div>
 
         <form name="componentForm" id="componentForm" [formGroup]="componentForm" [hidden]="viewLoader">
-          <div class="ui-g">
+          <div class="ui-g ui-fluid">
+
 
             <div class="ui-g-12">
-              <div class="form-group">
-                <label>Job Name</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-info" style="width: 15px;"></i>
-                  </div>
-                  <!--  <p-inputMask name="jobName" formControlName="jobName" type="text" class="form-control" id='jobName' placeholder="....."
-                    mask="aaa?aaaaaaaaaaaaaaaaaa" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask> -->
-                  <input name="jobName" formControlName="jobName" type="text" class="form-control _form-special" maxlength="19" placeholder="Insert A Job Name">
-                </div>
+              <div class="_input-group-flex">
+                <label class="_input-group-external-label _input-group-lbl-min-ln">Insert A Job Name:</label>
+                <span class="ui-float-label">
+                  <i class="fa fa-info _to-right _black-content"></i>
+                  <input name="jobName" formControlName="jobName" type="text" class="_input-not-rounded" maxlength="19"  style="width: 100%">
+                  <label for="float-input" class="_input-group-responsive-float-lbl">Job Name</label>
+                </span>
               </div>
             </div>
 
-            <div class="ui-g-12">
+            <div class="ui-g-12" style="padding-bottom: 0;">
               <app-start-end-date #dates></app-start-end-date>
             </div>
 
-            <div class="form-group ui-g-12">
-              <label> Job Estimated Days Number</label>
-              <div class="input-group">
-                <div>
-                  <div style="margin-right: 0.3em; display: inline;">
-                    <p-spinner [min]="0" [max]="RemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3"></p-spinner>
-                  </div>
-                  <div style="margin-right: 0.3em; display: inline;">
-                    <p-inputSwitch [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}"
-                      (onChange)="changeSwitch()" pTooltip="Check to ADD some extra estimated days beyond the initial job estimated days."
+            <div class="ui-g-12" style="padding-bottom: 0;">
+
+              <div class="_input-group-dbl-form-container _switch-form">
+
+                <div class="_input-group-flex _input-group-dbl-form  _input-group-dbl-switch-form-container">
+
+
+                  <label class="_input-group-external-label _input-group-lbl-min-ln">Task Selled Days Number:</label>
+
+                  <span class="ui-float-label">
+                    <i class="fa fa-euro _to-right _black-content"></i>
+                    <p-spinner [min]="0" [max]="RemaningEstimatedDays" formControlName="estimatedDays" name="estimatedDays" size="3" styleClass="_input-not-rounded"></p-spinner>
+                    <label for="float-input" class="_input-group-responsive-float-lbl">Selled Days</label>
+                  </span>
+
+                  <div class="_input-switch">
+                    <p-inputSwitch [(ngModel)]="bExtraEstrimatedDays" [ngModelOptions]="{standalone: true}" (onChange)="changeSwitch()" pTooltip="Check to ADD some extra estimated days beyond the initial job estimated days."
                       tooltipPosition="bottom"></p-inputSwitch>
                   </div>
-                  <div style="margin-right: 0.3em; display: inline;">
+
+                  <span class="ui-float-label _to-rigth-position">
                     <p-spinner [min]="0" [max]="100" name="extraDays" size="3" [(ngModel)]="extraEstimatedDays" [ngModelOptions]="{standalone: true}"
-                      [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()"></p-spinner>
-                  </div>
+                      [disabled]="!bExtraEstrimatedDays" (onChange)="changeExtra()" styleClass="_input-not-rounded"></p-spinner>
+                  </span>
+
                 </div>
               </div>
             </div>
 
-            <br>
-
-            <div class="form-group ui-g-6">
-              <label>Job Estimated Cost for Day</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-euro" style="width: 15px;"></i>
+            <div class="ui-g-12" style="padding-top: 0;">
+              <div class="_input-group-dbl-form-container">
+                <div class="_input-group-flex _input-group-dbl-form _input-group-dbl-form-margin">
+                  <label class="_input-group-external-label _input-group-lbl-min-ln">Job Estimated Cost for Day:</label>
+                  <span class="ui-float-label">
+                    <i class="fa fa-euro _to-right _black-content"></i>
+                    <input name="estcostSelledDays" formControlName="estcostSelledDays" type="text" pKeyFilter="pint" class="_input-not-rounded"
+                      style="width: 100%;" maxlength="3" placeholder="0">
+                    <label for="float-input" class="_input-group-responsive-float-lbl">Estimated Cost for Day</label>
+                  </span>
                 </div>
-                <!-- <p-inputMask name="estcostSelledDays" formControlName="estcostSelledDays" type="text" class="form-control" id='estcostSelledDays'
-                    placeholder="0" mask="9?99" slotChar="" autoClear="false" [style]="{'width':'100%','height':'100%'}"></p-inputMask>-->
-                <input name="estcostSelledDays" formControlName="estcostSelledDays" type="text" pKeyFilter="pint" class="form-control _form-special"
-                  maxlength="3" placeholder="0">
               </div>
             </div>
+
 
           </div>
 
         </form>
+      </app-step-item>
 
-
-      </p-tabPanel>
-
-    </p-tabView>
+    </app-step-menu>
 
   </div>
-  <div class="card-footer">
+
+  <div card-footer>
 
     <div *ngIf="!loader">
-      <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid || !dates.startDate || !dates.endDate">
-        <i class="fa fa-dot-circle-o"></i> Submit {{componentForm.valid}}
+      <button type="submit" class="btn btn-success" (click)='onSubmit(dates.startDate, dates.endDate)' [(disabled)]="!componentForm.valid && dates.startDate && dates.endDate">
+        <i class="fa fa-dot-circle-o"></i>
+        <span>Submit</span>
       </button>
       <button type="reset" class="btn btn-danger" (click)="reset();" [(disabled)]="tabSelected['PrjSearch']">
-        <i class="fa fa-ban"></i> Reset
+        <i class="fa fa-ban"></i>
+        <span>Reset</span>
       </button>
     </div>
     <div *ngIf="loader">
@@ -113,4 +120,5 @@
 
   </div>
 
-</div>
+
+</app-input-form>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentFactory, ComponentRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentFactory, ComponentRef, AfterViewInit } from '@angular/core';
 
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { ScriptUtils, ScriptType } from '@app/scripts';
   templateUrl: './interactive-app-menu.component.html',
   styleUrls: ['./interactive-app-menu.component.css']
 })
-export class InteractiveAppMenuComponent implements OnInit {
+export class InteractiveAppMenuComponent implements AfterViewInit {
 
 
   @ViewChild("functionContainer", { read: ViewContainerRef }) container;
@@ -55,6 +55,7 @@ export class InteractiveAppMenuComponent implements OnInit {
   }
 
   onFunctionSelected(ret){
+    this.scripts.execScriptFunction(ScriptType.PanelCloseAll);
     this.router.navigate(["./dashboard/"+ret.id])
   }
 
