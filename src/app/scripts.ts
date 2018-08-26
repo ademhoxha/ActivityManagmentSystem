@@ -20,7 +20,7 @@ export class ScriptUtils {
 
         else if (type == ScriptType.StepMenuRequiredScripts)
             return stepMenuRequiredScripts();
-            
+
         else if (type == ScriptType.PanelRequiredScripts)
             return panelRequiredScripts();
         else if (type == ScriptType.PanelCloseAll)
@@ -53,6 +53,34 @@ function inputFormRequiredScripts() {
         $(this).parents('.ui-float-label').find('._to-right').removeClass('_card-form-container-focus-icon');
         $(this).parents('.ui-float-label').parents('._input-group-flex').removeClass('_card-form-container-focus-flex-border');
     })
+
+    $('input').keyup(function () {
+
+        if ($(this).hasClass('ng-invalid')) {
+           /* $(this).parents('._input-group-flex').find('._input-group-external-label').removeClass('_card-form-container-focus-icon-black');
+            $(this).parents('._input-group-flex').find('._input-group-external-label').addClass('_card-form-container-focus-icon-red');*/
+
+            $(this).parents('._input-group-flex').find('i').removeClass('_card-form-container-focus-icon-black');
+            $(this).parents('._input-group-flex').find('i').addClass('_card-form-container-focus-icon-red');
+        }
+
+        if ($(this).hasClass('ng-valid')) {
+            /*$(this).parents('._input-group-flex').find('._input-group-external-label').removeClass('_card-form-container-focus-icon-red');
+            $(this).parents('._input-group-flex').find('._input-group-external-label').addClass('_card-form-container-focus-icon-black');*/
+    
+            $(this).parents('._input-group-flex').find('i').removeClass('_card-form-container-focus-icon-red');
+            $(this).parents('._input-group-flex').find('i').addClass('_card-form-container-focus-icon-black');
+        }
+    })
+
+    /* $('input').keyup( function() {
+         console.log("VALID")
+         $(this).parents('._input-group-flex').find('._input-group-external-label').removeClass('_card-form-container-focus-icon-red');
+         $(this).parents('._input-group-flex').find('._input-group-external-label').addClass('_card-form-container-focus-icon-black');
+ 
+         $(this).parents('._input-group-flex').find('i').removeClass('_card-form-container-focus-icon-red');
+         $(this).parents('._input-group-flex').find('i').addClass('_card-form-container-focus-icon-black');
+     } )*/
 
 }
 

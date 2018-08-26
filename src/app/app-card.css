@@ -132,21 +132,6 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
 }
 
 /* START card app  */
-:root {
-    --app-card-container-padding: 1rem .5rem .3rem .5rem;
-    --app-card-border: solid .5rem transparent;
-    --app-card-bg-color: rgba(0, 128, 0, .8);
-    --app-card-color: rgba(255, 255, 255, .8);
-
-
-    --app-card-hover-border: solid .5rem rgba(25, 255, 20, 1);
-    --app-card-hover-box-shadow-start:  0px 0px 20px -2px rgba(25, 255, 20, .75);
-    --app-card-hover-box-shadow: 0px 0px 40px -2px rgba(25, 255, 20, .75);
-    --app-card-hover-bg-color: rgba(0, 128, 0, 1);
-    --app-card-hover-color: rgba(255, 255, 255, 1);
-}
-
-
 ._app-card {
     display: flex;
     flex-direction:column;
@@ -255,11 +240,6 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
         padding-right: 0;
     }
 
-  /*  ._app-card:hover {
-        box-shadow: 0 0 10px 3px rgba(0,0,0,0.5);
-        border: solid .175rem rgba(16, 52, 156, 1);
-    }*/
-
 }
 
 
@@ -277,26 +257,6 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
 /* END card app  */
 
 /* START card function  */
-
-:root {
-   --function-card-bg-color: rgba(171,0,255,.5);
-   --function-card-padding-top: 1rem;
-   --function-card-margin-bottom: .5rem;
-
-   --function-card-hover-bg-color: rgba(171,0,255,.7);
-   --function-card-hover-color: white;
-   --function-card-hover-border: solid .5rem rgba(195, 42, 255, 1);
-   --function-card-hover-box-shadow-start:  0px 0px 20px -2px rgba(195,42,255,.8);
-   --function-card-hover-box-shadow: 0px 0px 40px -2px rgba(195,42,255,.8);
-
-   --function-card-icon-size: 3rem;
-   --function-card-icon-padding: 0 0 .75rem 0;
-
-   --function-card-test-size: 1.25rem;
-   --function-card-test-weight: 250;
-   --function-card-test-padding: 0 0 0 2rem;
-}
-
 ._function-card {
     display: flex;
     flex-direction:column;
@@ -351,72 +311,14 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
     animation: function-border-shadow 3s linear infinite;
 }
 
-
 /* END card function  */
 
 
-
 /* START card container for form */
-
-:root {
-    --cf-container-bg-clr: rgba(40,40,40,.75);
-    --cf-container-shadow: -6px 6px 1.5px .5px rgba(0,0,0,.7);
-    --cf-container-margin: 0 .75rem 0 .75rem;
-    --cf-container-input-focus-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.6);
-
-    --cf-container-input-focus-flex-border: 1px solid rgba(255,255,255,.8);
-    --cf-container-input-focus-flex-shadow: 0 0 1px 1px rgba(255,255,255,.6);
-
-
-    --cf-container-hdr-title-bg-clr: rgba(15,82,186, 1);
-    --cf--container-hdr-color: white;
-    --cf-container-hdr-border: solid 2px rgba(255,255,255,.6);
-    
-    --cf-container-hdr-font-size: 1.25rem;
-    --cf-container-hdr-distance-i-title: 1.25rem;
-    --cf-container-hdr-title-padding: 0.9rem 0 1rem 1.25rem;
-    --cf-container-hdr-title-hover-border: solid 2px rgba(255,255,255,1);
-    --cf--container-hdr-title-hover-shadow: 0 0 5px 3px rgba(255,255,255,0.5);
-    /*--cf-container-hdr-title-hover-font-size: 1.25rem;*/
-    --cf--container-hdr-title-hover-color: white;
-
-
-
-    --cf-container-hdr-btn-hover-border: solid 2px rgba(255,255,255,1);
-    --cf--container-hdr-btn-hover-shadow: 0 0 5px 3px rgba(255,255,255,0.5);
-    --cf-container-hdr-btn-hover-font-size: 1.25rem;
-    --cf--container-hdr-btn-hover-color: white;
-    --cf-container-hdr-btn-fst-width: 4rem;
-    --cf-container-hdr-btn-fst-padding: 0.75rem 0 1rem 1.4rem;
-    --cf-container-hdr-btn-snd-width: 4rem;
-    --cf-container-hdr-btn-sdn-padding: 0.75rem 0 1rem 1.4rem;
-
-
-    --cf-container-ftr-padding: 0.9rem 0 1rem 1.25rem;
-    --cf-container-ftr-border: solid 2px rgba(255,255,255,.6);
-    --cf-container-ftr-hover-border: solid 2px rgba(255,255,255,1);
-    --cf--container-ftr-hover-shadow: 0 0 5px 3px rgba(255,255,255,0.5);
-
-    --cf-container-ftr-btn-margin : 0 1rem 0 0;
-    --cf-container-ftr-bg-clr: inherit;
-    /*--cf-container-ftr-btn-border : solid 1px rgba(255,255,255,0.6);*/
-    --cf-container-ftr-btn-border-radius: 0.2rem;
-    --cf-container-ftr-btn-height : 2.5rem;
-    --cf-container-ftr-btn-width: 7rem;
-    --cf-container-ftr-btn-font-size: 1.125rem;
-
-
-    --cf-container-body-bg-clr: inherit;
-    --cf-container-body-color: rgba(255,255,255,1);
-    --cf-container-body-border: none;
-    --cf-container-body-padding: 0.75rem 0 1rem 1.4rem;
-    --cf-container-body-font-size: 1rem;
-}
-
 ._card-form-container {
     z-index: 1;
     margin: var(--cf-container-margin);
-    background-color: var(--cf-container-bg-clr);
+    background: var(--cf-container-bg-clr);
     box-shadow: var(--cf-container-shadow);
 }
 
@@ -429,7 +331,7 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
 ._card-form-container ._card-form-container-header ._card-form-container-header-title {
     width: calc( 100% - var(--cf-container-hdr-btn-fst-width) - var(--cf-container-hdr-btn-snd-width) );
     border: var(--cf-container-hdr-border);
-    background-color: var(--cf-container-hdr-title-bg-clr);
+    background: var(--cf-container-hdr-title-bg-clr);
     padding: var(--cf-container-hdr-title-padding);
     color: var(--cf--container-hdr-color);
 }
@@ -545,8 +447,15 @@ div._card:hover ._card-body ._content i,div._card-transition:hover ._card-body  
 }
 
 ._card-form-container-focus-icon {
-    color: black !important;
     font-size: 1.125rem !important;
+}
+
+._card-form-container-focus-icon-black {
+    color: black !important;
+}
+
+._card-form-container-focus-icon-red {
+    color: #DC281E !important;
 }
 
 ._card-form-container-focus-flex-border {

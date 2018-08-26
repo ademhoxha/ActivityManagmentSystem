@@ -21,31 +21,21 @@
 
 /* dashboard variables */
 :root {
-    --dashboard-bg-color : #707070;
-    --dashboard-bg-color : linear-gradient(to left,#707070,#404040);
-    --dashboard-bg-color: linear-gradient(to right, #282828, #707070);
-    --dashboard-bg-color: linear-gradient(to right, #141e30, #243b55);
-}
-
-/* top menu */
-:root {
-    --dashboard-top-menu-bg-color: linear-gradient(to right,#141e30,#243b55); 
-    /*--dashboard-top-menu-bg-color: linear-gradient(to right, #6a3093, #a044ff); */
-    --dashboard-top-menu-bg-color: linear-gradient(to right, #6a3093, #a044ff);
+    --dashboard-bg-color : var(--color-sublime-vivid);
 }
 
 /* card container variables */
 :root {
-    --cf-container-bg-clr: rgb(64,64,64,1);
+    --cf-container-bg-clr: rgba(40,40,40,.75);
     --cf-container-shadow: -6px 6px 1.5px .5px rgba(0,0,0,.7);
     --cf-container-margin: 0 .75rem 0 .75rem;
     --cf-container-input-focus-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.6);
 
-    --cf-container-input-focus-flex-border: 1px solid rgba(255,255,255,1);
-    --cf-container-input-focus-flex-shadow: 0 0 3px 2px rgba(255,255,255,.6);
+    --cf-container-input-focus-flex-border: 1px solid rgba(255,255,255,.8);
+    --cf-container-input-focus-flex-shadow: 0 0 1px 1px rgba(255,255,255,.6);
 
 
-    --cf-container-hdr-title-bg-clr: rgba(15,82,186,1);
+    --cf-container-hdr-title-bg-clr: rgba(15,82,186, 1);
     --cf--container-hdr-color: white;
     --cf-container-hdr-border: solid 2px rgba(255,255,255,.6);
     
@@ -78,8 +68,8 @@
     --cf-container-ftr-bg-clr: inherit;
     /*--cf-container-ftr-btn-border : solid 1px rgba(255,255,255,0.6);*/
     --cf-container-ftr-btn-border-radius: 0.2rem;
-    --cf-container-ftr-btn-height : 3rem;
-    --cf-container-ftr-btn-width: 7.5rem;
+    --cf-container-ftr-btn-height : 2.5rem;
+    --cf-container-ftr-btn-width: 7rem;
     --cf-container-ftr-btn-font-size: 1.125rem;
 
 
@@ -93,23 +83,23 @@
 
 /* app card variables  */
 :root {
-    --app-card-container-padding: 1rem 1rem .3rem 1rem;
+    --app-card-container-padding: 1rem .5rem .3rem .5rem;
     --app-card-border: solid .5rem transparent;
-    --app-card-bg-color: #606060;
-    --app-card-color: rgba(255, 255, 255, .9);
+    --app-card-bg-color: rgba(0, 128, 0, .8);
+    --app-card-color: rgba(255, 255, 255, .8);
 
 
     --app-card-hover-border: solid .5rem rgba(25, 255, 20, 1);
     --app-card-hover-box-shadow-start:  0px 0px 20px -2px rgba(25, 255, 20, .75);
     --app-card-hover-box-shadow: 0px 0px 40px -2px rgba(25, 255, 20, .75);
-    --app-card-hover-bg-color: #0b6623;
+    --app-card-hover-bg-color: rgba(0, 128, 0, 1);
     --app-card-hover-color: rgba(255, 255, 255, 1);
 }
 
 
 /*  function card variables  */
 :root {
-    --function-card-bg-color: #606060;
+    --function-card-bg-color: rgba(171,0,255,.5);
     --function-card-padding-top: 1rem;
     --function-card-margin-bottom: .5rem;
  
@@ -125,13 +115,4 @@
     --function-card-test-size: 1.25rem;
     --function-card-test-weight: 250;
     --function-card-test-padding: 0 0 0 2rem;
- }
-
- /* form buttom */
- :root {
-    --submit-btn-bg-color: #0b6623;
-    --submit-btn-color: white;
-
-    --reset-btn-bg-color: #DC281E;
-    --color-btn-color: white;
  }

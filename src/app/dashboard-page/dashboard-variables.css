@@ -1,0 +1,65 @@
+/* lateral panel */
+:root {
+    --lateral-panel-slide-width : 25%;
+    --lateral-panel-slide-top : 1%;
+
+    --lateral-panel-slide-height-fst : 95%;
+    --lateral-panel-slide-height-snd : 98%;
+
+    --lateral-panel-slide-left-fst-start : -35%;
+    --lateral-panel-slide-left-fst-end : 5%;
+
+    --lateral-panel-slide-left-snd-start : 30%;
+    --lateral-panel-slide-left-snd-end : 5.75%;
+
+    --lateral-panel-fst-time: .5s;
+    --lateral-panel-snd-time: .3s;
+
+    --panel-animation-lateral-left-open-slide : lateral-panel-left-open-slide  var(--lateral-panel-fst-time) ease-in forwards;
+    --panel-close-btn-animation-lateral-left-open-slide : lateral-panel-close-btn-left-open-slide  var(--lateral-panel-fst-time) ease-in forwards;
+    --panel-second-animation-lateral-left-open-slide: lateral-panel-second-left-open-slide  var(--lateral-panel-snd-time) ease-in forwards;
+    --panel-second-close-btn-animation-lateral-left-open-slide : lateral-panel-second-close-btn-left-open-slide  var(--lateral-panel-snd-time) ease-in forwards;
+
+
+    --panel-animation-open-from-center : open-from-center 1.5s ease-in forwards;
+    --panel-close-btn-animation-open-from-center : open-close-from-center 1.5s ease-in forwards;
+
+
+    --panel-bg-color : rgb(64,64,64,1);
+    --panel-border: rgba(255, 255, 255, 0.6);
+    --panel-shadow: var(--cf-container-shadow);
+   /*--panel-bg-color : rgba(40,40,40,1);*/
+}
+
+
+/*  lateral panel secondary top menu */
+:root {
+
+    /*--over-panel-top-tab-bg-color: var(--cf-container-hdr-title-bg-clr);*/
+    --over-panel-top-tab-bg-color: rgba(15,82,186,1);
+    --over-panel-top-tab-font-size: 1.25rem;
+    --over-panel-top-tab-padding: 1.0rem 0 1.25rem 0rem;
+    --over-panel-top-common-border: solid 3px transparent; /* --cf-container-hdr-border */
+    --over-panel-top-tab-icon-font-size: 1.5rem;
+
+    --over-panel-top-tab-title-bg-color: inherit;
+    --over-panel-top-tab-title-color: rgba(255,255,255,1);
+    --over-panel-top-tab-title-border: var(--over-panel-top-common-border);
+
+    --over-panel-top-tab-btn-padding: 1.0rem 0 1.25rem 1.35rem;
+
+    --over-panel-top-tab-frt-btn-bg-color: inherit;
+    --over-panel-top-tab-frt-btn-color: rgba(255,255,255,.75);
+    --over-panel-top-tab-frt-btn-border: var(--over-panel-top-common-border);
+    --over-panel-top-tab-frt-btn-width: 4.5rem;
+
+    --over-panel-top-tab-snd-btn-bg-color: inherit;
+    --over-panel-top-tab-snd-btn-color: rgba(255,255,255,.75);
+    --over-panel-top-tab-snd-btn-border: var(--over-panel-top-common-border);
+    --over-panel-top-tab-snd-btn-width: 4.5rem;
+
+    --over-panel-top-tab-btn-hover-bg-color: initial;
+    --over-panel-top-tab-btn-hover-color: white;
+    --over-panel-top-tab-btn-hover-border: solid 3px white;
+    --over-panel-top-tab-btn-hover-border-shadow: none;
+}

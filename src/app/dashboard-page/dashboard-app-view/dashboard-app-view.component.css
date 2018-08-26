@@ -13,7 +13,7 @@
     padding-top: .7rem;
     margin-bottom: 2rem;
 
-    background: linear-gradient(to right, #141E30, #243B55);
+    background: var(--dashboard-top-menu-bg-color);
 }
 
 ._top-open-app-menu {
@@ -75,38 +75,6 @@
     opacity: .75;
 }
 /* END top menu */
-
-:root {
-    --lateral-panel-slide-width : 25%;
-    --lateral-panel-slide-top : 1%;
-
-    --lateral-panel-slide-height-fst : 95%;
-    --lateral-panel-slide-height-snd : 98%;
-
-    --lateral-panel-slide-left-fst-start : -35%;
-    --lateral-panel-slide-left-fst-end : 5%;
-
-    --lateral-panel-slide-left-snd-start : 30%;
-    --lateral-panel-slide-left-snd-end : 5.75%;
-
-    --lateral-panel-fst-time: .5s;
-    --lateral-panel-snd-time: .3s;
-
-    --panel-animation-lateral-left-open-slide : lateral-panel-left-open-slide  var(--lateral-panel-fst-time) ease-in forwards;
-    --panel-close-btn-animation-lateral-left-open-slide : lateral-panel-close-btn-left-open-slide  var(--lateral-panel-fst-time) ease-in forwards;
-    --panel-second-animation-lateral-left-open-slide: lateral-panel-second-left-open-slide  var(--lateral-panel-snd-time) ease-in forwards;
-    --panel-second-close-btn-animation-lateral-left-open-slide : lateral-panel-second-close-btn-left-open-slide  var(--lateral-panel-snd-time) ease-in forwards;
-
-
-    --panel-animation-open-from-center : open-from-center 1.5s ease-in forwards;
-    --panel-close-btn-animation-open-from-center : open-close-from-center 1.5s ease-in forwards;
-
-
-    --panel-bg-color : rgba(51,51,51, 1);
-    --panel-border: rgba(255, 255, 255, 0.6);
-    --panel-shadow: -6px 6px 1.5px .5px rgba(0,0,0,.7);
-   /*--panel-bg-color : rgba(40,40,40,1);*/
-}
 
 /* START lateral left increasing width */
 @keyframes lateral-panel-left-open-show {
@@ -236,35 +204,6 @@
     z-index: 70;
 }
 
-:root {
-
-    /*--over-panel-top-tab-bg-color: var(--cf-container-hdr-title-bg-clr);*/
-    --over-panel-top-tab-bg-color: rgba(102,0,0,.8);
-    --over-panel-top-tab-font-size: 1rem;
-    --over-panel-top-tab-padding: 0.75rem 0 1rem 1.3rem;
-    --over-panel-top-common-border: solid 3px transparent; /* --cf-container-hdr-border */
-    --over-panel-top-tab-icon-font-size: 1.25rem;
-
-    --over-panel-top-tab-title-bg-color: inherit;
-    --over-panel-top-tab-title-color: rgba(255,255,255,1);
-    --over-panel-top-tab-title-border: var(--over-panel-top-common-border);
-
-    --over-panel-top-tab-frt-btn-bg-color: inherit;
-    --over-panel-top-tab-frt-btn-color: rgba(255,255,255,.75);
-    --over-panel-top-tab-frt-btn-border: var(--over-panel-top-common-border);
-    --over-panel-top-tab-frt-btn-width: 4rem;
-
-    --over-panel-top-tab-snd-btn-bg-color: inherit;
-    --over-panel-top-tab-snd-btn-color: rgba(255,255,255,.75);
-    --over-panel-top-tab-snd-btn-border: var(--over-panel-top-common-border);
-    --over-panel-top-tab-snd-btn-width: 4rem;
-
-    --over-panel-top-tab-btn-hover-bg-color: rgba(102,0,0,1);
-    --over-panel-top-tab-btn-hover-color: white;
-    --over-panel-top-tab-btn-hover-border: solid 3px white;
-    --over-panel-top-tab-btn-hover-border-shadow: none;
-}
-
 ._over-panel ._over-panel-top-tab{
     width: 100%;
     display: flex;
@@ -293,7 +232,7 @@
 
 ._over-panel ._over-panel-top-tab ._over-panel-top-tab-fst-btn{
     width: var(--over-panel-top-tab-frt-btn-width);
-    padding: var(--over-panel-top-tab-padding);
+    padding: var(--over-panel-top-tab-btn-padding);
     background-color: var(--over-panel-top-tab-frt-btn-bg-color);
     color: var(--over-panel-top-tab-frt-btn-color);
     border: var(--over-panel-top-tab-frt-btn-border);
@@ -302,7 +241,7 @@
 
 ._over-panel ._over-panel-top-tab ._over-panel-top-tab-snd-btn{
     width: var(--over-panel-top-tab-snd-btn-width);
-    padding: var(--over-panel-top-tab-padding);
+    padding: var(--over-panel-top-tab-btn-padding);
     background-color: var(--over-panel-top-tab-snd-btn-bg-color);
     color: var(--over-panel-top-tab-snd-btn-color);
     border: var(--over-panel-top-tab-snd-btn-border);
@@ -370,7 +309,7 @@
         width: 100%;
         height: 100%;
         min-height: 45rem; /* hard code */
-        min-width: none;
+        min-width: 0px !important;
     }
 
     ._over-panel-close {

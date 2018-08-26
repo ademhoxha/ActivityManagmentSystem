@@ -9,7 +9,7 @@ import { routerTransitions } from '@app/dashboard-page/dashboard-routing-animati
   selector: 'app-dashboard-app-view',
   templateUrl: './dashboard-app-view.component.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./dashboard-app-view.component.css', './../dashboard-main.css'],
+  styleUrls: [ './../dashboard-variables.css', './dashboard-app-view.component.css', './../dashboard-main.css'],
   animations: routerTransitions
 })
 export class DashboardAppViewComponent implements OnInit {
